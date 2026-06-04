@@ -10,7 +10,7 @@ meta:
     帮助学员掌握 CodeAgent、AgentCenter、MCP、Skill、CodeWiki 与 SDD 方法，
     从小步验证的单兵开发闭环进入复杂存量项目的规格驱动开发。
   source_material:
-    - AI 辅助编码实战营课程大纲(260425).xlsx
+    - course.xlsx
   notes:
     - 讲师开场时先强调本课程不是工具按钮说明书，而是工程化协作方法。
     - 首期学员是知识传播节点，课后需要在各自团队复讲并沉淀团队约束。
@@ -1136,4 +1136,3 @@ assessment:
   notes:
     - 如果企业内已有绩效或认证体系，可把该 Rubric 映射为内部积分。
     - 安全红线包括真实 AK/SK 泄露、Token 泄露、生产地址暴露、绕过 Review 直接合并。
-

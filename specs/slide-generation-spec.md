@@ -12,6 +12,7 @@
 - `modules[].segments[].slides[]`：具体页内容。
 - `labs`：实操任务、输入、限制、验收标准。
 - `assessment`：作业验收与评分规则。
+- `specs/course-production/*`：课程材料自身的 SDD 依据，供讲师 Review 和版本治理使用，不直接渲染到课堂 PPT。
 
 ## 输出
 
@@ -22,7 +23,7 @@
 ## 验收
 
 - `npm run validate` 能发现缺失标题、空模块、重复 slide id、缺失讲师备注等问题。
+- `npm run validate` 能确认课程生产的四阶 SDD 文档存在，并扫描常见密钥模式。
 - `npm run generate` 能稳定生成 Markdown。
 - `npm run build` 能通过 Slidev 构建静态站点。
 - `export:pptx` 和 `export:pdf` 不提交生成文件，只作为临时交付命令。
-

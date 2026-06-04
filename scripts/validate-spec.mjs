@@ -2,6 +2,17 @@ import { readFile } from "node:fs/promises";
 import { parse } from "yaml";
 
 const specPath = process.argv[2] ?? "specs/course.yaml";
+const requiredSpecFiles = [
+  "specs/constitution.md",
+  "specs/slide-generation-spec.md",
+  "specs/course-production/proposal.md",
+  "specs/course-production/spec.md",
+  "specs/course-production/design.md",
+  "specs/course-production/tasks.md",
+  "docs/authoring-guide.md",
+  "docs/facilitator-runbook.md",
+  "docs/examples/prompt-patterns.md"
+];
 const allowedVisuals = new Set([
   "flow",
   "matrix",
@@ -15,6 +26,12 @@ const allowedVisuals = new Set([
 const errors = [];
 const warnings = [];
 const slideIds = new Set();
+const sensitivePatterns = [
+  /gh[pousr]_[A-Za-z0-9_]{20,}/g,
+  /github_pat_[A-Za-z0-9_]{20,}/g,
+  /-----BEGIN [A-Z ]*PRIVATE KEY-----/g,
+  /AKIA[0-9A-Z]{16}/g
+];
 
 function requireValue(value, path) {
   if (value === undefined || value === null || value === "") {
@@ -111,9 +128,34 @@ function validateCourse(course) {
   return { totalDuration, slideCount };
 }
 
+function validateNoSensitiveMaterial(raw, path) {
+  sensitivePatterns.forEach((pattern) => {
+    const matches = raw.match(pattern);
+    if (matches?.length) {
+      errors.push(`${path} appears to contain sensitive credential material`);
+    }
+  });
+}
+
+async function validateRequiredSpecFiles() {
+  for (const file of requiredSpecFiles) {
+    try {
+      const raw = await readFile(file, "utf8");
+      if (!raw.trim()) {
+        errors.push(`${file} is empty`);
+      }
+      validateNoSensitiveMaterial(raw, file);
+    } catch {
+      errors.push(`${file} is required`);
+    }
+  }
+}
+
 const raw = await readFile(specPath, "utf8");
+validateNoSensitiveMaterial(raw, specPath);
 const course = parse(raw);
 const stats = validateCourse(course);
+await validateRequiredSpecFiles();
 
 if (warnings.length) {
   console.warn("Warnings:");
@@ -129,4 +171,3 @@ if (errors.length) {
 console.log(
   `Spec OK: ${stats.slideCount} authored slides, ${stats.totalDuration} scheduled minutes`
 );
-
