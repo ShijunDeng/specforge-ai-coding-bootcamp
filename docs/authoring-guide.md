@@ -113,16 +113,26 @@ npm run check
 
 ## 新增一页
 
-在对应 `specs/modules/*.md` 中新增一个 `:::slide` block。优先参考 `specs/templates/module-spec.template.md` 的页面结构；如果相邻页面结构高度一致，也可以复用相邻的 Spec block 作为骨架，但必须改掉 id、标题和内容。这里仍然只是在改 Spec，不是在复制或编辑生成后的 Slidev 页面。
+新增页面只修改模块 Spec，不修改生成物。操作步骤：
 
-确保：
+1. 在 `specs/course.yaml` 的 `modules[]` 中确认要修改的模块 id 和 `file`。
+2. 打开对应的 `specs/modules/*.md`，在合适位置新增一个 `:::slide` block。
+3. 新 slide 的结构参考 `specs/templates/module-spec.template.md`；如果相邻页面授课方式完全一致，可以参考相邻 block 的字段组织，但必须重新编写 id、标题、正文、视觉说明和讲师备注。
+4. 如果新增页面改变了本模块总时长，同步修改模块 frontmatter 的 `duration_min` 和 `specs/course.yaml` 中对应模块的 `duration_min`。
+5. 运行 `npm run validate` 检查 Spec，再运行 `npm run generate` 从 Spec 重新生成 Slidev Markdown。
 
-- `id` 全局唯一。
+新 slide 必须满足：
+
+- `id` 全局唯一，不能复用旧页面 id。
 - `title` 是屏幕上可见标题。
+- `mode` 表示授课方式，例如 `talk`、`demo`、`lab`、`summary`。
+- `duration_min` 表示本页预计时长。
 - `Headline` 是本页核心判断，不写成泛泛介绍。
 - `Key Points` 不超过 5-6 条。
 - `Visual` 描述页面右侧该展示的结构，可以是流程、表格、清单、对比或任务卡。
 - `Speaker Notes` 写给讲师，说明怎样讲、怎样追问、怎样处理常见偏差。
+
+不要在 `build/slides/*.slidev.md` 中新增页面；那是生成结果，会在下次 `npm run generate` 时被覆盖。
 
 ## 新增章节
 
