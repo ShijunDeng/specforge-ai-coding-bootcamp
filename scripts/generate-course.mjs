@@ -46,10 +46,30 @@ function outputBaseName(output) {
 function normalizeTarget(target = "slidev") {
   const value = String(target || "slidev").toLowerCase();
   if (["slidev", "slides", "ppt"].includes(value)) return "slidev";
-  if (["llm", "notebooklm", "notepadllm", "notepad-lm", "notebook-lm", "markdown", "plain"].includes(value)) {
+  if (["llm", "notebooklm", "notebook-lm", "knowledge", "markdown", "plain"].includes(value)) {
     return "llm";
   }
-  throw new Error(`Unknown target "${target}". Supported targets: slidev, llm/notebooklm/notepadllm.`);
+  if (
+    [
+      "ppt-ai",
+      "presentation-ai",
+      "outline",
+      "deck-outline",
+      "gamma",
+      "tome",
+      "canva",
+      "beautifulai",
+      "beautiful-ai",
+      "powerpoint-copilot",
+      "copilot",
+      "google-slides",
+      "deckai",
+      "riff"
+    ].includes(value)
+  ) {
+    return "ppt-ai";
+  }
+  throw new Error(`Unknown target "${target}". Supported targets: slidev, llm/notebooklm, ppt-ai/gamma/tome/canva/beautifulai.`);
 }
 
 function escapeHtml(value = "") {
@@ -500,6 +520,81 @@ function renderPlainDeck(course, deck, modules, includeModules, includeNotes = f
   return chunks.filter((chunk) => chunk !== undefined && chunk !== "").join("\n\n");
 }
 
+function compactMarkdown(value = "") {
+  return value
+    .trim()
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join("\n");
+}
+
+function renderPptAiSlide(slide, module, index, includeNotes = false) {
+  const { meta, sections } = slide;
+  const chunks = [
+    `## Slide ${index}: ${meta.title}`,
+    `Type: ${meta.mode}`,
+    `Module: ${module.title}`,
+    `Estimated time: ${meta.duration_min ? `${meta.duration_min} minutes` : "prework"}`,
+    "",
+    "### Main Message",
+    compactMarkdown(sections.headline ?? meta.title),
+    "",
+    "### On-Slide Text",
+    compactMarkdown([sections.body, sections["key points"]].filter(Boolean).join("\n")),
+    "",
+    "### Visual Direction",
+    `Layout: ${meta.visual ?? "cards"}`,
+    compactMarkdown(sections.visual ?? ""),
+    "",
+    "### Speaker Takeaway",
+    compactMarkdown(sections.takeaway ?? "")
+  ];
+  if (includeNotes && sections["speaker notes"]) {
+    chunks.push("", "### Speaker Notes", compactMarkdown(sections["speaker notes"]));
+  }
+  return chunks.filter((chunk) => chunk !== undefined).join("\n");
+}
+
+function renderPptAiDeck(course, deck, modules, includeModules, includeNotes = false) {
+  const total = modules.reduce((sum, module) => sum + Number(module.duration_min || 0), 0);
+  const chunks = [
+    `# ${course.meta.title}`,
+    "",
+    "## Deck Generation Brief",
+    `Audience: ${course.meta.audience_label ?? course.audience?.primary ?? ""}`,
+    `Deck: ${deck.title}`,
+    `Duration: about ${total} minutes`,
+    `Tone: professional classroom training, student-facing, practical, engineering-oriented`,
+    `Visual style: clean technical training deck, diagrams over decorative stock imagery, readable 16:9 slides`,
+    "",
+    "## Course Promise",
+    course.learning_design?.promise ?? "",
+    "",
+    "## Required Narrative",
+    (course.learning_design?.principles ?? []).map((item) => `- ${item}`).join("\n"),
+    "",
+    "## Slide Outline"
+  ];
+
+  let slideIndex = 1;
+  for (const module of modules) {
+    chunks.push(`# Module: ${module.title}`);
+    chunks.push(`Module intent: ${module.spec.intent ?? ""}`);
+    module.slides.forEach((slide) => {
+      chunks.push(renderPptAiSlide(slide, module, slideIndex, includeNotes));
+      slideIndex += 1;
+    });
+  }
+
+  const labs = renderPlainLabs(course, includeModules);
+  if (labs) {
+    chunks.push("# Labs and Homework Reference");
+    chunks.push(labs);
+  }
+  return chunks.filter(Boolean).join("\n\n");
+}
+
 function renderSlidevDeck(course, deck, modules, includeModules, generatedAt, exportFilename) {
   const chunks = [
     `---
@@ -598,7 +693,9 @@ const exportFilename = deck.export_filename ?? outputBaseName(output) ?? course.
 const markdown =
   target === "slidev"
     ? renderSlidevDeck(course, deck, selectedModules, includeModules, generatedAt, exportFilename)
-    : renderPlainDeck(course, deck, selectedModules, includeModules, includeNotes);
+    : target === "ppt-ai"
+      ? renderPptAiDeck(course, deck, selectedModules, includeModules, includeNotes)
+      : renderPlainDeck(course, deck, selectedModules, includeModules, includeNotes);
 await mkdir(path.dirname(output), { recursive: true });
 await writeFile(output, markdown, "utf8");
 

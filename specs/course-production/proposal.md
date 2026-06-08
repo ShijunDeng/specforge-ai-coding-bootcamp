@@ -4,7 +4,7 @@
 
 AI 辅助编码工具已经进入日常研发，但培训材料如果仍以手工 PPT 为源文件，会出现三个问题：课程内容难以 Review、不同讲师难以复用、工具变化后难以系统更新。
 
-本工程采用 Spec Driven Development 思路，把课程事实维护为 Markdown Spec，再按目标工具临时生成 Slidev、NotebookLM/NotepadLLM 友好的纯 Markdown、PDF 或 PPTX。
+本工程采用 Spec Driven Development 思路，把课程事实维护为 Markdown Spec，再按目标工具临时生成 Slidev、NotebookLM 友好的纯 Markdown、AI PPT 产品大纲、PDF 或 PPTX。
 
 ## 目标
 

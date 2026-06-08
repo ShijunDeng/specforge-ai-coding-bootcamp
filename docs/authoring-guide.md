@@ -1,11 +1,11 @@
 # Spec 维护指南
 
-本仓库把课程材料当作工程资产维护：课程正文写在 Spec 中，Slidev、NotebookLM/NotepadLLM 友好的纯 Markdown、静态站点、PDF、PPTX 都由脚本生成。讲师和课程维护者只维护源文件，不直接修改生成物。
+本仓库把课程材料当作工程资产维护：课程正文写在 Spec 中，Slidev、NotebookLM 友好的纯 Markdown、AI PPT 产品大纲、静态站点、PDF、PPTX 都由脚本生成。讲师和课程维护者只维护源文件，不直接修改生成物。
 
 ## 基本原则
 
 - **Spec 是唯一正文来源**：课件原始内容写在 `specs/modules/*.md` 和 `specs/course.yaml`。
-- **生成目标可替换**：Slidev、NotebookLM、NotepadLLM、普通 Markdown 都是输出目标，不是课程源模型。
+- **生成目标可替换**：Slidev、NotebookLM、AI PPT 产品、普通 Markdown 都是输出目标，不是课程源模型。
 - **生成物不手改**：`build/`、`dist/`、PDF、PPTX 都会被脚本覆盖。
 - **可见内容面向学员**：`title`、`Headline`、`Body`、`Key Points`、`Visual`、`Takeaway` 都应像课堂上直接讲给学员听，避免“让学员……”“讲师要……”这类后台语言。
 - **讲师提示放备注**：讲法、追问、现场取舍、助教动作写在 `Speaker Notes`。
@@ -212,7 +212,10 @@ npm run generate
 npm run generate:slidev
 npm run generate:llm
 npm run generate:notebooklm
-npm run generate:notepadllm
+npm run generate:ppt-ai
+npm run generate:gamma
+npm run generate:tome
+npm run generate:canva
 npm run generate:all
 npm run generate:lesson1
 npm run generate:lesson2
@@ -237,9 +240,11 @@ npm run generate -- --modules orientation,smn-design-lab --output build/slides/m
 npm run generate -- --target slidev --deck full-7h
 npm run generate -- --target llm --deck lesson2-sdd
 npm run generate -- --target notebooklm --modules orientation,smn-design-lab
+npm run generate -- --target gamma --deck lesson2-sdd
+npm run generate -- --target powerpoint-copilot --modules orientation,smn-design-lab
 ```
 
-`slidev` 是默认目标，输出到 `build/slides/`。`llm`、`notebooklm`、`notepadllm`、`markdown`、`plain` 会输出工具无关的纯 Markdown 到 `build/llm/`，适合导入 NotebookLM、NotepadLLM 或其他 LLM 知识库。LLM 目标默认不包含 `Speaker Notes`；如需讲师完整资料可加 `--include-notes`。
+`slidev` 是默认目标，输出到 `build/slides/`。`llm`、`notebooklm`、`markdown`、`plain` 会输出工具无关的纯 Markdown 到 `build/llm/`，适合导入 NotebookLM 或其他 LLM 知识库。`ppt-ai`、`gamma`、`tome`、`canva`、`beautifulai`、`powerpoint-copilot`、`google-slides`、`deckai` 等会输出到 `build/ppt-ai/`，格式更像 AI PPT 生成器需要的 deck brief 和逐页大纲。LLM/PPT-AI 目标默认不包含 `Speaker Notes`；如需讲师完整资料可加 `--include-notes`。
 
 ## 验证与预览
 
@@ -257,10 +262,16 @@ npm run validate
 npm run generate
 ```
 
-生成 LLM/NotebookLM/NotepadLLM 友好的纯 Markdown：
+生成 LLM/NotebookLM 友好的纯 Markdown：
 
 ```bash
 npm run generate:llm
+```
+
+生成 AI PPT 产品大纲：
+
+```bash
+npm run generate:ppt-ai
 ```
 
 本地预览：

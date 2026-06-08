@@ -9,7 +9,9 @@ specs/course.yaml
   -> build/slides/*.slidev.md
   -> Slidev preview/build/export
   -> build/llm/*.md
-  -> NotebookLM / NotepadLLM / generic LLM review
+  -> NotebookLM / generic LLM review
+  -> build/ppt-ai/*.md
+  -> Gamma / Tome / Canva / PowerPoint Copilot style outline import
 ```
 
 ## 文件职责
@@ -53,7 +55,7 @@ visual: checklist
 
 ## 组合生成
 
-内置 deck 写在 `course.yaml` 的 `decks[]` 中。自定义 deck 写在 `configs/*.yaml`，或使用命令行 `--modules` 临时选择模块。输出工具通过 `--target` 选择，默认是 `slidev`，`llm`/`notebooklm`/`notepadllm` 会生成纯 Markdown。
+内置 deck 写在 `course.yaml` 的 `decks[]` 中。自定义 deck 写在 `configs/*.yaml`，或使用命令行 `--modules` 临时选择模块。输出工具通过 `--target` 选择，默认是 `slidev`，`llm`/`notebooklm` 会生成知识包 Markdown，`ppt-ai`/`gamma`/`tome`/`canva` 会生成 AI PPT 大纲。
 
 ## 风险与控制
 

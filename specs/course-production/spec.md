@@ -18,7 +18,7 @@
 
 - 课程正文使用 `specs/modules/*.md`。
 - 课程 manifest 使用 `specs/course.yaml`。
-- 生成物输出到 `build/` 和 `dist/`，其中 `build/slides/` 面向 Slidev，`build/llm/` 面向 NotebookLM、NotepadLLM 和通用 LLM 知识库。
+- 生成物输出到 `build/` 和 `dist/`，其中 `build/slides/` 面向 Slidev，`build/llm/` 面向 NotebookLM 和通用 LLM 知识库，`build/ppt-ai/` 面向 AI PPT 产品大纲。
 - 练习说明放在 `exercises/`。
 - 评分规则放在 `rubrics/`。
 

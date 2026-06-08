@@ -2,14 +2,17 @@
 
 ## 目标
 
-从 `specs/course.yaml` 和 `specs/modules/*.md` 生成不同工具可消费的课程材料。Spec 是唯一课程源；Slidev、NotebookLM、NotepadLLM、普通 Markdown 等都只是输出目标，不反向约束课程正文写法。
+从 `specs/course.yaml` 和 `specs/modules/*.md` 生成不同工具可消费的课程材料。Spec 是唯一课程源；Slidev、NotebookLM、AI PPT 产品、普通 Markdown 等都只是输出目标，不反向约束课程正文写法。
 
-当前支持两类目标：
+当前支持三类目标：
 
 - `slidev`：生成可直接运行的 Slidev Markdown，用于课堂投屏、网页预览、PDF/PPTX 导出。
-- `llm`：生成纯 Markdown 课程包，用于 NotebookLM、NotepadLLM、通用 LLM 知识库、复习资料或文本审阅。
+- `llm`：生成纯 Markdown 课程包，用于 NotebookLM、通用 LLM 知识库、复习资料或文本审阅。
+- `ppt-ai`：生成 AI PPT 产品更容易消费的 deck brief 和逐页大纲，用于 Gamma、Tome、Canva、Beautiful.ai、PowerPoint Copilot、Google Slides AI 能力、DeckAI 等产品的粘贴/导入工作流。
 
-`notebooklm`、`notepadllm`、`markdown`、`plain` 都作为 `llm` 目标的别名处理。
+`notebooklm`、`markdown`、`plain` 都作为 `llm` 目标的别名处理。
+
+`gamma`、`tome`、`canva`、`beautifulai`、`powerpoint-copilot`、`google-slides`、`deckai`、`riff` 都作为 `ppt-ai` 目标的别名处理。产品预设只控制输出文本结构，不表示本仓库已经接入这些产品的私有 API。
 
 ## 输入
 
@@ -51,7 +54,7 @@ Slidev 输出可以继续用于：
 - `npm run export:pptx`
 - `npm run export:pdf`
 
-### LLM / NotebookLM / NotepadLLM
+### LLM / NotebookLM
 
 LLM 目标输出工具无关的纯 Markdown，不包含 Slidev frontmatter、HTML 布局、CSS 或页面分隔符。
 
@@ -73,6 +76,29 @@ LLM 输出保留：
 - Headline、Body、Key Points、Visual Brief、Activity、Takeaway。
 - labs 与 assessment。
 
+### AI PPT 产品大纲
+
+PPT-AI 目标输出面向生成式演示工具的逐页大纲，重点不是保留完整课程知识，而是给产品一个清晰的 deck brief。
+
+输出规则：
+
+- 默认 deck：`build/ppt-ai/full-7h.md`。
+- 指定 deck：`build/ppt-ai/<deck-id>.md`。
+- 临时模块组合：`build/ppt-ai/<module-ids>.md`。
+- 显式自定义输出：由 `--output` 覆盖上述规则。
+- 默认不输出 `Speaker Notes`。
+- 如需要讲师完整资料，可增加 `--include-notes`。
+
+PPT-AI 输出包含：
+
+- Deck generation brief：受众、时长、语气、视觉风格。
+- Required narrative：课程主线和原则。
+- 每页的 Title、Type、Module、Estimated time。
+- Main Message。
+- On-Slide Text。
+- Visual Direction。
+- Speaker Takeaway。
+
 ## 命令
 
 ```bash
@@ -80,7 +106,10 @@ npm run generate
 npm run generate:slidev
 npm run generate:llm
 npm run generate:notebooklm
-npm run generate:notepadllm
+npm run generate:ppt-ai
+npm run generate:gamma
+npm run generate:tome
+npm run generate:canva
 npm run generate:all
 ```
 
@@ -89,6 +118,8 @@ npm run generate:all
 ```bash
 npm run generate -- --deck lesson1-lab
 npm run generate -- --target llm --deck lesson2-sdd
+npm run generate -- --target gamma --deck lesson2-sdd
+npm run generate -- --target powerpoint-copilot --deck full-7h
 ```
 
 临时模块组合：
@@ -96,6 +127,7 @@ npm run generate -- --target llm --deck lesson2-sdd
 ```bash
 npm run generate -- --modules orientation,sdd-codewiki,smn-design-lab
 npm run generate -- --target notebooklm --modules orientation,smn-design-lab
+npm run generate -- --target canva --modules orientation,smn-design-lab
 ```
 
 自定义输出：
@@ -121,6 +153,7 @@ npm run generate -- --list-decks
 - `npm run validate` 能发现缺失标题、重复 slide id、缺失讲师备注、模块时长不一致、模块 manifest 与 frontmatter 不一致、deck/config 引用错误和敏感凭证模式。
 - `npm run generate` 能稳定生成默认 Slidev deck。
 - `npm run generate:llm` 能稳定生成 `build/llm/full-7h.md`。
+- `npm run generate:ppt-ai` 能稳定生成 `build/ppt-ai/full-7h.md`。
 - `npm run build` 能通过 Slidev 构建静态站点。
 - `npm run slides:public` 必须输出可访问公网地址。
 - Slidev PDF/PPTX 导出必须先安装 `playwright-chromium`，生成文件不提交。
