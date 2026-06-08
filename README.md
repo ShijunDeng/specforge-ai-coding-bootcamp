@@ -52,6 +52,17 @@ npm run export:pptx
 3. 如生成策略变化，同步更新 `specs/slide-generation-spec.md` 和 `scripts/`。
 4. 每次提交前运行 `npm run validate`；正式交付前运行 `npm run check`。
 
+## 新增或修改一节课程
+
+开发中把一节课程作为一个 module 维护。常见修改路径：
+
+1. 在 `specs/course.yaml` 的 `modules[]` 找到或注册课程节，确认 `id`、`file`、`duration_min` 和所属 `decks[]`。
+2. 修改或新增对应的 `specs/modules/*.md`，维护 frontmatter、`Module Brief` 和每个 `:::slide` block。
+3. 如果课程节包含练习，同步更新 `specs/course.yaml` 的 `labs[]`，必要时补充 `exercises/` 和 `rubrics/`。
+4. 修改后运行 `npm run validate`；需要预览时运行 `npm run generate` 和 `npm run slides`；正式交付前运行 `npm run check`。
+
+详细操作步骤、字段含义、验证命令和人工检查点见 [Spec 维护指南](docs/authoring-guide.md#开发中新增或修改一节课程)。
+
 ## 从 course.xlsx 到 7 小时课程
 
 `course.xlsx` 是本仓库的初始课程大纲。当前版本保留大纲中的两条主线：

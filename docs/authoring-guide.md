@@ -16,6 +16,97 @@
 - 实操任务：`labs[]`。
 - 大作业评分：`assessment`。
 
+## 开发中新增或修改一节课程
+
+本仓库把“课程节”作为 module 维护。新增或调整一节课时，源文件通常只改 `specs/course.yaml`、一个 `specs/modules/*.md` 文件；如果这节课包含独立练习，再同步改 `exercises/` 或 `rubrics/`。
+
+### 文件分工
+
+- `specs/course.yaml`：课程 manifest。这里注册模块 id、模块文件路径、展示标题、课堂时长、来源行、标签，并决定这个模块进入哪些 `decks[]`。如果新增或调整课堂练习，还要同步 `labs[]` 的目标、约束和验收规则。
+- `specs/modules/*.md`：单节课程内容源文件。文件名建议使用两位排序号加语义名，例如 `70-team-rollout.md`。文件包含 YAML frontmatter、`Module Brief` 和多个 `:::slide` block。
+- `specs/templates/module-spec.template.md`：新增模块或页面时复制的结构模板，不直接参与生成。
+- `configs/*.yaml`：自定义 deck 组合。只有当新课程节不适合放入内置 `decks[]`，或需要临时交付一个定制版本时才修改或新增。
+- `exercises/<exercise-id>/README.md`：课堂练习说明。只有当课程节要求学员完成独立实操、需要额外步骤或验收证据时新增。
+- `rubrics/*.md`：评分标准。只有当新增课程节影响作业或验收评分时修改。
+- `build/`、`dist/`：生成物目录。不要手工维护这些文件，运行生成或构建命令后由脚本覆盖。
+
+### 修改已有课程节
+
+1. 在 `specs/course.yaml` 的 `modules[]` 找到课程节 id，确认它对应的 `file`。
+2. 修改对应 `specs/modules/*.md`：
+   - frontmatter 的 `title`、`duration_min`、`intent`、`outcomes` 描述本节课解决的问题和学员可观察产出。
+   - `Module Brief` 说明这节课在课程中的上下文和讲师处理重点。
+   - 每个 `:::slide` block 的 `title`、`mode`、`duration_min`、`visual` 控制生成页面的标题、授课方式、预计时长和视觉类型。
+   - `Headline` 写本页核心判断；`Body` 写必要解释；`Key Points` 写屏幕要点；`Visual` 写右侧结构；`Takeaway` 写本页结论；`Speaker Notes` 写讲师讲法、追问和取舍。
+3. 如果调整本节总时长，同时修改模块 frontmatter 的 `duration_min` 和 `specs/course.yaml` 中同一模块的 `duration_min`，两处必须一致。
+4. 如果这节课所属组合变化，修改 `specs/course.yaml` 的 `decks[].include_modules`。自定义组合优先放在 `configs/*.yaml`。
+5. 如果改了实操目标、约束或验收证据，同步更新 `specs/course.yaml` 的 `labs[]`，必要时更新 `exercises/` 和 `rubrics/`。
+
+### 新增一节课程
+
+1. 从 `specs/templates/module-spec.template.md` 复制一个新文件到 `specs/modules/`，按课程顺序和主题命名。
+2. 设置模块 frontmatter：
+   - `id`：全局唯一，并与 `specs/course.yaml` 中的 module id 完全一致。
+   - `title`：模块展示标题。
+   - `duration_min`：本节课总时长，课前材料可为 `0`。
+   - `intent`：本节课的教学意图。
+   - `outcomes`：学员完成后能做到的可观察行为。
+   - `source_rows`：对应原始大纲行号；没有来源时用空数组。
+3. 编写 `Module Brief` 和至少一个 `:::slide` block。每页 slide 必须有唯一 `id`、`title`、`mode`，并至少包含 `Headline`、`Body` 或 `Key Points` 中的一项；建议始终补齐 `Speaker Notes`。
+4. 在 `specs/course.yaml` 的 `modules[]` 注册新模块：
+   - `id`：模块 id。
+   - `file`：模块 spec 路径。
+   - `title`：模块标题。
+   - `duration_min`：必须与模块 frontmatter 一致。
+   - `source_rows`：来源行号。
+   - `tags`：用于标识课程阶段、主题或是否必修。
+5. 把模块 id 加入需要交付的 `decks[].include_modules`。内置组合包括 `full-7h`、`lesson1-lab`、`lesson2-sdd` 和 `sdd-only`。
+6. 如该模块包含新练习，在 `specs/course.yaml` 的 `labs[]` 新增练习，并在 `exercises/` 下补充学员说明。
+
+### 测试与验证
+
+每次修改后至少运行：
+
+```bash
+npm run validate
+```
+
+`validate` 会检查必需文档、敏感凭证、课程 manifest、deck 引用、模块 frontmatter、模块时长一致性、slide id 全局唯一、slide 必填字段和练习验收规则。
+
+确认可以生成课件：
+
+```bash
+npm run generate
+```
+
+只验证某个组合时：
+
+```bash
+npm run generate -- --deck lesson1-lab
+npm run generate -- --modules orientation,new-module-id
+npm run generate:custom
+```
+
+本地预览：
+
+```bash
+npm run slides
+```
+
+如果端口被占用：
+
+```bash
+PORT=3031 npm run slides
+```
+
+正式交付前运行完整检查：
+
+```bash
+npm run check
+```
+
+人工验证时重点看四件事：新模块是否出现在目标 deck 的议程中；每页标题、要点、视觉区和讲师备注是否符合预期；总时长是否符合交付版本；练习的目标、约束、验收证据是否能在课堂上执行。
+
 ## 新增一页
 
 复制相邻 slide 或 `specs/templates/module-spec.template.md` 中的示例，确保：
