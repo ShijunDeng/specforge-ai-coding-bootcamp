@@ -261,36 +261,41 @@ CodeWiki 查询应该围绕现状、扩展点、配置和测试设计，而不�
 
 :::slide
 id: sdd-08
-title: 讲师演示：飞书告警规范探底
+title: 讲师演示：Skill 串起四阶文档
 mode: demo
 duration_min: 12
 visual: flow
 :::
 
 ### Headline
-先用一个已存在插件探路，再迁移方法到 SMN。
+先用 CodeWiki 探路，再用 SDD Skill 连贯生成四阶文档。
 
 ### Body
-讲师用飞书告警或已有 Webhook 插件作为样例，查询项目规范，整理约束，再生成 Proposal、Spec、Design、Tasks 的初版，并展示一次人工打回。
+讲师用飞书告警或已有 Webhook 插件作为样例，查询项目规范，整理约束，然后调用 SDD Skill 按 Proposal、Spec、Design、Tasks 的顺序连续产出文档初版，并展示一次人工打回。
 
 ### Key Points
 - 查现有插件入口、配置模型、发送逻辑和测试样例。
 - 整理可复用约束，不直接复制实现。
-- 生成四阶文档，并检查职责是否混淆。
+- 调用 SDD Skill，把 CodeWiki 事实作为输入上下文。
+- 按 Proposal -> Spec -> Design -> Tasks 连贯生成，上一阶段结论进入下一阶段。
+- 检查四阶文档职责是否混淆。
 - 人工打回缺口，例如安全设计、任务粒度或测试策略不足。
 - 修订后把 Review 结论写回文档。
 
 ### Visual
 - 查现有插件
-- 查配置入口
-- 查测试样例
-- 整理约束
-- 生成四阶文档
+- 汇总 CodeWiki 事实
+- 调用 SDD Skill
+- Proposal
+- Spec
+- Design
+- Tasks
 - 打回修订
 
 ### Takeaway
-让 AI 先成为项目研究员，再成为代码执行者。
+Skill 负责串联标准流程，人负责输入事实、审查缺口和打回修订。
 
 ### Speaker Notes
-- 演示中不要追求四份文档一次完美，要刻意展示打回。
+- 演示中要让学员看见 Skill 入口和四阶段连续产出过程，不要只展示最终文档。
+- 不追求四份文档一次完美，要刻意展示打回。
 - 打回话术示例：Design 缺少 AK/SK 安全设计，请基于现有插件配置规范重写相关章节。
