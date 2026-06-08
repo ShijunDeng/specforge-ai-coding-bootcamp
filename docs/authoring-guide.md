@@ -1,110 +1,244 @@
 # Spec 维护指南
 
-## 修改课程内容
+本仓库把课程材料当作工程资产维护：课程正文写在 Spec 中，Slidev、静态站点、PDF、PPTX 都由脚本生成。讲师和课程维护者只维护源文件，不直接修改生成物。
 
-课件的原始教学内容写在 `specs/modules/*.md`。每个 Markdown 文件对应一节课程，文件里的 frontmatter、`Module Brief`、`:::slide` block、Headline、Key Points、Visual、Speaker Notes 都是课件内容源。
+## 基本原则
 
-课程目录、模块顺序、模块文件路径、deck 组合、实操和评分规则写在 `specs/course.yaml`。`build/`、`dist/`、PDF、PPTX 都是由脚本生成的交付物，不存放原始内容。
+- **Spec 是唯一正文来源**：课件原始内容写在 `specs/modules/*.md` 和 `specs/course.yaml`。
+- **生成物不手改**：`build/`、`dist/`、PDF、PPTX 都会被脚本覆盖。
+- **可见内容面向学员**：`title`、`Headline`、`Body`、`Key Points`、`Visual`、`Takeaway` 都应像课堂上直接讲给学员听，避免“让学员……”“讲师要……”这类后台语言。
+- **讲师提示放备注**：讲法、追问、现场取舍、助教动作写在 `Speaker Notes`。
+- **先验证再交付**：每次修改后至少运行 `npm run validate`；正式交付前运行 `npm run check`。
 
-优先修改 `specs/modules/*.md`：
+`course.xlsx` 只作为首版课程设计的初始输入来源。后续课程演进以本仓库的 Spec 为准，正文、流程和说明都不应依赖 `course.xlsx`。
 
-- 调整章节目标：改模块 frontmatter 的 `intent` 和 `outcomes`。
-- 调整单页内容：改对应 `:::slide` block 下的 Headline、Body、Key Points、Visual、Takeaway、Speaker Notes。
-- 调整课堂时长：同时改模块 frontmatter 和 `specs/course.yaml` 中对应模块的 `duration_min`。
-- 调整章节组合：改 `specs/course.yaml` 的 `decks[]`，或新增 `configs/*.yaml`。
+## 文件分工
 
-课程级内容改 `specs/course.yaml`：
+| 路径 | 作用 | 何时修改 |
+| --- | --- | --- |
+| `specs/course.yaml` | 课程 manifest：课程元信息、deck 组合、模块注册、练习、评分规则。 | 调整课程级信息、章节顺序、组合、练习或评分。 |
+| `specs/modules/*.md` | 章节 Spec：每节课的正文、页面、图示、讲师备注。 | 新增或修改课程正文。 |
+| `specs/templates/module-spec.template.md` | 模块/页面模板和字段说明。 | 模板规则变化时修改；不要写课程正文。 |
+| `configs/*.yaml` | 临时或定制 deck 组合。 | 需要非内置组合交付时修改。 |
+| `exercises/*/README.md` | 学员练习说明。 | 练习步骤、提交物或验收方式变化时修改。 |
+| `rubrics/*.md` | 作业评分细则。 | 大作业或认证规则变化时修改。 |
+| `scripts/` | 校验、生成、预览、导出脚本。 | 生成规则或工程能力变化时修改。 |
+| `style.css` | Slidev 视觉样式。 | 页面版式、字体、图示样式变化时修改。 |
+| `build/`、`dist/` | 生成物。 | 不手工修改。 |
 
-- 目标学员和学习产出：`audience`。
-- 教学原则和总时长：`learning_design`。
-- 实操任务：`labs[]`。
-- 大作业评分：`assessment`。
+## 课程结构
 
-## 开发中新增或修改一节课程
+课程由三层组成：
 
-本仓库把“课程节”作为 module 维护。新增或调整一节课时，源文件通常只改 `specs/course.yaml`、一个 `specs/modules/*.md` 文件；如果这节课包含独立练习，再同步改 `exercises/` 或 `rubrics/`。
+1. **Course**：`specs/course.yaml` 定义课程元数据、总时长、deck、模块列表、labs 和 assessment。
+2. **Module**：`specs/modules/*.md` 中一个文件对应一节课程。
+3. **Slide**：模块文件中的一个 `:::slide` block 对应一页课件。
 
-标准流程是：先修改 Spec 源文件，再手动运行生成命令刷新 Slidev 课件，最后用校验和预览确认结果。不要直接编辑 `build/slides/*.slidev.md`、`dist/`、PDF 或 PPTX；这些都是生成物，下次运行脚本会被覆盖。
+`specs/modules/` 文件名中的数字前缀只是人工排序约定，不决定生成顺序。真正的生成顺序由 `specs/course.yaml` 中 `decks[].include_modules` 的模块 id 顺序决定。
 
-### 文件分工
+编号建议：
 
-- `specs/course.yaml`：课程 manifest。这里注册模块 id、模块文件路径、展示标题、课堂时长、标签，并决定这个模块进入哪些 `decks[]`。如果新增或调整课堂练习，还要同步 `labs[]` 的目标、约束和验收规则。
-- `specs/modules/*.md`：单节课程内容源文件。文件名建议使用两位排序号加语义名，例如 `70-team-rollout.md`。文件包含 YAML frontmatter、`Module Brief` 和多个 `:::slide` block。
-- `specs/templates/module-spec.template.md`：新增模块或页面时参考的结构模板，不直接参与生成，也不存放课程正文。
-- `configs/*.yaml`：自定义 deck 组合。只有当新课程节不适合放入内置 `decks[]`，或需要临时交付一个定制版本时才修改或新增。
-- `exercises/<exercise-id>/README.md`：课堂练习说明。只有当课程节要求学员完成独立实操、需要额外步骤或验收证据时新增。
-- `rubrics/*.md`：评分标准。只有当新增课程节影响作业或验收评分时修改。
-- `build/`、`dist/`：生成物目录。不要手工维护这些文件，运行生成或构建命令后由脚本覆盖。
+- `00`、`01`：全局概览、课前准备。
+- `10`、`20`、`30`：正式章节，预留中间编号。
+- 中间插入章节时使用 `25-debugging-with-ai.md` 这类编号。
+- 只调整授课顺序时，优先改 `decks[].include_modules`，不要为了排序重命名文件。
 
-### 模块文件编号
+## 模块字段
 
-`specs/modules/` 文件名中的数字前缀是人工排序约定，不是生成器的排序依据。
+每个模块文件必须以 YAML frontmatter 开头：
 
-- `00`、`01` 通常用于全局概览和课前准备。
-- `10`、`20`、`30` 这样的间隔用于保留插入空间。
-- 在两个模块之间新增课程节时，可以使用中间编号，例如在 `20-petclinic-micro-loop.md` 和 `30-mcp-review-repair.md` 之间新增 `25-debugging-with-ai.md`。
-- 真正决定生成顺序的是 `specs/course.yaml` 中各个 `decks[].include_modules` 的模块 id 顺序。
-- 如果只调整授课顺序，优先修改 `decks[].include_modules`，不必重命名模块文件。
+```yaml
+---
+id: petclinic-micro-loop
+title: Petclinic 功能开发与单测微闭环
+duration_min: 95
+intent: 在小型项目中跑通日常开发微闭环。
+outcomes:
+  - 能用 CodeAgent 完成小范围功能改动。
+  - 能调用 UT Skill 生成单测并运行通过。
+---
+```
 
-### 修改已有课程节
+字段填写规则：
 
-1. 在 `specs/course.yaml` 的 `modules[]` 找到课程节 id，确认它对应的 `file`。
-2. 修改对应 `specs/modules/*.md`：
-   - frontmatter 的 `title`、`duration_min`、`intent`、`outcomes` 描述本节课解决的问题和学员可观察产出。
-   - `Module Brief` 说明这节课在课程中的上下文和讲师处理重点。
-   - 每个 `:::slide` block 的 `title`、`mode`、`duration_min`、`visual` 控制生成页面的标题、授课方式、预计时长和视觉类型。
-   - `Headline` 写本页核心判断；`Body` 写必要解释；`Key Points` 写屏幕要点；`Visual` 写右侧结构；`Takeaway` 写本页结论；`Speaker Notes` 写讲师讲法、追问和取舍。
-3. 如果调整本节总时长，同时修改模块 frontmatter 的 `duration_min` 和 `specs/course.yaml` 中同一模块的 `duration_min`，两处必须一致。
-4. 如果这节课所属组合变化，修改 `specs/course.yaml` 的 `decks[].include_modules`。自定义组合优先放在 `configs/*.yaml`。
-5. 如果改了实操目标、约束或验收证据，同步更新 `specs/course.yaml` 的 `labs[]`，必要时更新 `exercises/` 和 `rubrics/`。
-6. 修改完成后运行 `npm run generate` 重新生成 `build/slides/*.slidev.md`，再用 `npm run slides` 或 `npm run check` 验证。
+| 字段 | 规则 |
+| --- | --- |
+| `id` | 全局唯一，使用小写 kebab-case；必须与 `specs/course.yaml` 的 `modules[].id` 一致。 |
+| `title` | 章节展示标题，表达主题，不写文件名。 |
+| `duration_min` | 本模块课堂总时长；必须等于模块内所有 slide 的 `duration_min` 之和，并与 `specs/course.yaml` 一致。课前材料可为 `0`。 |
+| `intent` | 一句话说明本节课解决什么教学问题；会出现在模块分隔页，因此必须面向学员。 |
+| `outcomes` | 2-5 条可观察学习产出，建议用“能……”表述，可通过练习、提问、文档或代码证据验证。 |
 
-### 新增一节课程
+`Module Brief` 用于说明本模块在课程中的位置和设计意图。它不直接生成成普通正文页，但仍应保持清晰、可维护。
 
-1. 参考 `specs/templates/module-spec.template.md` 的结构，在 `specs/modules/` 新建一个模块 Spec 文件，文件名使用人工排序前缀加语义名，例如 `25-debugging-with-ai.md`。模板只提供字段结构，课程正文写在新建的模块 Spec 文件中。
-2. 设置模块 frontmatter：
-   - `id`：全局唯一，并与 `specs/course.yaml` 中的 module id 完全一致。
-   - `title`：模块展示标题。
-   - `duration_min`：本节课总时长，课前材料可为 `0`。
-   - `intent`：本节课的教学意图。
-   - `outcomes`：学员完成后能做到的可观察行为。
-   - 具体填写标准见 `specs/templates/module-spec.template.md` 的 `Field Guide`，复制模板后删除说明区，只保留正式内容。
-3. 编写 `Module Brief` 和至少一个 `:::slide` block。每页 slide 必须有唯一 `id`、`title`、`mode`，并至少包含 `Headline`、`Body` 或 `Key Points` 中的一项；建议始终补齐 `Speaker Notes`。
-4. 在 `specs/course.yaml` 的 `modules[]` 注册新模块：
-   - `id`：模块 id。
-   - `file`：模块 spec 路径。
-   - `title`：模块标题。
-   - `duration_min`：必须与模块 frontmatter 一致。
-   - `tags`：用于标识课程阶段、主题或是否必修。
-5. 把模块 id 加入需要交付的 `decks[].include_modules`。内置组合包括 `full-7h`、`lesson1-lab`、`lesson2-sdd` 和 `sdd-only`。
-6. 如该模块包含新练习，在 `specs/course.yaml` 的 `labs[]` 新增练习，并在 `exercises/` 下补充学员说明。
-7. 运行 `npm run validate` 检查 Spec 结构，再运行 `npm run generate` 重新生成课件。
+## 页面字段
 
-### 测试与验证
+页面写在模块文件的 `:::slide` block 中：
 
-每次修改后至少运行：
+```markdown
+:::slide
+id: micro-04
+title: 课堂演示：Owner 模糊查询
+mode: demo
+duration_min: 18
+visual: flow
+:::
+
+### Headline
+演示目标是完整走一遍小需求，不是炫耀一次生成成功。
+
+### Body
+你将看到 Owner 按姓名片段模糊查询从计划、采纳、测试到修复的完整过程。
+
+### Key Points
+- 需求：为 Owner 增加按姓名片段模糊查询。
+- 输出：先给修改计划，再生成候选补丁。
+- 验收：查询接口正确返回，单测跑绿。
+
+### Visual
+- 选中 Owner 相关文件
+- 说明查询规则
+- 要求先给改动计划
+- 采纳代码
+- 调用 UT Skill
+- 本地测试
+
+### Takeaway
+不要只看最终代码，要看每个 Review 点如何收敛 AI 输出。
+
+### Speaker Notes
+- 如果 AI 生成过大 diff，立即要求它缩小范围并解释每个文件为什么要改。
+```
+
+页面 metadata：
+
+| 字段 | 规则 |
+| --- | --- |
+| `id` | 页面全局唯一，建议使用模块短名前缀加序号，例如 `micro-04`。 |
+| `title` | 屏幕可见标题，写本页主题；核心判断放在 `Headline`。 |
+| `mode` | 授课方式。常用值：`intro`、`talk`、`demo`、`lab`、`summary`、`assessment`、`rollout`、`prep`。 |
+| `duration_min` | 本页预计时长；模块内所有页面时长之和必须等于模块总时长。 |
+| `visual` | 右侧视觉结构类型。常用值：`flow`、`checklist`、`matrix`、`cards`、`timeline`、`contrast`。 |
+
+页面 sections：
+
+| Section | 规则 |
+| --- | --- |
+| `Headline` | 本页最重要的判断句，避免“背景介绍”“工具说明”这类弱标题。 |
+| `Body` | 1-3 句解释，支撑 `Headline`。 |
+| `Key Points` | 屏幕要点，通常 3-6 条；不要放完整讲稿。 |
+| `Visual` | 右侧图示内容。生成器会按 `visual` 类型渲染为流程图、清单、卡片、矩阵等。 |
+| `Takeaway` | 本页结束时要带走的一句话。 |
+| `Speaker Notes` | 讲师备注，不作为主屏幕内容展示。 |
+
+## 视觉类型
+
+`visual` 决定右侧区域如何渲染：
+
+| 类型 | 适用内容 | `Visual` 写法 |
+| --- | --- | --- |
+| `flow` | 步骤、链路、闭环。 | 使用短句 bullet，建议 4-8 步。 |
+| `checklist` | 检查项、红线、验收点。 | 使用 bullet；短词条会自动渲染成双列图卡。 |
+| `cards` | 多个并列概念或任务卡。 | 每条 bullet 一张卡。 |
+| `matrix` | 分类对比、评分维度、职责表。 | 使用 Markdown 表格。 |
+| `timeline` | 时间线、阶段安排。 | 使用 `时间：说明` 或短句 bullet。 |
+| `contrast` | 反例/目标状态对比。 | 通常写两条 bullet，格式为 `状态：说明`。 |
+
+视觉区应写结构，不写长段讲稿。文字过长会降低图示效果，也更容易造成版式拥挤。
+
+## 修改已有内容
+
+1. 在 `specs/course.yaml` 的 `modules[]` 找到模块 id 和 `file`。
+2. 修改对应 `specs/modules/*.md`。
+3. 如果调整模块总时长，同时修改模块 frontmatter 和 `specs/course.yaml` 中同一模块的 `duration_min`。
+4. 如果调整章节组合，修改 `decks[].include_modules`，或在 `configs/*.yaml` 新增自定义组合。
+5. 如果修改练习目标、约束或验收证据，同步更新 `labs[]`，必要时更新 `exercises/` 和 `rubrics/`。
+6. 运行校验和生成命令。
+
+不要通过复制 `build/slides/*.slidev.md` 来改页面。生成物只用于预览、授课和交付。
+
+## 新增一页
+
+1. 找到要插入页面的模块文件。
+2. 在合适位置新增一个 `:::slide` block。
+3. 填写唯一 `id`、可见 `title`、`mode`、`duration_min`、`visual` 和 sections。
+4. 如果新增页面改变模块总时长，同步修改模块 frontmatter 和 `specs/course.yaml`。
+5. 运行：
+
+```bash
+npm run validate
+npm run generate
+```
+
+新增页面必须满足：
+
+- 可见内容直接面向学员。
+- `Key Points` 控制在 3-6 条。
+- `Visual` 有结构，不能只写一段普通说明。
+- `Speaker Notes` 放讲师讲法、追问、现场取舍。
+- 不包含真实 Token、账号、内部生产地址、AK/SK 或敏感截图信息。
+
+## 新增一节课程
+
+1. 复制 `specs/templates/module-spec.template.md` 的结构，在 `specs/modules/` 新建模块文件。
+2. 删除模板中的说明区，只保留正式课程内容。
+3. 设置模块 frontmatter：`id`、`title`、`duration_min`、`intent`、`outcomes`。
+4. 编写 `Module Brief` 和页面。
+5. 在 `specs/course.yaml` 的 `modules[]` 注册模块。
+6. 把模块 id 加入一个或多个 `decks[].include_modules`。
+7. 如有练习，补充 `labs[]` 和 `exercises/`。
+8. 运行：
+
+```bash
+npm run validate
+npm run generate
+```
+
+## Deck 组合
+
+内置 deck 定义在 `specs/course.yaml`：
+
+- `full-7h`：7 小时完整版。
+- `lesson1-lab`：第一课组合。
+- `lesson2-sdd`：第二课组合。
+- `sdd-only`：SDD 与 CodeWiki 专题。
+
+常用生成命令：
+
+```bash
+npm run generate
+npm run generate:lesson1
+npm run generate:lesson2
+npm run generate:custom
+```
+
+临时抽取模块：
+
+```bash
+npm run generate -- --modules orientation,smn-design-lab
+```
+
+指定输出文件：
+
+```bash
+npm run generate -- --modules orientation,smn-design-lab --output build/slides/my-deck.slidev.md
+```
+
+## 验证与预览
+
+最低验证：
 
 ```bash
 npm run validate
 ```
 
-`validate` 会检查必需文档、敏感凭证、课程 manifest、deck 引用、模块 frontmatter、模块时长一致性、slide id 全局唯一、slide 必填字段和练习验收规则。
+`validate` 会检查必需文档、敏感凭证、manifest 引用、模块时长、slide id 唯一性、页面必填字段、练习验收规则等。
 
-确认可以从 Spec 重新生成课件：
+生成 Slidev Markdown：
 
 ```bash
 npm run generate
 ```
-
-只验证某个组合时：
-
-```bash
-npm run generate -- --deck lesson1-lab
-npm run generate -- --modules orientation,new-module-id
-npm run generate:custom
-```
-
-`--modules` 适合临时抽取章节验证，默认输出到 `build/slides/custom-<module-ids>.slidev.md`。如果要固定输出路径，显式增加 `--output build/slides/my-deck.slidev.md`。
 
 本地预览：
 
@@ -112,90 +246,10 @@ npm run generate:custom
 npm run slides
 ```
 
-公网预览：
-
-```bash
-npm run slides:public
-```
-
-`slides:public` 会生成课件、启动 Slidev、通过 localtunnel 创建公网地址，并用 `--local-host 127.0.0.1` 保证公网 Host 能被 Vite/Slidev 接受。命令输出 `Public slide show` 后再把地址发给学员或评审。
-
 如果端口被占用：
 
 ```bash
 PORT=3031 npm run slides
-```
-
-正式交付前运行完整检查：
-
-```bash
-npm run check
-```
-
-人工验证时重点看四件事：新模块是否出现在目标 deck 的议程中；每页标题、要点、视觉区和讲师备注是否符合预期；总时长是否符合交付版本；练习的目标、约束、验收证据是否能在课堂上执行。
-
-## 新增一页
-
-新增页面只修改模块 Spec，不修改生成物。操作步骤：
-
-1. 在 `specs/course.yaml` 的 `modules[]` 中确认要修改的模块 id 和 `file`。
-2. 打开对应的 `specs/modules/*.md`，在合适位置新增一个 `:::slide` block。
-3. 新 slide 的字段结构参考 `specs/templates/module-spec.template.md`，课程正文直接写入这个新 block。不要通过复制生成后的页面来新增内容。
-4. 如果新增页面改变了本模块总时长，同步修改模块 frontmatter 的 `duration_min` 和 `specs/course.yaml` 中对应模块的 `duration_min`。
-5. 运行 `npm run validate` 检查 Spec，再运行 `npm run generate` 从 Spec 重新生成 Slidev Markdown。
-
-新 slide 必须满足：
-
-- `id` 全局唯一，不能复用旧页面 id。
-- `title` 是屏幕上可见标题。
-- `mode` 表示授课方式，例如 `talk`、`demo`、`lab`、`summary`。
-- `duration_min` 表示本页预计时长。
-- `title`、`Headline`、`Body`、`Key Points`、`Visual`、`Takeaway` 都是学员能直接看到的课堂内容，避免写成“讲师要做什么”的备课指令。
-- 可见内容优先使用“你/我们/本环节”这类课堂宣讲视角，避免“让学员……”这类后台设计语言。
-- `Headline` 是本页核心判断，不写成泛泛介绍。
-- `Key Points` 不超过 5-6 条。
-- `Visual` 描述页面右侧该展示的结构，可以是流程、表格、清单、对比或任务卡。
-- `Speaker Notes` 写给讲师，说明怎样讲、怎样追问、怎样处理常见偏差。
-
-不要在 `build/slides/*.slidev.md` 中新增页面；那是生成结果，会在下次 `npm run generate` 时被覆盖。
-
-## 新增章节
-
-1. 在 `specs/modules/` 新增 Markdown 文件。
-2. 在 `specs/course.yaml` 的 `modules[]` 注册 id、路径、时长和来源。
-3. 把模块 id 加入一个或多个 `decks[]`。
-4. 运行 `npm run validate`。
-5. 运行 `npm run generate`，从 Spec 重新生成 Slidev Markdown。
-
-## 讲师 Review 清单
-
-- 这页是否回答“学员课后会做什么”？
-- 是否有可观察的课堂行为或验收点？
-- 是否避免把 AI 当成一次性代码生成器？
-- 是否明确了人类的审查、决策和责任边界？
-- 是否泄露了真实 Token、账号、内部生产地址或凭证？
-
-## 用 AI 辅助改 Spec
-
-可以让 AI 帮忙扩写页面，但提示词必须包含：
-
-- 要修改的模块、slide id 或章节组合。
-- 目标学员、课堂时长和授课方式。
-- 必须保留的工具名、组织术语和安全边界。
-- 输出字段要求，例如 Headline、Key Points、Visual、Speaker Notes。
-- 验收规则，例如 bullets 不超过 6 条、必须包含讲师备注、禁止出现真实密钥。
-
-AI 输出后只作为候选补丁。讲师需要 Review 内容，再运行：
-
-```bash
-npm run validate
-npm run generate
-```
-
-## 预览与构建
-
-```bash
-npm run slides
 ```
 
 公网预览：
@@ -204,11 +258,7 @@ npm run slides
 npm run slides:public
 ```
 
-如果端口被占用：
-
-```bash
-PORT=3031 npm run slides
-```
+`slides:public` 会生成课件、启动 Slidev，并通过 localtunnel 输出 `Public slide show` 地址，供外部评审或学员访问。
 
 正式交付前：
 
@@ -216,16 +266,50 @@ PORT=3031 npm run slides
 npm run check
 ```
 
-## PPTX 制作
+`check` 会依次执行校验、生成和静态站点构建。Slidev 构建时可能输出依赖侧的 Rolldown annotation 警告；只要命令退出码为 0 且产物生成成功，一般不影响交付。
 
-PPTX 默认使用 Slidev 导出，以保持网页预览和交付文件的视觉一致：
+## 导出交付物
+
+PPTX 默认使用 Slidev 导出，保持网页预览和交付文件一致：
 
 ```bash
 npm run export:pptx
 ```
 
-如本机缺少浏览器渲染依赖，先安装：
+PDF 导出：
 
 ```bash
-npm i -D playwright-chromium
+npm run export:pdf
+```
+
+导出脚本会先运行 `npm run generate`，再检查浏览器渲染依赖。导出产物写入 `dist/`。
+
+## 内容 Review 清单
+
+提交前人工看一遍：
+
+- 这页是否能直接面向学员宣讲？
+- 是否还有“让学员……”“讲师要……”等后台话术出现在可见区？
+- `Headline` 是否是判断句，而不是目录项？
+- `Key Points` 是否足够短，屏幕是否能显示完整？
+- `Visual` 是否形成图示结构，而不是普通段落？
+- 练习页是否明确任务、约束、验收证据？
+- 是否保留了人的 Review、授权和责任边界？
+- 是否泄露真实 Token、账号、生产地址、AK/SK 或内部敏感信息？
+
+## 用 AI 辅助改 Spec
+
+可以让 AI 生成候选补丁，但必须给清楚上下文：
+
+- 要修改的模块 id、slide id 或 deck。
+- 目标学员、课堂时长和授课方式。
+- 必须保留的工具名、组织术语和安全边界。
+- 输出字段要求：`Headline`、`Body`、`Key Points`、`Visual`、`Takeaway`、`Speaker Notes`。
+- 验收规则：可见内容面向学员、要点不超过 6 条、必须有视觉结构、禁止真实密钥。
+
+AI 输出只作为候选内容。合入前仍要人工 Review，并运行：
+
+```bash
+npm run validate
+npm run generate
 ```
