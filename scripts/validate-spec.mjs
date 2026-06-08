@@ -100,6 +100,16 @@ async function validateRequiredFile(file) {
   }
 }
 
+async function validateSourceMaterials(files = []) {
+  for (const file of files) {
+    try {
+      await access(file);
+    } catch {
+      errors.push(`meta.source_material references missing file ${file}`);
+    }
+  }
+}
+
 function validateSlide(slide, file, index) {
   const path = `${file} slide[${index}]`;
   requireValue(slide.meta?.id, `${path}.id`);
@@ -167,6 +177,7 @@ requireValue(course.meta?.id, "meta.id");
 requireValue(course.meta?.title, "meta.title");
 requireValue(course.meta?.version, "meta.version");
 requireValue(course.deck_defaults?.output, "deck_defaults.output");
+await validateSourceMaterials(course.meta?.source_material ?? []);
 
 if (!Array.isArray(course.audience?.learning_outcomes) || !course.audience.learning_outcomes.length) {
   errors.push("audience.learning_outcomes needs at least one outcome");
