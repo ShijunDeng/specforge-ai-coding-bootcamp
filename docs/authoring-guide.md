@@ -36,6 +36,16 @@
 - `rubrics/*.md`：评分标准。只有当新增课程节影响作业或验收评分时修改。
 - `build/`、`dist/`：生成物目录。不要手工维护这些文件，运行生成或构建命令后由脚本覆盖。
 
+### 模块文件编号
+
+`specs/modules/` 文件名中的数字前缀是人工排序约定，不是生成器的排序依据。
+
+- `00`、`01` 通常用于全局概览和课前准备。
+- `10`、`20`、`30` 这样的间隔用于保留插入空间。
+- 在两个模块之间新增课程节时，可以使用中间编号，例如在 `20-petclinic-micro-loop.md` 和 `30-mcp-review-repair.md` 之间新增 `25-debugging-with-ai.md`。
+- 真正决定生成顺序的是 `specs/course.yaml` 中各个 `decks[].include_modules` 的模块 id 顺序。
+- 如果只调整授课顺序，优先修改 `decks[].include_modules`，不必重命名模块文件。
+
 ### 修改已有课程节
 
 1. 在 `specs/course.yaml` 的 `modules[]` 找到课程节 id，确认它对应的 `file`。
@@ -51,7 +61,7 @@
 
 ### 新增一节课程
 
-1. 参考 `specs/templates/module-spec.template.md` 的结构，在 `specs/modules/` 新建一个模块 Spec 文件，按课程顺序和主题命名。模板只提供字段结构，课程正文写在新建的模块 Spec 文件中。
+1. 参考 `specs/templates/module-spec.template.md` 的结构，在 `specs/modules/` 新建一个模块 Spec 文件，文件名使用人工排序前缀加语义名，例如 `25-debugging-with-ai.md`。模板只提供字段结构，课程正文写在新建的模块 Spec 文件中。
 2. 设置模块 frontmatter：
    - `id`：全局唯一，并与 `specs/course.yaml` 中的 module id 完全一致。
    - `title`：模块展示标题。

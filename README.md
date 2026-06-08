@@ -45,6 +45,8 @@ npm run export:pptx
 - `scripts/`：校验、生成和导出依赖检查脚本。
 - `build/`、`dist/`：生成物目录，不作为课程源文件维护。
 
+`specs/modules/` 文件名中的 `00`、`10`、`20` 等数字前缀只用于人工阅读和目录排序，方便在两个模块之间插入新文件，例如 `25-new-topic.md`。课件生成顺序不由文件名前缀决定，而由 `specs/course.yaml` 中 `decks[].include_modules` 的顺序决定。
+
 ## SDD 维护流程
 
 1. 大改课程目标、实操项目或评分规则时，先更新 `specs/course-production/`。
