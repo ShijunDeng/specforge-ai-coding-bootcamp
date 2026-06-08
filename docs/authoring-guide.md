@@ -2,6 +2,10 @@
 
 ## 修改课程内容
 
+课件的原始教学内容写在 `specs/modules/*.md`。每个 Markdown 文件对应一节课程，文件里的 frontmatter、`Module Brief`、`:::slide` block、Headline、Key Points、Visual、Speaker Notes 都是课件内容源。
+
+课程目录、模块顺序、模块文件路径、deck 组合、实操和评分规则写在 `specs/course.yaml`。`build/`、`dist/`、PDF、PPTX 都是由脚本生成的交付物，不存放原始内容。
+
 优先修改 `specs/modules/*.md`：
 
 - 调整章节目标：改模块 frontmatter 的 `intent` 和 `outcomes`。
@@ -26,7 +30,7 @@
 
 - `specs/course.yaml`：课程 manifest。这里注册模块 id、模块文件路径、展示标题、课堂时长、来源行、标签，并决定这个模块进入哪些 `decks[]`。如果新增或调整课堂练习，还要同步 `labs[]` 的目标、约束和验收规则。
 - `specs/modules/*.md`：单节课程内容源文件。文件名建议使用两位排序号加语义名，例如 `70-team-rollout.md`。文件包含 YAML frontmatter、`Module Brief` 和多个 `:::slide` block。
-- `specs/templates/module-spec.template.md`：新增模块或页面时复制的结构模板，不直接参与生成。
+- `specs/templates/module-spec.template.md`：新增模块或页面时参考的结构模板，不直接参与生成，也不存放课程正文。
 - `configs/*.yaml`：自定义 deck 组合。只有当新课程节不适合放入内置 `decks[]`，或需要临时交付一个定制版本时才修改或新增。
 - `exercises/<exercise-id>/README.md`：课堂练习说明。只有当课程节要求学员完成独立实操、需要额外步骤或验收证据时新增。
 - `rubrics/*.md`：评分标准。只有当新增课程节影响作业或验收评分时修改。
@@ -47,7 +51,7 @@
 
 ### 新增一节课程
 
-1. 基于 `specs/templates/module-spec.template.md` 新建一个模块 Spec 文件到 `specs/modules/`，按课程顺序和主题命名。这里复制的是 Spec 模板，不是复制生成后的 Slidev 页面。
+1. 参考 `specs/templates/module-spec.template.md` 的结构，在 `specs/modules/` 新建一个模块 Spec 文件，按课程顺序和主题命名。模板只提供字段结构，课程正文写在新建的模块 Spec 文件中。
 2. 设置模块 frontmatter：
    - `id`：全局唯一，并与 `specs/course.yaml` 中的 module id 完全一致。
    - `title`：模块展示标题。
@@ -117,7 +121,7 @@ npm run check
 
 1. 在 `specs/course.yaml` 的 `modules[]` 中确认要修改的模块 id 和 `file`。
 2. 打开对应的 `specs/modules/*.md`，在合适位置新增一个 `:::slide` block。
-3. 新 slide 的结构参考 `specs/templates/module-spec.template.md`；如果相邻页面授课方式完全一致，可以参考相邻 block 的字段组织，但必须重新编写 id、标题、正文、视觉说明和讲师备注。
+3. 新 slide 的字段结构参考 `specs/templates/module-spec.template.md`，课程正文直接写入这个新 block。不要通过复制生成后的页面来新增内容。
 4. 如果新增页面改变了本模块总时长，同步修改模块 frontmatter 的 `duration_min` 和 `specs/course.yaml` 中对应模块的 `duration_min`。
 5. 运行 `npm run validate` 检查 Spec，再运行 `npm run generate` 从 Spec 重新生成 Slidev Markdown。
 

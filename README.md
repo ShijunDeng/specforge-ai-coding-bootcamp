@@ -35,7 +35,7 @@ npm run export:pptx
 
 - `specs/course.yaml`：课程 manifest，定义课程元数据、模块文件、内置 deck 组合、实操与评分规则。
 - `specs/modules/*.md`：讲师维护的 Markdown 章节 Spec。每个文件包含 frontmatter、教学意图、学习产出、逐页 slide spec 和讲师备注。
-- `specs/templates/`：新增章节和页面时复制的模板。
+- `specs/templates/`：新增章节和页面时参考的结构模板，不存放课程正文。
 - `specs/constitution.md`：课件生产的长期约束。
 - `specs/course-production/`：本课件工程自身的 Proposal、Spec、Design、Tasks。
 - `docs/authoring-guide.md`：讲师维护 Spec 的方法。
