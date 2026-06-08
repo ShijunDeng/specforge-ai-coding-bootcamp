@@ -1,57 +1,62 @@
 # 企业级 AI 辅助编码实战营课件工程
 
-这是一个 Spec Driven Development 风格的课件仓库：讲师维护 `specs/` 中的课程规格文件，需要交付时再临时生成 Slidev Markdown、网页课件、PDF 或 PPTX。
+这是一个 Spec Driven Development 风格的课件仓库。讲师维护 `specs/` 中的 Markdown 规格文件，需要授课或交付时再生成 Slidev Markdown、静态网页、PDF 或 PPTX。
 
-本仓库不把 PPTX 当作源文件。课程意图、学习成果、教学路径、实操验收、讲师备注和生成规则都进入 Spec，生成物只用于预览、授课和临时交付。
+本仓库不把 PPTX 当作源文件。课程目标、学习成果、教学路径、实操验收、讲师备注和生成规则都进入 Spec，生成物只用于预览、授课和临时交付。
 
 ## 快速开始
 
 ```bash
 npm install
-npm run check
+npm run validate
+npm run generate
 ```
 
 常用命令：
 
 ```bash
-npm run validate      # 校验课程规格
-npm run generate      # 从 specs/course.yaml 生成 build/slides/*.slidev.md
-npm run slides        # 启动 Slidev 预览，默认端口 3030，绑定 0.0.0.0
-npm run build         # 生成可托管静态站点到 dist/slides
-npm run export:pptx   # 临时导出 PPTX，需先安装 playwright-chromium
-npm run export:pdf    # 临时导出 PDF，需先安装 playwright-chromium
+npm run generate                    # 生成 7 小时完整版
+npm run generate:lesson1            # 生成第一课微闭环版本
+npm run generate:lesson2            # 生成第二课 SDD 版本
+npm run generate -- --deck sdd-only # 按内置 deck 组合生成
+npm run generate -- --modules orientation,smn-design-lab
+npm run slides                      # 启动 Slidev 预览，默认端口 3030
+npm run build                       # 生成静态站点到 dist/slides
 ```
 
-导出 PDF/PPTX 前，按 Slidev 官方要求安装浏览器渲染依赖：
+导出 PDF/PPTX 前，按 Slidev 的浏览器渲染要求安装依赖：
 
 ```bash
 npm i -D playwright-chromium
+npm run export:pptx
 ```
 
 ## 目录约定
 
-- `specs/course.yaml`：课程源规格，包含学习目标、模块、讲师提示、实操任务、验收标准。
-- `specs/constitution.md`：课件生产的长期约束，避免把生成物当源文件维护。
-- `specs/slide-generation-spec.md`：生成脚本的技术规格。
-- `specs/course-production/`：本课程材料自身的 SDD 四阶文档，包括 Proposal、Spec、Design、Tasks。
-- `docs/authoring-guide.md`：讲师维护 spec 的方法。
-- `docs/facilitator-runbook.md`：讲师课前、课中、课后执行手册。
-- `docs/examples/prompt-patterns.md`：课堂演示和实操可复用的脱敏提示词样例。
-- `scripts/validate-spec.mjs`：轻量校验器。
-- `scripts/generate-slidev.mjs`：Slidev Markdown 生成器。
-- `build/`、`dist/`：生成物目录，不提交。
+- `specs/course.yaml`：课程 manifest，定义课程元数据、模块文件、内置 deck 组合、实操与评分规则。
+- `specs/modules/*.md`：讲师维护的 Markdown 章节 Spec。每个文件包含 frontmatter、教学意图、学习产出、逐页 slide spec 和讲师备注。
+- `specs/templates/`：新增章节和页面时复制的模板。
+- `specs/constitution.md`：课件生产的长期约束。
+- `specs/course-production/`：本课件工程自身的 Proposal、Spec、Design、Tasks。
+- `docs/authoring-guide.md`：讲师维护 Spec 的方法。
+- `docs/facilitator-runbook.md`：课前、课中、课后执行手册。
+- `exercises/`：课堂练习与大作业说明，不存放外部项目完整源码。
+- `rubrics/`：作业评分 Rubric。
+- `scripts/`：校验、生成和导出依赖检查脚本。
+- `build/`、`dist/`：生成物目录，不作为课程源文件维护。
 
-## 维护原则
+## SDD 维护流程
 
-1. 课程事实只改 `specs/`，不要直接改 `build/slides/*.md`。
-2. 每次修改 spec 后运行 `npm run check`。
-3. 上课前用 `npm run slides` 预览；交付归档时再用 `npm run export:pptx` 或 `npm run export:pdf`。
-4. 如果内部工具名称、Token 流程、仓库地址有变化，只更新对应 spec 字段。
+1. 大改课程目标、实操项目或评分规则时，先更新 `specs/course-production/`。
+2. 再更新 `specs/course.yaml` 与对应 `specs/modules/*.md`。
+3. 如生成策略变化，同步更新 `specs/slide-generation-spec.md` 和 `scripts/`。
+4. 每次提交前运行 `npm run validate`；正式交付前运行 `npm run check`。
 
-## SDD 工作流
+## 从 course.xlsx 到 7 小时课程
 
-1. 先改 `specs/course-production/proposal.md` 或 `spec.md`，明确为什么改、改到什么程度。
-2. 再改 `specs/course.yaml` 中的课程内容、实操任务和验收标准。
-3. 如生成方式变化，更新 `specs/course-production/design.md`、`specs/slide-generation-spec.md` 和脚本。
-4. 把待办、验收和课后反馈写入 `specs/course-production/tasks.md`。
-5. 运行 `npm run check`，确认校验、生成和静态构建通过。
+`course.xlsx` 是本仓库的初始课程大纲。当前版本保留大纲中的两条主线：
+
+- 第一课：CodeAgent、Skill、MCP、单测、MR、代码检视与自动修复。
+- 第二课：DolphinScheduler 存量项目、CodeWiki、SDD 四阶文档、SMN 告警大作业。
+
+在此基础上，课程被扩展为约 420 分钟的完整版，并支持通过 deck 配置裁剪为半天课、第一课、第二课或自定义章节组合。

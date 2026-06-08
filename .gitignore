@@ -7,4 +7,4 @@ dist/
 *.xlsx
 *.xls
 *.xlxs
-
+!course.xlsx

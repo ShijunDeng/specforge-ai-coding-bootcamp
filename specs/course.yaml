@@ -3,37 +3,32 @@ meta:
   title: 企业级 AI 辅助编码实战营
   subtitle: 从零散提示词到可验收的工程化研发闭环
   version: v1.0.0
-  updated: "2026-06-04"
+  updated: "2026-06-05"
+  language: zh-CN
   audience_label: 首期核心项目 Committer
-  summary: >-
-    面向企业内部核心项目 Committer 的 AI 辅助编码实战课程。课程用两次集中授课和一次大作业，
-    帮助学员掌握 CodeAgent、AgentCenter、MCP、Skill、CodeWiki 与 SDD 方法，
-    从小步验证的单兵开发闭环进入复杂存量项目的规格驱动开发。
   source_material:
     - course.xlsx
-  notes:
-    - 讲师开场时先强调本课程不是工具按钮说明书，而是工程化协作方法。
-    - 首期学员是知识传播节点，课后需要在各自团队复讲并沉淀团队约束。
-
-deck:
-  output: build/slides/ai-coding-bootcamp.slidev.md
-  export_filename: ai-coding-bootcamp
-  default_layout: default
+  summary: >-
+    面向企业内部核心项目 Committer 的 7 小时 AI 辅助编码实战课程。课程从 CodeAgent、
+    AgentCenter、MCP、Skill、CodeWiki 等工具入手，训练学员把 AI 生成能力纳入需求拆解、
+    本地验证、MR、代码检视、自动修复和 SDD 文档驱动的工程闭环。
 
 audience:
   primary: 核心项目 Committer、技术骨干、需要在团队内推广 AI 辅助研发方法的工程师。
   prerequisites:
-    - 已熟悉日常 Git 分支、MR、单测和代码 Review 流程。
+    - 熟悉 Git 分支、MR、单测、代码 Review 和本地调试流程。
     - 能在本地运行 spring-petclinic，并提前准备 dolphin-scheduler 代码仓。
-    - 已完成内部 AI 工具、CodeAgent 客户端、必要 MCP Token 的授权。
+    - 已完成内部 AI 工具、CodeAgent 客户端、MCP Token、PKIToken 或等价授权。
   learning_outcomes:
-    - 能把需求拆成 AI 可执行的小任务，并用测试、检视、MR 形成证据链。
-    - 能用 Skill 固化高频研发动作，减少手工模板化劳动。
+    - 能把需求拆成 AI 可执行的小任务，并用测试、日志、MR 或文档形成证据链。
+    - 能用上下文选择、提示契约和人工 Review 降低 AI 偏航概率。
+    - 能用 Skill 固化高频研发动作，减少模板化劳动。
+    - 能用 MCP 完成提单、检视、修复等外部系统动作，并理解权限边界。
     - 能用 CodeWiki 探查存量项目约束，再用 SDD 生成 Proposal、Spec、Design、Tasks。
-    - 能识别 AI 输出中的上下文缺口、安全缺口和架构偏差，并主动打回修正。
-    - 能在团队内复用本课程的 spec、练习、验收 Rubric 做二次培训。
+    - 能在团队内复用本课程的 Spec、练习和 Rubric 做二次培训。
 
 learning_design:
+  duration_min: 420
   promise: 让学员从“让 AI 帮我写一段代码”升级为“让 AI 在工程约束内交付可验收增量”。
   principles:
     - "Spec first: 先明确目标、边界、验收，再请求生成。"
@@ -42,1030 +37,119 @@ learning_design:
     - "Small batch: 小步提交、小步验证，降低 AI 偏航后的返工成本。"
     - "Security by default: Token、MCP 权限、AK/SK、日志输出都需要最小权限和脱敏边界。"
   classroom_pattern:
-    - "讲解 20%: 给心智模型和操作原则。"
-    - "演示 30%: 展示真实输入、失败、修正和验收。"
+    - "讲解 25%: 给心智模型、工程原则和质量边界。"
+    - "演示 25%: 展示真实输入、失败、修正和验收。"
     - "练习 40%: 学员独立完成，助教只处理阻塞。"
     - "复盘 10%: 抽样展示证据链，而不是展示最终代码截图。"
 
+deck_defaults:
+  theme: default
+  transition: slide-left
+  export_filename: ai-coding-bootcamp-7h
+  output: build/slides/ai-coding-bootcamp-7h.slidev.md
+
+decks:
+  - id: full-7h
+    title: 7 小时完整版
+    output: build/slides/ai-coding-bootcamp-7h.slidev.md
+    include_modules:
+      - orientation
+      - prework
+      - foundations-tools
+      - petclinic-micro-loop
+      - mcp-review-repair
+      - sdd-codewiki
+      - smn-design-lab
+      - assessment-rollout
+
+  - id: lesson1-lab
+    title: 第一课：基础工具跑通与开发微闭环
+    output: build/slides/lesson1-lab.slidev.md
+    include_modules:
+      - orientation
+      - prework
+      - foundations-tools
+      - petclinic-micro-loop
+      - mcp-review-repair
+
+  - id: lesson2-sdd
+    title: 第二课：复杂存量项目降维与 SDD 架构拆解
+    output: build/slides/lesson2-sdd.slidev.md
+    include_modules:
+      - sdd-codewiki
+      - smn-design-lab
+      - assessment-rollout
+
+  - id: sdd-only
+    title: SDD 与 CodeWiki 专题
+    output: build/slides/sdd-only.slidev.md
+    include_modules:
+      - orientation
+      - sdd-codewiki
+      - smn-design-lab
+
 modules:
   - id: orientation
+    file: specs/modules/00-orientation.md
     title: 全局概览
-    duration_min: 0
+    duration_min: 30
     source_rows: [2, 3]
-    intent: 建立课程目标、学习路径和工具全景，让学员理解为什么要用 SDD 维护培训材料。
-    outcomes:
-      - 说清楚本课程的交付物和验收方式。
-      - 区分 Vibe Coding、SDD、Skill、MCP、CodeWiki 的定位。
-      - 理解讲师维护 spec、临时生成 PPT 的课程生产方式。
-    notes:
-      - 这组页面可用于开营说明或课前群公告，不占两次正课时间。
-    segments:
-      - id: orientation-mission
-        title: 课程定位与目标
-        mode: intro
-        duration_min: 0
-        slides:
-          - id: orient-01
-            title: 为什么要把 AI Coding 工程化
-            headline: AI 写代码不是目标，可控、可审查、可复用的交付闭环才是目标。
-            body: >-
-              单次对话生成代码的门槛已经很低，真正拉开差距的是团队能否把上下文、规则、任务拆解、质量门禁和知识复用纳入统一流程。
-            bullets:
-              - 个人效率来自更快生成，团队效率来自更少返工。
-              - AI 输出必须进入现有工程质量体系，而不是绕开它。
-              - 规格文件让课程和研发流程一样可版本化、可审查、可追溯。
-            visual:
-              type: contrast
-              items:
-                - title: 零散提示词
-                  points:
-                    - 依赖个人经验
-                    - 难复盘
-                    - 难复制到团队
-                - title: 工程化闭环
-                  points:
-                    - 有规格源文件
-                    - 有验证证据
-                    - 有团队约束
-            takeaway: 本课程训练的是 AI 协作系统，不是记忆某个工具入口。
-            notes:
-              - 让学员先回忆最近一次 AI 生成代码翻车的原因，通常会落在上下文不准、验收不清、缺少 Review。
-              - 顺势引出本课程用 spec 管课件，和用 spec 管代码任务是同一套思路。
-
-          - id: orient-02
-            title: 从提示到证据的学习闭环
-            headline: 每次调用 AI 都必须知道输入、边界、输出、验收和下一步。
-            bullets:
-              - 输入：当前文件、需求、约束、已有规范。
-              - 边界：哪些文件可改、哪些动作必须人工确认。
-              - 输出：代码、测试、文档、任务清单或 MR。
-              - 验收：本地测试、静态检视、人工 Review、功能演示。
-            visual:
-              type: flow
-              items:
-                - 定义规格
-                - 投喂上下文
-                - 生成增量
-                - 人工 Review
-                - 自动验证
-                - 固化复用
-            takeaway: 不把“AI 说能跑”当结论，只看证据链。
-            notes:
-              - 这页是后面所有演示的判分标准，演示时反复回扣。
-
-          - id: orient-03
-            title: AI 研发支撑工具矩阵
-            headline: 工具不是并列清单，而是一条从知识、执行到质量的流水线。
-            visual:
-              type: matrix
-              headers: [工具, 定位, 本课使用方式]
-              rows:
-                - [AgentCenter, 工具与能力市场, 查找和授权可复用能力]
-                - [CodeAgent, 编码客户端, 对话开发、上下文选择、代码采纳]
-                - [MCP, 外部系统连通协议, 创建 MR、读取检视结果、触发平台动作]
-                - [Skill, 标准化技能插件, 生成单测、代码检视、自动修复]
-                - [CodeWiki, 项目知识库, 探查存量项目 API、规范和隐式约束]
-            bullets:
-              - 先查知识，再生成计划，最后执行动作。
-              - 能力越靠近外部系统，越需要权限边界和人工确认。
-              - 高频流程应沉淀为 Skill，避免每次重新写长提示词。
-            takeaway: AI 研发工具链的核心是“让模型获得正确上下文，并在正确权限内行动”。
-            notes:
-              - 不展开讲每个工具安装细节，只让学员建立流转关系。
-
-          - id: orient-04
-            title: 课堂协作契约
-            headline: 课堂不是看完演示就结束，每位学员必须跑出自己的闭环证据。
-            visual:
-              type: checklist
-              items:
-                - 演示时先观察讲师如何给上下文、如何打回 AI。
-                - 练习时禁止手敲业务代码，报错交给 AI 修，再由人验收。
-                - 每个练习保留终端测试结果、MR 链接或文档清单。
-                - 课后在团队内复讲时，必须结合本团队仓库补充约束。
-            bullets:
-              - 讲师负责给模式，学员负责跑证据。
-              - 助教只处理环境阻塞，不代写提示词和代码。
-            takeaway: 课程成功标准是学员能独立复制流程，而不是讲师演示顺滑。
-            notes:
-              - 这页需要明确课堂纪律，特别是“禁止手敲业务代码”的边界。
+    tags: [intro, required]
 
   - id: prework
+    file: specs/modules/01-prework.md
     title: 课前准备
     duration_min: 0
     source_rows: [4]
-    intent: 把环境问题前置处理，保证课堂时间用于 AI 协作能力训练。
-    outcomes:
-      - 本地能运行 spring-petclinic。
-      - 已克隆 dolphin-scheduler，依赖预热完成。
-      - 已完成内部工具登录和 Token 准备。
-    notes:
-      - 这组页面适合作为课前群发材料，也可在开课前循环播放。
-    segments:
-      - id: prework-check
-        title: 开课前环境自检
-        mode: prep
-        duration_min: 0
-        slides:
-          - id: prep-01
-            title: 环境与物料自检 Checklist
-            headline: 课前必须把“能不能跑”变成确定事实。
-            visual:
-              type: checklist
-              items:
-                - IDE、JDK、Maven 或 Gradle 版本与项目要求一致。
-                - spring-petclinic 已 Fork、Clone、依赖下载完成。
-                - dolphin-scheduler 已 Clone，本地依赖索引完成。
-                - CodeAgent、AgentCenter、MCP Token、PKIToken 完成登录验证。
-                - 本地能执行至少一次测试或启动命令。
-            bullets:
-              - 环境问题不进入正课主线。
-              - Token 问题课前集中处理，不在演示时暴露真实值。
-            takeaway: 任何“课上再说”的环境风险都会吞掉练习时间。
-            notes:
-              - 课前一天发送，要求学员回传本地运行截图。
+    tags: [prework, optional]
 
-          - id: prep-02
-            title: 环境验收：先跑绿再上课
-            headline: 验收标准只认命令输出，不认口头确认。
-            visual:
-              type: flow
-              items:
-                - 拉取代码
-                - 下载依赖
-                - 启动应用
-                - 运行测试
-                - 截图回传
-            bullets:
-              - 讲师准备一份常见错误 FAQ：JDK、代理、依赖源、Token 权限。
-              - 助教课前只解决阻塞，不讲课程内容。
-            takeaway: 课前跑绿，是课堂能做复杂练习的前提。
-            notes:
-              - 如果现场仍有人环境失败，安排旁听和课后补跑，避免拖慢全班。
+  - id: foundations-tools
+    file: specs/modules/10-foundations-tools.md
+    title: AI 工程方法与工具体系
+    duration_min: 60
+    source_rows: [7, 8]
+    tags: [lesson1, tools, method]
 
-  - id: lesson1
-    title: 第一课：基础工具跑通与开发微闭环
+  - id: petclinic-micro-loop
+    file: specs/modules/20-petclinic-micro-loop.md
+    title: Petclinic 功能开发与单测微闭环
     duration_min: 95
-    source_rows: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    intent: 在小型项目中跑通“功能开发、单测、MR、代码检视、自动修复”的日常研发闭环。
-    outcomes:
-      - 能用 CodeAgent 完成小范围功能改动。
-      - 能调用 Skill 生成单测并运行通过。
-      - 能通过 MCP 创建 MR 并触发自动检视。
-      - 能根据检视意见调用修复 Skill 并再次验证。
-    notes:
-      - 第一课要快，让学员在简单项目中建立信心，但每一步都要强调 Review 和验证。
-    segments:
-      - id: l1-opening
-        title: 第一课目标与安排
-        mode: talk
-        duration_min: 5
-        slides:
-          - id: l1-01
-            title: 今日 Agenda 与实操纪律
-            headline: 今天只解决一件事：让 AI 参与日常开发，但不降低工程质量门槛。
-            visual:
-              type: timeline
-              items:
-                - title: 工具体系
-                  text: 认识客户端、Skill、MCP 的边界。
-                - title: 功能微改
-                  text: Owner 查询演示，Pet 字段练习。
-                - title: 质量闭环
-                  text: 单测、MR、检视、自动修复。
-                - title: 课后复现
-                  text: 独立重走流程并提交证据。
-            bullets:
-              - 讲师演示时只看屏幕，练习时间再操作。
-              - 代码采纳前必须 Review，采纳后必须运行测试。
-            takeaway: 速度来自自动化，质量来自门禁和审查。
-            notes:
-              - 用 1 分钟说明课堂节奏，避免学员边看边敲导致跟丢。
+    source_rows: [5, 6, 9, 10, 14, 15]
+    tags: [lesson1, lab]
 
-          - id: l1-02
-            title: 单兵作战微闭环
-            headline: 一个小需求也要经历“写、测、提、查、改”的完整链路。
-            visual:
-              type: flow
-              items:
-                - 对话开发
-                - 生成单测
-                - 本地跑绿
-                - MCP 建 MR
-                - 机器检视
-                - 自动修复
-            bullets:
-              - 微闭环越短，AI 偏差越容易被发现。
-              - 每个节点都产生证据，方便复盘和教学复制。
-            takeaway: 这条链路是后续复杂项目 SDD 的最小单元。
-            notes:
-              - 强调第一课不是追求复杂需求，而是练流程肌肉记忆。
+  - id: mcp-review-repair
+    file: specs/modules/30-mcp-review-repair.md
+    title: MCP 提单、代码检视与自动修复
+    duration_min: 65
+    source_rows: [11, 12, 13]
+    tags: [lesson1, mcp, quality]
 
-      - id: l1-tools
-        title: AI Coding 演进与内部工具体系
-        mode: talk
-        duration_min: 15
-        slides:
-          - id: l1-03
-            title: 从代码补全到 Agent 协作
-            headline: AI Coding 的能力边界从“补全片段”扩展到“理解任务并调用工具”。
-            visual:
-              type: timeline
-              items:
-                - title: Copilot 阶段
-                  text: 行级补全，提升输入速度。
-                - title: Chat 阶段
-                  text: 对话解释、生成片段、修复报错。
-                - title: Agent 阶段
-                  text: 读取代码、规划任务、编辑文件、调用工具。
-                - title: Enterprise 阶段
-                  text: 接入组织规范、权限、审计和知识库。
-            bullets:
-              - 能力越强，越不能只靠“相信模型”。
-              - 企业场景要把 Agent 纳入既有研发治理。
-            takeaway: Agent 自动化的价值和风险都来自“它能行动”。
-            notes:
-              - 这里不做模型横向评测，重点是研发流程变化。
+  - id: sdd-codewiki
+    file: specs/modules/40-sdd-codewiki.md
+    title: 存量项目、CodeWiki 与 SDD 四阶文档
+    duration_min: 80
+    source_rows: [16, 17, 18, 19, 20]
+    tags: [lesson2, sdd, codewiki]
 
-          - id: l1-04
-            title: 主战入口：插件、CLI 与 Relay
-            headline: 不同客户端适合不同工作深度，选型依据是上下文范围和自动化程度。
-            visual:
-              type: matrix
-              headers: [形态, 适用场景, 注意事项]
-              rows:
-                - [IDE 插件, 文件级开发、Review、单测生成, 上下文选择要精确]
-                - [CLI, 多文件任务、批量检查、脚本化流程, 先确认 Git 状态]
-                - [Relay 工具, 连接内部能力和统一入口, 关注权限与日志]
-            bullets:
-              - 初学先用 IDE 插件建立上下文习惯。
-              - 多文件任务再使用 CLI 或 Agent 模式。
-            takeaway: 工具入口不同，但规格、上下文、验证三件事不变。
-            notes:
-              - 如果公司内部客户端名称变化，只替换这页术语，不改教学逻辑。
+  - id: smn-design-lab
+    file: specs/modules/50-smn-design-lab.md
+    title: SMN 告警插件 SDD 拆解实操
+    duration_min: 75
+    source_rows: [21, 22, 23]
+    tags: [lesson2, lab, homework]
 
-          - id: l1-05
-            title: 防坑指南：精准投喂上下文
-            headline: 大多数低质量输出不是模型不行，而是上下文边界太虚。
-            visual:
-              type: contrast
-              items:
-                - title: 模糊输入
-                  points:
-                    - “帮我加个查询”
-                    - 让模型全仓乱找
-                    - 输出难 Review
-                - title: 精准输入
-                  points:
-                    - 指定控制器、服务、测试文件
-                    - 给业务规则和不变量
-                    - 要求先解释改动计划
-            bullets:
-              - 使用 @文件 或选区让模型看见正确代码。
-              - 明确“只能改哪些文件”和“先不要改哪些文件”。
-              - 复杂任务先要计划，简单任务再让它直接改。
-            takeaway: 上下文选择是 AI 编程的第一项工程能力。
-            notes:
-              - 演示一个反例提示词，再立刻改成好提示词。
-
-      - id: l1-skill
-        title: 对话开发技巧与 Skill 示例
-        mode: talk
-        duration_min: 5
-        slides:
-          - id: l1-06
-            title: Skill：把高频动作封装成流水线
-            headline: Skill 的价值不是省一段提示词，而是固化团队认可的做法。
-            visual:
-              type: cards
-              items:
-                - title: 输入规范
-                  text: 需要哪些文件、需求和约束。
-                - title: 执行步骤
-                  text: 生成、修改、检查、修复。
-                - title: 质量门禁
-                  text: 单测、规范、覆盖率、风格。
-                - title: 可复用经验
-                  text: 团队最佳实践沉淀为工具。
-            bullets:
-              - 高频、稳定、可验证的流程最适合做 Skill。
-              - Skill 仍然需要人类确认输入和输出。
-            takeaway: Skill 是组织经验的自动化载体。
-            notes:
-              - 以 UT 生成 Skill 为例，说明它不是魔法，而是把模板流程标准化。
-
-          - id: l1-07
-            title: UT 生成 Skill 的使用契约
-            headline: 生成单测前先明确被测行为，生成单测后必须本地运行。
-            visual:
-              type: checklist
-              items:
-                - 指定被测类和已有测试文件。
-                - 描述新增行为、边界条件和异常路径。
-                - 要求复用项目已有测试风格。
-                - 运行测试失败时，把失败输出交给 AI 修复。
-                - 人工检查断言是否真的覆盖业务语义。
-            bullets:
-              - 不接受只追求覆盖率的空断言。
-              - 单测命名要表达业务行为。
-            takeaway: 好单测不是 AI 写出来就算好，而是能证明业务行为。
-            notes:
-              - 可以展示一个“只 assert not null”的坏例子，提醒学员 Review 测试质量。
-
-      - id: l1-demo-ut
-        title: CodeAgent 开发与单测生成演示
-        mode: demo
-        duration_min: 10
-        slides:
-          - id: l1-08
-            title: 讲师演示：Owner 模糊查询
-            headline: 演示目标是完整走一遍小需求，不是炫耀一次生成成功。
-            visual:
-              type: flow
-              items:
-                - 选中 Owner 相关文件
-                - 说明查询规则
-                - 要求先给改动计划
-                - 采纳代码
-                - 调用 UT Skill
-                - 本地测试
-            bullets:
-              - 需求：为 Owner 增加按姓名片段模糊查询。
-              - 边界：只修改 Controller、Repository、Service 与对应测试。
-              - 验收：查询接口正确返回，单测跑绿。
-            takeaway: 演示时故意停在 Review 点，让学员看到人类判断。
-            notes:
-              - 讲师不要直接接受第一版代码，至少指出一个命名或边界条件问题。
-
-          - id: l1-09
-            title: 采纳前 Review：人类仍是责任主体
-            headline: AI 给的是候选补丁，工程师要判断它是否符合项目风格和业务语义。
-            visual:
-              type: checklist
-              items:
-                - 是否改了不该改的文件。
-                - 查询语义是否和需求一致。
-                - 空值、大小写、分页等边界是否明确。
-                - 测试是否覆盖正常、边界和失败路径。
-                - 是否引入日志、异常或性能隐患。
-            bullets:
-              - Review 不是形式，Review 结果要反馈给 AI。
-              - 让 AI 解释 diff 可以提高人工审查效率。
-            takeaway: 采纳按钮之前，先问“我愿意为这段代码负责吗”。
-            notes:
-              - 这页是课程价值观核心，必须讲透。
-
-      - id: l1-lab-feature
-        title: 功能开发与单测生成实操
-        mode: lab
-        duration_min: 15
-        slides:
-          - id: l1-10
-            title: 随堂练习：Pet 疫苗接种字段
-            headline: 学员独立完成一次功能微闭环，禁止手敲业务代码。
-            visual:
-              type: cards
-              items:
-                - title: 业务增量
-                  text: 为 Pet 增加疫苗接种记录字段。
-                - title: 查询接口
-                  text: 支持按宠物或疫苗状态查询。
-                - title: 测试要求
-                  text: 调用 UT Skill 补充单测。
-                - title: 验收结果
-                  text: 接口可用，测试跑绿。
-            bullets:
-              - 先让 AI 输出修改计划，再确认实施。
-              - 报错时把完整报错给 AI，要求它定位并修复。
-            takeaway: 练习目标是流程熟练度，而不是字段设计多复杂。
-            notes:
-              - 如果学员需求理解不同，只要能讲清验收标准即可，不强制字段名完全一致。
-
-          - id: l1-11
-            title: 练习验收：红变绿才算完成
-            headline: 本地失败输出是最好的下一轮提示词素材。
-            visual:
-              type: flow
-              items:
-                - 运行测试
-                - 复制失败
-                - 要求定位原因
-                - 小范围修复
-                - 再次运行
-            bullets:
-              - 不允许把失败测试删除来换取通过。
-              - 不允许用空断言或放宽断言掩盖缺陷。
-              - 修复后让 AI 总结改动和风险。
-            takeaway: 失败不是课堂事故，是训练 AI 协作的关键素材。
-            notes:
-              - 助教巡场时只看证据：测试命令、失败输出、修复 diff。
-
-      - id: l1-mcp-review
-        title: MCP 提单与自动化代码查改
-        mode: talk
-        duration_min: 10
-        slides:
-          - id: l1-12
-            title: MCP：让 AI 安全连接研发系统
-            headline: MCP 的作用是让模型在授权边界内调用外部工具，而不是替代工程治理。
-            visual:
-              type: flow
-              items:
-                - 本地变更
-                - MCP 工具调用
-                - 远端分支
-                - MR 创建
-                - 检视触发
-                - 结果回读
-            bullets:
-              - 所有外部动作都要可审计、可撤销。
-              - 涉及远端写入前必须确认目标仓库、分支和 diff。
-            takeaway: Agent 能动手之后，权限最小化比提示词更重要。
-            notes:
-              - 不展示真实 Token，只展示配置入口和占位符。
-
-          - id: l1-13
-            title: 自定义代码规范如何进入检视
-            headline: 机器检视的价值在于把团队约束前置成自动门禁。
-            visual:
-              type: matrix
-              headers: [规则类型, 示例, 处置方式]
-              rows:
-                - [安全, 不输出敏感信息, 阻断并要求修复]
-                - [健壮性, 外部输入判空, 阻断或高优先级提醒]
-                - [可维护性, 禁止随意改公共接口, 要求人工确认]
-                - [风格, 日志、命名、异常风格, 自动修复或建议]
-            bullets:
-              - 规则要能解释、能定位、能复现。
-              - 规则不宜一次过多，先覆盖高频高风险缺陷。
-            takeaway: 规范不应该只写在 Wiki 里，要进入 AI 工作流。
-            notes:
-              - 结合公司实际规则讲，示例用 System.out 和 NPE 即可。
-
-          - id: l1-14
-            title: 检视意见修复 Skill 的闭环
-            headline: 自动修复不是无脑改，而是把检视意见转成受控补丁。
-            visual:
-              type: flow
-              items:
-                - 获取检视意见
-                - 归类缺陷
-                - 定位相关代码
-                - 生成补丁
-                - 运行验证
-                - 更新 MR
-            bullets:
-              - 修复 Skill 要保留原需求，不只追求消除报警。
-              - 修复后必须重新跑测试和检视。
-            takeaway: “报警消失”不是最终目标，业务行为仍要正确。
-            notes:
-              - 强调修复类 Skill 可能误改业务逻辑，所以需要 diff Review。
-
-      - id: l1-demo-mr
-        title: 提单、代码检视与自动修复演示
-        mode: demo
-        duration_min: 10
-        slides:
-          - id: l1-15
-            title: 讲师演示：埋雷、建单、查改
-            headline: 故意制造缺陷，让学员看到自动检视如何保护主干质量。
-            visual:
-              type: timeline
-              items:
-                - title: 埋雷
-                  text: 加入违规打印和潜在空指针。
-                - title: 建 MR
-                  text: 通过 MCP 创建远端 MR。
-                - title: 查错
-                  text: 触发检视 Skill 并读取意见。
-                - title: 修复
-                  text: 调用修复 Skill 改回合规代码。
-                - title: 复验
-                  text: 再次运行测试与检视。
-            bullets:
-              - 演示重点是“检视意见如何驱动下一轮 AI 输入”。
-              - 不要把违规代码留到主干。
-            takeaway: 机器检视让 AI 生成代码的风险更早暴露。
-            notes:
-              - 讲师提前准备可控缺陷，避免现场随机失败不可解释。
-
-          - id: l1-16
-            title: Token 配置与最小权限
-            headline: 任何能创建 MR 或读写仓库的 Token 都必须按最小权限处理。
-            visual:
-              type: checklist
-              items:
-                - 只授予课堂需要的仓库和操作。
-                - 不在聊天窗口、课件、日志中暴露 Token。
-                - 演示前确认目标远端和分支名称。
-                - 失败时先撤销或轮换可疑凭证。
-            bullets:
-              - 权限问题属于工程治理，不属于工具使用细节。
-              - Agent 调工具前，人要确认动作意图。
-            takeaway: 自动化越强，权限边界越要硬。
-            notes:
-              - 这页对应 OWASP LLM 风险中的过度代理和敏感信息泄露，不需要展开安全理论。
-
-      - id: l1-lab-mr
-        title: 建单、代码检视与自动修复实操
-        mode: lab
-        duration_min: 15
-        slides:
-          - id: l1-17
-            title: 随堂练习：打通自动化查改防线
-            headline: 每位学员都要拿到自己的 MR 链接和至少一条机器检视意见。
-            visual:
-              type: checklist
-              items:
-                - 在练习代码中保留一个可控缺陷。
-                - 用 MCP 指令创建 MR。
-                - 触发检视并读取意见。
-                - 调用修复 Skill 修正问题。
-                - 更新 MR 并保留证据。
-            bullets:
-              - 禁止手敲 Git 命令绕过 MCP 练习目标。
-              - 禁止手工改代码绕过修复 Skill。
-            takeaway: 这次练习的核心证据是 MR、检视意见和修复 diff。
-            notes:
-              - 如果平台排队导致检视慢，助教可提供备用检视结果样例继续流程。
-
-          - id: l1-18
-            title: 第一课 Done Definition
-            headline: 完成标准必须可复核，不能只说“我跑通了”。
-            visual:
-              type: rubric
-              headers: [证据, 合格标准, 常见不合格]
-              rows:
-                - [代码 diff, 只包含本次任务相关改动, 大范围格式化或误改配置]
-                - [单测结果, 新增或相关测试本地通过, 删除测试或空断言]
-                - [MR 链接, 远端可访问且分支正确, 目标仓库或分支错误]
-                - [检视记录, 有机器意见和修复记录, 只创建 MR 未查改]
-            bullets:
-              - Done Definition 先于练习开始公布。
-              - 课后作业沿用同一套标准。
-            takeaway: 学员交付的不是截图，而是可复核的工程证据。
-            notes:
-              - 这页可作为助教验收表。
-
-      - id: l1-summary
-        title: 第一课总结与课后作业
-        mode: summary
-        duration_min: 10
-        slides:
-          - id: l1-19
-            title: 第一课复盘：把脏活交给机器
-            headline: 人做判断和审查，机器做模板化、重复性、可验证的工作。
-            visual:
-              type: flow
-              items:
-                - 人定义需求
-                - AI 生成补丁
-                - Skill 生成测试
-                - MCP 创建 MR
-                - 机器检视
-                - AI 修复缺陷
-            bullets:
-              - 不要让 AI 替你承担业务责任。
-              - 不要让人工重复做机器更擅长的模板化工作。
-            takeaway: 第一课形成的是个人可复制的研发微闭环。
-            notes:
-              - 复盘时邀请 1 位学员展示失败后如何修复，而不是展示最顺利的案例。
-
-          - id: l1-20
-            title: 课后巩固与第二课战备
-            headline: 课后重走 Petclinic 闭环，第二课进入大型存量项目。
-            visual:
-              type: checklist
-              items:
-                - 独立复现功能开发、单测、MR、检视、修复全流程。
-                - 整理自己的高质量提示词和失败案例。
-                - 提前克隆 dolphin-scheduler。
-                - 准备 PKIToken 和 CodeWiki 访问权限。
-            bullets:
-              - 第二课不再以写小功能为核心，而是先拆复杂需求。
-              - 未完成课前准备会直接影响 SMN 练习。
-            takeaway: 第一课练行动闭环，第二课练架构拆解。
-            notes:
-              - 结束前再次强调 dolphin-scheduler 体量大，必须提前准备。
-
-  - id: lesson2
-    title: 第二课：复杂存量项目降维与 SDD 架构拆解
-    duration_min: 90
-    source_rows: [16, 17, 18, 19, 20, 21, 22, 23]
-    intent: 面对大型 Brownfield 项目，先用 CodeWiki 摸清底座，再用 SDD 生成可执行任务清单。
-    outcomes:
-      - 能解释 Greenfield 与 Brownfield 下 AI 协作策略差异。
-      - 能用 CodeWiki 查询存量项目规范和接口现状。
-      - 能生成并 Review Proposal、Spec、Design、Tasks 四类文档。
-      - 能把 SMN 告警需求拆到类、配置、测试和验收任务。
-    notes:
-      - 第二课要刻意压住“马上写代码”的冲动，让学员体会文档先行的价值。
-    segments:
-      - id: l2-opening
-        title: 作业复盘与进入新课题
-        mode: talk
-        duration_min: 10
-        slides:
-          - id: l2-01
-            title: 作业红黑榜与共性问题
-            headline: 第一课作业重点看证据链，不看最终代码行数。
-            visual:
-              type: matrix
-              headers: [问题类型, 表现, 第二课改进]
-              rows:
-                - [Token, 权限不足或泄露到日志, 最小权限和占位符]
-                - [上下文, AI 改了无关文件, 先给文件边界]
-                - [测试, 只跑单个 happy path, 增加边界和异常]
-                - [Review, 直接采纳大 diff, 先要求解释改动计划]
-            bullets:
-              - 抽样展示典型失败，比展示满分作业更有教学价值。
-              - 共性问题会在第二课 SDD 中前置解决。
-            takeaway: 微闭环的问题根源，往往是规格和上下文不清。
-            notes:
-              - 如果实际作业数据未准备，使用匿名样例，不点名批评个人。
-
-          - id: l2-02
-            title: 今日挑战：在大型系统里加 SMN 告警
-            headline: 存量工程的难点不是写新类，而是不破坏已有架构和约束。
-            body: >-
-              dolphin-scheduler 这类大型项目包含模块边界、插件机制、配置约定、测试范式和历史兼容性。
-              直接让 AI 写 Java 代码，很容易生成看似完整但无法融入项目的实现。
-            visual:
-              type: contrast
-              items:
-                - title: 小项目微改
-                  points:
-                    - 上下文少
-                    - 反馈快
-                    - 可先写后调
-                - title: 大项目增量
-                  points:
-                    - 隐式约束多
-                    - 错误成本高
-                    - 必须先探查和设计
-            takeaway: 第二课的第一条纪律：先不写业务代码。
-            notes:
-              - 让学员说出自己维护老项目时最怕 AI 改坏什么。
-
-      - id: l2-sdd
-        title: 业务场景痛点与 SDD 开发模式
-        mode: talk
-        duration_min: 15
-        slides:
-          - id: l2-03
-            title: Vibe Coding 的边界
-            headline: 小步快跑适合反馈快的任务，不适合一开始就跨越未知架构。
-            visual:
-              type: matrix
-              headers: [任务类型, 推荐方式, 风险]
-              rows:
-                - [单文件小改, Vibe Coding, 主要风险是边界遗漏]
-                - [多文件功能, 先计划后小步实现, 主要风险是任务顺序错]
-                - [大型存量插件, SDD 先行, 主要风险是架构不兼容]
-                - [安全敏感改动, SDD 加强约束, 主要风险是权限和数据泄露]
-            bullets:
-              - Vibe Coding 不是低级方法，它适合低风险短反馈任务。
-              - Brownfield 需求需要先把未知变成文档。
-            takeaway: 方法选择取决于不确定性和错误成本。
-            notes:
-              - 避免把 Vibe Coding 讲成反面教材，它是第一课的基础。
-
-          - id: l2-04
-            title: SDD 四阶流水线
-            headline: 在动代码前，用四类文档把目标、边界、设计和任务压实。
-            visual:
-              type: flow
-              items:
-                - Proposal
-                - Spec
-                - Design
-                - Tasks
-                - Implementation
-                - Validation
-            bullets:
-              - Proposal：为什么做，范围是什么。
-              - Spec：系统应当满足哪些可验收行为。
-              - Design：如何接入现有架构和依赖。
-              - Tasks：按类、配置、测试拆成可执行步骤。
-            takeaway: 文档不是交付负担，而是约束 AI 不跑偏的控制面。
-            notes:
-              - 对照本课件工程本身：course.yaml 就是 PPT 的源规格。
-
-          - id: l2-05
-            title: SDD 质量门禁
-            headline: 好的 SDD 文档必须能阻止错误代码进入实现阶段。
-            visual:
-              type: checklist
-              items:
-                - 每条需求都有验收条件。
-                - 每个设计决策都能追溯到项目现状或约束。
-                - 每个任务都能定位到具体文件、类或配置。
-                - 安全、权限、兼容性、测试策略显式写出。
-                - 人工 Review 通过后才进入编码。
-            bullets:
-              - 缺少 AK/SK 设计的告警插件文档不能进入实现。
-              - 只写“新增 SMN 插件”的任务粒度太粗。
-            takeaway: SDD 的价值在于提前暴露歧义。
-            notes:
-              - 这页后面会作为 SMN 练习的 Review 标准。
-
-      - id: l2-codewiki
-        title: 存量代码开发痛点与 CodeWiki
-        mode: talk
-        duration_min: 10
-        slides:
-          - id: l2-06
-            title: Greenfield vs Brownfield
-            headline: AI 写新项目像搭积木，改老项目像接入一套已经运转的系统。
-            visual:
-              type: contrast
-              items:
-                - title: Greenfield
-                  points:
-                    - 可自由选择结构
-                    - 约束主要来自需求
-                    - 原型速度优先
-                - title: Brownfield
-                  points:
-                    - 必须尊重既有结构
-                    - 约束来自代码和组织
-                    - 稳定性优先
-            bullets:
-              - Brownfield 的关键输入不是“需求文本”，而是“现有系统事实”。
-              - CodeWiki 用于缩短模型和老员工之间的信息差。
-            takeaway: 存量项目开发先问“已有系统怎么做”，再问“我要怎么做”。
-            notes:
-              - 可以类比新人入职，先读规范和历史代码，再提交设计。
-
-          - id: l2-07
-            title: CodeWiki 查询方法
-            headline: 查询知识库时要围绕“现状、约束、样例、风险”提问。
-            visual:
-              type: cards
-              items:
-                - title: 现状
-                  text: 现有告警插件有哪些？入口在哪里？
-                - title: 约束
-                  text: 配置、SPI、依赖、异常处理有什么规范？
-                - title: 样例
-                  text: 邮件、飞书、Webhook 插件如何组织代码？
-                - title: 风险
-                  text: 鉴权、重试、日志脱敏和测试有什么注意事项？
-            bullets:
-              - 不要问“帮我写 SMN 插件”，先问“项目已有插件机制是什么”。
-              - 每次查询结果都要回填到 Design 证据里。
-            takeaway: CodeWiki 的输出不是直接代码，而是 SDD 文档的事实依据。
-            notes:
-              - 演示时把查询结果复制到文档中，标明来源，训练可追溯习惯。
-
-      - id: l2-demo-design
-        title: 知识库查询与生成设计文档演示
-        mode: demo
-        duration_min: 15
-        slides:
-          - id: l2-08
-            title: 讲师演示：飞书告警规范探底
-            headline: 先用一个已存在插件探路，再迁移方法到 SMN。
-            visual:
-              type: flow
-              items:
-                - 查现有插件
-                - 查配置入口
-                - 查测试样例
-                - 整理约束
-                - 生成 Proposal
-                - 生成 Tasks
-            bullets:
-              - 演示对象可用飞书告警或已有 Webhook 插件。
-              - 重点不是复制代码，而是抽取项目约束。
-            takeaway: 让 AI 先成为项目研究员，再成为代码执行者。
-            notes:
-              - 如果现场 CodeWiki 不稳定，提前准备一份查询结果样例。
-
-          - id: l2-09
-            title: Proposal、Spec、Design、Tasks 的职责
-            headline: 四类文档各管一层，不要混成一篇“万能说明”。
-            visual:
-              type: matrix
-              headers: [文档, 回答的问题, 最低合格标准]
-              rows:
-                - [Proposal, 为什么做、做多大, 范围和非范围明确]
-                - [Spec, 系统应满足什么行为, 每条都有验收标准]
-                - [Design, 如何接入现有系统, 有架构、数据、安全、测试设计]
-                - [Tasks, 谁先做、改哪里, 颗粒度到类名和配置文件]
-            bullets:
-              - 文档顺序不能随意跳过。
-              - Tasks 不合格时不要进入编码。
-            takeaway: SDD 是把模糊需求逐步压缩成可执行任务。
-            notes:
-              - 让学员把“我要加 SMN”翻译成四类不同问题。
-
-          - id: l2-10
-            title: 人机协同 Review：发现遗漏就打回
-            headline: AI 产出的设计文档必须被挑战，尤其是安全和集成边界。
-            visual:
-              type: checklist
-              items:
-                - 是否说明 AK/SK 的配置、存储和脱敏。
-                - 是否说明告警发送失败、超时、重试和错误日志。
-                - 是否复用现有插件接口和配置风格。
-                - 是否列出新增测试类型和测试数据。
-                - 是否把任务拆到具体类和配置文件。
-            bullets:
-              - 人工 Review 不通过时，用具体缺口要求 AI 重写。
-              - 不要接受“后续补充”的关键设计。
-            takeaway: 打回重写是 SDD 的正常动作，不是失败。
-            notes:
-              - 演示一次打回：“Design 缺少 AK/SK 安全设计，请基于现有插件配置规范重写相关章节。”
-
-      - id: l2-lab-smn
-        title: 探查项目规范并拆解 SMN 需求
-        mode: lab
-        duration_min: 30
-        slides:
-          - id: l2-11
-            title: 动手实操：SMN 需求降维
-            headline: 练习目标是产出四阶文档，不是写出 Java 代码。
-            visual:
-              type: cards
-              items:
-                - title: 业务目标
-                  text: 为调度系统新增 SMN 告警插件。
-                - title: 外部约束
-                  text: 需要 AK/SK、区域、主题、消息模板等配置。
-                - title: 项目约束
-                  text: 遵循现有告警插件接口、配置和测试风格。
-                - title: 交付物
-                  text: Proposal、Spec、Design、Tasks 四份文档。
-            bullets:
-              - 每组先查询 CodeWiki，再生成文档。
-              - 文档中必须保留关键约束来源。
-            takeaway: 这次练习禁止生成 Java 业务代码。
-            notes:
-              - 助教发现学员开始写代码，要立即拉回文档任务。
-
-          - id: l2-12
-            title: AK/SK 安全设计红线
-            headline: 告警插件不是只会发消息，还要正确处理凭证和日志。
-            visual:
-              type: checklist
-              items:
-                - AK/SK 通过配置注入，不硬编码。
-                - 日志和异常信息不得输出完整密钥。
-                - 配置校验要覆盖空值、格式和区域错误。
-                - 发送失败要有可诊断错误，不吞异常。
-                - 测试数据使用假凭证和本地桩。
-            bullets:
-              - 缺少安全设计的 Design 直接判定不合格。
-              - 凭证处理属于架构设计，不是实现细节。
-            takeaway: 安全要求要写进 spec，不能等代码检视再补救。
-            notes:
-              - 这页要单独停留，确保每位学员在 Design 中能找到对应内容。
-
-          - id: l2-13
-            title: Tasks 颗粒度：细到类名和配置文件
-            headline: 合格的任务清单要让 Agent 能逐项执行，也让人能逐项验收。
-            visual:
-              type: rubric
-              headers: [层级, 好任务, 坏任务]
-              rows:
-                - [接口接入, 新增 SmnAlertChannelFactory 并注册到现有 SPI, 实现 SMN]
-                - [配置, 在告警插件配置模型中加入 region、topic、ak、sk, 补充配置]
-                - [发送逻辑, 封装 SmnClientAdapter 并处理超时与错误码, 调接口]
-                - [测试, 参考现有插件新增配置校验和发送失败测试, 写测试]
-            bullets:
-              - 任务必须能排序，能标记完成，能回滚。
-              - 每个任务都应有验收命令或检查方式。
-            takeaway: Tasks 是给 Agent 的施工图，也是给 Reviewer 的检查表。
-            notes:
-              - 这里可以让学员互换 Tasks 互评，看对方能否直接照着实现。
-
-          - id: l2-14
-            title: 文档审查：禁止提前生成业务代码
-            headline: 如果文档没有过审，提前生成代码只会放大错误。
-            visual:
-              type: checklist
-              items:
-                - Proposal 是否定义范围和非范围。
-                - Spec 是否有可测试验收条件。
-                - Design 是否引用 CodeWiki 或现有代码事实。
-                - Tasks 是否具体到文件、类、配置和测试。
-                - 安全、兼容性、错误处理是否显式覆盖。
-            bullets:
-              - 过审后才能把 Tasks 逐项交给 Agent 实现。
-              - 文档 Review 结论要写回 spec 或任务清单。
-            takeaway: 第二课训练的是“先想清楚再让 AI 写”的能力。
-            notes:
-              - 结尾安排 2 组展示一条被打回的文档缺口。
-
-      - id: l2-summary
-        title: 第二课总结与大作业
-        mode: summary
-        duration_min: 10
-        slides:
-          - id: l2-15
-            title: 第二课复盘：拒绝把 AI 当打字员
-            headline: 面对复杂工程，AI 的第一价值是帮助你读懂、拆解和验证。
-            visual:
-              type: flow
-              items:
-                - 查规范
-                - 写规格
-                - 做设计
-                - 拆任务
-                - 小步实现
-                - 验收证据
-            bullets:
-              - 大项目里，读代码和明确约束常常比写代码更重要。
-              - SDD 把人类架构判断前置，把 AI 执行能力后置。
-            takeaway: 文档想清楚，代码才可能水到渠成。
-            notes:
-              - 回扣第一课：微闭环是执行能力，第二课 SDD 是方向控制。
-
-          - id: l2-16
-            title: 大作业：SMN 告警真实落地与提单
-            headline: 拿着今天过审的 Tasks，课后逐项实现并提交 MR。
-            visual:
-              type: timeline
-              items:
-                - title: 文档定版
-                  text: Proposal、Spec、Design、Tasks 过审。
-                - title: 分步实现
-                  text: 按任务逐项让 Agent 改代码。
-                - title: 本地验证
-                  text: 编译、单测、关键路径验证。
-                - title: 代码检视
-                  text: 创建 MR 并处理机器与人工意见。
-                - title: 统一验收
-                  text: 提交 MR、文档和证据链。
-            bullets:
-              - MR 描述必须链接四阶文档。
-              - 每个任务完成后都要有测试或检查证据。
-            takeaway: 最终验收不是“AI 写完了”，而是“工程证据完整”。
-            notes:
-              - 明确作业截止时间和提交渠道，如果暂未确定，课后群公告补充。
-
-  - id: assessment
-    title: 课外：评测与调研
-    duration_min: 0
+  - id: assessment-rollout
+    file: specs/modules/60-assessment-rollout.md
+    title: 大作业验收与团队复讲
+    duration_min: 15
     source_rows: [24]
-    intent: 用统一 Rubric 验收大作业，并把真实痛点反馈到下一期课程 spec。
-    outcomes:
-      - 讲师能统一评估 MR、文档和证据链。
-      - 学员能反馈团队 AI 研发推广阻碍。
-      - 课程维护者能把反馈转成下一版 spec 任务。
-    notes:
-      - 这是课后运营模块，不进入两次正课时长。
-    segments:
-      - id: assessment-feedback
-        title: 大作业验收与问卷反馈
-        mode: assessment
-        duration_min: 0
-        slides:
-          - id: assess-01
-            title: 大作业验收流程
-            headline: 验收要同时看文档质量、代码质量和 AI 协作过程证据。
-            visual:
-              type: flow
-              items:
-                - 收集 MR
-                - 检查文档
-                - 运行测试
-                - Review 代码
-                - 汇总问题
-                - 公布反馈
-            bullets:
-              - 统一使用 Rubric，避免只凭讲师主观印象打分。
-              - 对优秀作业提炼成下一期示例，对失败案例脱敏后纳入 FAQ。
-            takeaway: 作业验收本身也是课程 spec 迭代的数据来源。
-            notes:
-              - 不建议公开个人低分榜，红黑榜聚焦案例和问题类型。
-
-          - id: assess-02
-            title: 问卷反馈：从课堂回到团队真实痛点
-            headline: 下一期课程应该由一线开发痛点驱动，而不是由工具功能清单驱动。
-            visual:
-              type: cards
-              items:
-                - title: 高频需求
-                  text: 哪些研发动作最适合做 Skill。
-                - title: 卡点场景
-                  text: 哪些仓库、模块、流程最难让 AI 读懂。
-                - title: 安全顾虑
-                  text: Token、数据、权限、审计有哪些边界。
-                - title: 推广建议
-                  text: 团队复讲需要哪些模板和案例。
-            bullets:
-              - 把反馈转成 spec issue，而不是散落在聊天记录。
-              - 下一期优先补“真实痛点高、可验证”的场景。
-            takeaway: AI 赋能培训必须像产品一样持续迭代。
-            notes:
-              - 问卷最好包含开放题和证据上传入口。
+    tags: [assessment, rollout]
 
 labs:
   - id: pet-vaccination
     title: Pet 疫苗接种字段与查询接口
-    duration_min: 15
+    module: petclinic-micro-loop
+    duration_min: 30
     objective: 用 CodeAgent 完成小范围功能开发，并调用 UT Skill 生成测试。
     constraints:
       - 禁止手敲业务代码。
@@ -1078,7 +162,8 @@ labs:
 
   - id: mcp-review-repair
     title: MCP 建单、代码检视与自动修复
-    duration_min: 15
+    module: mcp-review-repair
+    duration_min: 35
     objective: 通过 MCP 创建 MR，触发机器检视，并使用修复 Skill 完成闭环。
     constraints:
       - 禁止手敲 Git 命令替代 MCP。
@@ -1091,7 +176,8 @@ labs:
 
   - id: smn-sdd-docs
     title: SMN 告警四阶 SDD 文档
-    duration_min: 30
+    module: smn-design-lab
+    duration_min: 55
     objective: 查询 CodeWiki 后生成 Proposal、Spec、Design、Tasks，并完成同伴 Review。
     constraints:
       - 禁止生成 Java 业务代码。
@@ -1104,6 +190,7 @@ labs:
 
   - id: smn-homework
     title: SMN 告警真实落地大作业
+    module: assessment-rollout
     duration_min: 0
     objective: 课后按照过审 Tasks 分步实现业务代码并提交 MR。
     constraints:
@@ -1133,6 +220,7 @@ assessment:
     - name: 安全与合规
       weight: 10
       evidence: 无真实密钥、无敏感日志、权限边界和脱敏处理明确。
-  notes:
-    - 如果企业内已有绩效或认证体系，可把该 Rubric 映射为内部积分。
-    - 安全红线包括真实 AK/SK 泄露、Token 泄露、生产地址暴露、绕过 Review 直接合并。
+  red_lines:
+    - 真实 AK/SK、Token、生产地址或内部敏感数据进入 Prompt、日志、MR 或课件。
+    - 绕过 Review 直接合并 AI 生成代码。
+    - 关键测试失败但仍提交作业。

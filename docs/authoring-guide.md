@@ -2,36 +2,37 @@
 
 ## 修改课程内容
 
-优先修改 `specs/course.yaml` 中的结构化字段：
+优先修改 `specs/modules/*.md`：
 
-- 调整课程目标：改 `audience.learning_outcomes`。
-- 调整课堂节奏：改 `modules[].duration_min` 和 `segments[].duration_min`。
-- 调整单页内容：改 `segments[].slides[]`。
-- 调整实操验收：改 `labs[]` 和 `assessment`。
+- 调整章节目标：改模块 frontmatter 的 `intent` 和 `outcomes`。
+- 调整单页内容：改对应 `:::slide` block 下的 Headline、Body、Key Points、Visual、Takeaway、Speaker Notes。
+- 调整课堂时长：同时改模块 frontmatter 和 `specs/course.yaml` 中对应模块的 `duration_min`。
+- 调整章节组合：改 `specs/course.yaml` 的 `decks[]`，或新增 `configs/*.yaml`。
 
-生成器会统一处理封面、模块页、内容页、讲师备注和视觉组件，不需要在 spec 里写排版 HTML。
+课程级内容改 `specs/course.yaml`：
 
-## SDD 四阶维护方式
-
-当课程发生较大变化时，先更新 `specs/course-production/`，再更新课件正文：
-
-- `proposal.md`：说明为什么要改，解决什么教学或运营问题。
-- `spec.md`：说明学员产出、材料形态和质量要求。
-- `design.md`：说明内容结构、生成策略、Review 流程和扩展点。
-- `tasks.md`：说明讲师、助教和课程维护者需要完成的任务。
-
-小改动可以直接改 `specs/course.yaml`，但如果涉及课程目标、实操项目、评分规则或生成管线，必须同步更新四阶文档。
+- 目标学员和学习产出：`audience`。
+- 教学原则和总时长：`learning_design`。
+- 实操任务：`labs[]`。
+- 大作业评分：`assessment`。
 
 ## 新增一页
 
-复制相邻 slide，确保：
+复制相邻 slide 或 `specs/templates/module-spec.template.md` 中的示例，确保：
 
 - `id` 全局唯一。
 - `title` 是屏幕上可见标题。
-- `headline` 是本页核心判断，不写成泛泛介绍。
-- `bullets` 不超过 5 条。
-- `notes` 写给讲师，说明怎样讲、怎样追问、怎样处理常见偏差。
-- `visual.type` 只使用生成器支持的类型：`flow`、`matrix`、`checklist`、`contrast`、`cards`、`timeline`、`rubric`。
+- `Headline` 是本页核心判断，不写成泛泛介绍。
+- `Key Points` 不超过 5-6 条。
+- `Visual` 描述页面右侧该展示的结构，可以是流程、表格、清单、对比或任务卡。
+- `Speaker Notes` 写给讲师，说明怎样讲、怎样追问、怎样处理常见偏差。
+
+## 新增章节
+
+1. 在 `specs/modules/` 新增 Markdown 文件。
+2. 在 `specs/course.yaml` 的 `modules[]` 注册 id、路径、时长和来源。
+3. 把模块 id 加入一个或多个 `decks[]`。
+4. 运行 `npm run validate`。
 
 ## 讲师 Review 清单
 
@@ -39,29 +40,39 @@
 - 是否有可观察的课堂行为或验收点？
 - 是否避免把 AI 当成一次性代码生成器？
 - 是否明确了人类的审查、决策和责任边界？
-- 是否泄露了真实 Token、账号、内部生产地址？
+- 是否泄露了真实 Token、账号、内部生产地址或凭证？
 
 ## 用 AI 辅助改 Spec
 
 可以让 AI 帮忙扩写页面，但提示词必须包含：
 
-- 要修改的模块、segment 或 slide id。
+- 要修改的模块、slide id 或章节组合。
 - 目标学员、课堂时长和授课方式。
 - 必须保留的工具名、组织术语和安全边界。
-- 输出字段要求，例如 `headline`、`bullets`、`visual`、`notes`。
-- 验收规则，例如 bullets 不超过 5 条、必须包含讲师备注、禁止出现真实密钥。
+- 输出字段要求，例如 Headline、Key Points、Visual、Speaker Notes。
+- 验收规则，例如 bullets 不超过 6 条、必须包含讲师备注、禁止出现真实密钥。
 
-AI 输出后只作为候选补丁。讲师需要 Review 内容，再运行 `npm run check`。
-
-## 生成与预览
+AI 输出后只作为候选补丁。讲师需要 Review 内容，再运行：
 
 ```bash
-npm run check
+npm run validate
+npm run generate
+```
+
+## 预览与构建
+
+```bash
 npm run slides
 ```
 
-公网预览时使用机器公网 IP 和端口访问；如果端口被占用，设置 `PORT`：
+如果端口被占用：
 
 ```bash
 PORT=3031 npm run slides
+```
+
+正式交付前：
+
+```bash
+npm run check
 ```

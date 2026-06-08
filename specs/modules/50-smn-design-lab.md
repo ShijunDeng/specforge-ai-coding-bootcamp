@@ -1,0 +1,265 @@
+---
+id: smn-design-lab
+title: SMN 告警插件 SDD 拆解实操
+duration_min: 75
+intent: 让学员在不写 Java 业务代码的前提下，用 CodeWiki 和 SDD 产出 SMN 告警插件的四阶文档和可执行任务清单。
+outcomes:
+  - 能把“新增 SMN 告警插件”拆成 Proposal、Spec、Design、Tasks。
+  - 能识别 AK/SK、区域、主题、消息模板、错误处理和测试策略等关键约束。
+  - 能把 Tasks 细化到类名、配置文件、测试和验收命令。
+  - 能完成同伴 Review 并根据缺口修订文档。
+source_rows: [21, 22, 23]
+---
+
+# SMN 告警插件 SDD 拆解实操
+
+## Module Brief
+
+本模块对应 `course.xlsx` 第 21-23 行。原大纲要求学员检索告警规范，结合 AK/SK 约束生成 SMN 四套设计文档，并布置课后真实落地大作业。当前版本把练习拆成查询、成文、审查、冻结任务四个步骤。
+
+:::slide
+id: smn-01
+title: 动手实操：SMN 需求降维
+mode: lab
+duration_min: 8
+visual: cards
+:::
+
+### Headline
+练习目标是产出四阶文档，不是写出 Java 代码。
+
+### Body
+学员需要为 dolphin-scheduler 新增 SMN 告警插件做前置设计，产出可过审的 Proposal、Spec、Design、Tasks。任何业务代码生成都放到课后大作业。
+
+### Key Points
+- 业务目标：为调度系统新增 SMN 告警插件。
+- 外部约束：需要 AK/SK、区域、主题、消息模板等配置。
+- 项目约束：遵循现有告警插件接口、配置和测试风格。
+- 交付物：四阶文档和 Review 修订记录。
+- 红线：本环节严禁生成 Java 业务代码。
+
+### Visual
+- 需求降维
+- CodeWiki 探查
+- 四阶成文
+- 同伴 Review
+- 任务冻结
+
+### Takeaway
+这次练习训练“先想清楚再让 AI 写”的能力。
+
+### Speaker Notes
+- 助教发现学员开始写代码，要立即拉回文档任务。
+- 明确本练习不是纸上谈兵，课后会按这份 Tasks 真正实现。
+
+:::slide
+id: smn-02
+title: CodeWiki 查询任务卡
+mode: lab
+duration_min: 12
+visual: checklist
+:::
+
+### Headline
+每组先拿到项目事实，再让 AI 写文档。
+
+### Body
+学员以小组或个人方式查询 dolphin-scheduler 的现有告警插件机制，并把关键结论整理进 Design 的依据部分。
+
+### Key Points
+- 查询现有 Alert 插件入口、Factory、Channel 或 SPI 注册方式。
+- 查询配置模型、配置校验和 UI/后端字段流转。
+- 查询飞书、邮件、Webhook 等已有插件的错误处理和测试样例。
+- 查询凭证类配置的脱敏、日志和异常规范。
+- 记录至少两类可追溯事实来源。
+
+### Visual
+- 插件入口
+- 配置模型
+- 发送逻辑
+- 错误处理
+- 测试样例
+- 安全规范
+
+### Takeaway
+没有事实依据的 Design 不进入 Review。
+
+### Speaker Notes
+- 如果 CodeWiki 无法使用，发放提前准备的查询摘要，但仍要求学员把摘要转成设计依据。
+- 要求学员不要复制大段代码到文档，只保留约束和引用位置。
+
+:::slide
+id: smn-03
+title: Proposal 与 Spec：先定义边界和行为
+mode: lab
+duration_min: 10
+visual: matrix
+:::
+
+### Headline
+Proposal 决定做不做和做多大，Spec 决定系统应该表现成什么样。
+
+### Body
+这两份文档必须把业务目标、范围、非范围、用户可见行为和验收条件写清楚，避免后续实现阶段不断补需求。
+
+### Key Points
+- Proposal 写业务动机、目标用户、范围、非范围、风险和里程碑。
+- Spec 写配置项、发送行为、失败行为、兼容性和可测试验收条件。
+- 每条 Spec 都要能被测试、日志、配置或 Review 证明。
+- 不要把实现类名塞进 Spec；类名属于 Design 和 Tasks。
+
+### Visual
+| 文档 | 回答的问题 | 最低合格标准 |
+| --- | --- | --- |
+| Proposal | 为什么做、做多大 | 范围和非范围明确 |
+| Spec | 系统满足什么行为 | 每条都有验收条件 |
+| Design | 如何接入现有系统 | 有架构、数据、安全、测试设计 |
+| Tasks | 谁先做、改哪里 | 颗粒度到类名和配置文件 |
+
+### Takeaway
+四类文档各管一层，不要混成一篇万能说明。
+
+### Speaker Notes
+- 让学员把“我要加 SMN”翻译成四类不同问题。
+- 现场抽查一条 Spec，看它是否可测试。
+
+:::slide
+id: smn-04
+title: AK/SK 安全设计红线
+mode: lab
+duration_min: 12
+visual: checklist
+:::
+
+### Headline
+告警插件不是只会发消息，还要正确处理凭证和日志。
+
+### Body
+SMN 接入涉及 AK/SK、区域、主题、消息模板等配置。凭证处理属于架构设计，不是实现细节，必须写入 Design 和验收标准。
+
+### Key Points
+- AK/SK 通过配置注入，不硬编码。
+- 日志和异常信息不得输出完整密钥。
+- 配置校验要覆盖空值、格式和区域错误。
+- 发送失败要有可诊断错误，不吞异常。
+- 测试数据使用假凭证和本地桩。
+
+### Visual
+- 配置注入
+- 脱敏日志
+- 参数校验
+- 失败诊断
+- 假凭证测试
+
+### Takeaway
+缺少安全设计的 Design 直接判定不合格。
+
+### Speaker Notes
+- 这页要单独停留，确保每位学员在 Design 中能找到对应内容。
+- 不要求讲师现场讲具体云产品 SDK 细节，重点是安全边界和可测试性。
+
+:::slide
+id: smn-05
+title: Tasks 颗粒度：细到类名和配置文件
+mode: lab
+duration_min: 15
+visual: matrix
+:::
+
+### Headline
+合格的任务清单要让 Agent 能逐项执行，也让人能逐项验收。
+
+### Body
+Tasks 是给 Agent 的施工图，也是给 Reviewer 的检查表。颗粒度太粗会让模型重新发散，颗粒度太细但无验收会让实现难以收口。
+
+### Key Points
+- 任务必须能排序，能标记完成，能回滚。
+- 每个任务都应有目标文件、改动意图和验收方式。
+- 类名和配置文件来自 CodeWiki 或现有代码事实，不凭空发明。
+- 测试任务要覆盖配置校验、发送成功、发送失败和脱敏。
+
+### Visual
+| 层级 | 好任务 | 坏任务 |
+| --- | --- | --- |
+| 接口接入 | 新增 SmnAlertChannelFactory 并注册到现有 SPI | 实现 SMN |
+| 配置 | 在告警配置模型中加入 region、topic、ak、sk | 补充配置 |
+| 发送逻辑 | 封装 SmnClientAdapter 并处理超时与错误码 | 调接口 |
+| 测试 | 参考现有插件新增配置校验和发送失败测试 | 写测试 |
+
+### Takeaway
+Tasks 越可执行，Agent 越不容易自己编路线。
+
+### Speaker Notes
+- 类名示例需要根据真实 CodeWiki 查询结果调整；如果项目实际命名不同，以现有代码为准。
+- 让学员互换 Tasks 互评，看对方能否直接照着实现。
+
+:::slide
+id: smn-06
+title: 文档审查：禁止提前生成业务代码
+mode: lab
+duration_min: 13
+visual: checklist
+:::
+
+### Headline
+如果文档没有过审，提前生成代码只会放大错误。
+
+### Body
+同伴 Review 的目标是找出文档中会导致实现跑偏的缺口，尤其是安全、兼容、错误处理和测试策略。
+
+### Key Points
+- Proposal 是否定义范围和非范围。
+- Spec 是否有可测试验收条件。
+- Design 是否引用 CodeWiki 或现有代码事实。
+- Tasks 是否具体到文件、类、配置和测试。
+- 安全、兼容性、错误处理是否显式覆盖。
+
+### Visual
+- 范围清楚
+- 验收可测
+- 设计有据
+- 任务可执行
+- 安全完整
+
+### Takeaway
+文档 Review 结论要写回 Spec 或任务清单。
+
+### Speaker Notes
+- 结尾安排 2 组展示一条被打回的文档缺口。
+- 打回不是失败，是 SDD 正常动作。
+
+:::slide
+id: smn-07
+title: 第二课复盘与任务冻结
+mode: summary
+duration_min: 5
+visual: flow
+:::
+
+### Headline
+面对复杂工程，AI 的第一价值是帮助你读懂、拆解和验证。
+
+### Body
+第二课结束时，每位学员都应拿到一份过审或待修订的 SMN Tasks。课后实现只允许按这份任务清单逐项推进。
+
+### Key Points
+- 查规范防造轮子。
+- 拆任务防偏航。
+- 写安全要求防泄露。
+- 做 Review 防错误进入实现。
+- 照单施工防大范围失控。
+
+### Visual
+- 查规范
+- 写规格
+- 做设计
+- 拆任务
+- 文档 Review
+- 任务冻结
+
+### Takeaway
+文档想清楚，代码才可能水到渠成。
+
+### Speaker Notes
+- 回扣第一课：微闭环是执行能力，第二课 SDD 是方向控制。
+- 明确课后大作业从冻结后的 Tasks 开始，而不是重新发散。

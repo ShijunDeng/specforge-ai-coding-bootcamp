@@ -2,28 +2,51 @@
 
 ## 目标
 
-从 `specs/course.yaml` 生成一份可直接运行的 Slidev Markdown，作为课堂预览、静态站点构建、PPTX/PDF 导出的统一入口。
+从 `specs/course.yaml` 和 `specs/modules/*.md` 生成可直接运行的 Slidev Markdown，支持完整 7 小时课程、第一课、第二课、专题课和自定义章节组合。
 
 ## 输入
 
-- `meta`：课程标题、版本、讲师、来源、生成文件名。
-- `audience`：学员画像、前置条件、学习产出。
-- `learning_design`：课程设计原则、课堂节奏、风险控制。
-- `modules[].segments[].slides[]`：具体页内容。
-- `labs`：实操任务、输入、限制、验收标准。
-- `assessment`：作业验收与评分规则。
-- `specs/course-production/*`：课程材料自身的 SDD 依据，供讲师 Review 和版本治理使用，不直接渲染到课堂 PPT。
+- `specs/course.yaml`
+  - `meta`：课程标题、版本、来源、摘要。
+  - `audience`：学员画像、前置条件、学习产出。
+  - `learning_design`：教学承诺、原则和课堂比例。
+  - `decks[]`：内置章节组合。
+  - `modules[]`：模块 id、文件路径、时长、来源大纲行。
+  - `labs[]`：实操任务、限制、验收。
+  - `assessment`：评分规则与安全红线。
+- `specs/modules/*.md`
+  - YAML frontmatter：模块 id、标题、时长、教学意图、学习产出。
+  - `:::slide` block：页面 id、标题、模式、时长、视觉类型。
+  - 页面章节：Headline、Body、Key Points、Visual、Takeaway、Speaker Notes。
+- `configs/*.yaml`
+  - 可选的自定义 deck 配置。
 
 ## 输出
 
-- `build/slides/ai-coding-bootcamp.slidev.md`。
-- 文件包含 Slidev frontmatter、课程封面、课程地图、模块分隔页、内容页、作业验收页。
-- 讲师备注写入 Slidev speaker notes，便于 presenter mode 使用。
+- 默认输出：`build/slides/ai-coding-bootcamp-7h.slidev.md`。
+- 自定义输出：由 deck 或 `--output` 指定。
+- 同目录复制 `style.css`，供 Slidev 渲染使用。
+
+## 命令
+
+```bash
+npm run generate
+npm run generate -- --deck lesson1-lab
+npm run generate -- --deck lesson2-sdd
+npm run generate -- --modules orientation,sdd-codewiki,smn-design-lab
+npm run generate -- --config configs/custom-deck.example.yaml
+npm run generate -- --list-decks
+```
 
 ## 验收
 
-- `npm run validate` 能发现缺失标题、空模块、重复 slide id、缺失讲师备注等问题。
-- `npm run validate` 能确认课程生产的四阶 SDD 文档存在，并扫描常见密钥模式。
+- `npm run validate` 能发现缺失标题、重复 slide id、缺失讲师备注、模块时长不一致、deck 引用错误和敏感凭证模式。
 - `npm run generate` 能稳定生成 Markdown。
 - `npm run build` 能通过 Slidev 构建静态站点。
-- `export:pptx` 和 `export:pdf` 不提交生成文件，只作为临时交付命令。
+- PDF/PPTX 导出必须先安装 `playwright-chromium`，生成文件不提交。
+
+## 扩展约束
+
+- 生成器只做轻量 Markdown 到 Slidev 的转换，不把排版逻辑写回 Spec。
+- 新视觉类型应先补 CSS 和生成器，再在模板中开放给讲师。
+- 如果未来需要多语言或多讲师版本，优先通过 deck/config 组合实现，不复制整套课程。

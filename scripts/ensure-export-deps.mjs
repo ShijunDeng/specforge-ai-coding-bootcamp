@@ -12,4 +12,3 @@ if (!ok) {
   );
   process.exit(1);
 }
-
