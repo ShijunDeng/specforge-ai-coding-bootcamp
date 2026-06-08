@@ -21,7 +21,7 @@ source_rows: [11, 12, 13]
 id: mcp-01
 title: MCP：大模型连接外部系统的手脚
 mode: talk
-duration_min: 10
+duration_min: 8
 visual: flow
 :::
 
@@ -56,7 +56,7 @@ MCP 是连接能力，不是放弃工程控制。
 id: mcp-02
 title: Token 配置与权限边界
 mode: talk
-duration_min: 8
+duration_min: 7
 visual: checklist
 :::
 
@@ -91,7 +91,7 @@ Token 配置是工程流程的一部分，不是工具安装的旁枝。
 id: mcp-03
 title: 自动检视：把团队规则前置
 mode: talk
-duration_min: 10
+duration_min: 8
 visual: cards
 :::
 
@@ -124,7 +124,7 @@ visual: cards
 id: mcp-04
 title: 讲师演示：建单、查错、自动修复
 mode: demo
-duration_min: 20
+duration_min: 17
 visual: flow
 :::
 
@@ -160,7 +160,7 @@ visual: flow
 id: mcp-05
 title: 随堂练习：打通自动化查错改错防线
 mode: lab
-duration_min: 22
+duration_min: 20
 visual: checklist
 :::
 

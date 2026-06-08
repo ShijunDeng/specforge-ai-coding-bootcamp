@@ -137,6 +137,16 @@ async function validateModule(moduleRef) {
   const slides = parseSlides(body, moduleRef.file);
   if (!slides.length) errors.push(`${moduleRef.file} needs at least one :::slide block`);
   slides.forEach((slide, index) => validateSlide(slide, moduleRef.file, index));
+  const slideDuration = slides.reduce(
+    (sum, slide) => sum + Number(slide.meta?.duration_min || 0),
+    0
+  );
+  const moduleDuration = Number(moduleRef.duration_min || 0);
+  if (slideDuration !== moduleDuration) {
+    errors.push(
+      `${moduleRef.file} slide duration total ${slideDuration} must match module duration ${moduleDuration}`
+    );
+  }
   return { duration: Number(moduleRef.duration_min || 0), slides: slides.length };
 }
 
