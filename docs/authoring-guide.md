@@ -68,6 +68,7 @@
    - `duration_min`：本节课总时长，课前材料可为 `0`。
    - `intent`：本节课的教学意图。
    - `outcomes`：学员完成后能做到的可观察行为。
+   - 具体填写标准见 `specs/templates/module-spec.template.md` 的 `Field Guide`，复制模板后删除说明区，只保留正式内容。
 3. 编写 `Module Brief` 和至少一个 `:::slide` block。每页 slide 必须有唯一 `id`、`title`、`mode`，并至少包含 `Headline`、`Body` 或 `Key Points` 中的一项；建议始终补齐 `Speaker Notes`。
 4. 在 `specs/course.yaml` 的 `modules[]` 注册新模块：
    - `id`：模块 id。
