@@ -29,6 +29,8 @@
 - `--config` 自定义 deck 输出：由 `configs/*.yaml` 中 deck 的 `output` 指定。
 - 显式自定义输出：由 `--output` 覆盖上述规则。
 - 同目录复制 `style.css`，供 Slidev 渲染使用。
+- 公网预览由 `scripts/serve-public.mjs` 启动 Slidev 并创建 localtunnel 地址，必须使用 `--local-host 127.0.0.1` 保证公网 Host 被接受。
+- PPTX 默认由 `scripts/export-pptx-with-skill.mjs` 读取 Spec 并按 `/home/dsj/skills/open-skills/pptx` skill 规则生成，Slidev PPTX 导出仅作为显式备用路径。
 
 ## 命令
 
@@ -39,6 +41,8 @@ npm run generate -- --deck lesson2-sdd
 npm run generate -- --modules orientation,sdd-codewiki,smn-design-lab
 npm run generate -- --config configs/custom-deck.example.yaml
 npm run generate -- --list-decks
+npm run slides:public
+npm run export:pptx
 ```
 
 ## 验收
@@ -46,7 +50,9 @@ npm run generate -- --list-decks
 - `npm run validate` 能发现缺失标题、重复 slide id、缺失讲师备注、模块时长不一致、模块 manifest 追溯字段不一致、deck/config 引用错误、缺失来源文件和敏感凭证模式。
 - `npm run generate` 能稳定生成 Markdown。
 - `npm run build` 能通过 Slidev 构建静态站点。
-- PDF/PPTX 导出必须先安装 `playwright-chromium`，生成文件不提交。
+- `npm run slides:public` 必须输出可访问公网地址。
+- `npm run export:pptx` 必须能找到 `/home/dsj/skills/open-skills/pptx/SKILL.md` 并生成 PPTX。
+- Slidev PDF/PPTX 备用导出必须先安装 `playwright-chromium`，生成文件不提交。
 
 ## 扩展约束
 

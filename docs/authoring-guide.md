@@ -113,6 +113,14 @@ npm run generate:custom
 npm run slides
 ```
 
+公网预览：
+
+```bash
+npm run slides:public
+```
+
+`slides:public` 会生成课件、启动 Slidev、通过 localtunnel 创建公网地址，并用 `--local-host 127.0.0.1` 保证公网 Host 能被 Vite/Slidev 接受。命令输出 `Public slide show` 后再把地址发给学员或评审。
+
 如果端口被占用：
 
 ```bash
@@ -189,6 +197,12 @@ npm run generate
 npm run slides
 ```
 
+公网预览：
+
+```bash
+npm run slides:public
+```
+
 如果端口被占用：
 
 ```bash
@@ -199,4 +213,18 @@ PORT=3031 npm run slides
 
 ```bash
 npm run check
+```
+
+## PPTX 制作
+
+PPTX 默认不走 Slidev 截图导出，而是使用 `/home/dsj/skills/open-skills/pptx` 下的 pptx skill 规则生成：
+
+```bash
+npm run export:pptx
+```
+
+该命令读取 Spec 源文件，使用 PptxGenJS 生成原生文本、表格和形状对象，默认输出到 `dist/ai-coding-bootcamp-7h.pptx`。如需临时使用 Slidev 自带导出作为视觉备份，显式运行：
+
+```bash
+npm run export:pptx:slidev
 ```

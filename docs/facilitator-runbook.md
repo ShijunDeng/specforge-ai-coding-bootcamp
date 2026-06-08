@@ -12,6 +12,8 @@
 
 - 运行 `npm run validate` 和 `npm run generate`。
 - 用 `npm run slides` 预览关键页：课程地图、第一课演示、第二课 SDD、评分 Rubric。
+- 需要远程评审或公网试讲时，使用 `npm run slides:public`，并确认输出的 `Public slide show` 地址可访问。
+- 需要 PPTX 交付时，默认运行 `npm run export:pptx`，该命令使用 `/home/dsj/skills/open-skills/pptx` 下的 pptx skill 规则。
 - 准备常见环境问题 FAQ：JDK、Maven/Gradle、代理、依赖源、Token 权限。
 - 安排助教分工：环境阻塞、实操答疑、证据收集、时间提醒。
 - 准备 CodeWiki 不稳定时的脱敏查询结果备份。

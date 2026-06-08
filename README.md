@@ -21,17 +21,23 @@ npm run generate:lesson2            # 生成第二课 SDD 版本
 npm run generate -- --deck sdd-only # 按内置 deck 组合生成
 npm run generate -- --modules orientation,smn-design-lab # 临时组合，输出 custom-*.slidev.md
 npm run slides                      # 启动 Slidev 预览，默认端口 3030
+npm run slides:public               # 启动 Slidev 并自动创建公网访问地址
 npm run build                       # 生成静态站点到 dist/slides
+npm run export:pptx                 # 默认使用 /home/dsj/skills/open-skills/pptx 生成 PPTX
+npm run export:pdf                  # 使用 Slidev 导出 PDF
 ```
 
 `--modules` 用于临时组合章节，未指定 `--output` 时会写入 `build/slides/custom-<module-ids>.slidev.md`，不会覆盖内置 deck 的生成文件。
 
-导出 PDF/PPTX 前，按 Slidev 的浏览器渲染要求安装依赖：
+公网预览使用 `localtunnel --local-host 127.0.0.1` 转发，避免 Vite/Slidev 因公网 Host 拒绝访问。命令输出 `Public slide show` 后，需要用公网地址做一次外部访问确认。
+
+PPTX 制作默认使用 `/home/dsj/skills/open-skills/pptx` 下的 pptx skill 规则，采用红/白/灰企业技术培训风格和 PptxGenJS 原生对象生成。只有需要复刻 Slidev 视觉效果时，才使用备用命令：
 
 ```bash
-npm i -D playwright-chromium
-npm run export:pptx
+npm run export:pptx:slidev
 ```
+
+备用 Slidev PPTX/PDF 导出依赖浏览器渲染，如缺少依赖，运行 `npm i -D playwright-chromium`。
 
 ## 目录约定
 
@@ -44,7 +50,7 @@ npm run export:pptx
 - `docs/facilitator-runbook.md`：课前、课中、课后执行手册。
 - `exercises/`：课堂练习与大作业说明，不存放外部项目完整源码。
 - `rubrics/`：作业评分 Rubric。
-- `scripts/`：校验、生成和导出依赖检查脚本。
+- `scripts/`：校验、生成、公网预览和导出脚本。
 - `build/`、`dist/`：生成物目录，不作为课程源文件维护。
 
 `specs/modules/` 文件名中的 `00`、`10`、`20` 等数字前缀只用于人工阅读和目录排序，方便在两个模块之间插入新文件，例如 `25-new-topic.md`。课件生成顺序不由文件名前缀决定，而由 `specs/course.yaml` 中 `decks[].include_modules` 的顺序决定。
