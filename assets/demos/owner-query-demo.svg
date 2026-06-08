@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="24" y="24" width="912" height="492" rx="18" fill="#151c22" stroke="#2d3a43"/>
+  <circle cx="52" cy="50" r="6" fill="#ff6b6b"/><circle cx="72" cy="50" r="6" fill="#f9c74f"/><circle cx="92" cy="50" r="6" fill="#43aa8b"/>
+  <text x="122" y="56" fill="#b9c6cf" font-family="Noto Sans SC,Inter,Arial,sans-serif" font-size="18">spring-petclinic / OwnerController.java</text>
+  <rect x="44" y="82" width="548" height="338" rx="10" fill="#0b1116" stroke="#26333d"/>
+  <rect x="610" y="82" width="302" height="338" rx="10" fill="#101820" stroke="#26333d"/>
+  <text x="64" y="116" fill="#7dd3fc" font-family="Noto Sans SC,monospace" font-size="18">Prompt Contract</text>
+  <text x="64" y="150" fill="#e5edf2" font-family="Noto Sans SC,monospace" font-size="17">Goal: fuzzy search Owner by lastName fragment</text>
+  <text x="64" y="178" fill="#e5edf2" font-family="Noto Sans SC,monospace" font-size="17">Context: OwnerController / Repository / Tests</text>
+  <text x="64" y="206" fill="#e5edf2" font-family="Noto Sans SC,monospace" font-size="17">Boundary: plan first, no unrelated modules</text>
+  <text x="64" y="250" fill="#9ae6b4" font-family="Noto Sans SC,monospace" font-size="17">+ @GetMapping("/owners/search")</text>
+  <text x="64" y="278" fill="#9ae6b4" font-family="Noto Sans SC,monospace" font-size="17">+ List&lt;Owner&gt; findByLastNameContaining(...)</text>
+  <text x="64" y="306" fill="#fbd38d" font-family="Noto Sans SC,monospace" font-size="17">! Review: empty keyword must not return all owners</text>
+  <text x="64" y="334" fill="#9ae6b4" font-family="Noto Sans SC,monospace" font-size="17">+ OwnerControllerTests.searchByNameFragment()</text>
+  <text x="630" y="116" fill="#7dd3fc" font-family="Noto Sans SC,monospace" font-size="18">UT Skill</text>
+  <rect x="630" y="138" width="250" height="44" rx="8" fill="#122c2a" stroke="#2f8d75"/>
+  <text x="648" y="166" fill="#d5fff3" font-family="Noto Sans SC,monospace" font-size="16">generate focused tests</text>
+  <rect x="630" y="205" width="250" height="134" rx="8" fill="#0b1116" stroke="#2d3a43"/>
+  <text x="648" y="236" fill="#9ae6b4" font-family="Noto Sans SC,monospace" font-size="16">$ mvn -Dtest=OwnerControllerTests test</text>
+  <text x="648" y="270" fill="#9ae6b4" font-family="Noto Sans SC,monospace" font-size="16">Tests run: 7</text>
+  <text x="648" y="300" fill="#9ae6b4" font-family="Noto Sans SC,monospace" font-size="16">Failures: 0</text>
+  <text x="648" y="330" fill="#9ae6b4" font-family="Noto Sans SC,monospace" font-size="16">BUILD SUCCESS</text>
+  <rect x="44" y="442" width="868" height="46" rx="10" fill="#fff7f1"/>
+  <text x="64" y="472" fill="#8a4b16" font-family="Noto Sans SC,Inter,Arial,sans-serif" font-size="19">Observation: a good demo converges through plan, review, and tests.</text>
+</svg>

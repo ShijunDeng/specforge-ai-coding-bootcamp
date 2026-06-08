@@ -301,6 +301,13 @@ visual: checklist
 ```
 
 
+
+### Media
+src: ../../assets/demos/pet-vaccination-test.svg
+type: 代码运行截图
+alt: Pet 疫苗字段的代码修改和测试运行结果。
+caption: 提示契约最终要落到代码 diff、测试命令和红变绿的运行证据。
+
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：提示契约：把需求变成可执行任务。
 - 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。

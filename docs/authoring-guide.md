@@ -11,6 +11,7 @@
 - **讲师提示放备注**：讲法、追问、现场取舍、助教动作写在 `Speaker Notes`。
 - **插图和排版写进 Spec**：每页都应填写 `Illustration Brief` 和 `Layout Contract`，Demo、Lab、Assessment 页还要填写 `Activity`。
 - **每个知识点都要有实例**：每页填写 `Example`，用具体需求、失败场景、提示词、Review 意见、测试输出或文档片段承载概念。
+- **关键页优先使用真实画面**：Demo、Lab、MCP、CodeWiki、SDD、验收页应优先填写 `Media`，引用代码截图、终端运行截图、MR 检视截图或动态演示 SVG/GIF。
 - **先验证再交付**：每次修改后至少运行 `npm run validate`；正式交付前运行 `npm run check`。
 
 `course.xlsx` 只作为首版课程设计的初始输入来源。后续课程演进以本仓库的 Spec 为准，正文、流程和说明都不应依赖 `course.xlsx`。
@@ -161,6 +162,7 @@ visual: flow
 | `Example` | 本页知识点对应的具体实例。优先使用贯穿案例、真实失败、输入输出、Review 意见或验收证据，避免抽象口号。 |
 | `Key Points` | 屏幕要点，通常 3-6 条；不要放完整讲稿。 |
 | `Visual` | 右侧图示内容。生成器会按 `visual` 类型渲染为流程图、清单、卡片、矩阵等。 |
+| `Media` | 可选但推荐。填写 `src/type/alt/caption`，用于展示代码运行截图、终端输出、MR 检视或动态演示图。填写后 Slidev 右侧优先显示媒体。 |
 | `Illustration Brief` | 给生成器或设计师的插图说明。写画面元素、关系、强调色、禁止事项；AI PPT 目标会把它输出为视觉方向。 |
 | `Layout Contract` | 稳定版式约束。写左侧/右侧/底部区域分别承载什么，如何处理溢出，哪些内容不能出现在可见区。 |
 | `Activity` | Demo、Lab、Assessment 页必填。写课堂动作、输入材料、学员产出和验收证据；Slidev 中进入讲师备注，不作为学员可见正文。 |
@@ -168,6 +170,17 @@ visual: flow
 | `Speaker Notes` | 讲师备注，不作为主屏幕内容展示。 |
 
 `Illustration Brief` 和 `Layout Contract` 的作用是降低每次生成 PPT 的随机性。它们不应该复述正文，而应说明“怎么画”和“怎么排”。
+
+`Media` 的推荐写法：
+
+```yaml
+src: ../../assets/demos/owner-query-demo.svg
+type: 代码运行截图
+alt: Owner 模糊查询的 IDE diff、UT Skill 和测试结果。
+caption: 从提示契约到小 diff，再到本地测试跑绿。
+```
+
+媒体资产放在 `assets/demos/`。优先使用脱敏后的真实截图；无法取得真实截图时，可以用屏幕风格的 SVG 动态演示图表达代码、终端、MR 和文档流转。不要使用抽象装饰图替代运行画面。
 
 ## 视觉类型
 
@@ -214,6 +227,7 @@ npm run generate
 - `Example` 必须具体，能让学员把本页概念映射到一个真实动作或场景。
 - `Key Points` 控制在 3-6 条。
 - `Visual` 有结构，不能只写一段普通说明。
+- Demo/Lab/复杂概念页优先补 `Media`；没有媒体时才退回纯结构图。
 - `Illustration Brief` 写清图示主体、关系、强调点和禁止元素。
 - `Layout Contract` 写清 16:9 页面如何分区，内容溢出时如何取舍。
 - Demo、Lab、Assessment 页必须有 `Activity`。

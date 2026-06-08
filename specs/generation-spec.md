@@ -27,7 +27,7 @@
 - `specs/modules/*.md`
   - YAML frontmatter：模块 id、标题、时长、教学意图、学习产出。
   - `:::slide` block：页面 id、标题、模式、时长、视觉类型。
-  - 页面章节：Headline、Body、Example、Key Points、Visual、Illustration Brief、Layout Contract、Activity、Takeaway、Speaker Notes。其中 Example 是学员可见实例，Activity 是教案动作，Slidev 目标中进入讲师备注，不作为主屏幕内容。
+  - 页面章节：Headline、Body、Example、Key Points、Visual、Media、Illustration Brief、Layout Contract、Activity、Takeaway、Speaker Notes。其中 Example 是学员可见实例；Media 是代码截图、终端输出、MR 截图或动态演示图；Activity 是教案动作，Slidev 目标中进入讲师备注，不作为主屏幕内容。
 - `configs/*.yaml`
   - 可选的自定义 deck 配置。
 
@@ -74,7 +74,7 @@ LLM 输出保留：
 - deck agenda。
 - 模块 intent、outcomes。
 - 每页 title、mode、duration、visual type。
-- Headline、Body、Example、Key Points、Visual Brief、Illustration Brief、Layout Contract、Activity、Takeaway。
+- Headline、Body、Example、Key Points、Visual Brief、Media、Illustration Brief、Layout Contract、Activity、Takeaway。
 - labs 与 assessment。
 
 ### AI PPT 产品大纲
@@ -97,7 +97,7 @@ PPT-AI 输出包含：
 - 每页的 Title、Type、Module、Estimated time。
 - Main Message。
 - On-Slide Text：包含正文、实例和要点。
-- Visual Direction：包含右侧图示结构、插图说明、版式契约和课堂活动。
+- Visual Direction：包含右侧图示结构、媒体资产、插图说明、版式契约和课堂活动。
 - Speaker Takeaway。
 
 ## 命令

@@ -410,6 +410,13 @@ visual: flow
 - 打回修订
 
 
+
+### Media
+src: ../../assets/demos/codewiki-sdd-animated.svg
+type: 动态演示图
+alt: CodeWiki 查询结果进入 Proposal、Spec、Design、Tasks 的动态流转。
+caption: 事实不能停在查询窗口里，必须回填到 Design 依据和 Tasks 约束中。
+
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：查现有插件、汇总 CodeWiki 事实、调用 SDD Skill、Proposal、Spec、Design、Tasks。
 - 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。

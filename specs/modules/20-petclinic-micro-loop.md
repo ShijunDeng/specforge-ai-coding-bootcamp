@@ -204,6 +204,13 @@ visual: flow
 - 本地测试
 
 
+
+### Media
+src: ../../assets/demos/owner-query-demo.svg
+type: 代码运行截图
+alt: Owner 模糊查询的提示契约、代码 diff、UT Skill 和测试结果。
+caption: 这张运行画面展示从提示契约到小 diff，再到本地测试跑绿的完整演示链路。
+
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：选中 Owner 相关文件、说明查询规则、要求先给改动计划、采纳代码、调用 UT Skill、本地测试。
 - 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
@@ -305,6 +312,13 @@ visual: cards
 - 红线：禁止手敲业务代码。
 - 验收：测试由红变绿，解释 Review 风险。
 
+
+
+### Media
+src: ../../assets/demos/pet-vaccination-test.svg
+type: 终端运行截图
+alt: Pet 疫苗字段练习的代码片段和 Maven 测试结果。
+caption: 练习不是看起来像完成，而是能看到失败、修复和测试通过的运行轨迹。
 
 ### Illustration Brief
 - 绘制 3-6 张任务卡或概念卡，卡片内容覆盖：目标：Pet 实体加疫苗字段、边界：只改相关实体、接口、测试和必要配置、红线：禁止手敲业务代码、验收：测试由红变绿，解释 Review 风险。

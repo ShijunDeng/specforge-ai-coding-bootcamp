@@ -203,6 +203,13 @@ visual: flow
 - 测试跑绿
 
 
+
+### Media
+src: ../../assets/demos/mcp-review-repair-animated.svg
+type: 动态演示图
+alt: MCP 从本地分支到 MR、机器检视和修复 Skill 的动态流转。
+caption: 动态节点展示外部系统动作如何进入可审计、可修复、可验证的质量闭环。
+
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：故意埋雷、MCP 建 MR、机器检视亮红、Skill 读取意见、自动修复、测试跑绿。
 - 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
@@ -257,6 +264,13 @@ visual: checklist
 - 测试与 Review
 - 提交证据
 
+
+
+### Media
+src: ../../assets/demos/mcp-review-repair-animated.svg
+type: 动态演示图
+alt: 学员练习中从坏代码 MR 到检视意见和修复 diff 的流转。
+caption: 练习必须拿到 MR 链接、检视意见、修复 diff 和测试结果，不能只停留在流程图。
 
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：配置 MCP、坏代码推 MR、拿检视意见、修复 Skill 改代码、测试与 Review、提交证据。

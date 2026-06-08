@@ -220,6 +220,13 @@ SMN 接入涉及 AK/SK、区域、主题、消息模板等配置。凭证处理�
 - 假凭证测试
 
 
+
+### Media
+src: ../../assets/demos/smn-security-review.svg
+type: 代码配置截图
+alt: SMN 配置、脱敏日志和安全 Review 清单。
+caption: 安全设计要能在配置、日志和测试画面中被看见，而不是只写一句“注意安全”。
+
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：配置注入、脱敏日志、参数校验、失败诊断、假凭证测试。
 - 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
@@ -273,6 +280,13 @@ Tasks 是给 Agent 的施工图，也是给 Reviewer 的检查表。颗粒度太
 | 发送逻辑 | 封装 SmnClientAdapter 并处理超时与错误码 | 调接口 |
 | 测试 | 参考现有插件新增配置校验和发送失败测试 | 写测试 |
 
+
+
+### Media
+src: ../../assets/demos/smn-security-review.svg
+type: 代码配置截图
+alt: SMN Tasks 如何落到配置、日志和测试检查项。
+caption: 好任务要能指向具体配置、类、测试和安全证据，而不是一句“实现 SMN”。
 
 ### Illustration Brief
 - 绘制二维矩阵或对照表，表格内容围绕：层级 / 好任务、接口接入 / 新增 SmnAlertChannelFactory 并注册到现有 SPI、配置 / 在告警配置模型中加入 region、topic、ak、sk、发送逻辑 / 封装 SmnClientAdapter 并处理超时与错误码、测试 / 参考现有插件新增配置校验和发送失败测试。

@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { parse } from "yaml";
 
@@ -317,17 +317,53 @@ function renderSpeakerNotes(notes = "") {
   return `\n<!--\n${notes.trim()}\n-->\n`;
 }
 
-function renderContentSlide(slide, module) {
+function parseMediaSpec(media = "") {
+  if (!media.trim()) return null;
+  try {
+    const parsed = parse(media);
+    if (parsed?.src) return parsed;
+  } catch {
+    // Fall back to a simple line parser below.
+  }
+  const result = {};
+  for (const line of media.split(/\r?\n/)) {
+    const match = line.trim().match(/^[-*]?\s*([a-zA-Z_]+)\s*[:：]\s*(.+)$/);
+    if (match) result[match[1].toLowerCase()] = match[2].trim();
+  }
+  return result.src ? result : null;
+}
+
+function renderMediaFrame(media = "") {
+  const spec = parseMediaSpec(media);
+  if (!spec?.src) return "";
+  const originalSrc = String(spec.src);
+  const src = originalSrc.startsWith("../../assets/")
+    ? `./assets/${originalSrc.slice("../../assets/".length)}`
+    : originalSrc;
+  const label = spec.type ?? "运行画面";
+  const alt = spec.alt ?? spec.caption ?? label;
+  const caption = spec.caption ?? "";
+  return `<figure class="media-frame">
+  <div class="media-label">${inlineMarkdown(label)}</div>
+  <img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" />
+  ${caption ? `<figcaption>${inlineMarkdown(caption)}</figcaption>` : ""}
+</figure>`;
+}
+
+function renderContentSlide(slide, module, includeNotes = false) {
   const { meta, sections } = slide;
   const headline = sections.headline ?? "";
   const body = sections.body ?? "";
   const example = sections.example ?? "";
   const keyPoints = sections["key points"] ?? "";
   const visual = sections.visual ?? "";
+  const media = sections.media ?? "";
   const activity = sections.activity ?? "";
   const takeaway = sections.takeaway ?? "";
   const notes = sections["speaker notes"] ?? "";
-  const speakerNotes = [activity ? `Activity:\n${activity}` : "", notes].filter(Boolean).join("\n\n");
+  const speakerNotes = includeNotes
+    ? [activity ? `Activity:\n${activity}` : "", notes].filter(Boolean).join("\n\n")
+    : "";
 
   return `${slideSeparator({
     layout: meta.layout ?? "default",
@@ -345,7 +381,7 @@ ${example ? `<div class="example-box"><strong>例子：</strong>${markdownLite(e
 ${keyPoints ? `<div class="key-points">${markdownLite(keyPoints)}</div>` : ""}
 </section>
 <aside class="visual-pane">
-${renderVisualWidget(visual, meta.visual)}
+${media ? renderMediaFrame(media) : renderVisualWidget(visual, meta.visual)}
 ${takeaway ? `<div class="takeaway">${inlineMarkdown(takeaway)}</div>` : ""}
 </aside>
 </div>
@@ -467,6 +503,7 @@ function renderPlainSlide(slide, module, index, includeNotes = false) {
     section("Example", sections.example ?? ""),
     section("Key Points", sections["key points"] ?? ""),
     section("Visual Brief", sections.visual ?? ""),
+    section("Media", sections.media ?? ""),
     section("Illustration Brief", sections["illustration brief"] ?? ""),
     section("Layout Contract", sections["layout contract"] ?? ""),
     section("Activity", sections.activity ?? ""),
@@ -561,6 +598,13 @@ function compactMarkdown(value = "") {
     .join("\n");
 }
 
+function pptAiMarkdown(value = "") {
+  return compactMarkdown(value)
+    .replace(/讲师动作、追问、备选说法写入 Speaker Notes。/g, "讲师动作、追问、备选说法不要进入可见页；如需备注版，放入非可见备注。")
+    .replace(/讲师提醒、追问和现场取舍放入 Speaker Notes。/g, "讲师提醒、追问和现场取舍不要进入可见页；如需备注版，放入非可见备注。")
+    .replace(/Speaker Notes/g, "非可见备注");
+}
+
 function renderPptAiSlide(slide, module, index, includeNotes = false) {
   const { meta, sections } = slide;
   const chunks = [
@@ -570,23 +614,26 @@ function renderPptAiSlide(slide, module, index, includeNotes = false) {
     `Estimated time: ${meta.duration_min ? `${meta.duration_min} minutes` : "prework"}`,
     "",
     "### Main Message",
-    compactMarkdown(sections.headline ?? meta.title),
+    pptAiMarkdown(sections.headline ?? meta.title),
     "",
     "### On-Slide Text",
-    compactMarkdown([sections.body, sections.example ? `Example:\n${sections.example}` : "", sections["key points"]].filter(Boolean).join("\n")),
+    pptAiMarkdown([sections.body, sections.example ? `Example:\n${sections.example}` : "", sections["key points"]].filter(Boolean).join("\n")),
     "",
     "### Visual Direction",
     `Layout: ${meta.visual ?? "cards"}`,
-    compactMarkdown(sections.visual ?? ""),
-    sections["illustration brief"] ? `\nIllustration Brief:\n${compactMarkdown(sections["illustration brief"])}` : "",
-    sections["layout contract"] ? `\nLayout Contract:\n${compactMarkdown(sections["layout contract"])}` : "",
-    sections.activity ? `\nClassroom Activity:\n${compactMarkdown(sections.activity)}` : "",
+    pptAiMarkdown(sections.visual ?? ""),
+    sections.media ? `\nMedia:\n${pptAiMarkdown(sections.media)}` : "",
+    sections["illustration brief"] ? `\nIllustration Brief:\n${pptAiMarkdown(sections["illustration brief"])}` : "",
+    sections["layout contract"] ? `\nLayout Contract:\n${pptAiMarkdown(sections["layout contract"])}` : "",
     "",
-    "### Speaker Takeaway",
-    compactMarkdown(sections.takeaway ?? "")
+    "### Slide Takeaway",
+    pptAiMarkdown(sections.takeaway ?? "")
   ];
+  if (includeNotes && sections.activity) {
+    chunks.push("", "### Facilitation Notes (not visible on slide)", pptAiMarkdown(sections.activity));
+  }
   if (includeNotes && sections["speaker notes"]) {
-    chunks.push("", "### Speaker Notes", compactMarkdown(sections["speaker notes"]));
+    chunks.push("", "### Speaker Notes (not visible on slide)", pptAiMarkdown(sections["speaker notes"]));
   }
   return chunks.filter((chunk) => chunk !== undefined).join("\n");
 }
@@ -612,7 +659,7 @@ function renderPptAiDeck(course, deck, modules, includeModules, includeNotes = f
     listSection("Narrative Arc", course.learning_design?.narrative_arc ?? []),
     objectSection("Case Design", course.learning_design?.case_design ?? {}),
     objectSection("Visual System", course.learning_design?.visual_system ?? {}),
-    listSection("Slide Contract", course.learning_design?.slide_contract ?? []),
+    listSection("Slide Contract", (course.learning_design?.slide_contract ?? []).map((item) => pptAiMarkdown(item))),
     "",
     "## Slide Outline"
   ];
@@ -635,7 +682,7 @@ function renderPptAiDeck(course, deck, modules, includeModules, includeNotes = f
   return chunks.filter(Boolean).join("\n\n");
 }
 
-function renderSlidevDeck(course, deck, modules, includeModules, generatedAt, exportFilename) {
+function renderSlidevDeck(course, deck, modules, includeModules, generatedAt, exportFilename, includeNotes = false) {
   const chunks = [
     `---
 theme: ${course.deck_defaults?.theme ?? "default"}
@@ -672,7 +719,7 @@ ${(course.learning_design?.principles ?? []).map((item) => `- ${item}`).join("\n
 
   modules.forEach((module, moduleIndex) => {
     chunks.push(renderModuleDivider(module, moduleIndex));
-    module.slides.forEach((slide) => chunks.push(renderContentSlide(slide, module)));
+    module.slides.forEach((slide) => chunks.push(renderContentSlide(slide, module, includeNotes)));
   });
 
   chunks.push(renderLabs(course, includeModules));
@@ -732,7 +779,7 @@ const exportFilename = deck.export_filename ?? outputBaseName(output) ?? course.
 
 const markdown =
   target === "slidev"
-    ? renderSlidevDeck(course, deck, selectedModules, includeModules, generatedAt, exportFilename)
+    ? renderSlidevDeck(course, deck, selectedModules, includeModules, generatedAt, exportFilename, includeNotes)
     : target === "ppt-ai"
       ? renderPptAiDeck(course, deck, selectedModules, includeModules, includeNotes)
       : renderPlainDeck(course, deck, selectedModules, includeModules, includeNotes);
@@ -742,6 +789,9 @@ await writeFile(output, markdown, "utf8");
 const customStyles = target === "slidev" ? await readFile("style.css", "utf8").catch(() => "") : "";
 if (customStyles) {
   await writeFile(path.join(path.dirname(output), "style.css"), customStyles, "utf8");
+}
+if (target === "slidev") {
+  await cp("assets", path.join(path.dirname(output), "assets"), { recursive: true, force: true }).catch(() => {});
 }
 
 console.log(`Generated ${output} (${target})`);
