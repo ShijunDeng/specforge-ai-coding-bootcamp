@@ -274,7 +274,7 @@ visual: checklist
 一次微闭环的最终产物不是代码片段，而是可复核证据包。
 
 ### Body
-学员课后复现时，要提交可以被讲师和同伴复核的过程材料，而不是只说“我跑通了”。
+学员课后复现时，要提交可以被讲师和同伴复核的过程材料，而不是只说“我跑通了”。同时为第二课提前准备 dolphin-scheduler 和必要授权。
 
 ### Key Points
 - 需求提示词和 AI 修改计划。
@@ -282,6 +282,7 @@ visual: checklist
 - 单测生成记录和本地测试输出。
 - 测试失败时的修复对话。
 - 最终可复现命令或截图。
+- 下次课前完成 dolphin-scheduler Clone、依赖预热和 PKIToken 或等价授权。
 
 ### Visual
 - Prompt
@@ -290,10 +291,12 @@ visual: checklist
 - Test
 - Repair
 - Evidence
+- Next repo ready
 
 ### Takeaway
-证据包让 AI 协作从个人经验变成团队可复制流程。
+证据包让 AI 协作从个人经验变成团队可复制流程，课前准备让第二课能直接进入复杂项目。
 
 ### Speaker Notes
 - 这一页要很快过，作为后面 MCP 和大作业的证据标准。
 - 可以把提交格式指向 `exercises/petclinic-micro-loop/README.md`。
+- 明确提醒下次课所需仓库和授权，不要把大型仓库 Clone 留到课堂现场。
