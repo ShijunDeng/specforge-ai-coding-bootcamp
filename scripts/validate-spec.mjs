@@ -42,6 +42,15 @@ function validateUniqueIds(items, path) {
   }
 }
 
+function sameArray(left = [], right = []) {
+  return (
+    Array.isArray(left) &&
+    Array.isArray(right) &&
+    left.length === right.length &&
+    left.every((item, index) => item === right[index])
+  );
+}
+
 function validateDeck(deck, path, moduleIds) {
   requireValue(deck?.id, `${path}.id`);
   requireValue(deck?.title, `${path}.title`);
@@ -186,6 +195,14 @@ async function validateModule(moduleRef) {
 
   if (meta.id && meta.id !== moduleRef.id) {
     errors.push(`${moduleRef.file}.frontmatter.id must match course module id ${moduleRef.id}`);
+  }
+
+  if (meta.title && meta.title !== moduleRef.title) {
+    errors.push(`${moduleRef.file}.frontmatter.title must match specs/course.yaml`);
+  }
+
+  if (!sameArray(meta.source_rows ?? [], moduleRef.source_rows ?? [])) {
+    errors.push(`${moduleRef.file}.source_rows must match specs/course.yaml`);
   }
 
   if (Number(meta.duration_min || 0) !== Number(moduleRef.duration_min || 0)) {
