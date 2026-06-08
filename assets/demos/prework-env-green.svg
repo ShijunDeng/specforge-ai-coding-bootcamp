@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="26" y="24" width="908" height="492" rx="22" fill="#162026" stroke="#31424a"/>
+  <rect x="48" y="50" width="408" height="416" rx="14" fill="#10171c" stroke="#2c3b43"/>
+  <text x="74" y="87" font-family="ui-monospace,Menlo,monospace" font-size="20" fill="#d8f3dc">preflight.sh</text>
+  <text x="74" y="128" font-family="ui-monospace,Menlo,monospace" font-size="18" fill="#7dd3fc">$ git status --short</text>
+  <text x="94" y="157" font-family="ui-monospace,Menlo,monospace" font-size="16" fill="#cbd5e1">clean working tree</text>
+  <text x="74" y="201" font-family="ui-monospace,Menlo,monospace" font-size="18" fill="#7dd3fc">$ mvn -q test</text>
+  <text x="94" y="230" font-family="ui-monospace,Menlo,monospace" font-size="16" fill="#86efac">Tests run: 94, Failures: 0</text>
+  <text x="74" y="274" font-family="ui-monospace,Menlo,monospace" font-size="18" fill="#7dd3fc">$ npm run validate</text>
+  <text x="94" y="303" font-family="ui-monospace,Menlo,monospace" font-size="16" fill="#86efac">Spec OK: course input ready</text>
+  <text x="74" y="347" font-family="ui-monospace,Menlo,monospace" font-size="18" fill="#7dd3fc">$ token-check --scope classroom</text>
+  <text x="94" y="376" font-family="ui-monospace,Menlo,monospace" font-size="16" fill="#fbbf24">token=****9f2a, scope=demo-mr</text>
+  <rect x="504" y="70" width="356" height="78" rx="16" fill="#123128" stroke="#34d399"/>
+  <text x="532" y="118" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="700" fill="#dcfce7">Environment green</text>
+  <circle cx="826" cy="110" r="22" fill="#22c55e"/>
+  <path d="M814 110l8 8 17-20" fill="none" stroke="#052e16" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g font-family="Inter,Arial,sans-serif" font-size="18" fill="#d1fae5">
+    <rect x="504" y="178" width="356" height="52" rx="12" fill="#1b2a30" stroke="#334155"/>
+    <text x="528" y="211">1. Project cloned</text>
+    <rect x="504" y="246" width="356" height="52" rx="12" fill="#1b2a30" stroke="#334155"/>
+    <text x="528" y="279">2. Dependencies resolved</text>
+    <rect x="504" y="314" width="356" height="52" rx="12" fill="#1b2a30" stroke="#334155"/>
+    <text x="528" y="347">3. Tests can run locally</text>
+    <rect x="504" y="382" width="356" height="52" rx="12" fill="#1b2a30" stroke="#334155"/>
+    <text x="528" y="415">4. Credentials are masked</text>
+  </g>
+</svg>

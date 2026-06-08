@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#151f25" stroke="#31424a"/>
+  <rect x="58" y="66" width="400" height="382" rx="14" fill="#0f172a" stroke="#334155"/>
+  <rect x="508" y="66" width="392" height="382" rx="14" fill="#10231d" stroke="#166534"/>
+  <text x="84" y="105" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#e5e7eb">CodeWiki questions</text>
+  <text x="534" y="105" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#bbf7d0">Facts copied into SDD</text>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="15">
+    <text x="84" y="154" fill="#7dd3fc">Q1: existing alert plugins?</text>
+    <text x="84" y="190" fill="#7dd3fc">Q2: SPI registration path?</text>
+    <text x="84" y="226" fill="#7dd3fc">Q3: config keys and defaults?</text>
+    <text x="84" y="262" fill="#7dd3fc">Q4: failure and retry behavior?</text>
+    <text x="84" y="298" fill="#7dd3fc">Q5: test fixtures to reuse?</text>
+    <text x="534" y="154" fill="#86efac">AlertChannelFactory loads plugins</text>
+    <text x="534" y="190" fill="#86efac">plugin.yaml declares type + params</text>
+    <text x="534" y="226" fill="#86efac">mask secret fields in logs</text>
+    <text x="534" y="262" fill="#86efac">reuse EmailAlert test fixture</text>
+    <text x="534" y="298" fill="#fbbf24">open issue: retry policy undefined</text>
+  </g>
+  <path d="M462 257h40" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M488 242l18 15-18 15" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="548" y="342" width="300" height="56" rx="12" fill="#14342a" stroke="#34d399"/>
+  <text x="698" y="376" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700" fill="#dcfce7">Design basis, not final code</text>
+</svg>

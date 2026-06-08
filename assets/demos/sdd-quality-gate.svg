@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#142028" stroke="#31424a"/>
+  <text x="60" y="76" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">SDD gate before coding</text>
+  <g font-family="Inter,Arial,sans-serif" font-size="17" fill="#e5e7eb">
+    <rect x="72" y="128" width="150" height="76" rx="14" fill="#182735" stroke="#38bdf8"/>
+    <text x="147" y="160" text-anchor="middle" font-weight="700">Proposal</text>
+    <text x="147" y="184" text-anchor="middle" fill="#bfdbfe">scope clear</text>
+    <rect x="262" y="128" width="150" height="76" rx="14" fill="#182735" stroke="#38bdf8"/>
+    <text x="337" y="160" text-anchor="middle" font-weight="700">Spec</text>
+    <text x="337" y="184" text-anchor="middle" fill="#bfdbfe">acceptance</text>
+    <rect x="452" y="128" width="150" height="76" rx="14" fill="#182735" stroke="#f59e0b"/>
+    <text x="527" y="160" text-anchor="middle" font-weight="700">Design</text>
+    <text x="527" y="184" text-anchor="middle" fill="#fde68a">security gate</text>
+    <rect x="642" y="128" width="150" height="76" rx="14" fill="#182735" stroke="#38bdf8"/>
+    <text x="717" y="160" text-anchor="middle" font-weight="700">Tasks</text>
+    <text x="717" y="184" text-anchor="middle" fill="#bfdbfe">file-level</text>
+  </g>
+  <path d="M223 166h38M413 166h38M603 166h38" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <rect x="138" y="270" width="690" height="150" rx="18" fill="#241817" stroke="#f87171"/>
+  <text x="483" y="312" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#fecaca">BLOCK IMPLEMENTATION</text>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="16">
+    <text x="182" y="352" fill="#fca5a5">missing: secret masking rule</text>
+    <text x="182" y="382" fill="#fca5a5">missing: retry behavior for SMN timeout</text>
+    <text x="516" y="352" fill="#fca5a5">missing: plugin config compatibility</text>
+    <text x="516" y="382" fill="#fca5a5">missing: concrete test fixture</text>
+  </g>
+  <text x="480" y="462" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="18" fill="#d1fae5">A good spec prevents bad code from being generated.</text>
+</svg>

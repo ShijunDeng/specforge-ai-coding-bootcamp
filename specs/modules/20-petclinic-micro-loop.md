@@ -154,6 +154,12 @@ visual: checklist
 - Review：断言、命名、边界路径。
 
 
+### Media
+src: ../../assets/demos/skill-ut-pipeline-animated.svg
+type: 动态单测 Skill 演示
+alt: UT Skill 读取被测类和行为，生成语义断言并运行本地测试的过程。
+caption: 单测 Skill 不只生成测试文件，还要把测试命令和人工断言 Review 接进闭环。
+
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：输入：被测行为、相关类、现有测试、输出：新增或修改测试、验证：本地命令跑绿、Review：断言、命名、边界路径。
 - 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
@@ -265,6 +271,12 @@ AI 给的是候选补丁，工程师要判断它是否符合项目风格和业�
 - 可维护性
 
 
+### Media
+src: ../../assets/demos/review-checklist-diff.svg
+type: 代码 Review 截图
+alt: Owner 查询候选 diff 中空查询边界、测试质量和文件边界的人工 Review 检查。
+caption: 采纳前 Review 要落到具体 diff 行和明确问题，而不是泛泛地说“看起来还行”。
+
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：文件边界、业务语义、异常路径、测试质量、可维护性。
 - 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
@@ -375,6 +387,12 @@ AI 修复测试失败时，需要看到完整命令、失败堆栈、相关 diff
 - 记录结果
 
 
+### Media
+src: ../../assets/demos/test-failure-repair-animated.svg
+type: 动态修复演示
+alt: 把失败命令、堆栈和当前 diff 交给 AI 后生成最小修复并重跑测试的过程。
+caption: 失败输出本身就是最强上下文，修复闭环必须保留“失败-定位-最小修复-重跑”的轨迹。
+
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：运行测试、复制失败输出、要求定位原因、生成最小修复、重跑测试、记录结果。
 - 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
@@ -431,6 +449,12 @@ visual: checklist
 - Evidence
 - Next repo ready
 
+
+### Media
+src: ../../assets/demos/prework-env-green.svg
+type: 证据包验收截图
+alt: 用命令输出、测试结果、脱敏凭证和仓库状态组成可复核证据包。
+caption: 证据包把微闭环从个人口头经验变成团队可以复核、复讲和迭代的材料。
 
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：Prompt、Plan、Diff、Test、Repair、Evidence、Next repo ready。

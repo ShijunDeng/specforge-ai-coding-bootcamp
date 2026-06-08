@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#151f25" stroke="#31424a"/>
+  <text x="60" y="74" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">Homework autograder dashboard</text>
+  <rect x="60" y="112" width="265" height="325" rx="16" fill="#0f172a" stroke="#334155"/>
+  <rect x="350" y="112" width="265" height="325" rx="16" fill="#0f172a" stroke="#334155"/>
+  <rect x="640" y="112" width="250" height="325" rx="16" fill="#0f172a" stroke="#334155"/>
+  <g font-family="Inter,Arial,sans-serif">
+    <text x="90" y="154" font-size="21" font-weight="700" fill="#e5e7eb">Submission</text>
+    <text x="380" y="154" font-size="21" font-weight="700" fill="#e5e7eb">Automated checks</text>
+    <text x="670" y="154" font-size="21" font-weight="700" fill="#e5e7eb">Review result</text>
+  </g>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="15">
+    <text x="88" y="200" fill="#86efac">proposal.md</text>
+    <text x="88" y="230" fill="#86efac">spec.md</text>
+    <text x="88" y="260" fill="#86efac">design.md</text>
+    <text x="88" y="290" fill="#86efac">tasks.md</text>
+    <text x="88" y="320" fill="#7dd3fc">MR #1287</text>
+    <text x="88" y="350" fill="#fbbf24">evidence.zip</text>
+    <text x="378" y="200" fill="#86efac">doc completeness: 30/30</text>
+    <text x="378" y="230" fill="#86efac">tests attached: 19/20</text>
+    <text x="378" y="260" fill="#fbbf24">AI trace: 12/15</text>
+    <text x="378" y="290" fill="#86efac">secret scan: clean</text>
+    <text x="378" y="320" fill="#86efac">MR checks: passed</text>
+    <text x="668" y="200" fill="#86efac">total: 91/100</text>
+    <text x="668" y="230" fill="#fbbf24">manual review needed</text>
+    <text x="668" y="260" fill="#cbd5e1">comment: add retry case</text>
+  </g>
+  <rect x="668" y="322" width="180" height="54" rx="12" fill="#14342a" stroke="#34d399"/>
+  <text x="758" y="356" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="19" font-weight="700" fill="#dcfce7">ready for review</text>
+</svg>

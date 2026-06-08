@@ -114,6 +114,12 @@ visual: matrix
 | 安全与合规 | 10 | 无真实密钥和敏感日志 |
 
 
+### Media
+src: ../../assets/demos/assessment-autograder-dashboard.svg
+type: 自动验收看板截图
+alt: 大作业提交物、自动化检查和人工 Review 结果在统一看板中汇总。
+caption: 大作业评分要看可追溯证据，自动检查负责先过滤提交物、测试证据和安全红线。
+
 ### Illustration Brief
 - 绘制二维矩阵或对照表，表格内容围绕：维度 / 权重、SDD 文档质量 / 30、实现正确性 / 25、测试与验证 / 20、AI 协作过程 / 15。
 - 重点列使用浅色底纹，表头清晰，单元格只保留关键词和短语。

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#10212a"/>
+      <stop offset="1" stop-color="#132d25"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="28" width="904" height="484" rx="22" fill="url(#g)" stroke="#31424a"/>
+  <rect x="58" y="68" width="246" height="360" rx="16" fill="#111827" stroke="#3b4a55"/>
+  <rect x="356" y="68" width="246" height="360" rx="16" fill="#111827" stroke="#3b4a55"/>
+  <rect x="654" y="68" width="246" height="360" rx="16" fill="#111827" stroke="#3b4a55"/>
+  <g font-family="Inter,Arial,sans-serif" fill="#e5e7eb">
+    <text x="86" y="113" font-size="25" font-weight="700">IDE Plugin</text>
+    <text x="384" y="113" font-size="25" font-weight="700">CLI Agent</text>
+    <text x="682" y="113" font-size="25" font-weight="700">Relay/MCP</text>
+    <text x="86" y="157" font-size="16" fill="#93c5fd">selected files</text>
+    <text x="384" y="157" font-size="16" fill="#93c5fd">repo command</text>
+    <text x="682" y="157" font-size="16" fill="#93c5fd">external action</text>
+  </g>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="15">
+    <text x="84" y="208" fill="#cbd5e1">OwnerController.java</text>
+    <text x="84" y="234" fill="#cbd5e1">OwnerRepository.java</text>
+    <text x="84" y="260" fill="#86efac">+ small diff</text>
+    <text x="84" y="286" fill="#fbbf24">review pause</text>
+    <text x="382" y="208" fill="#7dd3fc">$ agent run tests</text>
+    <text x="382" y="234" fill="#cbd5e1">scan changed files</text>
+    <text x="382" y="260" fill="#86efac">94 tests passed</text>
+    <text x="382" y="286" fill="#fbbf24">emit evidence.log</text>
+    <text x="680" y="208" fill="#7dd3fc">create MR</text>
+    <text x="680" y="234" fill="#cbd5e1">trigger review bot</text>
+    <text x="680" y="260" fill="#f87171">deny unsafe scope</text>
+    <text x="680" y="286" fill="#86efac">post review result</text>
+  </g>
+  <path d="M306 248h48M604 248h48" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M342 236l14 12-14 12M640 236l14 12-14 12" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="188" y="456" width="584" height="38" rx="19" fill="#14342a" stroke="#34d399"/>
+  <text x="480" y="481" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700" fill="#dcfce7">same discipline: context - boundary - validation - evidence</text>
+</svg>

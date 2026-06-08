@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="26" y="26" width="908" height="488" rx="22" fill="#151f25" stroke="#31424a"/>
+  <text x="62" y="75" font-family="Inter,Arial,sans-serif" font-size="27" font-weight="700" fill="#f8fafc">Context packing changes the diff</text>
+  <rect x="62" y="110" width="382" height="330" rx="16" fill="#241817" stroke="#7f1d1d"/>
+  <rect x="516" y="110" width="382" height="330" rx="16" fill="#10231d" stroke="#166534"/>
+  <text x="90" y="153" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#fecaca">Vague prompt</text>
+  <text x="544" y="153" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#bbf7d0">Packed context</text>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="15">
+    <text x="90" y="200" fill="#fca5a5">"add owner search"</text>
+    <text x="90" y="238" fill="#e5e7eb">- scans entire repo</text>
+    <text x="90" y="266" fill="#e5e7eb">- changes 9 files</text>
+    <text x="90" y="294" fill="#e5e7eb">- weak tests</text>
+    <text x="90" y="322" fill="#f87171">- hard to review</text>
+    <text x="544" y="200" fill="#86efac">files: Controller, Repo, Tests</text>
+    <text x="544" y="238" fill="#e5e7eb">rule: lastName contains</text>
+    <text x="544" y="266" fill="#e5e7eb">boundary: no schema change</text>
+    <text x="544" y="294" fill="#e5e7eb">output: plan then patch</text>
+    <text x="544" y="322" fill="#86efac">verify: mvn -Dtest=Owner*</text>
+  </g>
+  <rect x="216" y="360" width="74" height="28" rx="14" fill="#991b1b"/>
+  <text x="253" y="379" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="14" fill="#fee2e2">large diff</text>
+  <rect x="668" y="360" width="74" height="28" rx="14" fill="#15803d"/>
+  <text x="705" y="379" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="14" fill="#dcfce7">small diff</text>
+  <path d="M454 274h52" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M492 258l18 16-18 16" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

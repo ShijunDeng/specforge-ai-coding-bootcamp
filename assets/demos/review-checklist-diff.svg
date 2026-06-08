@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#151f25" stroke="#31424a"/>
+  <rect x="58" y="66" width="515" height="398" rx="14" fill="#0f172a" stroke="#334155"/>
+  <rect x="612" y="66" width="290" height="398" rx="14" fill="#111827" stroke="#334155"/>
+  <text x="84" y="104" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#e5e7eb">Diff before adoption</text>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="15">
+    <text x="86" y="150" fill="#94a3b8">OwnerRepository.java</text>
+    <text x="86" y="184" fill="#86efac">+ List&lt;Owner&gt; findByLastNameContainingIgnoreCase(...)</text>
+    <text x="86" y="218" fill="#94a3b8">OwnerController.java</text>
+    <text x="86" y="252" fill="#86efac">+ @GetMapping("/owners/search")</text>
+    <text x="86" y="286" fill="#f87171">- if (query == "") return repository.findAll();</text>
+    <text x="86" y="320" fill="#86efac">+ if (!StringUtils.hasText(query)) return emptyList();</text>
+    <text x="86" y="354" fill="#94a3b8">OwnerControllerTests.java</text>
+    <text x="86" y="388" fill="#86efac">+ shouldSearchOwnersByNameFragment()</text>
+    <text x="86" y="422" fill="#fbbf24">? add empty query behavior test</text>
+  </g>
+  <text x="640" y="104" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#e5e7eb">Human review</text>
+  <g font-family="Inter,Arial,sans-serif" font-size="17" fill="#e5e7eb">
+    <rect x="638" y="142" width="232" height="44" rx="10" fill="#16352b" stroke="#34d399"/>
+    <text x="664" y="170">file boundary OK</text>
+    <rect x="638" y="202" width="232" height="44" rx="10" fill="#3a1d1d" stroke="#f87171"/>
+    <text x="664" y="230">empty query rule?</text>
+    <rect x="638" y="262" width="232" height="44" rx="10" fill="#16352b" stroke="#34d399"/>
+    <text x="664" y="290">case-insensitive OK</text>
+    <rect x="638" y="322" width="232" height="44" rx="10" fill="#34260f" stroke="#f59e0b"/>
+    <text x="664" y="350">add boundary test</text>
+    <rect x="638" y="382" width="232" height="44" rx="10" fill="#16352b" stroke="#34d399"/>
+    <text x="664" y="410">rerun test before MR</text>
+  </g>
+</svg>

@@ -152,6 +152,12 @@ visual: matrix
 | Relay 工具 | 连接内部能力和统一入口 | 关注权限、日志与审计 |
 
 
+### Media
+src: ../../assets/demos/tool-entry-runtime.svg
+type: 工具入口运行图
+alt: IDE 插件、CLI Agent 和 Relay/MCP 三类入口如何承接不同研发动作。
+caption: 不同入口不是工具名差异，而是上下文范围、自动化程度和外部权限的差异。
+
 ### Illustration Brief
 - 绘制二维矩阵或对照表，表格内容围绕：形态 / 适用场景、IDE 插件 / 文件级开发、Review、单测生成、CLI / 多文件任务、批量检查、脚本化流程、Relay 工具 / 连接内部能力和统一入口。
 - 重点列使用浅色底纹，表头清晰，单元格只保留关键词和短语。
@@ -201,6 +207,12 @@ AgentCenter、CodeAgent、MCP、Skill、CodeWiki 不是五个孤立工具。它�
 - Review 和测试收口
 
 
+### Media
+src: ../../assets/demos/codewiki-sdd-animated.svg
+type: 动态工具链演示
+alt: CodeWiki、CodeAgent、Skill、MCP 和 Review 如何形成从事实到证据的流水线。
+caption: 先查事实、再生成计划、最后进入执行和质量闭环，工具之间要有明确交接物。
+
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：CodeWiki 查现状、CodeAgent 拆计划、Skill 生成和检查、MCP 建单和触发检视、Review 和测试收口。
 - 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
@@ -248,6 +260,12 @@ AI 看不见你脑子里的项目背景。工程师需要主动告诉它：看�
 - 模糊输出：全仓乱找、改动难 Review。
 - 精准输出：小 diff、可测试、可回滚。
 
+
+### Media
+src: ../../assets/demos/context-packing-before-after.svg
+type: 上下文对比演示
+alt: 模糊提示和精准上下文投喂导致的 diff 大小、测试质量和 Review 成本差异。
+caption: 上下文投喂越精确，AI 输出越容易收敛成小 diff、可测试、可回滚的候选补丁。
 
 ### Illustration Brief
 - 绘制左右对比图，对比项覆盖：模糊输入：“帮我加个查询”、精准输入：指定 Controller、Service、Repository、测试文件、业务规则、验收命令、模糊输出：全仓乱找、改动难 Review、精准输出：小 diff、可测试、可回滚。
@@ -355,6 +373,12 @@ Skill 的价值不是省一段提示词，而是固化团队认可的做法。
 - 验收：断言覆盖语义，不只追求覆盖率。
 - 复用：把团队测试风格变成默认路径。
 
+
+### Media
+src: ../../assets/demos/skill-ut-pipeline-animated.svg
+type: 动态 Skill 演示
+alt: UT Skill 从输入被测行为到生成测试、运行命令和人工 Review 的动态流水线。
+caption: Skill 的价值是把团队认可的测试生成、运行和 Review 步骤固化成可复用流程。
 
 ### Illustration Brief
 - 绘制 3-6 张任务卡或概念卡，卡片内容覆盖：输入：被测类、现有测试、业务规则、执行：生成候选测试、运行、修复、验收：断言覆盖语义，不只追求覆盖率、复用：把团队测试风格变成默认路径。

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="28" width="904" height="484" rx="22" fill="#142028" stroke="#31424a"/>
+  <rect x="58" y="76" width="395" height="360" rx="14" fill="#0f172a" stroke="#334155"/>
+  <rect x="506" y="76" width="395" height="360" rx="14" fill="#0f172a" stroke="#334155"/>
+  <text x="84" y="116" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#fecaca">Failing evidence</text>
+  <text x="532" y="116" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#bbf7d0">Minimal repair</text>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="15">
+    <text x="82" y="160" fill="#7dd3fc">$ mvn -Dtest=PetControllerTests test</text>
+    <text x="82" y="196" fill="#f87171">No property vaccinationRecord found</text>
+    <text x="82" y="228" fill="#f87171">at PetRepository.findBy...</text>
+    <text x="82" y="260" fill="#cbd5e1">include: command + stack + diff</text>
+    <text x="82" y="292" fill="#fbbf24">instruction: explain cause first</text>
+    <text x="532" y="160" fill="#86efac">cause: field name mismatch</text>
+    <text x="532" y="196" fill="#86efac">patch: map property consistently</text>
+    <text x="532" y="228" fill="#cbd5e1">scope: no new modules</text>
+    <text x="532" y="260" fill="#7dd3fc">$ mvn -Dtest=PetControllerTests test</text>
+    <text x="532" y="292" fill="#86efac">BUILD SUCCESS</text>
+  </g>
+  <path d="M456 256h48" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M490 240l18 16-18 16" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle r="8" fill="#fbbf24">
+    <animateMotion dur="2.8s" repeatCount="indefinite" path="M150 360 H810"/>
+  </circle>
+  <text x="480" y="468" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="18" fill="#e5e7eb">Do not say "it failed"; pass the exact failure back into the loop.</text>
+</svg>

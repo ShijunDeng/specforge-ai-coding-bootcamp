@@ -103,6 +103,12 @@ visual: flow
 - 截图回传
 
 
+### Media
+src: ../../assets/demos/prework-env-green.svg
+type: 终端验收截图
+alt: 课前环境自检的 Git、Maven、Spec 校验和脱敏 Token 检查结果。
+caption: 课前准备要用真实命令结果证明环境可用，避免正课时间被依赖、权限和测试环境问题占满。
+
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：拉取代码、下载依赖、启动应用、运行测试、截图回传。
 - 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。

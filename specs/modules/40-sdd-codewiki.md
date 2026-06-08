@@ -254,6 +254,12 @@ visual: checklist
 - 可审查
 
 
+### Media
+src: ../../assets/demos/sdd-quality-gate.svg
+type: SDD 门禁截图
+alt: SDD 文档在缺少安全、重试、兼容和测试依据时阻止进入实现阶段。
+caption: 好的 SDD 文档不是装饰，它应该能在编码前挡住错误实现路径。
+
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：可验收、可追溯、可执行、可测试、可审查。
 - 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
@@ -301,6 +307,12 @@ CodeWiki 用于缩短模型和老员工之间的信息差。它的输出不是�
 - 样例问题
 - 风险问题
 
+
+### Media
+src: ../../assets/demos/codewiki-query-session.svg
+type: CodeWiki 查询截图
+alt: 围绕告警插件现状、SPI 注册、配置默认值、失败处理和测试夹具的 CodeWiki 查询会话。
+caption: CodeWiki 的价值是把老项目事实转成 Design 依据，而不是直接跳到代码生成。
 
 ### Illustration Brief
 - 绘制 3-6 张任务卡或概念卡，卡片内容覆盖：现状问题、约束问题、样例问题、风险问题。
