@@ -42,6 +42,21 @@ function validateUniqueIds(items, path) {
   }
 }
 
+function validateGlobalEntityIds(groups) {
+  const seen = new Map();
+  for (const [type, items] of Object.entries(groups)) {
+    for (const [index, item] of (items ?? []).entries()) {
+      if (!item?.id) continue;
+      const previous = seen.get(item.id);
+      if (previous) {
+        errors.push(`${type}[${index}].id duplicates ${previous} id ${item.id}`);
+      } else {
+        seen.set(item.id, type);
+      }
+    }
+  }
+}
+
 function sameArray(left = [], right = []) {
   return (
     Array.isArray(left) &&
@@ -244,6 +259,11 @@ if (!modules.length) errors.push("modules needs at least one module");
 validateUniqueIds(modules, "modules");
 validateUniqueIds(course.decks ?? [], "decks");
 validateUniqueIds(course.labs ?? [], "labs");
+validateGlobalEntityIds({
+  modules,
+  decks: course.decks ?? [],
+  labs: course.labs ?? []
+});
 
 const moduleIds = new Set(modules.map((module) => module.id));
 for (const deck of course.decks ?? []) {

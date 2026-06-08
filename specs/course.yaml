@@ -160,7 +160,7 @@ labs:
       - 新增或更新单测本地运行通过。
       - 学员能解释采纳前 Review 了哪些风险。
 
-  - id: mcp-review-repair
+  - id: mcp-review-repair-lab
     title: MCP 建单、代码检视与自动修复
     module: mcp-review-repair
     duration_min: 35
