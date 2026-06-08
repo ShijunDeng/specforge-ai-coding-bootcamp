@@ -61,6 +61,8 @@ npm run export:pptx
 3. 如果课程节包含练习，同步更新 `specs/course.yaml` 的 `labs[]`，必要时补充 `exercises/` 和 `rubrics/`。
 4. 修改后运行 `npm run validate`；需要预览时运行 `npm run generate` 和 `npm run slides`；正式交付前运行 `npm run check`。
 
+只修改 Spec 源文件，不直接编辑 `build/slides/*.slidev.md`、`dist/`、PDF 或 PPTX；这些生成物由脚本重新生成。
+
 详细操作步骤、字段含义、验证命令和人工检查点见 [Spec 维护指南](docs/authoring-guide.md#开发中新增或修改一节课程)。
 
 ## 从 course.xlsx 到 7 小时课程

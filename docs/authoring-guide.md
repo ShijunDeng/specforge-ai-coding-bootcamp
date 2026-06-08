@@ -20,6 +20,8 @@
 
 本仓库把“课程节”作为 module 维护。新增或调整一节课时，源文件通常只改 `specs/course.yaml`、一个 `specs/modules/*.md` 文件；如果这节课包含独立练习，再同步改 `exercises/` 或 `rubrics/`。
 
+标准流程是：先修改 Spec 源文件，再手动运行生成命令刷新 Slidev 课件，最后用校验和预览确认结果。不要直接编辑 `build/slides/*.slidev.md`、`dist/`、PDF 或 PPTX；这些都是生成物，下次运行脚本会被覆盖。
+
 ### 文件分工
 
 - `specs/course.yaml`：课程 manifest。这里注册模块 id、模块文件路径、展示标题、课堂时长、来源行、标签，并决定这个模块进入哪些 `decks[]`。如果新增或调整课堂练习，还要同步 `labs[]` 的目标、约束和验收规则。
@@ -41,10 +43,11 @@
 3. 如果调整本节总时长，同时修改模块 frontmatter 的 `duration_min` 和 `specs/course.yaml` 中同一模块的 `duration_min`，两处必须一致。
 4. 如果这节课所属组合变化，修改 `specs/course.yaml` 的 `decks[].include_modules`。自定义组合优先放在 `configs/*.yaml`。
 5. 如果改了实操目标、约束或验收证据，同步更新 `specs/course.yaml` 的 `labs[]`，必要时更新 `exercises/` 和 `rubrics/`。
+6. 修改完成后运行 `npm run generate` 重新生成 `build/slides/*.slidev.md`，再用 `npm run slides` 或 `npm run check` 验证。
 
 ### 新增一节课程
 
-1. 从 `specs/templates/module-spec.template.md` 复制一个新文件到 `specs/modules/`，按课程顺序和主题命名。
+1. 基于 `specs/templates/module-spec.template.md` 新建一个模块 Spec 文件到 `specs/modules/`，按课程顺序和主题命名。这里复制的是 Spec 模板，不是复制生成后的 Slidev 页面。
 2. 设置模块 frontmatter：
    - `id`：全局唯一，并与 `specs/course.yaml` 中的 module id 完全一致。
    - `title`：模块展示标题。
@@ -62,6 +65,7 @@
    - `tags`：用于标识课程阶段、主题或是否必修。
 5. 把模块 id 加入需要交付的 `decks[].include_modules`。内置组合包括 `full-7h`、`lesson1-lab`、`lesson2-sdd` 和 `sdd-only`。
 6. 如该模块包含新练习，在 `specs/course.yaml` 的 `labs[]` 新增练习，并在 `exercises/` 下补充学员说明。
+7. 运行 `npm run validate` 检查 Spec 结构，再运行 `npm run generate` 重新生成课件。
 
 ### 测试与验证
 
@@ -73,7 +77,7 @@ npm run validate
 
 `validate` 会检查必需文档、敏感凭证、课程 manifest、deck 引用、模块 frontmatter、模块时长一致性、slide id 全局唯一、slide 必填字段和练习验收规则。
 
-确认可以生成课件：
+确认可以从 Spec 重新生成课件：
 
 ```bash
 npm run generate
@@ -109,7 +113,9 @@ npm run check
 
 ## 新增一页
 
-复制相邻 slide 或 `specs/templates/module-spec.template.md` 中的示例，确保：
+在对应 `specs/modules/*.md` 中新增一个 `:::slide` block。优先参考 `specs/templates/module-spec.template.md` 的页面结构；如果相邻页面结构高度一致，也可以复用相邻的 Spec block 作为骨架，但必须改掉 id、标题和内容。这里仍然只是在改 Spec，不是在复制或编辑生成后的 Slidev 页面。
+
+确保：
 
 - `id` 全局唯一。
 - `title` 是屏幕上可见标题。
@@ -124,6 +130,7 @@ npm run check
 2. 在 `specs/course.yaml` 的 `modules[]` 注册 id、路径、时长和来源。
 3. 把模块 id 加入一个或多个 `decks[]`。
 4. 运行 `npm run validate`。
+5. 运行 `npm run generate`，从 Spec 重新生成 Slidev Markdown。
 
 ## 讲师 Review 清单
 
