@@ -1,4 +1,4 @@
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import { parse } from "yaml";
 
 const coursePath = process.argv[2] ?? "specs/course.yaml";
@@ -39,6 +39,18 @@ function validateUniqueIds(items, path) {
     if (!item?.id) continue;
     if (seen.has(item.id)) errors.push(`${path}[${index}].id duplicates ${item.id}`);
     seen.add(item.id);
+  }
+}
+
+function validateDeck(deck, path, moduleIds) {
+  requireValue(deck?.id, `${path}.id`);
+  requireValue(deck?.title, `${path}.title`);
+  requireValue(deck?.output, `${path}.output`);
+  if (!Array.isArray(deck?.include_modules) || !deck.include_modules.length) {
+    errors.push(`${path} must include at least one module`);
+  }
+  for (const moduleId of deck?.include_modules ?? []) {
+    if (!moduleIds.has(moduleId)) errors.push(`${path} references unknown module ${moduleId}`);
   }
 }
 
@@ -107,6 +119,33 @@ async function validateSourceMaterials(files = []) {
     } catch {
       errors.push(`meta.source_material references missing file ${file}`);
     }
+  }
+}
+
+async function validateCustomDeckConfigs(moduleIds) {
+  let files = [];
+  try {
+    files = await readdir("configs");
+  } catch {
+    return;
+  }
+
+  for (const fileName of files.filter((file) => file.endsWith(".yaml") || file.endsWith(".yml"))) {
+    const file = `configs/${fileName}`;
+    const raw = await readFile(file, "utf8");
+    scanSensitive(raw, file);
+    let config = {};
+    try {
+      config = parse(raw);
+    } catch (error) {
+      errors.push(`${file} has invalid YAML: ${error.message}`);
+      continue;
+    }
+    if (!config?.deck) {
+      errors.push(`${file} must define deck`);
+      continue;
+    }
+    validateDeck(config.deck, `${file}.deck`, moduleIds);
   }
 }
 
@@ -191,15 +230,10 @@ validateUniqueIds(course.labs ?? [], "labs");
 
 const moduleIds = new Set(modules.map((module) => module.id));
 for (const deck of course.decks ?? []) {
-  requireValue(deck.id, `decks.${deck.id}.id`);
-  requireValue(deck.output, `decks.${deck.id}.output`);
-  if (!Array.isArray(deck.include_modules) || !deck.include_modules.length) {
-    errors.push(`deck ${deck.id} must include at least one module`);
-  }
-  for (const moduleId of deck.include_modules ?? []) {
-    if (!moduleIds.has(moduleId)) errors.push(`deck ${deck.id} references unknown module ${moduleId}`);
-  }
+  validateDeck(deck, `decks.${deck.id ?? "unknown"}`, moduleIds);
 }
+
+await validateCustomDeckConfigs(moduleIds);
 
 let totalDuration = 0;
 let slideCount = 0;
