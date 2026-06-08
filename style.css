@@ -152,6 +152,34 @@
   margin-bottom: 0.52rem;
 }
 
+.example-box {
+  margin: 8px 0 9px;
+  padding: 9px 11px;
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  background: #fff7f1;
+  color: var(--ink);
+  box-shadow: inset 0 -2px 0 rgba(216, 111, 69, 0.08);
+}
+
+.example-box strong {
+  display: inline-block;
+  margin-right: 7px;
+  color: var(--accent);
+  font-size: 0.68rem;
+}
+
+.example-box p,
+.example-box li {
+  font-size: 0.68rem;
+  line-height: 1.28;
+}
+
+.example-box p {
+  display: inline;
+  margin: 0;
+}
+
 .key-points ul,
 .visual-card ul {
   padding-left: 1.1rem;

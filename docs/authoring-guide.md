@@ -10,6 +10,7 @@
 - **可见内容面向学员**：`title`、`Headline`、`Body`、`Key Points`、`Visual`、`Takeaway` 都应像课堂上直接讲给学员听，避免“让学员……”“讲师要……”这类后台语言。
 - **讲师提示放备注**：讲法、追问、现场取舍、助教动作写在 `Speaker Notes`。
 - **插图和排版写进 Spec**：每页都应填写 `Illustration Brief` 和 `Layout Contract`，Demo、Lab、Assessment 页还要填写 `Activity`。
+- **每个知识点都要有实例**：每页填写 `Example`，用具体需求、失败场景、提示词、Review 意见、测试输出或文档片段承载概念。
 - **先验证再交付**：每次修改后至少运行 `npm run validate`；正式交付前运行 `npm run check`。
 
 `course.xlsx` 只作为首版课程设计的初始输入来源。后续课程演进以本仓库的 Spec 为准，正文、流程和说明都不应依赖 `course.xlsx`。
@@ -103,6 +104,9 @@ visual: flow
 ### Body
 你将看到 Owner 按姓名片段模糊查询从计划、采纳、测试到修复的完整过程。
 
+### Example
+例如：第一轮提示只写“帮我给 Owner 加模糊查询”时，AI 可能全仓扫描并改出大 diff；修正后明确 `OwnerController`、`OwnerRepository`、查询规则和测试命令，输出会收敛到可 Review 的小补丁。
+
 ### Key Points
 - 需求：为 Owner 增加按姓名片段模糊查询。
 - 输出：先给修改计划，再生成候选补丁。
@@ -154,6 +158,7 @@ visual: flow
 | --- | --- |
 | `Headline` | 本页最重要的判断句，避免“背景介绍”“工具说明”这类弱标题。 |
 | `Body` | 1-3 句解释，支撑 `Headline`。 |
+| `Example` | 本页知识点对应的具体实例。优先使用贯穿案例、真实失败、输入输出、Review 意见或验收证据，避免抽象口号。 |
 | `Key Points` | 屏幕要点，通常 3-6 条；不要放完整讲稿。 |
 | `Visual` | 右侧图示内容。生成器会按 `visual` 类型渲染为流程图、清单、卡片、矩阵等。 |
 | `Illustration Brief` | 给生成器或设计师的插图说明。写画面元素、关系、强调色、禁止事项；AI PPT 目标会把它输出为视觉方向。 |
@@ -206,6 +211,7 @@ npm run generate
 新增页面必须满足：
 
 - 可见内容直接面向学员。
+- `Example` 必须具体，能让学员把本页概念映射到一个真实动作或场景。
 - `Key Points` 控制在 3-6 条。
 - `Visual` 有结构，不能只写一段普通说明。
 - `Illustration Brief` 写清图示主体、关系、强调点和禁止元素。

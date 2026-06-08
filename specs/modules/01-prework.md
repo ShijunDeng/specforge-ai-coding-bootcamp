@@ -36,6 +36,10 @@ visual: checklist
 ### Body
 课堂时间应该用于 AI 协作训练，而不是处理 JDK、依赖、代理和 Token 权限问题。
 
+
+### Example
+例如：课前自检不是截图 IDE 已打开，而是能在本地完成一次 `spring-petclinic` 启动或测试，并确认 CodeAgent 已登录。
+
 ### Key Points
 - IDE、JDK、Maven 或 Gradle 版本与项目要求一致。
 - spring-petclinic 已 Fork、Clone、依赖下载完成。
@@ -81,6 +85,10 @@ visual: flow
 ### Body
 如果本地项目不能启动或测试不能运行，学员很难在课堂上判断 AI 输出是业务问题、环境问题还是权限问题。
 
+
+### Example
+例如：如果 `mvn test` 卡在依赖下载，课堂上 AI 生成的任何修复都无法判断对错；这个问题必须在课前 FAQ 中解决。
+
 ### Key Points
 - spring-petclinic 至少完成一次启动或测试。
 - dolphin-scheduler 至少完成依赖解析和 IDE 索引。
@@ -124,6 +132,10 @@ visual: checklist
 
 ### Body
 课程会演示 MCP 和外部系统连接，但所有凭证处理都必须遵守最小权限、脱敏展示和课后回收原则。
+
+
+### Example
+例如：演示 MCP 配置时只展示 `token=****abcd` 和配置位置，不把完整 Token 放进 Prompt、截图、录屏或 MR 描述。
 
 ### Key Points
 - 只使用课堂所需的最小权限 Token。

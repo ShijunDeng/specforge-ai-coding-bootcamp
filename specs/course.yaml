@@ -58,6 +58,7 @@ learning_design:
   slide_contract:
     - "默认 16:9 双栏：左侧学员可见结论、正文和要点；右侧结构化图示与 Takeaway。"
     - "可见文字必须是课堂上能直接对学员说的话；讲师动作、追问、备选说法写入 Speaker Notes。"
+    - "每页必须有 Example，用具体需求、失败输出、Review 意见、测试结果或文档片段解释本页知识点。"
     - "每页正文控制在 1-3 句，Key Points 控制在 3-6 条；超过时拆页而不是缩小字号。"
     - "Demo/Lab/Assessment 页必须写 Activity，说明课堂动作、输入物、产出物和证据。"
   classroom_pattern:

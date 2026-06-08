@@ -37,6 +37,10 @@ AI Coding 的能力边界从“补全片段”扩展到“理解任务并调用�
 ### Body
 能力越强，越不能只靠相信模型。企业场景要把 Agent 纳入既有研发治理，让它在明确边界和证据链里行动。
 
+
+### Example
+例如：代码补全只能帮你补出一行 Repository 调用；Agent 可以读取 Controller、Service、测试文件并提出完整改动计划，因此必须先给它边界。
+
 ### Key Points
 - Copilot 阶段：行级补全，提升输入速度。
 - Chat 阶段：对话解释、生成片段、修复报错。
@@ -79,6 +83,10 @@ visual: matrix
 
 ### Body
 Vibe Coding 适合低风险、小步快跑、高频验证的任务；SDD 适合边界复杂、跨模块、依赖存量约束和错误成本高的任务。
+
+
+### Example
+例如：给 Pet 加一个字段可以 Vibe Coding 小步验证；给 dolphin-scheduler 新增 SMN 告警插件就必须先 SDD，因为它牵涉扩展点、配置、安全和测试。
 
 ### Key Points
 - 单文件小改：可用 Vibe Coding，但要保持短反馈。
@@ -125,6 +133,10 @@ visual: matrix
 ### Body
 同一个需求可以从 IDE 插件、CLI 或 Relay 工具进入。入口不同，但安装、授权、上下文选择和验证四件事都要先跑通。
 
+
+### Example
+例如：在 IDE 插件里选中 `OwnerController` 适合小改；用 CLI 批量检查全仓测试更合适；需要远端建 MR 时再进入 MCP 能力。
+
 ### Key Points
 - IDE 插件适合文件级开发、Review、单测生成。
 - CLI 适合多文件任务、批量检查、脚本化流程。
@@ -169,6 +181,10 @@ visual: flow
 
 ### Body
 AgentCenter、CodeAgent、MCP、Skill、CodeWiki 不是五个孤立工具。它们共同构成一条从知识获取到任务执行，再到质量验证的流水线。
+
+
+### Example
+例如：先问 CodeWiki“已有告警插件如何注册”，再让 CodeAgent 生成 Design，最后用 Skill 检查 Tasks 是否细到类名和测试。
 
 ### Key Points
 - CodeWiki 解决“项目事实是什么”。
@@ -215,6 +231,10 @@ visual: contrast
 ### Body
 AI 看不见你脑子里的项目背景。工程师需要主动告诉它：看哪些文件、遵守哪些规则、不要碰哪些区域、如何证明结果正确。
 
+
+### Example
+例如：坏输入是“帮我加查询”；好输入是“只看 `OwnerController`、`OwnerRepository` 和现有测试，按 lastName 片段查询，先给计划，不要改无关模块”。
+
 ### Key Points
 - 使用文件引用或选区让模型看见正确代码。
 - 明确只能改哪些文件，以及先不要改哪些文件。
@@ -258,6 +278,10 @@ visual: checklist
 
 ### Body
 课堂练习统一使用“目标、上下文、边界、输出、验收、失败处理”的提示契约。它能让 AI 先理解任务，再按工程规则行动。
+
+
+### Example
+例如：Pet 疫苗字段的提示契约要写明目标字段、相关实体、接口行为、允许修改文件、测试命令和失败时先定位再最小修复。
 
 ### Key Points
 - 目标：要完成的业务行为，不只说“改代码”。
@@ -306,6 +330,10 @@ Skill 的价值不是省一段提示词，而是固化团队认可的做法。
 
 ### Body
 高频、稳定、可验证的流程最适合做 Skill。比如单测生成、代码检视、修复建议、MR 描述、文档补全等。
+
+
+### Example
+例如：UT Skill 不只是“生成测试”，它会读取被测类、现有测试风格和业务规则，然后生成断言；你仍要拒绝只有 `assertNotNull` 的弱测试。
 
 ### Key Points
 - 输入规范：需要哪些文件、需求和约束。

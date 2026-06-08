@@ -38,6 +38,10 @@ visual: flow
 ### Body
 小需求也要经历“写、测、查、改、证据留存”的完整链路。微闭环越短，AI 偏差越容易被发现。
 
+
+### Example
+例如：Owner 模糊查询演示跑完后，不只得到代码，还要得到查询测试、一次 Review 打回记录和最终测试通过证据。
+
 ### Key Points
 - 先用 Owner 查询演示标准动作。
 - 再独立完成 Pet 疫苗字段练习。
@@ -84,6 +88,10 @@ visual: checklist
 ### Body
 AI 可以更快地产出候选补丁，但工程师仍然要确认业务语义、代码边界、测试有效性和可维护性。
 
+
+### Example
+例如：AI 一次性改了 Controller、Repository、前端页面和配置文件，虽然看起来完整，但 diff 太大不可 Review，应要求它缩小到当前接口链路。
+
 ### Key Points
 - 小步改动：一次只让 AI 处理一个明确行为。
 - 可读 diff：改动必须小到人能 Review。
@@ -128,6 +136,10 @@ visual: checklist
 ### Body
 单测 Skill 能减少模板劳动，但不能替代人判断断言是否真的覆盖业务语义。
 
+
+### Example
+例如：生成 Pet 疫苗字段测试时，断言应覆盖“有疫苗记录能查到”和“没有记录返回空列表”，不能只检查接口不报错。
+
 ### Key Points
 - 指定被测类和已有测试文件。
 - 描述新增行为、边界条件和异常路径。
@@ -171,6 +183,10 @@ visual: flow
 
 ### Body
 你将看到 Owner 按姓名片段模糊查询从计划、采纳、测试到修复的完整过程；每个暂停点都对应一个 Review 判断。
+
+
+### Example
+例如：第一轮提示只写“给 Owner 加模糊查询”时，AI 可能全仓搜索并改出大 diff；补充文件、规则和测试命令后，输出会收敛到可 Review 的小补丁。
 
 ### Key Points
 - 需求：为 Owner 增加按姓名片段模糊查询。
@@ -223,6 +239,10 @@ AI 给的是候选补丁，工程师要判断它是否符合项目风格和业�
 ### Body
 采纳前 Review 的目标不是挑错证明自己比 AI 强，而是保证进入代码库的每一行都有明确理由。
 
+
+### Example
+例如：AI 把空字符串查询当成返回全部 Owner，你需要判断这是否符合业务预期；如果没有定义，就先补需求边界再采纳代码。
+
 ### Key Points
 - 是否改了不该改的文件。
 - 查询语义是否和需求一致。
@@ -267,6 +287,10 @@ visual: cards
 
 ### Body
 你将在 spring-petclinic 中为 Pet 增加疫苗接种记录字段及查询接口，并调用单测 Skill 补充测试。
+
+
+### Example
+例如：你给 Pet 增加 `vaccinationRecord` 后，要能通过查询接口看到该字段，并用单测证明新增字段不会破坏原有 Owner/Pet 查询。
 
 ### Key Points
 - 任务：为 Pet 增加疫苗接种记录字段及查询能力。
@@ -316,6 +340,10 @@ visual: flow
 
 ### Body
 AI 修复测试失败时，需要看到完整命令、失败堆栈、相关 diff 和你希望保持不变的业务规则。
+
+
+### Example
+例如：测试失败输出 `No property vaccinationRecord found` 时，不要只说“报错了”，要把命令、堆栈、当前 diff 一起交给 AI，让它定位是字段命名还是映射问题。
 
 ### Key Points
 - 复制完整测试命令和关键失败输出。
@@ -367,6 +395,10 @@ visual: checklist
 
 ### Body
 课后复现时，需要提交可以被课程组和同伴复核的过程材料，而不是只说“我跑通了”。同时为第二课提前准备 dolphin-scheduler 和必要授权。
+
+
+### Example
+例如：一个合格证据包可以包含提示词截图、`git diff` 摘要、`mvn -Dtest=PetControllerTests test` 结果和一条你拒绝 AI 输出的理由。
 
 ### Key Points
 - 需求提示词和 AI 修改计划。

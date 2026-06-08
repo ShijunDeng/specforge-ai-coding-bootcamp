@@ -38,6 +38,10 @@ visual: cards
 ### Body
 你需要为 dolphin-scheduler 新增 SMN 告警插件做前置设计，产出可过审的 Proposal、Spec、Design、Tasks。任何业务代码生成都放到课后大作业。
 
+
+### Example
+例如：把“新增 SMN 告警”拆成四张卡：业务上要发什么消息，项目里接哪个插件扩展点，安全上如何处理 AK/SK，交付上提交哪些文档和测试。
+
 ### Key Points
 - 业务目标：为调度系统新增 SMN 告警插件。
 - 外部约束：需要 AK/SK、区域、主题、消息模板等配置。
@@ -87,6 +91,10 @@ visual: checklist
 
 ### Body
 以小组或个人方式查询 dolphin-scheduler 的现有告警插件机制，并把关键结论整理进 Design 的依据部分。
+
+
+### Example
+例如：查询到 Webhook 插件有配置校验和失败日志后，SMN Design 应引用这类事实，而不是凭空发明 `SmnAlertService` 的行为。
 
 ### Key Points
 - 查询现有 Alert 插件入口、Factory、Channel 或 SPI 注册方式。
@@ -139,6 +147,10 @@ Proposal 决定做不做和做多大，Spec 决定系统应该表现成什么样
 ### Body
 这两份文档必须把业务目标、范围、非范围、用户可见行为和验收条件写清楚，避免后续实现阶段不断补需求。
 
+
+### Example
+例如：Spec 可以写“topic 为空时保存配置失败并提示原因”；Design 才写“在配置校验类中检查 topic”；Tasks 再落到具体类和测试。
+
 ### Key Points
 - Proposal 写业务动机、目标用户、范围、非范围、风险和里程碑。
 - Spec 写配置项、发送行为、失败行为、兼容性和可测试验收条件。
@@ -188,6 +200,10 @@ visual: checklist
 
 ### Body
 SMN 接入涉及 AK/SK、区域、主题、消息模板等配置。凭证处理属于架构设计，不是实现细节，必须写入 Design 和验收标准。
+
+
+### Example
+例如：错误日志可以写“SMN send failed, requestId=xxx, ak=****1234”，不能写完整 AK/SK、原始请求体或生产 endpoint。
 
 ### Key Points
 - AK/SK 通过配置注入，不硬编码。
@@ -239,6 +255,10 @@ visual: matrix
 ### Body
 Tasks 是给 Agent 的施工图，也是给 Reviewer 的检查表。颗粒度太粗会让模型重新发散，颗粒度太细但无验收会让实现难以收口。
 
+
+### Example
+例如：坏任务是“实现 SMN”；好任务是“参考现有邮件插件新增 SMN 配置校验测试，覆盖 region 缺失、topic 缺失和 AK/SK 脱敏”。
+
 ### Key Points
 - 任务必须能排序，能标记完成，能回滚。
 - 每个任务都应有目标文件、改动意图和验收方式。
@@ -289,6 +309,10 @@ visual: checklist
 ### Body
 同伴 Review 的目标是找出文档中会导致实现跑偏的缺口，尤其是安全、兼容、错误处理和测试策略。
 
+
+### Example
+例如：同伴 Review 发现 Tasks 没有失败路径测试，就写入打回意见“补充发送超时、鉴权失败、配置缺失三类测试任务”。
+
 ### Key Points
 - Proposal 是否定义范围和非范围。
 - Spec 是否有可测试验收条件。
@@ -338,6 +362,10 @@ visual: flow
 
 ### Body
 第二课结束时，你应该拿到一份过审或待修订的 SMN Tasks。课后实现只允许按这份任务清单逐项推进。
+
+
+### Example
+例如：冻结后的 Tasks 应像施工清单：先加配置模型，再接插件注册，再封装客户端，再补测试；课后实现不能重新让 AI 自由发挥。
 
 ### Key Points
 - 查规范防造轮子。

@@ -177,6 +177,10 @@ function validateSlide(slide, file, index) {
     warnings.push(`${path} has no Visual section`);
   }
 
+  if (!slide.sections.example) {
+    warnings.push(`${path} has no Example section`);
+  }
+
   if (!slide.sections["illustration brief"]) {
     warnings.push(`${path} has no Illustration Brief`);
   }

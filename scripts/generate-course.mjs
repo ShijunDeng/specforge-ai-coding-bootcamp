@@ -321,6 +321,7 @@ function renderContentSlide(slide, module) {
   const { meta, sections } = slide;
   const headline = sections.headline ?? "";
   const body = sections.body ?? "";
+  const example = sections.example ?? "";
   const keyPoints = sections["key points"] ?? "";
   const visual = sections.visual ?? "";
   const activity = sections.activity ?? "";
@@ -340,6 +341,7 @@ ${chips([module.title, meta.mode, meta.duration_min ? `${meta.duration_min} 分�
 <section class="primary-pane">
 ${headline ? `<h2>${inlineMarkdown(headline)}</h2>` : ""}
 ${body ? `<div class="body-copy">${markdownLite(body)}</div>` : ""}
+${example ? `<div class="example-box"><strong>例子：</strong>${markdownLite(example)}</div>` : ""}
 ${keyPoints ? `<div class="key-points">${markdownLite(keyPoints)}</div>` : ""}
 </section>
 <aside class="visual-pane">
@@ -402,6 +404,7 @@ ${parseMarkdownTable([
   ...rows.map((row) => `| ${row.join(" | ")} |`)
 ])}
 
+<div class="example-box"><strong>例子：</strong><p>例如：Pet 疫苗字段练习的证据是提示词、diff、测试结果；SMN 大作业的证据是四阶文档、MR、检视意见和修复记录。</p></div>
 <div class="takeaway">实操成功标准是证据链完整，而不是口头确认已经完成。</div>`;
 }
 
@@ -422,6 +425,7 @@ ${parseMarkdownTable([
   ...rows.map((row) => `| ${row.join(" | ")} |`)
 ])}
 
+<div class="example-box"><strong>例子：</strong><p>例如：代码能跑但没有 Design、测试输出和 AI 打回记录，只能证明实现片段，不能证明完整工程交付。</p></div>
 <div class="takeaway">${escapeHtml(course.assessment.pass_rule ?? "")}</div>`;
 }
 
@@ -460,6 +464,7 @@ function renderPlainSlide(slide, module, index, includeNotes = false) {
     meta.visual ? `- Visual type: ${meta.visual}` : "",
     section("Headline", sections.headline ?? ""),
     section("Body", sections.body ?? ""),
+    section("Example", sections.example ?? ""),
     section("Key Points", sections["key points"] ?? ""),
     section("Visual Brief", sections.visual ?? ""),
     section("Illustration Brief", sections["illustration brief"] ?? ""),
@@ -568,7 +573,7 @@ function renderPptAiSlide(slide, module, index, includeNotes = false) {
     compactMarkdown(sections.headline ?? meta.title),
     "",
     "### On-Slide Text",
-    compactMarkdown([sections.body, sections["key points"]].filter(Boolean).join("\n")),
+    compactMarkdown([sections.body, sections.example ? `Example:\n${sections.example}` : "", sections["key points"]].filter(Boolean).join("\n")),
     "",
     "### Visual Direction",
     `Layout: ${meta.visual ?? "cards"}`,
