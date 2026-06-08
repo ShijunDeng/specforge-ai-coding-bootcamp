@@ -19,10 +19,12 @@ npm run generate                    # 生成 7 小时完整版
 npm run generate:lesson1            # 生成第一课微闭环版本
 npm run generate:lesson2            # 生成第二课 SDD 版本
 npm run generate -- --deck sdd-only # 按内置 deck 组合生成
-npm run generate -- --modules orientation,smn-design-lab
+npm run generate -- --modules orientation,smn-design-lab # 临时组合，输出 custom-*.slidev.md
 npm run slides                      # 启动 Slidev 预览，默认端口 3030
 npm run build                       # 生成静态站点到 dist/slides
 ```
+
+`--modules` 用于临时组合章节，未指定 `--output` 时会写入 `build/slides/custom-<module-ids>.slidev.md`，不会覆盖内置 deck 的生成文件。
 
 导出 PDF/PPTX 前，按 Slidev 的浏览器渲染要求安装依赖：
 

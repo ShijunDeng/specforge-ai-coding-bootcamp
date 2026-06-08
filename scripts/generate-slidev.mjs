@@ -17,6 +17,19 @@ function hasArg(name) {
   return args.includes(`--${name}`);
 }
 
+function slugify(value) {
+  return String(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
+}
+
+function modulesOutputPath(moduleIds) {
+  const slug = slugify(moduleIds.join("-")) || "custom";
+  return `build/slides/custom-${slug}.slidev.md`;
+}
+
 function escapeHtml(value = "") {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -322,7 +335,8 @@ const includeModuleIds = modulesOverride
   ? modulesOverride.split(",").map((item) => item.trim()).filter(Boolean)
   : deck.include_modules ?? [];
 
-const output = readArg("output") ?? deck.output ?? course.deck_defaults?.output;
+const explicitOutput = readArg("output");
+const output = explicitOutput ?? (modulesOverride ? modulesOutputPath(includeModuleIds) : deck.output ?? course.deck_defaults?.output);
 const moduleRefs = new Map((course.modules ?? []).map((module) => [module.id, module]));
 const selectedModules = [];
 for (const id of includeModuleIds) {

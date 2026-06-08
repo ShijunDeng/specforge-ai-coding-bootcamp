@@ -105,6 +105,8 @@ npm run generate -- --modules orientation,new-module-id
 npm run generate:custom
 ```
 
+`--modules` 适合临时抽取章节验证，默认输出到 `build/slides/custom-<module-ids>.slidev.md`。如果要固定输出路径，显式增加 `--output build/slides/my-deck.slidev.md`。
+
 本地预览：
 
 ```bash
