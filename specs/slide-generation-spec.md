@@ -24,7 +24,10 @@
 ## 输出
 
 - 默认输出：`build/slides/ai-coding-bootcamp-7h.slidev.md`。
-- 自定义输出：由 deck 或 `--output` 指定。
+- 内置 deck 输出：由 `specs/course.yaml` 中对应 deck 的 `output` 指定。
+- `--modules` 临时组合输出：未指定 `--output` 时生成到 `build/slides/custom-<module-ids>.slidev.md`，避免覆盖内置 deck。
+- `--config` 自定义 deck 输出：由 `configs/*.yaml` 中 deck 的 `output` 指定。
+- 显式自定义输出：由 `--output` 覆盖上述规则。
 - 同目录复制 `style.css`，供 Slidev 渲染使用。
 
 ## 命令
@@ -40,7 +43,7 @@ npm run generate -- --list-decks
 
 ## 验收
 
-- `npm run validate` 能发现缺失标题、重复 slide id、缺失讲师备注、模块时长不一致、deck 引用错误和敏感凭证模式。
+- `npm run validate` 能发现缺失标题、重复 slide id、缺失讲师备注、模块时长不一致、模块 manifest 追溯字段不一致、deck/config 引用错误、缺失来源文件和敏感凭证模式。
 - `npm run generate` 能稳定生成 Markdown。
 - `npm run build` 能通过 Slidev 构建静态站点。
 - PDF/PPTX 导出必须先安装 `playwright-chromium`，生成文件不提交。
