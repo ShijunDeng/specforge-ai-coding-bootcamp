@@ -33,6 +33,15 @@ function requireValue(value, path) {
   }
 }
 
+function validateUniqueIds(items, path) {
+  const seen = new Set();
+  for (const [index, item] of items.entries()) {
+    if (!item?.id) continue;
+    if (seen.has(item.id)) errors.push(`${path}[${index}].id duplicates ${item.id}`);
+    seen.add(item.id);
+  }
+}
+
 function parseFrontmatter(raw, file) {
   const match = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
   if (!match) {
@@ -165,6 +174,9 @@ if (!Array.isArray(course.audience?.learning_outcomes) || !course.audience.learn
 
 const modules = course.modules ?? [];
 if (!modules.length) errors.push("modules needs at least one module");
+validateUniqueIds(modules, "modules");
+validateUniqueIds(course.decks ?? [], "decks");
+validateUniqueIds(course.labs ?? [], "labs");
 
 const moduleIds = new Set(modules.map((module) => module.id));
 for (const deck of course.decks ?? []) {
