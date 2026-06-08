@@ -18,7 +18,7 @@
 
 - 课程正文使用 `specs/modules/*.md`。
 - 课程 manifest 使用 `specs/course.yaml`。
-- 生成物输出到 `build/` 和 `dist/`。
+- 生成物输出到 `build/` 和 `dist/`，其中 `build/slides/` 面向 Slidev，`build/llm/` 面向 NotebookLM、NotepadLLM 和通用 LLM 知识库。
 - 练习说明放在 `exercises/`。
 - 评分规则放在 `rubrics/`。
 
@@ -31,6 +31,7 @@
 - 第二课版本。
 - SDD 专题版本。
 - 用户通过 YAML config 或命令行指定模块组合。
+- 用户通过 `--target` 指定输出目标，至少支持 `slidev` 和 `llm`。
 
 ## 验收条件
 
@@ -39,3 +40,5 @@
 - deck 引用的模块必须存在。
 - full-7h deck 总时长为 420 分钟。
 - 校验器能扫描常见凭证模式。
+- 默认 Slidev 目标可构建为静态站点。
+- LLM 目标输出纯 Markdown，不包含 Slidev HTML/CSS 布局。

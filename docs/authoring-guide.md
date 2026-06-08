@@ -1,10 +1,11 @@
 # Spec 维护指南
 
-本仓库把课程材料当作工程资产维护：课程正文写在 Spec 中，Slidev、静态站点、PDF、PPTX 都由脚本生成。讲师和课程维护者只维护源文件，不直接修改生成物。
+本仓库把课程材料当作工程资产维护：课程正文写在 Spec 中，Slidev、NotebookLM/NotepadLLM 友好的纯 Markdown、静态站点、PDF、PPTX 都由脚本生成。讲师和课程维护者只维护源文件，不直接修改生成物。
 
 ## 基本原则
 
 - **Spec 是唯一正文来源**：课件原始内容写在 `specs/modules/*.md` 和 `specs/course.yaml`。
+- **生成目标可替换**：Slidev、NotebookLM、NotepadLLM、普通 Markdown 都是输出目标，不是课程源模型。
 - **生成物不手改**：`build/`、`dist/`、PDF、PPTX 都会被脚本覆盖。
 - **可见内容面向学员**：`title`、`Headline`、`Body`、`Key Points`、`Visual`、`Takeaway` 都应像课堂上直接讲给学员听，避免“让学员……”“讲师要……”这类后台语言。
 - **讲师提示放备注**：讲法、追问、现场取舍、助教动作写在 `Speaker Notes`。
@@ -25,6 +26,7 @@
 | `scripts/` | 校验、生成、预览、导出脚本。 | 生成规则或工程能力变化时修改。 |
 | `style.css` | Slidev 视觉样式。 | 页面版式、字体、图示样式变化时修改。 |
 | `build/`、`dist/` | 生成物。 | 不手工修改。 |
+| `specs/generation-spec.md` | 多目标生成规格。 | 新增或调整输出目标时修改。 |
 
 ## 课程结构
 
@@ -207,6 +209,11 @@ npm run generate
 
 ```bash
 npm run generate
+npm run generate:slidev
+npm run generate:llm
+npm run generate:notebooklm
+npm run generate:notepadllm
+npm run generate:all
 npm run generate:lesson1
 npm run generate:lesson2
 npm run generate:custom
@@ -224,6 +231,16 @@ npm run generate -- --modules orientation,smn-design-lab
 npm run generate -- --modules orientation,smn-design-lab --output build/slides/my-deck.slidev.md
 ```
 
+生成目标：
+
+```bash
+npm run generate -- --target slidev --deck full-7h
+npm run generate -- --target llm --deck lesson2-sdd
+npm run generate -- --target notebooklm --modules orientation,smn-design-lab
+```
+
+`slidev` 是默认目标，输出到 `build/slides/`。`llm`、`notebooklm`、`notepadllm`、`markdown`、`plain` 会输出工具无关的纯 Markdown 到 `build/llm/`，适合导入 NotebookLM、NotepadLLM 或其他 LLM 知识库。LLM 目标默认不包含 `Speaker Notes`；如需讲师完整资料可加 `--include-notes`。
+
 ## 验证与预览
 
 最低验证：
@@ -234,10 +251,16 @@ npm run validate
 
 `validate` 会检查必需文档、敏感凭证、manifest 引用、模块时长、slide id 唯一性、页面必填字段、练习验收规则等。
 
-生成 Slidev Markdown：
+生成默认 Slidev Markdown：
 
 ```bash
 npm run generate
+```
+
+生成 LLM/NotebookLM/NotepadLLM 友好的纯 Markdown：
+
+```bash
+npm run generate:llm
 ```
 
 本地预览：
@@ -266,7 +289,7 @@ npm run slides:public
 npm run check
 ```
 
-`check` 会依次执行校验、生成和静态站点构建。Slidev 构建时可能输出依赖侧的 Rolldown annotation 警告；只要命令退出码为 0 且产物生成成功，一般不影响交付。
+`check` 会依次执行校验、默认 Slidev 生成和静态站点构建。Slidev 构建时可能输出依赖侧的 Rolldown annotation 警告；只要命令退出码为 0 且产物生成成功，一般不影响交付。
 
 ## 导出交付物
 

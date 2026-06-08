@@ -4,7 +4,7 @@ import { parse } from "yaml";
 const coursePath = process.argv[2] ?? "specs/course.yaml";
 const requiredFiles = [
   "specs/constitution.md",
-  "specs/slide-generation-spec.md",
+  "specs/generation-spec.md",
   "specs/course-production/proposal.md",
   "specs/course-production/spec.md",
   "specs/course-production/design.md",

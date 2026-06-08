@@ -39,7 +39,7 @@ const port = readArg("port", process.env.PORT ?? "3030");
 const password = readArg("password", process.env.SLIDEV_REMOTE_PASSWORD ?? "course-preview");
 const entry = readArg("entry", "build/slides/ai-coding-bootcamp-7h.slidev.md");
 
-run("node", ["scripts/generate-slidev.mjs"]);
+run("node", ["scripts/generate-course.mjs", "--target", "slidev"]);
 
 const slidev = spawn("npx", [
   "--yes",
@@ -95,4 +95,3 @@ process.on("SIGTERM", () => {
   shutdown();
   process.exit(143);
 });
-
