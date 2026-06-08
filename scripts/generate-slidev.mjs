@@ -30,6 +30,10 @@ function modulesOutputPath(moduleIds) {
   return `build/slides/custom-${slug}.slidev.md`;
 }
 
+function outputBaseName(output) {
+  return path.basename(output, ".md").replace(/\.slidev$/, "");
+}
+
 function escapeHtml(value = "") {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -347,7 +351,7 @@ for (const id of includeModuleIds) {
 
 const includeModules = new Set(includeModuleIds);
 const generatedAt = new Date().toISOString().slice(0, 10);
-const exportFilename = course.deck_defaults?.export_filename ?? course.meta.id;
+const exportFilename = deck.export_filename ?? outputBaseName(output) ?? course.deck_defaults?.export_filename ?? course.meta.id;
 
 const chunks = [
   `---
