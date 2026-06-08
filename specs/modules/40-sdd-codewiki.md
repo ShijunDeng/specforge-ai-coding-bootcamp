@@ -263,7 +263,7 @@ CodeWiki 查询应该围绕现状、扩展点、配置和测试设计，而不�
 
 :::slide
 id: sdd-08
-title: 讲师演示：Skill 串起四阶文档
+title: 课堂演示：Skill 串起四阶文档
 mode: demo
 duration_min: 12
 visual: flow
@@ -273,7 +273,7 @@ visual: flow
 先用 CodeWiki 探路，再用 SDD Skill 连贯生成四阶文档。
 
 ### Body
-讲师用飞书告警或已有 Webhook 插件作为样例，查询项目规范，整理约束，然后调用 SDD Skill 按 Proposal、Spec、Design、Tasks 的顺序连续产出文档初版，并展示一次人工打回。
+你将看到如何以飞书告警或已有 Webhook 插件为样例，查询项目规范、整理约束，再调用 SDD Skill 按 Proposal、Spec、Design、Tasks 的顺序连续产出文档初版，并完成一次人工打回。
 
 ### Key Points
 - 查现有插件入口、配置模型、发送逻辑和测试样例。

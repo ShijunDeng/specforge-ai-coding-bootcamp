@@ -137,6 +137,81 @@ function markdownLite(markdown = "") {
   return html.join("\n");
 }
 
+function visualItems(markdown = "") {
+  const lines = markdown.trim().split(/\r?\n/);
+  return lines
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .filter((line) => !line.startsWith("|") && !line.startsWith("```"))
+    .map((line) => line.replace(/^[-*]\s+/, "").replace(/^\d+[.)]\s+/, "").trim())
+    .filter(Boolean)
+    .slice(0, 8);
+}
+
+function visualLabel(item = "") {
+  const match = item.match(/^(.+?)[：:]\s*(.+)$/);
+  if (!match) return { title: item, body: "" };
+  return { title: match[1], body: match[2] };
+}
+
+function renderVisualWidget(visual = "", type = "") {
+  if (!visual.trim()) return "";
+  const normalizedType = String(type || "").toLowerCase();
+
+  if (normalizedType === "matrix" || visual.trim().startsWith("|")) {
+    return `<div class="visual-widget matrix-widget">${markdownLite(visual)}</div>`;
+  }
+
+  const items = visualItems(visual);
+  if (!items.length) {
+    return `<div class="visual-widget cards-widget">${markdownLite(visual)}</div>`;
+  }
+
+  if (normalizedType === "flow") {
+    return `<div class="visual-widget flow-widget">${items
+      .map(
+        (item, index) =>
+          `<div class="flow-step"><span class="node-index">${String(index + 1).padStart(2, "0")}</span><p>${inlineMarkdown(item)}</p></div>`
+      )
+      .join("")}</div>`;
+  }
+
+  if (normalizedType === "checklist") {
+    return `<div class="visual-widget checklist-widget">${items
+      .map(
+        (item) =>
+          `<div class="check-row"><span class="check-mark"></span><p>${inlineMarkdown(item)}</p></div>`
+      )
+      .join("")}</div>`;
+  }
+
+  if (normalizedType === "timeline") {
+    return `<div class="visual-widget timeline-widget">${items
+      .map((item) => {
+        const { title, body } = visualLabel(item);
+        return `<div class="timeline-item"><span class="timeline-dot"></span><div><strong>${inlineMarkdown(title)}</strong>${body ? `<p>${inlineMarkdown(body)}</p>` : ""}</div></div>`;
+      })
+      .join("")}</div>`;
+  }
+
+  if (normalizedType === "contrast") {
+    const panels = items.slice(0, 2).map(visualLabel);
+    return `<div class="visual-widget contrast-widget">${panels
+      .map(
+        (panel, index) =>
+          `<div class="contrast-panel ${index === 1 ? "contrast-panel-strong" : ""}"><span class="contrast-kicker">${index === 1 ? "目标状态" : "常见状态"}</span><strong>${inlineMarkdown(panel.title)}</strong>${panel.body ? `<p>${inlineMarkdown(panel.body)}</p>` : ""}</div>`
+      )
+      .join("")}</div>`;
+  }
+
+  return `<div class="visual-widget cards-widget">${items
+    .map(
+      (item, index) =>
+        `<div class="visual-card-item"><span class="card-index">${String(index + 1).padStart(2, "0")}</span><p>${inlineMarkdown(item)}</p></div>`
+    )
+    .join("")}</div>`;
+}
+
 function parseFrontmatter(raw, file) {
   const match = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
   if (!match) {
@@ -229,7 +304,7 @@ ${keyPoints ? `<div class="key-points">${markdownLite(keyPoints)}</div>` : ""}
 ${activity ? `<div class="activity-box">${markdownLite(activity)}</div>` : ""}
 </section>
 <aside class="visual-pane">
-${visual ? `<div class="visual-card">${markdownLite(visual)}</div>` : ""}
+${renderVisualWidget(visual, meta.visual)}
 ${takeaway ? `<div class="takeaway">${inlineMarkdown(takeaway)}</div>` : ""}
 </aside>
 </div>

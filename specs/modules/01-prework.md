@@ -67,8 +67,8 @@ visual: flow
 ### Key Points
 - spring-petclinic 至少完成一次启动或测试。
 - dolphin-scheduler 至少完成依赖解析和 IDE 索引。
-- 讲师准备常见错误 FAQ：JDK、代理、依赖源、Token 权限。
-- 助教课前只解决阻塞，不讲课程内容。
+- 课前 FAQ 覆盖 JDK、代理、依赖源、Token 权限等常见错误。
+- 环境阻塞在课前处理，正课不占用练习主线。
 
 ### Visual
 - 拉取代码

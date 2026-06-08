@@ -150,6 +150,7 @@ npm run check
 - `title` 是屏幕上可见标题。
 - `mode` 表示授课方式，例如 `talk`、`demo`、`lab`、`summary`。
 - `duration_min` 表示本页预计时长。
+- `title`、`Headline`、`Body`、`Key Points`、`Visual`、`Takeaway` 都是学员能直接看到的课堂内容，避免写成“讲师要做什么”的备课指令。
 - `Headline` 是本页核心判断，不写成泛泛介绍。
 - `Key Points` 不超过 5-6 条。
 - `Visual` 描述页面右侧该展示的结构，可以是流程、表格、清单、对比或任务卡。

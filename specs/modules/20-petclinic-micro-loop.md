@@ -122,7 +122,7 @@ visual: checklist
 
 :::slide
 id: micro-04
-title: 讲师演示：Owner 模糊查询
+title: 课堂演示：Owner 模糊查询
 mode: demo
 duration_min: 18
 visual: flow
@@ -132,7 +132,7 @@ visual: flow
 演示目标是完整走一遍小需求，不是炫耀一次生成成功。
 
 ### Body
-讲师为 Owner 增加按姓名片段模糊查询，故意停在计划、采纳、测试、修复几个 Review 点，展示人机协同的真实节奏。
+你将看到 Owner 按姓名片段模糊查询从计划、采纳、测试到修复的完整过程；每个暂停点都对应一个 Review 判断。
 
 ### Key Points
 - 需求：为 Owner 增加按姓名片段模糊查询。
@@ -150,7 +150,7 @@ visual: flow
 - 本地测试
 
 ### Takeaway
-演示时故意停在 Review 点，让学员看到人类判断。
+不要只看最终代码，要看每个 Review 点如何收敛 AI 输出。
 
 ### Speaker Notes
 - 讲师不要直接接受第一版代码，至少指出一个命名或边界条件问题。
@@ -273,7 +273,7 @@ visual: checklist
 一次微闭环的最终产物不是代码片段，而是可复核证据包。
 
 ### Body
-学员课后复现时，要提交可以被讲师和同伴复核的过程材料，而不是只说“我跑通了”。同时为第二课提前准备 dolphin-scheduler 和必要授权。
+课后复现时，需要提交可以被课程组和同伴复核的过程材料，而不是只说“我跑通了”。同时为第二课提前准备 dolphin-scheduler 和必要授权。
 
 ### Key Points
 - 需求提示词和 AI 修改计划。

@@ -121,7 +121,7 @@ visual: cards
 
 :::slide
 id: mcp-04
-title: 讲师演示：建单、查错、自动修复
+title: 课堂演示：建单、查错、自动修复
 mode: demo
 duration_min: 17
 visual: flow
@@ -131,7 +131,7 @@ visual: flow
 故意埋雷是为了让学员看到质量闭环如何工作。
 
 ### Body
-讲师在 Petclinic 改动中故意写入违规打印和不判空代码，通过 MCP 创建 MR，触发检视 Skill，再调用修复 Skill 自动改回合规代码。
+你将看到 Petclinic 改动中故意写入违规打印和不判空代码，再通过 MCP 创建 MR、触发检视 Skill，并调用修复 Skill 自动改回合规代码。
 
 ### Key Points
 - 埋雷：System.out、潜在 NPE 或敏感日志示例。
