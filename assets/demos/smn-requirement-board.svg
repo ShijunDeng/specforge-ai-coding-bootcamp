@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#151f25" stroke="#31424a"/>
+  <text x="60" y="74" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">SMN requirement deconstruction</text>
+  <g font-family="Inter,Arial,sans-serif" font-size="17" fill="#e5e7eb">
+    <rect x="78" y="126" width="250" height="106" rx="16" fill="#0f172a" stroke="#38bdf8"/><text x="203" y="168" text-anchor="middle" font-weight="700">Behavior</text><text x="203" y="198" text-anchor="middle" fill="#bfdbfe">send alert message</text>
+    <rect x="356" y="126" width="250" height="106" rx="16" fill="#0f172a" stroke="#f59e0b"/><text x="481" y="168" text-anchor="middle" font-weight="700">Security</text><text x="481" y="198" text-anchor="middle" fill="#fde68a">mask AK/SK</text>
+    <rect x="634" y="126" width="250" height="106" rx="16" fill="#0f172a" stroke="#34d399"/><text x="759" y="168" text-anchor="middle" font-weight="700">Integration</text><text x="759" y="198" text-anchor="middle" fill="#bbf7d0">reuse Alert SPI</text>
+    <rect x="218" y="292" width="250" height="106" rx="16" fill="#0f172a" stroke="#a78bfa"/><text x="343" y="334" text-anchor="middle" font-weight="700">Validation</text><text x="343" y="364" text-anchor="middle" fill="#ddd6fe">fixtures + timeout</text>
+    <rect x="496" y="292" width="250" height="106" rx="16" fill="#0f172a" stroke="#f59e0b"/><text x="621" y="334" text-anchor="middle" font-weight="700">Operations</text><text x="621" y="364" text-anchor="middle" fill="#fde68a">logs + retry</text>
+  </g>
+</svg>

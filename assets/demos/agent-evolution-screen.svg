@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#151f25" stroke="#31424a"/>
+  <text x="60" y="74" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">From autocomplete to agent workflow</text>
+  <g font-family="Inter,Arial,sans-serif" font-size="17" fill="#e5e7eb">
+    <rect x="76" y="132" width="180" height="230" rx="16" fill="#0f172a" stroke="#334155"/><text x="166" y="178" text-anchor="middle" font-weight="700">Autocomplete</text><text x="166" y="220" text-anchor="middle" fill="#cbd5e1">line-level</text><text x="166" y="252" text-anchor="middle" fill="#cbd5e1">human drives</text>
+    <rect x="296" y="132" width="180" height="230" rx="16" fill="#102538" stroke="#38bdf8"/><text x="386" y="178" text-anchor="middle" font-weight="700">Chat edit</text><text x="386" y="220" text-anchor="middle" fill="#bfdbfe">file-level</text><text x="386" y="252" text-anchor="middle" fill="#bfdbfe">prompt contract</text>
+    <rect x="516" y="132" width="180" height="230" rx="16" fill="#10231d" stroke="#34d399"/><text x="606" y="178" text-anchor="middle" font-weight="700">Agent loop</text><text x="606" y="220" text-anchor="middle" fill="#bbf7d0">task-level</text><text x="606" y="252" text-anchor="middle" fill="#bbf7d0">runs checks</text>
+    <rect x="736" y="132" width="150" height="230" rx="16" fill="#332211" stroke="#f59e0b"/><text x="811" y="178" text-anchor="middle" font-weight="700">MCP</text><text x="811" y="220" text-anchor="middle" fill="#fde68a">system-level</text><text x="811" y="252" text-anchor="middle" fill="#fde68a">permissioned</text>
+  </g>
+  <path d="M258 246h36M478 246h36M698 246h36" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/>
+  <text x="480" y="440" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="17" fill="#86efac">more autonomy requires stricter boundaries and evidence</text>
+</svg>

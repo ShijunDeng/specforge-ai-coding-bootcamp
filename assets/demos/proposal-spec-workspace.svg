@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#142028" stroke="#31424a"/>
+  <text x="60" y="74" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">Proposal and Spec workspace</text>
+  <rect x="78" y="118" width="380" height="330" rx="16" fill="#0f172a" stroke="#38bdf8"/>
+  <rect x="502" y="118" width="380" height="330" rx="16" fill="#0f172a" stroke="#34d399"/>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="15">
+    <text x="106" y="160" fill="#7dd3fc">proposal.md</text>
+    <text x="106" y="202" fill="#cbd5e1">problem: missing SMN channel</text>
+    <text x="106" y="232" fill="#cbd5e1">scope: alert plugin only</text>
+    <text x="106" y="262" fill="#fbbf24">non-goal: scheduler core changes</text>
+    <text x="530" y="160" fill="#86efac">spec.md</text>
+    <text x="530" y="202" fill="#cbd5e1">when config valid -> send</text>
+    <text x="530" y="232" fill="#cbd5e1">when secret missing -> fail safe</text>
+    <text x="530" y="262" fill="#cbd5e1">logs must mask credentials</text>
+  </g>
+</svg>

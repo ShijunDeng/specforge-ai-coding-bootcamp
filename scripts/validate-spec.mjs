@@ -1,4 +1,5 @@
 import { access, readFile, readdir } from "node:fs/promises";
+import path from "node:path";
 import { parse } from "yaml";
 
 const coursePath = process.argv[2] ?? "specs/course.yaml";
@@ -26,6 +27,7 @@ const sensitivePatterns = [
 const errors = [];
 const warnings = [];
 const slideIds = new Set();
+const mediaRefs = [];
 
 function requireValue(value, path) {
   if (value === undefined || value === null || value === "") {
@@ -181,6 +183,15 @@ function validateSlide(slide, file, index) {
     warnings.push(`${path} has no Example section`);
   }
 
+  if (!slide.sections.media) {
+    warnings.push(`${path} has no Media section`);
+  } else {
+    const src = slide.sections.media.match(/^src:\s*(.+)$/m)?.[1]?.trim();
+    if (src && !/^https?:\/\//.test(src)) {
+      mediaRefs.push({ src, file, path });
+    }
+  }
+
   if (!slide.sections["illustration brief"]) {
     warnings.push(`${path} has no Illustration Brief`);
   }
@@ -191,6 +202,19 @@ function validateSlide(slide, file, index) {
 
   if (["demo", "lab", "assessment"].includes(slide.meta?.mode) && !slide.sections.activity) {
     warnings.push(`${path} has no Activity section for ${slide.meta.mode} page`);
+  }
+}
+
+async function validateMediaRefs() {
+  for (const ref of mediaRefs) {
+    const resolved = ref.src.startsWith("/")
+      ? ref.src
+      : path.normalize(path.join(path.dirname(ref.file), ref.src));
+    try {
+      await access(resolved);
+    } catch {
+      errors.push(`${ref.path} references missing Media src ${ref.src}`);
+    }
   }
 }
 
@@ -275,6 +299,8 @@ for (const moduleRef of modules) {
   totalDuration += stats.duration;
   slideCount += stats.slides;
 }
+
+await validateMediaRefs();
 
 for (const lab of course.labs ?? []) {
   requireValue(lab.id, `labs.${lab?.id}.id`);

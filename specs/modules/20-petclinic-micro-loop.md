@@ -58,6 +58,12 @@ visual: flow
 - 证据归档
 
 
+### Media
+src: ../../assets/demos/micro-loop-dashboard.svg
+type: 微闭环运行看板
+alt: Petclinic 练习从提示契约、候选 diff、Review 暂停、UT Skill 到测试通过和证据包的流程。
+caption: 第一课的核心不是完成一个小功能，而是把小需求跑成可复制的微闭环。
+
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：对话开发、生成单测、本地跑绿、人工 Review、失败修复、证据归档。
 - 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
@@ -106,6 +112,12 @@ AI 可以更快地产出候选补丁，但工程师仍然要确认业务语义�
 - 改：按失败输出修复。
 - 证：保留命令结果和结论。
 
+
+### Media
+src: ../../assets/demos/quality-gates-terminal.svg
+type: 质量门禁终端
+alt: 微闭环中 git diff、团队规则检视、本地测试和证据包打包的命令输出。
+caption: 微闭环质量门槛要体现在命令和检查结果上，而不是停留在口头原则。
 
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：写：给上下文和边界、测：生成并运行单测、查：人工检查 diff、改：按失败输出修复、证：保留命令结果和结论。

@@ -11,7 +11,7 @@
 - **讲师提示放备注**：讲法、追问、现场取舍、助教动作写在 `Speaker Notes`。
 - **插图和排版写进 Spec**：每页都应填写 `Illustration Brief` 和 `Layout Contract`，Demo、Lab、Assessment 页还要填写 `Activity`。
 - **每个知识点都要有实例**：每页填写 `Example`，用具体需求、失败场景、提示词、Review 意见、测试输出或文档片段承载概念。
-- **关键页优先使用真实画面**：Demo、Lab、MCP、CodeWiki、SDD、验收页应优先填写 `Media`，引用代码截图、终端运行截图、MR 检视截图或动态演示 SVG/GIF。每个实操模块至少应有 2-3 张运行现场类媒体，不能只依赖抽象流程图。
+- **默认每页都有运行画面**：每个 authored slide 原则上都填写 `Media`，引用代码截图、终端运行截图、MR 检视截图、自动验收看板或动态演示 SVG/GIF。只有纯目录页、过渡页或确实无法找到合适运行现场时，才退回结构图。
 - **先验证再交付**：每次修改后至少运行 `npm run validate`；正式交付前运行 `npm run check`。
 
 `course.xlsx` 只作为首版课程设计的初始输入来源。后续课程演进以本仓库的 Spec 为准，正文、流程和说明都不应依赖 `course.xlsx`。
@@ -227,7 +227,7 @@ npm run generate
 - `Example` 必须具体，能让学员把本页概念映射到一个真实动作或场景。
 - `Key Points` 控制在 3-6 条。
 - `Visual` 有结构，不能只写一段普通说明。
-- Demo/Lab/复杂概念页优先补 `Media`；没有媒体时才退回纯结构图。可接受的媒体包括脱敏真实截图、终端输出、IDE diff、MR 检视、自动化验收看板、动态 SVG/GIF。
+- 默认补 `Media`，尤其是 Demo、Lab、复杂概念、复盘和验收页；没有合适运行画面时才退回纯结构图。可接受的媒体包括脱敏真实截图、终端输出、IDE diff、MR 检视、自动化验收看板、动态 SVG/GIF。
 - `Illustration Brief` 写清图示主体、关系、强调点和禁止元素。
 - `Layout Contract` 写清 16:9 页面如何分区，内容溢出时如何取舍。
 - Demo、Lab、Assessment 页必须有 `Activity`。

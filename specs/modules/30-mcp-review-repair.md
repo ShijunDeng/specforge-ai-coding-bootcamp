@@ -57,6 +57,12 @@ MCP 让 AI 不只会回答，还能在授权边界内触发平台动作。
 - 测试和 Review 收口
 
 
+### Media
+src: ../../assets/demos/mcp-action-console.svg
+type: MCP 动作控制台
+alt: MCP 在授权边界内创建 MR、触发检视、保留审计日志并要求人工确认。
+caption: MCP 的价值是让外部系统动作可授权、可审计、可复现，而不是让 AI 绕开工程流程。
+
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：本地代码变更、MCP 创建 MR、平台触发检视、Skill 读取意见、Agent 修复代码、测试和 Review 收口。
 - 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
@@ -338,6 +344,12 @@ visual: flow
 - 自动修复
 - 证据归档
 
+
+### Media
+src: ../../assets/demos/dirty-work-summary.svg
+type: 研发流水线复盘图
+alt: 第一课把复制日志、弱测试、重复 MR 评论等机械动作转成机器循环，由人保留判断和验收责任。
+caption: 第一课复盘要突出人机分工：机器处理重复劳动，人负责目标、判断和验收。
 
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：功能代码、单测生成、MCP 提单、自动检视、自动修复、证据归档。

@@ -54,6 +54,12 @@ AI Coding 的能力边界从“补全片段”扩展到“理解任务并调用�
 - 企业级：更可控协作。
 
 
+### Media
+src: ../../assets/demos/agent-evolution-screen.svg
+type: Agent 演进图
+alt: 从代码补全、对话编辑、Agent 循环到 MCP 外部系统动作的能力演进。
+caption: 能力越自动化，越需要更严格的边界、权限和证据要求。
+
 ### Illustration Brief
 - 绘制时间线，阶段依次覆盖：补全：更快输入、对话：更快理解、Agent：更快执行、企业级：更可控协作。
 - 每个阶段只放一个动作词和一个证据点，突出课堂推进节奏。
@@ -102,6 +108,12 @@ Vibe Coding 适合低风险、小步快跑、高频验证的任务；SDD 适合�
 | 大型存量插件 | SDD 先行 | 架构不兼容 |
 | 安全敏感改动 | SDD 加强约束 | 凭证和权限泄露 |
 
+
+### Media
+src: ../../assets/demos/method-choice-switchboard.svg
+type: 方法选择看板
+alt: 根据上下文范围、反馈速度、错误成本和事实未知程度选择 Vibe Coding 或 SDD。
+caption: 方法没有绝对优劣，关键是判断任务的不确定性和错误成本。
 
 ### Illustration Brief
 - 绘制二维矩阵或对照表，表格内容围绕：任务类型 / 推荐方式、单文件小改 / Vibe Coding、多文件功能 / 计划后小步实现、大型存量插件 / SDD 先行、安全敏感改动 / SDD 加强约束。

@@ -56,6 +56,12 @@ visual: timeline
 - 统一验收
 
 
+### Media
+src: ../../assets/demos/homework-evidence-review.svg
+type: 大作业证据看板
+alt: SMN 大作业提交的四阶文档、MR、测试输出、AI 协作记录和安全扫描结果。
+caption: 大作业真实落地必须把四阶文档、分步实现、测试、MR 和检视意见串成可复核证据。
+
 ### Illustration Brief
 - 绘制时间线，阶段依次覆盖：文档定版、分步实现、本地验证、创建 MR、代码检视、统一验收。
 - 每个阶段只放一个动作词和一个证据点，突出课堂推进节奏。
@@ -171,6 +177,12 @@ visual: cards
 - 沉淀：团队 Prompt、Skill、Rubric、FAQ。
 
 
+### Media
+src: ../../assets/demos/rollout-team-fork.svg
+type: 团队复讲派生图
+alt: 团队从课程 Spec 派生自己的仓库案例、Review 规则和 Rubric，同时保留方法主线。
+caption: 团队复讲不是照读课件，而是 fork 方法、替换案例、沉淀团队约束。
+
 ### Illustration Brief
 - 绘制 3-6 张任务卡或概念卡，卡片内容覆盖：保留：方法论、证据标准、Review 边界、替换：仓库、工具入口、业务案例、验收命令、沉淀：团队 Prompt、Skill、Rubric、FAQ。
 - 每张卡只保留一个关键词和一句解释，使用图标化符号辅助识别。
@@ -221,6 +233,12 @@ visual: flow
 - 更新 Spec
 - 生成新版课件
 
+
+### Media
+src: ../../assets/demos/feedback-iteration-dashboard.svg
+type: 课程迭代看板
+alt: 问卷反馈、跑分结果和典型问题被归类为 Spec 任务，再生成新版课件。
+caption: 培训材料要像产品一样迭代，把真实卡点转成可 Review、可合并的 Spec 修改。
 
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：T+1 自动跑分、T+3 红黑榜、问卷二维码/短链、痛点归类、更新 Spec、生成新版课件。

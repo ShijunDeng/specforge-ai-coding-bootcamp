@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#142028" stroke="#31424a"/>
+  <text x="60" y="74" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">Choose Vibe or SDD by risk</text>
+  <rect x="78" y="126" width="360" height="300" rx="18" fill="#10231d" stroke="#34d399"/>
+  <rect x="522" y="126" width="360" height="300" rx="18" fill="#332211" stroke="#f59e0b"/>
+  <g font-family="Inter,Arial,sans-serif" font-size="19" fill="#e5e7eb">
+    <text x="258" y="176" text-anchor="middle" font-weight="700">Vibe Coding</text>
+    <text x="702" y="176" text-anchor="middle" font-weight="700">Spec Driven</text>
+    <text x="258" y="230" text-anchor="middle" fill="#bbf7d0">small diff</text>
+    <text x="258" y="270" text-anchor="middle" fill="#bbf7d0">fast feedback</text>
+    <text x="258" y="310" text-anchor="middle" fill="#bbf7d0">easy rollback</text>
+    <text x="702" y="230" text-anchor="middle" fill="#fde68a">cross-module</text>
+    <text x="702" y="270" text-anchor="middle" fill="#fde68a">security impact</text>
+    <text x="702" y="310" text-anchor="middle" fill="#fde68a">unknown architecture</text>
+  </g>
+  <rect x="385" y="244" width="190" height="64" rx="32" fill="#0f172a" stroke="#334155"/>
+  <circle cx="532" cy="276" r="24" fill="#f59e0b"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#142028" stroke="#31424a"/>
+  <text x="60" y="74" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">What moved from human toil to machine loop</text>
+  <rect x="82" y="120" width="352" height="284" rx="16" fill="#241817" stroke="#7f1d1d"/>
+  <rect x="526" y="120" width="352" height="284" rx="16" fill="#10231d" stroke="#166534"/>
+  <g font-family="Inter,Arial,sans-serif" font-size="18" fill="#e5e7eb">
+    <text x="258" y="168" text-anchor="middle" font-weight="700" fill="#fecaca">Before</text>
+    <text x="702" y="168" text-anchor="middle" font-weight="700" fill="#bbf7d0">After</text>
+    <text x="258" y="220" text-anchor="middle">copy logs manually</text>
+    <text x="258" y="258" text-anchor="middle">write weak tests</text>
+    <text x="258" y="296" text-anchor="middle">repeat MR comments</text>
+    <text x="702" y="220" text-anchor="middle">feed exact failure</text>
+    <text x="702" y="258" text-anchor="middle">semantic UT Skill</text>
+    <text x="702" y="296" text-anchor="middle">review bot + repair Skill</text>
+  </g>
+  <text x="480" y="462" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="17" fill="#86efac">humans keep judgment; machines handle repetition</text>
+</svg>

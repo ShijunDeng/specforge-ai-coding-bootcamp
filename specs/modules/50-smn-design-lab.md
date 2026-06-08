@@ -57,6 +57,12 @@ visual: cards
 - 任务冻结
 
 
+### Media
+src: ../../assets/demos/smn-requirement-board.svg
+type: SMN 需求拆解看板
+alt: SMN 告警插件从行为、安全、集成、验证和运维五类约束降维拆解。
+caption: SMN 实操先把“新增告警”拆成业务、项目、安全、验证和运维约束，再进入四阶文档。
+
 ### Illustration Brief
 - 绘制 3-6 张任务卡或概念卡，卡片内容覆盖：需求降维、CodeWiki 探查、四阶成文、同伴 Review、任务冻结。
 - 每张卡只保留一个关键词和一句解释，使用图标化符号辅助识别。
@@ -112,6 +118,12 @@ visual: checklist
 - 安全规范
 
 
+### Media
+src: ../../assets/demos/codewiki-query-session.svg
+type: CodeWiki 查询会话
+alt: 围绕 SMN 插件入口、配置模型、发送逻辑、错误处理、测试样例和安全规范的查询结果。
+caption: CodeWiki 查询任务卡必须把查询结果转成 Design 依据，而不是复制大段代码。
+
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：插件入口、配置模型、发送逻辑、错误处理、测试样例、安全规范。
 - 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
@@ -165,6 +177,12 @@ Proposal 决定做不做和做多大，Spec 决定系统应该表现成什么样
 | Design | 如何接入现有系统 | 有架构、数据、安全、测试设计 |
 | Tasks | 谁先做、改哪里 | 颗粒度到类名和配置文件 |
 
+
+### Media
+src: ../../assets/demos/proposal-spec-workspace.svg
+type: Proposal/Spec 工作区
+alt: SMN Proposal 定义问题、范围和非范围，Spec 定义可验收行为和安全边界。
+caption: Proposal 和 Spec 先回答“为什么做、做多大、系统应表现成什么样”，避免实现阶段不断补需求。
 
 ### Illustration Brief
 - 绘制二维矩阵或对照表，表格内容围绕：文档 / 回答的问题、Proposal / 为什么做、做多大、Spec / 系统满足什么行为、Design / 如何接入现有系统、Tasks / 谁先做、改哪里。
@@ -342,6 +360,12 @@ visual: checklist
 - 安全完整
 
 
+### Media
+src: ../../assets/demos/doc-review-no-code.svg
+type: 文档 Review 截图
+alt: SDD 文档 Review 在缺少凭证脱敏示例和任务粒度过粗时阻止进入实现。
+caption: 文档没有过审就生成代码，只会把文档缺口放大成错误实现。
+
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：范围清楚、验收可测、设计有据、任务可执行、安全完整。
 - 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
@@ -396,6 +420,12 @@ visual: flow
 - 文档 Review
 - 任务冻结
 
+
+### Media
+src: ../../assets/demos/frozen-task-board.svg
+type: 冻结任务看板
+alt: SMN 课后实现前的任务看板标记 Ready、Needs review 和 Frozen 三类任务状态。
+caption: 第二课的最终产物是可执行、可 Review、可冻结的任务清单，而不是随手生成的业务代码。
 
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：查规范、写规格、做设计、拆任务、文档 Review、任务冻结。

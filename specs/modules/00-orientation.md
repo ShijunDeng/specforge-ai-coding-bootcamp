@@ -51,6 +51,12 @@ AI 写代码不是目标，可控、可审查、可复用的交付闭环才是�
 - 工程化闭环：有规格源文件、有验证证据、有团队约束。
 
 
+### Media
+src: ../../assets/demos/orientation-engineering-loop.svg
+type: 工程闭环演示图
+alt: AI Coding 从提示契约、候选补丁、Review 到测试证据和复用材料的工程闭环。
+caption: 本课程从第一分钟就把 AI 写代码放进可审查、可验证、可复用的工程闭环。
+
 ### Illustration Brief
 - 绘制左右对比图，对比项覆盖：零散提示词：依赖个人经验、难复盘、难复制、工程化闭环：有规格源文件、有验证证据、有团队约束。
 - 左侧表达常见低质量状态，右侧表达目标状态，用颜色区分风险和目标。
@@ -101,6 +107,12 @@ AI 时代的工程质量不再只取决于“写代码的人是否熟练”，�
 - 自动验证
 - 固化复用
 
+
+### Media
+src: ../../assets/demos/learning-evidence-loop-animated.svg
+type: 动态证据闭环
+alt: 输入、边界、Review 和证据在每个课堂练习中循环推进。
+caption: 每次调用 AI 都要留下输入、边界、Review 和验证证据，不能只听模型解释。
 
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：定义规格、投喂上下文、生成增量、人工 Review、自动验证、固化复用。
@@ -153,6 +165,12 @@ AgentCenter、CodeAgent、MCP、Skill、CodeWiki 的价值不在于“都能叫 
 | CodeWiki | 项目知识库 | 探查存量项目规范与样例 |
 
 
+### Media
+src: ../../assets/demos/tool-matrix-dashboard.svg
+type: 工具能力看板
+alt: CodeWiki、CodeAgent、Skill、MCP 和 AgentCenter 在知识、执行、质量和治理中的位置。
+caption: 工具矩阵要被讲成“事实到证据”的协作链路，而不是一串产品名。
+
 ### Illustration Brief
 - 绘制二维矩阵或对照表，表格内容围绕：工具 / 定位、AgentCenter / 能力市场、CodeAgent / 编码客户端、MCP / 连通协议、Skill / 技能插件。
 - 重点列使用浅色底纹，表头清晰，单元格只保留关键词和短语。
@@ -204,6 +222,12 @@ visual: timeline
 - 15 分钟：验收与团队复讲。
 
 
+### Media
+src: ../../assets/demos/course-map-control-room.svg
+type: 课程控制台
+alt: 7 小时课程从工具方法、Petclinic、MCP、CodeWiki、SMN 到验收复讲的推进地图。
+caption: 课程地图用证据检查点串起每个模块，避免学员只记住孤立工具。
+
 ### Illustration Brief
 - 绘制时间线，阶段依次覆盖：30 分钟：课程定位与协作契约、60 分钟：AI 工程方法与工具体系、95 分钟：Petclinic 微闭环、65 分钟：MCP 质量闭环、80 分钟：CodeWiki 与 SDD、75 分钟：SMN 文档实操、15 分钟：验收与团队复讲。
 - 每个阶段只放一个动作词和一个证据点，突出课堂推进节奏。
@@ -250,6 +274,12 @@ visual: checklist
 - 做复盘：展示证据链和打回过程，不只展示最终截图。
 - 做复讲：替换为团队真实项目与规范。
 
+
+### Media
+src: ../../assets/demos/classroom-contract-evidence.svg
+type: 课堂证据契约
+alt: 演示和练习阶段分别需要记录的输入边界、Review 暂停点、diff、测试输出和证据材料。
+caption: 课堂协作契约把“听懂了”改成“交得出证据”，每个练习都按同一标准验收。
 
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：看演示：记录输入、边界、Review 点、做练习：独立跑出证据，不跳过验证、做复盘：展示证据链和打回过程，不只展示最终截图、做复讲：替换为团队真实项目与规范。

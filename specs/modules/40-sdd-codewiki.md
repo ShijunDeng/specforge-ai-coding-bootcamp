@@ -55,6 +55,12 @@ visual: contrast
 - 今日挑战：几十万行存量项目、隐式约束、长反馈链。
 
 
+### Media
+src: ../../assets/demos/homework-evidence-review.svg
+type: 作业证据复盘看板
+alt: Petclinic 和 SMN 作业的提示词、diff、测试、文档、Review 结果在证据看板中被复核。
+caption: 从第一课进入第二课前，要先看证据链质量，再切换到复杂存量项目的事实探查。
+
 ### Illustration Brief
 - 绘制左右对比图，对比项覆盖：作业复盘：红榜实践、黑榜问题、共性卡点、今日挑战：几十万行存量项目、隐式约束、长反馈链。
 - 左侧表达常见低质量状态，右侧表达目标状态，用颜色区分风险和目标。
@@ -105,6 +111,12 @@ AI 改老项目最大的风险不是不会写代码，而是不知道已有系�
 - 运维风险
 
 
+### Media
+src: ../../assets/demos/brownfield-risk-map.svg
+type: Brownfield 风险地图
+alt: SMN 插件需求周围的 SPI、敏感日志、配置兼容和测试夹具风险。
+caption: Brownfield 需求不能只看新增功能，还要先定位存量扩展点、兼容边界和安全红线。
+
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：架构风险、兼容风险、安全风险、测试风险、运维风险。
 - 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
@@ -153,6 +165,12 @@ Vibe Coding 的问题不是“快”，而是在未知太多时，快会放大�
 | 风险 | 易回滚 | 影响安全、兼容、生产 |
 | 事实 | 已知 | 需要探查 |
 
+
+### Media
+src: ../../assets/demos/method-choice-switchboard.svg
+type: Vibe/SDD 选择看板
+alt: 低风险短反馈任务适合 Vibe Coding，跨模块和安全敏感任务必须进入 SDD。
+caption: Vibe Coding 和 SDD 的边界由不确定性、反馈链长度和错误成本共同决定。
 
 ### Illustration Brief
 - 绘制二维矩阵或对照表，表格内容围绕：条件 / 可以 Vibe、上下文 / 单文件或少量文件、反馈 / 单测快速跑、风险 / 易回滚、事实 / 已知。
@@ -204,6 +222,12 @@ SDD 的核心不是写很多文档，而是把模糊需求逐步压缩成可执�
 - Implementation
 - Validation
 
+
+### Media
+src: ../../assets/demos/sdd-pipeline-workspace.svg
+type: SDD 文档工作区
+alt: Proposal、Spec、Design 和 Tasks 四类文档在进入实现前分别承载范围、行为、设计和任务。
+caption: SDD 四阶流水线让 AI 在动代码前先对齐目标、边界、设计和任务颗粒度。
 
 ### Illustration Brief
 - 绘制从左上到右下的流程链路，节点依次覆盖：Proposal、Spec、Design、Tasks、Implementation、Validation。
@@ -362,6 +386,12 @@ CodeWiki 查询应该围绕现状、扩展点、配置和测试设计，而不�
 - 查询四：测试样例和桩。
 - 查询五：安全与脱敏。
 
+
+### Media
+src: ../../assets/demos/codewiki-question-builder.svg
+type: CodeWiki 提问模板
+alt: 围绕插件注册、配置默认值、失败重试、测试夹具和安全要求构造 CodeWiki 查询。
+caption: 好的 CodeWiki 问题要产出可写进 Design 的事实依据，而不是诱导它直接生成业务代码。
 
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：查询一：插件入口和 SPI、查询二：配置模型和默认值、查询三：发送失败和重试、查询四：测试样例和桩、查询五：安全与脱敏。

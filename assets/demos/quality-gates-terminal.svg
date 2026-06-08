@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#142028" stroke="#31424a"/>
+  <text x="60" y="74" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">Micro-loop quality gates</text>
+  <rect x="82" y="118" width="796" height="330" rx="16" fill="#0f172a" stroke="#334155"/>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="16">
+    <text x="114" y="164" fill="#7dd3fc">$ git diff --stat</text>
+    <text x="114" y="196" fill="#86efac">4 files changed, 72 insertions</text>
+    <text x="114" y="236" fill="#7dd3fc">$ review-check --rules team.yml</text>
+    <text x="114" y="268" fill="#fbbf24">warn: empty query behavior needs explicit decision</text>
+    <text x="114" y="308" fill="#7dd3fc">$ mvn -Dtest=OwnerControllerTests test</text>
+    <text x="114" y="340" fill="#86efac">BUILD SUCCESS</text>
+    <text x="114" y="380" fill="#7dd3fc">$ evidence pack</text>
+    <text x="114" y="412" fill="#86efac">prompt, diff, test output, review note attached</text>
+  </g>
+</svg>

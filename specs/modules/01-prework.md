@@ -55,6 +55,12 @@ visual: checklist
 - 启动或测试命令跑绿。
 
 
+### Media
+src: ../../assets/demos/material-checklist-pack.svg
+type: 课前物料包截图
+alt: 课前需要准备的仓库、工具、脱敏 Token、测试结果、FAQ 和截图证据。
+caption: 课前材料不是通知清单，而是正课能直接进入实操的准入门槛。
+
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：工具安装完成、项目代码拉取完成、依赖下载完成、Token 授权完成、启动或测试命令跑绿。
 - 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
@@ -153,6 +159,12 @@ visual: checklist
 - 可展示：权限入口、脱敏后的配置位置、占位符。
 - 不展示：完整 Token、生产地址、真实 AK/SK、内部敏感数据。
 
+
+### Media
+src: ../../assets/demos/secret-redaction-console.svg
+type: 脱敏配置截图
+alt: MCP Token、SMN AK/SK 只以脱敏占位符和配置位置展示，不进入 Prompt、日志和 MR。
+caption: 敏感信息准备要同时说明“能展示什么”和“绝不能展示什么”，避免课堂截图和录屏泄露凭证。
 
 ### Illustration Brief
 - 绘制可勾选的检查清单，检查项覆盖：可展示：权限入口、脱敏后的配置位置、占位符、不展示：完整 Token、生产地址、真实 AK/SK、内部敏感数据。

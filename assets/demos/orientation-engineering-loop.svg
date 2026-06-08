@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f1418"/>
+  <rect x="28" y="26" width="904" height="488" rx="22" fill="#142028" stroke="#31424a"/>
+  <text x="60" y="76" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#f8fafc">AI coding as an engineering loop</text>
+  <rect x="74" y="120" width="250" height="320" rx="16" fill="#0f172a" stroke="#334155"/>
+  <rect x="356" y="120" width="250" height="320" rx="16" fill="#10231d" stroke="#166534"/>
+  <rect x="638" y="120" width="250" height="320" rx="16" fill="#111827" stroke="#334155"/>
+  <g font-family="ui-monospace,Menlo,monospace" font-size="15">
+    <text x="98" y="164" fill="#fbbf24">prompt.txt</text>
+    <text x="98" y="198" fill="#cbd5e1">goal: owner search</text>
+    <text x="98" y="226" fill="#cbd5e1">scope: controller, repo</text>
+    <text x="98" y="254" fill="#cbd5e1">verify: mvn test</text>
+    <text x="380" y="164" fill="#86efac">candidate.diff</text>
+    <text x="380" y="198" fill="#cbd5e1">+ small change set</text>
+    <text x="380" y="226" fill="#fbbf24">review: boundary?</text>
+    <text x="380" y="254" fill="#86efac">tests: green</text>
+    <text x="662" y="164" fill="#7dd3fc">evidence.md</text>
+    <text x="662" y="198" fill="#cbd5e1">diff summary</text>
+    <text x="662" y="226" fill="#cbd5e1">test output</text>
+    <text x="662" y="254" fill="#cbd5e1">review decision</text>
+  </g>
+  <path d="M326 276h28M608 276h28M480 442c-180 44-330-8-368-82" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M342 262l16 14-16 14M624 262l16 14-16 14" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="480" y="488" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="18" fill="#d1fae5">prompt - patch - review - validation - reusable evidence</text>
+</svg>
