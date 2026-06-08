@@ -3,8 +3,7 @@
 ## 架构
 
 ```text
-course.xlsx
-  -> specs/course.yaml
+specs/course.yaml
   -> specs/modules/*.md
   -> scripts/generate-slidev.mjs
   -> build/slides/*.slidev.md
@@ -13,7 +12,7 @@ course.xlsx
 
 ## 文件职责
 
-- `course.yaml` 只维护课程级结构、deck 组合、实操和评分规则。
+- `course.yaml` 维护课程级结构、deck 组合、实操和评分规则。
 - `modules/*.md` 维护讲师实际要讲的内容。
 - `generate-slidev.mjs` 负责把模块内容渲染为统一 Slidev 页面。
 - `validate-spec.mjs` 负责结构校验和敏感信息扫描。

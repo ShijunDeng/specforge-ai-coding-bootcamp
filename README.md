@@ -74,11 +74,11 @@ npm run export:pptx
 
 详细操作步骤、字段含义、验证命令和人工检查点见 [Spec 维护指南](docs/authoring-guide.md#开发中新增或修改一节课程)。
 
-## 从 course.xlsx 到 7 小时课程
+## 课程内容主线
 
-`course.xlsx` 是本仓库的初始课程大纲。当前版本保留大纲中的两条主线：
+当前版本保留两条教学主线：
 
 - 第一课：CodeAgent、Skill、MCP、单测、MR、代码检视与自动修复。
 - 第二课：DolphinScheduler 存量项目、CodeWiki、SDD 四阶文档、SMN 告警大作业。
 
-在此基础上，课程被扩展为约 420 分钟的完整版，并支持通过 deck 配置裁剪为半天课、第一课、第二课或自定义章节组合。
+课程被设计为约 420 分钟的完整版，并支持通过 deck 配置裁剪为半天课、第一课、第二课或自定义章节组合。后续课程演进以 `specs/course.yaml` 和 `specs/modules/*.md` 为准，不依赖初始导入材料。

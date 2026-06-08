@@ -57,15 +57,6 @@ function validateGlobalEntityIds(groups) {
   }
 }
 
-function sameArray(left = [], right = []) {
-  return (
-    Array.isArray(left) &&
-    Array.isArray(right) &&
-    left.length === right.length &&
-    left.every((item, index) => item === right[index])
-  );
-}
-
 function validateDeck(deck, path, moduleIds) {
   requireValue(deck?.id, `${path}.id`);
   requireValue(deck?.title, `${path}.title`);
@@ -133,16 +124,6 @@ async function validateRequiredFile(file) {
     scanSensitive(raw, file);
   } catch {
     errors.push(`${file} is required`);
-  }
-}
-
-async function validateSourceMaterials(files = []) {
-  for (const file of files) {
-    try {
-      await access(file);
-    } catch {
-      errors.push(`meta.source_material references missing file ${file}`);
-    }
   }
 }
 
@@ -216,10 +197,6 @@ async function validateModule(moduleRef) {
     errors.push(`${moduleRef.file}.frontmatter.title must match specs/course.yaml`);
   }
 
-  if (!sameArray(meta.source_rows ?? [], moduleRef.source_rows ?? [])) {
-    errors.push(`${moduleRef.file}.source_rows must match specs/course.yaml`);
-  }
-
   if (Number(meta.duration_min || 0) !== Number(moduleRef.duration_min || 0)) {
     errors.push(`${moduleRef.file}.duration_min must match specs/course.yaml`);
   }
@@ -248,7 +225,6 @@ requireValue(course.meta?.id, "meta.id");
 requireValue(course.meta?.title, "meta.title");
 requireValue(course.meta?.version, "meta.version");
 requireValue(course.deck_defaults?.output, "deck_defaults.output");
-await validateSourceMaterials(course.meta?.source_material ?? []);
 
 if (!Array.isArray(course.audience?.learning_outcomes) || !course.audience.learning_outcomes.length) {
   errors.push("audience.learning_outcomes needs at least one outcome");

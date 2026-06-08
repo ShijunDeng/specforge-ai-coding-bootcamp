@@ -2,7 +2,7 @@
 
 ## 已完成
 
-- [x] 解析 `course.xlsx` 初始大纲。
+- [x] 建立初始课程内容基线。
 - [x] 设计 7 小时课程模块结构。
 - [x] 建立 Markdown Spec 目录和模块模板。
 - [x] 编写课程 manifest 和内置 deck 组合。

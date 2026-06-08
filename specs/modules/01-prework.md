@@ -7,14 +7,13 @@ outcomes:
   - 本地能运行 spring-petclinic。
   - 已克隆 dolphin-scheduler，依赖预热完成。
   - 已完成内部工具登录和 Token 准备。
-source_rows: [4]
 ---
 
 # 课前准备
 
 ## Module Brief
 
-本模块对应 `course.xlsx` 第 4 行，作为课前群发、开课前轮播和助教自检材料。它不计入 7 小时正课时间，但必须在开课前完成。
+本模块作为课前群发、开课前轮播和助教自检材料。它不计入 7 小时正课时间，但必须在开课前完成。
 
 :::slide
 id: prework-01

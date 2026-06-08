@@ -7,11 +7,11 @@
 ## 输入
 
 - `specs/course.yaml`
-  - `meta`：课程标题、版本、来源、摘要。
+  - `meta`：课程标题、版本、摘要。
   - `audience`：学员画像、前置条件、学习产出。
   - `learning_design`：教学承诺、原则和课堂比例。
   - `decks[]`：内置章节组合。
-  - `modules[]`：模块 id、文件路径、时长、来源大纲行。
+  - `modules[]`：模块 id、文件路径、时长、标签。
   - `labs[]`：实操任务、限制、验收。
   - `assessment`：评分规则与安全红线。
 - `specs/modules/*.md`
@@ -47,7 +47,7 @@ npm run export:pptx
 
 ## 验收
 
-- `npm run validate` 能发现缺失标题、重复 slide id、缺失讲师备注、模块时长不一致、模块 manifest 追溯字段不一致、deck/config 引用错误、缺失来源文件和敏感凭证模式。
+- `npm run validate` 能发现缺失标题、重复 slide id、缺失讲师备注、模块时长不一致、模块 manifest 与 frontmatter 不一致、deck/config 引用错误和敏感凭证模式。
 - `npm run generate` 能稳定生成 Markdown。
 - `npm run build` 能通过 Slidev 构建静态站点。
 - `npm run slides:public` 必须输出可访问公网地址。

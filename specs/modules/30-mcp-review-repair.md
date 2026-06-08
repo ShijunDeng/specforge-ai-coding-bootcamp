@@ -8,14 +8,13 @@ outcomes:
   - 能通过 MCP 创建 MR 并触发自动检视。
   - 能根据检视意见调用修复 Skill，并再次验证。
   - 能识别 Token、日志和权限边界。
-source_rows: [11, 12, 13]
 ---
 
 # MCP 提单、代码检视与自动修复
 
 ## Module Brief
 
-本模块对应 `course.xlsx` 第 11-13 行。原大纲要求讲解 CodeHub MCP、代码规范检视 Skill、修复 Skill，并演示故意埋雷、提单、查错、修复。本模块把它扩展为企业质量闭环和安全边界训练。
+本模块讲解 CodeHub MCP、代码规范检视 Skill、修复 Skill，并演示故意埋雷、提单、查错、修复。它把工具操作扩展为企业质量闭环和安全边界训练。
 
 :::slide
 id: mcp-01

@@ -6,8 +6,6 @@ meta:
   updated: "2026-06-05"
   language: zh-CN
   audience_label: 首期核心项目 Committer
-  source_material:
-    - course.xlsx
   summary: >-
     面向企业内部核心项目 Committer 的 7 小时 AI 辅助编码实战课程。课程从 CodeAgent、
     AgentCenter、MCP、Skill、CodeWiki 等工具入手，训练学员把 AI 生成能力纳入需求拆解、
@@ -93,56 +91,48 @@ modules:
     file: specs/modules/00-orientation.md
     title: 全局概览
     duration_min: 30
-    source_rows: [2, 3]
     tags: [intro, required]
 
   - id: prework
     file: specs/modules/01-prework.md
     title: 课前准备
     duration_min: 0
-    source_rows: [4]
     tags: [prework, optional]
 
   - id: foundations-tools
     file: specs/modules/10-foundations-tools.md
     title: AI 工程方法与工具体系
     duration_min: 60
-    source_rows: [7, 8]
     tags: [lesson1, tools, method]
 
   - id: petclinic-micro-loop
     file: specs/modules/20-petclinic-micro-loop.md
     title: Petclinic 功能开发与单测微闭环
     duration_min: 95
-    source_rows: [5, 6, 9, 10, 14, 15]
     tags: [lesson1, lab]
 
   - id: mcp-review-repair
     file: specs/modules/30-mcp-review-repair.md
     title: MCP 提单、代码检视与自动修复
     duration_min: 65
-    source_rows: [11, 12, 13]
     tags: [lesson1, mcp, quality]
 
   - id: sdd-codewiki
     file: specs/modules/40-sdd-codewiki.md
     title: 存量项目、CodeWiki 与 SDD 四阶文档
     duration_min: 80
-    source_rows: [16, 17, 18, 19, 20]
     tags: [lesson2, sdd, codewiki]
 
   - id: smn-design-lab
     file: specs/modules/50-smn-design-lab.md
     title: SMN 告警插件 SDD 拆解实操
     duration_min: 75
-    source_rows: [21, 22, 23]
     tags: [lesson2, lab, homework]
 
   - id: assessment-rollout
     file: specs/modules/60-assessment-rollout.md
     title: 大作业验收与团队复讲
     duration_min: 15
-    source_rows: [24]
     tags: [assessment, rollout]
 
 labs:

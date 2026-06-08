@@ -8,14 +8,13 @@ outcomes:
   - 能判断 Vibe Coding 在复杂项目中的边界。
   - 能产出 Proposal、Spec、Design、Tasks 四类文档的最小合格版本。
   - 能把 CodeWiki 查询结果回填到设计依据中。
-source_rows: [16, 17, 18, 19, 20]
 ---
 
 # 存量项目、CodeWiki 与 SDD 四阶文档
 
 ## Module Brief
 
-本模块对应 `course.xlsx` 第 16-20 行。原大纲要求进入 dolphin-scheduler，围绕 SMN 告警插件讲解复杂存量项目痛点、Vibe Coding 局限、SDD 流程、CodeWiki 查询和飞书告警演示。当前版本将其扩展为第二课的核心方法论。
+本模块进入 dolphin-scheduler，围绕 SMN 告警插件讲解复杂存量项目痛点、Vibe Coding 局限、SDD 流程、CodeWiki 查询和飞书告警演示，是第二课的核心方法论。
 
 :::slide
 id: sdd-01

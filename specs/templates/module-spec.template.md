@@ -5,14 +5,13 @@ duration_min: 30
 intent: 说明本模块解决的教学问题。
 outcomes:
   - 学员完成本模块后能做到的可观察行为。
-source_rows: []
 ---
 
 # 模块标题
 
 ## Module Brief
 
-说明本模块与原始大纲、目标学员、课堂上下文的关系。
+说明本模块与目标学员、课堂上下文和课程主线的关系。
 
 :::slide
 id: module-01

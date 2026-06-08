@@ -28,7 +28,7 @@
 
 ### 文件分工
 
-- `specs/course.yaml`：课程 manifest。这里注册模块 id、模块文件路径、展示标题、课堂时长、来源行、标签，并决定这个模块进入哪些 `decks[]`。如果新增或调整课堂练习，还要同步 `labs[]` 的目标、约束和验收规则。
+- `specs/course.yaml`：课程 manifest。这里注册模块 id、模块文件路径、展示标题、课堂时长、标签，并决定这个模块进入哪些 `decks[]`。如果新增或调整课堂练习，还要同步 `labs[]` 的目标、约束和验收规则。
 - `specs/modules/*.md`：单节课程内容源文件。文件名建议使用两位排序号加语义名，例如 `70-team-rollout.md`。文件包含 YAML frontmatter、`Module Brief` 和多个 `:::slide` block。
 - `specs/templates/module-spec.template.md`：新增模块或页面时参考的结构模板，不直接参与生成，也不存放课程正文。
 - `configs/*.yaml`：自定义 deck 组合。只有当新课程节不适合放入内置 `decks[]`，或需要临时交付一个定制版本时才修改或新增。
@@ -68,14 +68,12 @@
    - `duration_min`：本节课总时长，课前材料可为 `0`。
    - `intent`：本节课的教学意图。
    - `outcomes`：学员完成后能做到的可观察行为。
-   - `source_rows`：对应原始大纲行号；没有来源时用空数组。
 3. 编写 `Module Brief` 和至少一个 `:::slide` block。每页 slide 必须有唯一 `id`、`title`、`mode`，并至少包含 `Headline`、`Body` 或 `Key Points` 中的一项；建议始终补齐 `Speaker Notes`。
 4. 在 `specs/course.yaml` 的 `modules[]` 注册新模块：
    - `id`：模块 id。
    - `file`：模块 spec 路径。
    - `title`：模块标题。
    - `duration_min`：必须与模块 frontmatter 一致。
-   - `source_rows`：来源行号。
    - `tags`：用于标识课程阶段、主题或是否必修。
 5. 把模块 id 加入需要交付的 `decks[].include_modules`。内置组合包括 `full-7h`、`lesson1-lab`、`lesson2-sdd` 和 `sdd-only`。
 6. 如该模块包含新练习，在 `specs/course.yaml` 的 `labs[]` 新增练习，并在 `exercises/` 下补充学员说明。
