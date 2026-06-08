@@ -30,7 +30,7 @@
 - 显式自定义输出：由 `--output` 覆盖上述规则。
 - 同目录复制 `style.css`，供 Slidev 渲染使用。
 - 公网预览由 `scripts/serve-public.mjs` 启动 Slidev 并创建 localtunnel 地址，必须使用 `--local-host 127.0.0.1` 保证公网 Host 被接受。
-- PPTX 默认由 `scripts/export-pptx-with-skill.mjs` 读取 Spec 并按 `/home/dsj/skills/open-skills/pptx` skill 规则生成，Slidev PPTX 导出仅作为显式备用路径。
+- PPTX 默认使用 Slidev 导出，保持网页预览和交付文件视觉一致。
 
 ## 命令
 
@@ -51,8 +51,7 @@ npm run export:pptx
 - `npm run generate` 能稳定生成 Markdown。
 - `npm run build` 能通过 Slidev 构建静态站点。
 - `npm run slides:public` 必须输出可访问公网地址。
-- `npm run export:pptx` 必须能找到 `/home/dsj/skills/open-skills/pptx/SKILL.md` 并生成 PPTX。
-- Slidev PDF/PPTX 备用导出必须先安装 `playwright-chromium`，生成文件不提交。
+- Slidev PDF/PPTX 导出必须先安装 `playwright-chromium`，生成文件不提交。
 
 ## 扩展约束
 

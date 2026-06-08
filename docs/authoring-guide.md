@@ -217,14 +217,14 @@ npm run check
 
 ## PPTX 制作
 
-PPTX 默认不走 Slidev 截图导出，而是使用 `/home/dsj/skills/open-skills/pptx` 下的 pptx skill 规则生成：
+PPTX 默认使用 Slidev 导出，以保持网页预览和交付文件的视觉一致：
 
 ```bash
 npm run export:pptx
 ```
 
-该命令读取 Spec 源文件，使用 PptxGenJS 生成原生文本、表格和形状对象，默认输出到 `dist/ai-coding-bootcamp-7h.pptx`。如需临时使用 Slidev 自带导出作为视觉备份，显式运行：
+如本机缺少浏览器渲染依赖，先安装：
 
 ```bash
-npm run export:pptx:slidev
+npm i -D playwright-chromium
 ```

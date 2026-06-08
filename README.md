@@ -23,7 +23,7 @@ npm run generate -- --modules orientation,smn-design-lab # 临时组合，输出
 npm run slides                      # 启动 Slidev 预览，默认端口 3030
 npm run slides:public               # 启动 Slidev 并自动创建公网访问地址
 npm run build                       # 生成静态站点到 dist/slides
-npm run export:pptx                 # 默认使用 /home/dsj/skills/open-skills/pptx 生成 PPTX
+npm run export:pptx                 # 使用 Slidev 导出 PPTX
 npm run export:pdf                  # 使用 Slidev 导出 PDF
 ```
 
@@ -31,13 +31,12 @@ npm run export:pdf                  # 使用 Slidev 导出 PDF
 
 公网预览使用 `localtunnel --local-host 127.0.0.1` 转发，避免 Vite/Slidev 因公网 Host 拒绝访问。命令输出 `Public slide show` 后，需要用公网地址做一次外部访问确认。
 
-PPTX 制作默认使用 `/home/dsj/skills/open-skills/pptx` 下的 pptx skill 规则，采用红/白/灰企业技术培训风格和 PptxGenJS 原生对象生成。只有需要复刻 Slidev 视觉效果时，才使用备用命令：
+导出 PDF/PPTX 前，按 Slidev 的浏览器渲染要求安装依赖：
 
 ```bash
-npm run export:pptx:slidev
+npm i -D playwright-chromium
+npm run export:pptx
 ```
-
-备用 Slidev PPTX/PDF 导出依赖浏览器渲染，如缺少依赖，运行 `npm i -D playwright-chromium`。
 
 ## 目录约定
 
