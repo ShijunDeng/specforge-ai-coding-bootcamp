@@ -11,7 +11,7 @@
     "generate:lesson2": "node scripts/generate-slidev.mjs --deck lesson2-sdd",
     "generate:custom": "node scripts/generate-slidev.mjs --config configs/custom-deck.example.yaml",
     "slides": "npm run generate && slidev build/slides/ai-coding-bootcamp-7h.slidev.md --remote course-preview --bind 0.0.0.0 --port ${PORT:-3030}",
-    "build": "npm run generate && slidev build build/slides/ai-coding-bootcamp-7h.slidev.md --out $PWD/dist/slides --router-mode hash",
+    "build": "npm run generate && rm -rf dist/slides && slidev build build/slides/ai-coding-bootcamp-7h.slidev.md --out $PWD/dist/slides --router-mode hash",
     "export:pptx": "npm run generate && node scripts/ensure-export-deps.mjs && slidev export build/slides/ai-coding-bootcamp-7h.slidev.md --format pptx --output $PWD/dist/ai-coding-bootcamp-7h.pptx --timeout 120000",
     "export:pdf": "npm run generate && node scripts/ensure-export-deps.mjs && slidev export build/slides/ai-coding-bootcamp-7h.slidev.md --format pdf --output $PWD/dist/ai-coding-bootcamp-7h.pdf --timeout 120000",
     "check": "npm run validate && npm run generate && npm run build"
