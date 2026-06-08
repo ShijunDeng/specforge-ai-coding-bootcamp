@@ -326,6 +326,7 @@ function renderContentSlide(slide, module) {
   const activity = sections.activity ?? "";
   const takeaway = sections.takeaway ?? "";
   const notes = sections["speaker notes"] ?? "";
+  const speakerNotes = [activity ? `Activity:\n${activity}` : "", notes].filter(Boolean).join("\n\n");
 
   return `${slideSeparator({
     layout: meta.layout ?? "default",
@@ -340,14 +341,13 @@ ${chips([module.title, meta.mode, meta.duration_min ? `${meta.duration_min} 分�
 ${headline ? `<h2>${inlineMarkdown(headline)}</h2>` : ""}
 ${body ? `<div class="body-copy">${markdownLite(body)}</div>` : ""}
 ${keyPoints ? `<div class="key-points">${markdownLite(keyPoints)}</div>` : ""}
-${activity ? `<div class="activity-box">${markdownLite(activity)}</div>` : ""}
 </section>
 <aside class="visual-pane">
 ${renderVisualWidget(visual, meta.visual)}
 ${takeaway ? `<div class="takeaway">${inlineMarkdown(takeaway)}</div>` : ""}
 </aside>
 </div>
-${renderSpeakerNotes(notes)}`;
+${renderSpeakerNotes(speakerNotes)}`;
 }
 
 function renderModuleDivider(module, index) {
@@ -430,6 +430,26 @@ function section(title, content = "") {
   return `### ${title}\n${content.trim()}`;
 }
 
+function listSection(title, items = []) {
+  if (!Array.isArray(items) || !items.length) return "";
+  return `### ${title}\n${items.map((item) => `- ${item}`).join("\n")}`;
+}
+
+function objectSection(title, object = {}) {
+  const entries = Object.entries(object ?? {}).filter(([, value]) => {
+    if (Array.isArray(value)) return value.length;
+    return value !== undefined && value !== null && value !== "";
+  });
+  if (!entries.length) return "";
+  return `### ${title}\n${entries
+    .map(([key, value]) => {
+      const label = key.replaceAll("_", " ");
+      if (Array.isArray(value)) return `- ${label}: ${value.join("；")}`;
+      return `- ${label}: ${value}`;
+    })
+    .join("\n")}`;
+}
+
 function renderPlainSlide(slide, module, index, includeNotes = false) {
   const { meta, sections } = slide;
   const chunks = [
@@ -442,6 +462,8 @@ function renderPlainSlide(slide, module, index, includeNotes = false) {
     section("Body", sections.body ?? ""),
     section("Key Points", sections["key points"] ?? ""),
     section("Visual Brief", sections.visual ?? ""),
+    section("Illustration Brief", sections["illustration brief"] ?? ""),
+    section("Layout Contract", sections["layout contract"] ?? ""),
     section("Activity", sections.activity ?? ""),
     section("Takeaway", sections.takeaway ?? ""),
     includeNotes ? section("Speaker Notes", sections["speaker notes"] ?? "") : ""
@@ -497,6 +519,11 @@ function renderPlainDeck(course, deck, modules, includeModules, includeNotes = f
     "### Principles",
     (course.learning_design?.principles ?? []).map((item) => `- ${item}`).join("\n"),
     "",
+    listSection("Narrative Arc", course.learning_design?.narrative_arc ?? []),
+    objectSection("Case Design", course.learning_design?.case_design ?? {}),
+    objectSection("Visual System", course.learning_design?.visual_system ?? {}),
+    listSection("Slide Contract", course.learning_design?.slide_contract ?? []),
+    "",
     "### Learning Outcomes",
     (course.audience?.learning_outcomes ?? []).map((item) => `- ${item}`).join("\n"),
     renderPlainAgenda(modules, deck)
@@ -546,6 +573,9 @@ function renderPptAiSlide(slide, module, index, includeNotes = false) {
     "### Visual Direction",
     `Layout: ${meta.visual ?? "cards"}`,
     compactMarkdown(sections.visual ?? ""),
+    sections["illustration brief"] ? `\nIllustration Brief:\n${compactMarkdown(sections["illustration brief"])}` : "",
+    sections["layout contract"] ? `\nLayout Contract:\n${compactMarkdown(sections["layout contract"])}` : "",
+    sections.activity ? `\nClassroom Activity:\n${compactMarkdown(sections.activity)}` : "",
     "",
     "### Speaker Takeaway",
     compactMarkdown(sections.takeaway ?? "")
@@ -573,6 +603,11 @@ function renderPptAiDeck(course, deck, modules, includeModules, includeNotes = f
     "",
     "## Required Narrative",
     (course.learning_design?.principles ?? []).map((item) => `- ${item}`).join("\n"),
+    "",
+    listSection("Narrative Arc", course.learning_design?.narrative_arc ?? []),
+    objectSection("Case Design", course.learning_design?.case_design ?? {}),
+    objectSection("Visual System", course.learning_design?.visual_system ?? {}),
+    listSection("Slide Contract", course.learning_design?.slide_contract ?? []),
     "",
     "## Slide Outline"
   ];

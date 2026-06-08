@@ -34,6 +34,32 @@ learning_design:
     - "Evidence over confidence: 不接受只会解释的答案，必须有测试、日志、MR 或设计文档证据。"
     - "Small batch: 小步提交、小步验证，降低 AI 偏航后的返工成本。"
     - "Security by default: Token、MCP 权限、AK/SK、日志输出都需要最小权限和脱敏边界。"
+  narrative_arc:
+    - "开场冲突：个人已经会问 AI，但团队仍然担心不可控、难复盘、难验收。"
+    - "低风险练习：先在 spring-petclinic 中完成 Owner 查询演示和 Pet 疫苗字段练习，把对话开发、单测、Review 和修复跑成肌肉记忆。"
+    - "质量升级：再把本地补丁推入 MCP、MR、机器检视和自动修复闭环，让 AI 进入企业研发流程。"
+    - "复杂项目转折：进入 dolphin-scheduler 后，明确 Vibe Coding 的边界，先用 CodeWiki 查事实，再用 SDD 四阶文档压住方向。"
+    - "真实落地：用 SMN 告警插件作为大作业，把课堂文档转成课后 MR、测试证据和团队复讲材料。"
+  case_design:
+    primary_thread: "同一个工程师从小项目试跑、平台提单、复杂项目设计到真实大作业交付的完整一天。"
+    warmup_case: "spring-petclinic Owner 按姓名片段模糊查询，用于讲师演示标准微闭环。"
+    learner_case: "spring-petclinic Pet 疫苗接种字段与查询接口，用于学员独立复制微闭环。"
+    quality_case: "在 Petclinic 变更中故意埋入 System.out、潜在 NPE 或敏感日志，触发机器检视和修复 Skill。"
+    brownfield_case: "dolphin-scheduler 新增 SMN 告警插件，用于训练 CodeWiki 探查、SDD 文档和安全设计。"
+    assessment_case: "课后按 SMN Tasks 分步实现并提交 MR，用 Rubric 验收文档、代码、测试和 AI 协作证据。"
+  visual_system:
+    style: "干净的工程技术白板风格，使用流程图、矩阵、任务卡、检查清单和时间线承载信息；不使用装饰性素材替代内容。"
+    palette: "深绿用于主线与人工责任，橙色用于风险与打回，蓝色用于工具动作，薄荷绿用于验证通过，紫色只作少量辅助强调。"
+    illustration_rules:
+      - "每页最多一个主图示，图示必须直接服务本页 Headline。"
+      - "演示页突出操作顺序和暂停 Review 点；练习页突出任务输入、红线、产出和验收证据。"
+      - "不得出现真实 Token、AK/SK、生产地址、内部敏感界面截图或不可脱敏日志。"
+      - "AI PPT 目标生成时优先使用图示说明，不让工具自由生成抽象装饰图。"
+  slide_contract:
+    - "默认 16:9 双栏：左侧学员可见结论、正文和要点；右侧结构化图示与 Takeaway。"
+    - "可见文字必须是课堂上能直接对学员说的话；讲师动作、追问、备选说法写入 Speaker Notes。"
+    - "每页正文控制在 1-3 句，Key Points 控制在 3-6 条；超过时拆页而不是缩小字号。"
+    - "Demo/Lab/Assessment 页必须写 Activity，说明课堂动作、输入物、产出物和证据。"
   classroom_pattern:
     - "讲解 25%: 给心智模型、工程原则和质量边界。"
     - "演示 25%: 展示真实输入、失败、修正和验收。"

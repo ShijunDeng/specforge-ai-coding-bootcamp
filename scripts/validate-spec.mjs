@@ -172,6 +172,22 @@ function validateSlide(slide, file, index) {
   if (!slide.sections["speaker notes"]) {
     warnings.push(`${path} has no Speaker Notes`);
   }
+
+  if (!slide.sections.visual) {
+    warnings.push(`${path} has no Visual section`);
+  }
+
+  if (!slide.sections["illustration brief"]) {
+    warnings.push(`${path} has no Illustration Brief`);
+  }
+
+  if (!slide.sections["layout contract"]) {
+    warnings.push(`${path} has no Layout Contract`);
+  }
+
+  if (["demo", "lab", "assessment"].includes(slide.meta?.mode) && !slide.sections.activity) {
+    warnings.push(`${path} has no Activity section for ${slide.meta.mode} page`);
+  }
 }
 
 async function validateModule(moduleRef) {

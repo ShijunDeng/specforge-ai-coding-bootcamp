@@ -19,7 +19,7 @@
 - `specs/course.yaml`
   - `meta`：课程标题、版本、摘要。
   - `audience`：学员画像、前置条件、学习产出。
-  - `learning_design`：教学承诺、原则和课堂比例。
+  - `learning_design`：教学承诺、原则、课堂比例、叙事主线、案例设计、视觉系统和页面契约。
   - `decks[]`：内置章节组合。
   - `modules[]`：模块 id、文件路径、时长、标签。
   - `labs[]`：实操任务、限制、验收。
@@ -27,7 +27,7 @@
 - `specs/modules/*.md`
   - YAML frontmatter：模块 id、标题、时长、教学意图、学习产出。
   - `:::slide` block：页面 id、标题、模式、时长、视觉类型。
-  - 页面章节：Headline、Body、Key Points、Visual、Takeaway、Speaker Notes。
+- 页面章节：Headline、Body、Key Points、Visual、Illustration Brief、Layout Contract、Activity、Takeaway、Speaker Notes。其中 Activity 是教案动作，Slidev 目标中进入讲师备注，不作为主屏幕内容。
 - `configs/*.yaml`
   - 可选的自定义 deck 配置。
 
@@ -70,10 +70,11 @@ LLM 目标输出工具无关的纯 Markdown，不包含 Slidev frontmatter、HTM
 LLM 输出保留：
 
 - 课程摘要、学习原则和学习产出。
+- 课程叙事主线、案例设计、视觉系统和页面契约。
 - deck agenda。
 - 模块 intent、outcomes。
 - 每页 title、mode、duration、visual type。
-- Headline、Body、Key Points、Visual Brief、Activity、Takeaway。
+- Headline、Body、Key Points、Visual Brief、Illustration Brief、Layout Contract、Activity、Takeaway。
 - labs 与 assessment。
 
 ### AI PPT 产品大纲
@@ -92,11 +93,11 @@ PPT-AI 目标输出面向生成式演示工具的逐页大纲，重点不是保�
 PPT-AI 输出包含：
 
 - Deck generation brief：受众、时长、语气、视觉风格。
-- Required narrative：课程主线和原则。
+- Required narrative：课程主线、原则、案例设计、视觉系统和页面契约。
 - 每页的 Title、Type、Module、Estimated time。
 - Main Message。
 - On-Slide Text。
-- Visual Direction。
+- Visual Direction：包含右侧图示结构、插图说明、版式契约和课堂活动。
 - Speaker Takeaway。
 
 ## 命令
