@@ -2,7 +2,7 @@
 id: orientation
 title: 全局概览
 duration_min: 30
-intent: 建立课程目标、学习路径和工具全景，让学员理解为什么要把 AI Coding 工程化，也理解本仓库为什么用 Markdown Spec 维护课件。
+intent: 建立课程目标、学习路径和工具全景，理解为什么要把 AI Coding 工程化，也理解本仓库为什么用 Markdown Spec 维护课件。
 outcomes:
   - 说清楚本课程的交付物、课堂纪律和作业验收方式。
   - 区分 Vibe Coding、SDD、Skill、MCP、CodeWiki 的定位。
@@ -166,7 +166,7 @@ visual: checklist
 :::
 
 ### Headline
-课堂不是看完演示就结束，每位学员必须跑出自己的闭环证据。
+课堂不是看完演示就结束，你必须跑出自己的闭环证据。
 
 ### Body
 课堂先用演示建立标准动作，再用个人练习完成独立复现；环境阻塞可以求助，但提示词、Review 判断和验收证据必须由你自己完成。

@@ -2,7 +2,7 @@
 id: mcp-review-repair
 title: MCP 提单、代码检视与自动修复
 duration_min: 65
-intent: 让学员理解 MCP 如何连接外部研发系统，并跑通“创建 MR、触发检视、根据意见自动修复”的质量闭环。
+intent: 理解 MCP 如何连接外部研发系统，并跑通“创建 MR、触发检视、根据意见自动修复”的质量闭环。
 outcomes:
   - 能说明 MCP 与本地命令、远端平台动作之间的边界。
   - 能通过 MCP 创建 MR 并触发自动检视。
@@ -128,7 +128,7 @@ visual: flow
 :::
 
 ### Headline
-故意埋雷是为了让学员看到质量闭环如何工作。
+故意埋雷，是为了看清质量闭环如何工作。
 
 ### Body
 你将看到 Petclinic 改动中故意写入违规打印和不判空代码，再通过 MCP 创建 MR、触发检视 Skill，并调用修复 Skill 自动改回合规代码。
@@ -164,10 +164,10 @@ visual: checklist
 :::
 
 ### Headline
-每位学员必须拿到一次检视意见，并用修复 Skill 处理完成。
+你必须拿到一次检视意见，并用修复 Skill 处理完成。
 
 ### Body
-学员在自己的 Petclinic 分支中保留一个明确缺陷，用 MCP 指令建单，主动触发查错，再用修复 Skill 完成闭环。
+你将在自己的 Petclinic 分支中保留一个明确缺陷，用 MCP 指令建单，主动触发查错，再用修复 Skill 完成闭环。
 
 ### Key Points
 - 配置个人 MCP，确认远端仓库和分支。

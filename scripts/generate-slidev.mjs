@@ -177,7 +177,8 @@ function renderVisualWidget(visual = "", type = "") {
   }
 
   if (normalizedType === "checklist") {
-    return `<div class="visual-widget checklist-widget">${items
+    const isCompact = items.length >= 4 && items.every((item) => item.length <= 18);
+    return `<div class="visual-widget checklist-widget ${isCompact ? "checklist-grid" : ""}">${items
       .map(
         (item) =>
           `<div class="check-row"><span class="check-mark"></span><p>${inlineMarkdown(item)}</p></div>`

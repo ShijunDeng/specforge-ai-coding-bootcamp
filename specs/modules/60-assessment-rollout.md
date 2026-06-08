@@ -27,7 +27,7 @@ visual: timeline
 拿着课上过审的 Tasks，课后逐项实现并提交 MR。
 
 ### Body
-大作业不是让 AI 从零发挥，而是让学员把 SDD 文档转成小步实现、测试、检视和修复证据。
+大作业不是让 AI 从零发挥，而是把 SDD 文档转成小步实现、测试、检视和修复证据。
 
 ### Key Points
 - MR 描述必须链接 Proposal、Spec、Design、Tasks。

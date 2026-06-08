@@ -2,7 +2,7 @@
 id: foundations-tools
 title: AI 工程方法与工具体系
 duration_min: 60
-intent: 让学员理解 AI Coding 的能力演进、工具分层和上下文工程基本功，为后续实操建立统一操作语言。
+intent: 理解 AI Coding 的能力演进、工具分层和上下文工程基本功，为后续实操建立统一操作语言。
 outcomes:
   - 能解释补全、对话、Agent、企业级工具链之间的差异。
   - 能选择 Vibe Coding 或 SDD 的适用场景。

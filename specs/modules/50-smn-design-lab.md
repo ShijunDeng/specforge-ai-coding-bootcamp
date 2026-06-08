@@ -2,7 +2,7 @@
 id: smn-design-lab
 title: SMN 告警插件 SDD 拆解实操
 duration_min: 75
-intent: 让学员在不写 Java 业务代码的前提下，用 CodeWiki 和 SDD 产出 SMN 告警插件的四阶文档和可执行任务清单。
+intent: 在不写 Java 业务代码的前提下，用 CodeWiki 和 SDD 产出 SMN 告警插件的四阶文档和可执行任务清单。
 outcomes:
   - 能把“新增 SMN 告警插件”拆成 Proposal、Spec、Design、Tasks。
   - 能识别 AK/SK、区域、主题、消息模板、错误处理和测试策略等关键约束。
@@ -14,7 +14,7 @@ outcomes:
 
 ## Module Brief
 
-本模块要求学员检索告警规范，结合 AK/SK 约束生成 SMN 四套设计文档，并布置课后真实落地大作业。练习拆成查询、成文、审查、冻结任务四个步骤。
+本模块要求先检索告警规范，再结合 AK/SK 约束生成 SMN 四套设计文档，并布置课后真实落地大作业。练习拆成查询、成文、审查、冻结任务四个步骤。
 
 :::slide
 id: smn-01
@@ -28,7 +28,7 @@ visual: cards
 练习目标是产出四阶文档，不是写出 Java 代码。
 
 ### Body
-学员需要为 dolphin-scheduler 新增 SMN 告警插件做前置设计，产出可过审的 Proposal、Spec、Design、Tasks。任何业务代码生成都放到课后大作业。
+你需要为 dolphin-scheduler 新增 SMN 告警插件做前置设计，产出可过审的 Proposal、Spec、Design、Tasks。任何业务代码生成都放到课后大作业。
 
 ### Key Points
 - 业务目标：为调度系统新增 SMN 告警插件。
@@ -63,7 +63,7 @@ visual: checklist
 每组先拿到项目事实，再让 AI 写文档。
 
 ### Body
-学员以小组或个人方式查询 dolphin-scheduler 的现有告警插件机制，并把关键结论整理进 Design 的依据部分。
+以小组或个人方式查询 dolphin-scheduler 的现有告警插件机制，并把关键结论整理进 Design 的依据部分。
 
 ### Key Points
 - 查询现有 Alert 插件入口、Factory、Channel 或 SPI 注册方式。
@@ -239,7 +239,7 @@ visual: flow
 面对复杂工程，AI 的第一价值是帮助你读懂、拆解和验证。
 
 ### Body
-第二课结束时，每位学员都应拿到一份过审或待修订的 SMN Tasks。课后实现只允许按这份任务清单逐项推进。
+第二课结束时，你应该拿到一份过审或待修订的 SMN Tasks。课后实现只允许按这份任务清单逐项推进。
 
 ### Key Points
 - 查规范防造轮子。

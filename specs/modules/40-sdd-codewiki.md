@@ -2,7 +2,7 @@
 id: sdd-codewiki
 title: 存量项目、CodeWiki 与 SDD 四阶文档
 duration_min: 80
-intent: 让学员理解复杂存量项目中的 AI 风险，并掌握用 CodeWiki 探查项目事实、用 SDD 文档约束实现路径的方法。
+intent: 理解复杂存量项目中的 AI 风险，并掌握用 CodeWiki 探查项目事实、用 SDD 文档约束实现路径的方法。
 outcomes:
   - 能解释 Greenfield 与 Brownfield 的差异。
   - 能判断 Vibe Coding 在复杂项目中的边界。

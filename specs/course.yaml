@@ -8,7 +8,7 @@ meta:
   audience_label: 首期核心项目 Committer
   summary: >-
     面向企业内部核心项目 Committer 的 7 小时 AI 辅助编码实战课程。课程从 CodeAgent、
-    AgentCenter、MCP、Skill、CodeWiki 等工具入手，训练学员把 AI 生成能力纳入需求拆解、
+    AgentCenter、MCP、Skill、CodeWiki 等工具入手，训练你把 AI 生成能力纳入需求拆解、
     本地验证、MR、代码检视、自动修复和 SDD 文档驱动的工程闭环。
 
 audience:
@@ -27,7 +27,7 @@ audience:
 
 learning_design:
   duration_min: 420
-  promise: 让学员从“让 AI 帮我写一段代码”升级为“让 AI 在工程约束内交付可验收增量”。
+  promise: 从“让 AI 帮我写一段代码”升级为“让 AI 在工程约束内交付可验收增量”。
   principles:
     - "Spec first: 先明确目标、边界、验收，再请求生成。"
     - "Human in the loop: 人负责判断、审查、授权和取舍。"
@@ -37,7 +37,7 @@ learning_design:
   classroom_pattern:
     - "讲解 25%: 给心智模型、工程原则和质量边界。"
     - "演示 25%: 展示真实输入、失败、修正和验收。"
-    - "练习 40%: 学员独立完成，助教只处理阻塞。"
+    - "练习 40%: 独立完成，现场支持只处理阻塞。"
     - "复盘 10%: 抽样展示证据链，而不是展示最终代码截图。"
 
 deck_defaults:
@@ -148,7 +148,7 @@ labs:
     acceptance:
       - 相关接口可正常查询新增字段。
       - 新增或更新单测本地运行通过。
-      - 学员能解释采纳前 Review 了哪些风险。
+      - 能解释采纳前 Review 了哪些风险。
 
   - id: mcp-review-repair-lab
     title: MCP 建单、代码检视与自动修复
