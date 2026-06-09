@@ -11,6 +11,6 @@
     <rect x="405" y="382" width="150" height="72" rx="14" fill="#10231d" stroke="#34d399"/><text x="480" y="425" text-anchor="middle">Evidence</text>
   </g>
   <rect x="308" y="220" width="344" height="74" rx="14" fill="#0f172a" stroke="#334155"/>
-  <text x="480" y="250" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="16" fill="#7dd3fc">$ run command && attach output</text>
+  <text x="480" y="250" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="16" fill="#7dd3fc">$ run command &amp;&amp; attach output</text>
   <text x="480" y="278" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="16" fill="#86efac">proof beats confidence</text>
 </svg>
