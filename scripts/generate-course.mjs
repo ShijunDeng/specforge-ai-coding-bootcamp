@@ -115,7 +115,6 @@ function renderCoverBrand(course) {
   return `<div class="cover-brand">
   ${logo ? `<img src="${escapeHtml(logo)}" alt="${escapeHtml(`${brand.name} logo`)}" />` : ""}
   <div>
-    <p>培训品牌</p>
     <strong>${escapeHtml(brand.name)}</strong>
     ${brand.vision ? `<span>${escapeHtml(brand.vision)}</span>` : ""}
   </div>

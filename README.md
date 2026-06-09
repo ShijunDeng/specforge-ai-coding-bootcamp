@@ -1,4 +1,4 @@
-# 企业级 AI 辅助编码实战营课件工程
+# 神灯训练营课件工程
 
 这是一个 Spec Driven Development 风格的课件仓库。讲师维护 `specs/` 中的 Markdown 规格文件，需要授课、审阅或交付时再生成不同工具可消费的材料，例如 Slidev Markdown、NotebookLM 友好的知识包、AI PPT 产品可用的大纲、静态网页、PDF 或 PPTX。
 
