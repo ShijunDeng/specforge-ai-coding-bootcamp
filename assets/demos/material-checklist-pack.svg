@@ -10,4 +10,10 @@
     <rect x="360" y="278" width="240" height="98" rx="16" fill="#0f172a" stroke="#34d399"/><text x="480" y="318" text-anchor="middle">FAQ ready</text><text x="480" y="348" text-anchor="middle" fill="#86efac">proxy + JDK</text>
     <rect x="642" y="278" width="240" height="98" rx="16" fill="#0f172a" stroke="#34d399"/><text x="762" y="318" text-anchor="middle">screenshots sent</text><text x="762" y="348" text-anchor="middle" fill="#86efac">evidence folder</text>
   </g>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

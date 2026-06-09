@@ -9,4 +9,10 @@
     <rect x="685" y="116" width="205" height="290" rx="14" fill="#0f172a" stroke="#34d399"/><text x="713" y="156" fill="#86efac">tasks.md</text><text x="713" y="196" fill="#cbd5e1">class-level</text><text x="713" y="226" fill="#cbd5e1">test-level</text>
   </g>
   <text x="480" y="462" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="18" fill="#d1fae5">implementation starts only after review passes</text>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

@@ -22,4 +22,10 @@
   <path d="M326 276h28M608 276h28M480 442c-180 44-330-8-368-82" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/>
   <path d="M342 262l16 14-16 14M624 262l16 14-16 14" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="480" y="488" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="18" fill="#d1fae5">prompt - patch - review - validation - reusable evidence</text>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

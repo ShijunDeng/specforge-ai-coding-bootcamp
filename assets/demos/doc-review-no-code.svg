@@ -13,4 +13,10 @@
   </g>
   <rect x="660" y="166" width="154" height="78" rx="14" fill="#3a1d1d" stroke="#f87171"/>
   <text x="737" y="214" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#fecaca">NO CODE YET</text>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

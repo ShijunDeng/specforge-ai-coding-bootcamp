@@ -28,4 +28,10 @@
   </g>
   <rect x="668" y="322" width="180" height="54" rx="12" fill="#14342a" stroke="#34d399"/>
   <text x="758" y="356" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="19" font-weight="700" fill="#dcfce7">ready for review</text>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

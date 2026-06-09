@@ -16,4 +16,10 @@
   </g>
   <rect x="385" y="244" width="190" height="64" rx="32" fill="#0f172a" stroke="#334155"/>
   <circle cx="532" cy="276" r="24" fill="#f59e0b"/>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

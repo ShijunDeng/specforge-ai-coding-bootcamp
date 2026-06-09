@@ -27,7 +27,7 @@ audience:
 
 learning_design:
   duration_min: 420
-  promise: 从“让 AI 帮我写一段代码”升级为“让 AI 在工程约束内交付可验收增量”。
+  promise: 跟着一名工程师把一个真实需求从“随口问 AI”推进到“可提交、可检视、可复讲”的交付闭环。
   principles:
     - "Spec first: 先明确目标、边界、验收，再请求生成。"
     - "Human in the loop: 人负责判断、审查、授权和取舍。"
@@ -41,7 +41,7 @@ learning_design:
     - "复杂项目转折：进入 dolphin-scheduler 后，明确 Vibe Coding 的边界，先用 CodeWiki 查事实，再用 SDD 四阶文档压住方向。"
     - "真实落地：用 SMN 告警插件作为大作业，把课堂文档转成课后 MR、测试证据和团队复讲材料。"
   case_design:
-    primary_thread: "同一个工程师从小项目试跑、平台提单、复杂项目设计到真实大作业交付的完整一天。"
+    primary_thread: "同一个工程师从早上接到“Owner 查询”小需求开始，经历 AI 第一版跑偏、测试失败、MR 检视打回、复杂 SMN 插件拆解，最后把方法带回团队。"
     warmup_case: "spring-petclinic Owner 按姓名片段模糊查询，用于讲师演示标准微闭环。"
     learner_case: "spring-petclinic Pet 疫苗接种字段与查询接口，用于学员独立复制微闭环。"
     quality_case: "在 Petclinic 变更中故意埋入 System.out、潜在 NPE 或敏感日志，触发机器检视和修复 Skill。"

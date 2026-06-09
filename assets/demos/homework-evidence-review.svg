@@ -19,4 +19,10 @@
     <text x="664" y="224" fill="#fbbf24">retry case missing</text>
     <text x="664" y="254" fill="#86efac">no secrets found</text>
   </g>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

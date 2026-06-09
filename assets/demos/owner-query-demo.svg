@@ -23,4 +23,10 @@
   <text x="648" y="330" fill="#9ae6b4" font-family="Noto Sans SC,monospace" font-size="16">BUILD SUCCESS</text>
   <rect x="44" y="442" width="868" height="46" rx="10" fill="#fff7f1"/>
   <text x="64" y="472" fill="#8a4b16" font-family="Noto Sans SC,Inter,Arial,sans-serif" font-size="19">Observation: a good demo converges through plan, review, and tests.</text>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

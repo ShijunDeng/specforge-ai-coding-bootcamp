@@ -33,14 +33,14 @@ duration_min: 8
 visual: cards
 :::
 ### Headline
-练习目标是产出四阶文档，不是写出 Java 代码。
+今天先把“我要发告警”拆成能施工的现场卡，不急着写 Java。
 
 ### Body
-你需要为 dolphin-scheduler 新增 SMN 告警插件做前置设计，产出可过审的 Proposal、Spec、Design、Tasks。任何业务代码生成都放到课后大作业。
+SMN 看起来只是多接一个通知渠道，但真正会卡住交付的往往是配置从哪里来、密钥能不能进日志、失败后谁能定位。课堂先产出 Proposal、Spec、Design、Tasks，代码留到课后按单施工。
 
 
 ### Example
-例如：把“新增 SMN 告警”拆成四张卡：业务上要发什么消息，项目里接哪个插件扩展点，安全上如何处理 AK/SK，交付上提交哪些文档和测试。
+例如：产品只说“调度失败后发 SMN”，你要马上追问五件事：消息模板长什么样，topic 谁配置，AK/SK 从哪里注入，现有告警插件怎么注册，失败时日志能留下什么证据。
 
 ### Key Points
 - 业务目标：为调度系统新增 SMN 告警插件。
@@ -79,7 +79,7 @@ caption: SMN 实操先把“新增告警”拆成业务、项目、安全、验�
 - 结束前每人写下一条最担心 AI 跑偏的点，后续 Review 时必须能在文档中找到对应约束。
 
 ### Takeaway
-这次练习训练“先想清楚再让 AI 写”的能力。
+复杂需求先拆成可验收的现场卡，AI 才有机会写出可合并的代码。
 
 ### Speaker Notes
 - 助教发现学员开始写代码，要立即拉回文档任务。
@@ -93,14 +93,14 @@ duration_min: 12
 visual: checklist
 :::
 ### Headline
-每组先拿到项目事实，再让 AI 写文档。
+CodeWiki 的作用不是替你下结论，而是把老项目的路标找出来。
 
 ### Body
-以小组或个人方式查询 dolphin-scheduler 的现有告警插件机制，并把关键结论整理进 Design 的依据部分。
+先查 dolphin-scheduler 已有告警插件的入口、配置和测试，再把事实写成 Design 依据。没有查到的类名不要让 AI 编，查不到就写“待确认”，进入 Review。
 
 
 ### Example
-例如：查询到 Webhook 插件有配置校验和失败日志后，SMN Design 应引用这类事实，而不是凭空发明 `SmnAlertService` 的行为。
+例如：如果 CodeWiki 只查到 Webhook 插件通过 SPI 注册、配置里有 URL 校验，那 SMN Design 可以沿用“注册方式”和“配置校验模式”；但不能凭空写出 `SmnAlertService`，除非代码事实里真的有对应命名规则。
 
 ### Key Points
 - 查询现有 Alert 插件入口、Factory、Channel 或 SPI 注册方式。
@@ -140,7 +140,7 @@ caption: CodeWiki 查询任务卡必须把查询结果转成 Design 依据，而
 - 结尾抽样检查两份 Design 依据，重点看是否只是复制代码，还是提炼成约束。
 
 ### Takeaway
-没有事实依据的 Design 不进入 Review。
+Design 里的每个关键判断，都应该能指回一段项目事实。
 
 ### Speaker Notes
 - 如果 CodeWiki 无法使用，发放提前准备的查询摘要，但仍要求学员把摘要转成设计依据。
@@ -154,14 +154,14 @@ duration_min: 10
 visual: matrix
 :::
 ### Headline
-Proposal 决定做不做和做多大，Spec 决定系统应该表现成什么样。
+Proposal 像立项卡，Spec 像验收剧本，二者先挡住需求漂移。
 
 ### Body
-这两份文档必须把业务目标、范围、非范围、用户可见行为和验收条件写清楚，避免后续实现阶段不断补需求。
+先说清为什么做、哪些不做、用户会看到什么、失败时怎么提示。否则 AI 写代码时会不断替你补需求，Reviewer 也不知道按什么标准判断。
 
 
 ### Example
-例如：Spec 可以写“topic 为空时保存配置失败并提示原因”；Design 才写“在配置校验类中检查 topic”；Tasks 再落到具体类和测试。
+例如：Proposal 写“本期只支持指定 topic 发送文本告警，不做自动创建 topic”；Spec 写“topic 为空时保存配置失败并提示原因”；Design 再决定复用哪个校验类；Tasks 最后落到文件和测试。
 
 ### Key Points
 - Proposal 写业务动机、目标用户、范围、非范围、风险和里程碑。
@@ -200,7 +200,7 @@ caption: Proposal 和 Spec 先回答“为什么做、做多大、系统应表�
 - 最后同桌互查一条 Spec：如果不能用测试、日志、配置或 Review 证明，就打回重写。
 
 ### Takeaway
-四类文档各管一层，不要混成一篇万能说明。
+先锁边界和行为，再谈实现路线，后面的代码才不会越写越散。
 
 ### Speaker Notes
 - 让学员把“我要加 SMN”翻译成四类不同问题。
@@ -214,14 +214,14 @@ duration_min: 12
 visual: checklist
 :::
 ### Headline
-告警插件不是只会发消息，还要正确处理凭证和日志。
+告警发出去了还不够，密钥不能跟着一起“发出去”。
 
 ### Body
-SMN 接入涉及 AK/SK、区域、主题、消息模板等配置。凭证处理属于架构设计，不是实现细节，必须写入 Design 和验收标准。
+SMN 接入会经过 AK/SK、区域、topic、消息模板和失败日志。凭证处理不是“实现时注意一下”，而是 Design 里必须可见、测试里必须可查的安全边界。
 
 
 ### Example
-例如：错误日志可以写“SMN send failed, requestId=xxx, ak=****1234”，不能写完整 AK/SK、原始请求体或生产 endpoint。
+例如：本地桩返回 403 时，日志可以留下 `requestId`、错误码和脱敏后缀，不能把完整 AK/SK、原始请求体或生产 endpoint 打进 MR 截图。
 
 ### Key Points
 - AK/SK 通过配置注入，不硬编码。
@@ -261,7 +261,7 @@ caption: 安全设计要能在配置、日志和测试画面中被看见，而�
 - 抽样展示一条错误写法，例如“日志打印完整异常上下文”，现场改写成脱敏策略。
 
 ### Takeaway
-缺少安全设计的 Design 直接判定不合格。
+安全不是提醒语，是能在配置、日志和测试里被看见的设计。
 
 ### Speaker Notes
 - 这页要单独停留，确保每位学员在 Design 中能找到对应内容。
@@ -275,14 +275,14 @@ duration_min: 15
 visual: matrix
 :::
 ### Headline
-合格的任务清单要让 Agent 能逐项执行，也让人能逐项验收。
+好 Tasks 像工单队列：每张票都能被执行、被回滚、被验收。
 
 ### Body
-Tasks 是给 Agent 的施工图，也是给 Reviewer 的检查表。颗粒度太粗会让模型重新发散，颗粒度太细但无验收会让实现难以收口。
+把“实现 SMN”拆成配置、注册、客户端、失败处理、测试和文档。每张任务票都要写明目标文件、改动意图和验收方式，Agent 才不会重新发明路线。
 
 
 ### Example
-例如：坏任务是“实现 SMN”；好任务是“参考现有邮件插件新增 SMN 配置校验测试，覆盖 region 缺失、topic 缺失和 AK/SK 脱敏”。
+例如：坏任务是“实现 SMN”；好任务是“参考现有邮件插件新增 SMN 配置校验测试，覆盖 region 缺失、topic 缺失、AK/SK 脱敏，运行 `mvn -pl dolphinscheduler-alert-plugin-smn test`”。
 
 ### Key Points
 - 任务必须能排序，能标记完成，能回滚。
@@ -322,7 +322,7 @@ caption: 好任务要能指向具体配置、类、测试和安全证据，而�
 - 现场挑一条过粗任务，把它拆成文件、类、改动意图和验收证据四列。
 
 ### Takeaway
-Tasks 越可执行，Agent 越不容易自己编路线。
+任务越像可验收工单，AI 越不容易把需求写成一团大 diff。
 
 ### Speaker Notes
 - 类名示例需要根据真实 CodeWiki 查询结果调整；如果项目实际命名不同，以现有代码为准。
@@ -336,14 +336,14 @@ duration_min: 13
 visual: checklist
 :::
 ### Headline
-如果文档没有过审，提前生成代码只会放大错误。
+文档 Review 是发车前的刹车，不是写代码后的补票。
 
 ### Body
-同伴 Review 的目标是找出文档中会导致实现跑偏的缺口，尤其是安全、兼容、错误处理和测试策略。
+同伴 Review 只盯会让实现跑偏的缺口：边界不清、验收不可测、凭证没脱敏、失败路径没测试。发现问题就写回文档，不用等代码生成后再返工。
 
 
 ### Example
-例如：同伴 Review 发现 Tasks 没有失败路径测试，就写入打回意见“补充发送超时、鉴权失败、配置缺失三类测试任务”。
+例如：Reviewer 看到 Tasks 只有“发送 SMN 成功测试”，就直接打回：“补充发送超时、鉴权失败、配置缺失三类测试任务；否则课后 MR 不接收。”
 
 ### Key Points
 - Proposal 是否定义范围和非范围。
@@ -382,7 +382,7 @@ caption: 文档没有过审就生成代码，只会把文档缺口放大成错�
 - 结束前冻结 Tasks，标记哪些条目可进入课后实现，哪些仍需补查 CodeWiki。
 
 ### Takeaway
-文档 Review 结论要写回 Spec 或任务清单。
+能在文档阶段打回的问题，就不要拖到代码阶段爆炸。
 
 ### Speaker Notes
 - 结尾安排 2 组展示一条被打回的文档缺口。
@@ -396,14 +396,14 @@ duration_min: 5
 visual: flow
 :::
 ### Headline
-面对复杂工程，AI 的第一价值是帮助你读懂、拆解和验证。
+第二课结束时，手上应该是一叠可施工工单，而不是一段漂亮回答。
 
 ### Body
-第二课结束时，你应该拿到一份过审或待修订的 SMN Tasks。课后实现只允许按这份任务清单逐项推进。
+SMN 练习收口时，每个小组都要知道哪些任务已经 Frozen，哪些还 Needs review。课后实现从冻结任务开始，不再把需求重新丢给 AI 自由发挥。
 
 
 ### Example
-例如：冻结后的 Tasks 应像施工清单：先加配置模型，再接插件注册，再封装客户端，再补测试；课后实现不能重新让 AI 自由发挥。
+例如：冻结看板上应能看到“配置模型 Ready、SPI 注册 Ready、客户端封装 Needs review、失败路径测试 Frozen”。课后 MR 按这些票逐项提交，不能突然冒出一组未讨论过的新类。
 
 ### Key Points
 - 查规范防造轮子。
@@ -438,7 +438,7 @@ caption: 第二课的最终产物是可执行、可 Review、可冻结的任务�
 - 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
 
 ### Takeaway
-文档想清楚，代码才可能水到渠成。
+把任务冻结住，课后的代码实现才有边界、有顺序、有证据。
 
 ### Speaker Notes
 - 回扣第一课：微闭环是执行能力，第二课 SDD 是方向控制。

@@ -9,4 +9,10 @@
     <rect x="218" y="292" width="250" height="106" rx="16" fill="#0f172a" stroke="#a78bfa"/><text x="343" y="334" text-anchor="middle" font-weight="700">Validation</text><text x="343" y="364" text-anchor="middle" fill="#ddd6fe">fixtures + timeout</text>
     <rect x="496" y="292" width="250" height="106" rx="16" fill="#0f172a" stroke="#f59e0b"/><text x="621" y="334" text-anchor="middle" font-weight="700">Operations</text><text x="621" y="364" text-anchor="middle" fill="#fde68a">logs + retry</text>
   </g>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

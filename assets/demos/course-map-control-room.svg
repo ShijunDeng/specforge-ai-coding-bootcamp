@@ -16,4 +16,10 @@
     <text x="124" y="342" fill="#86efac">evidence checkpoints: prompt, diff, tests, MR, SDD docs</text>
     <text x="124" y="374" fill="#fbbf24">risk checkpoints: token, secret logs, broad diffs, weak tests</text>
   </g>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

@@ -28,4 +28,10 @@
     <rect x="638" y="382" width="232" height="44" rx="10" fill="#16352b" stroke="#34d399"/>
     <text x="664" y="410">rerun test before MR</text>
   </g>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

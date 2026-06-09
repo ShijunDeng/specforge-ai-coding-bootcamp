@@ -36,4 +36,10 @@
   <path d="M342 236l14 12-14 12M640 236l14 12-14 12" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
   <rect x="188" y="456" width="584" height="38" rx="19" fill="#14342a" stroke="#34d399"/>
   <text x="480" y="481" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700" fill="#dcfce7">same discipline: context - boundary - validation - evidence</text>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

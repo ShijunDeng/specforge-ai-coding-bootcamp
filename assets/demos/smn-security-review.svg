@@ -20,4 +20,10 @@
   </g>
   <rect x="44" y="466" width="846" height="36" rx="18" fill="#143d35"/>
   <text x="272" y="490" fill="#fff" font-family="Noto Sans SC,Inter,Arial,sans-serif" font-size="18">Missing any item blocks implementation.</text>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

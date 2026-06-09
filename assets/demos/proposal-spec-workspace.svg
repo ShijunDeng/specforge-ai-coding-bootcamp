@@ -14,4 +14,10 @@
     <text x="530" y="232" fill="#cbd5e1">when secret missing -> fail safe</text>
     <text x="530" y="262" fill="#cbd5e1">logs must mask credentials</text>
   </g>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

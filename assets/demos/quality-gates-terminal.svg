@@ -13,4 +13,10 @@
     <text x="114" y="380" fill="#7dd3fc">$ evidence pack</text>
     <text x="114" y="412" fill="#86efac">prompt, diff, test output, review note attached</text>
   </g>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

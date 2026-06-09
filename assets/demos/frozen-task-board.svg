@@ -7,4 +7,10 @@
     <rect x="360" y="118" width="240" height="306" rx="16" fill="#0f172a" stroke="#f59e0b"/><text x="480" y="158" text-anchor="middle" font-weight="700">Needs review</text><text x="480" y="210" text-anchor="middle">retry behavior</text><text x="480" y="250" text-anchor="middle">timeout handling</text>
     <rect x="646" y="118" width="240" height="306" rx="16" fill="#0f172a" stroke="#34d399"/><text x="766" y="158" text-anchor="middle" font-weight="700">Frozen</text><text x="766" y="210" text-anchor="middle">secret masking</text><text x="766" y="250" text-anchor="middle">test fixtures</text>
   </g>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>

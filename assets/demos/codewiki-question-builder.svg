@@ -11,4 +11,10 @@
     <text x="112" y="324" fill="#fbbf24">Return source files and design facts, not implementation code.</text>
     <text x="112" y="364" fill="#86efac">copy result -> design.md / basis section</text>
   </g>
+  <g data-auto-motion="subtle-runner" opacity="0.82">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M80 486 H880" />
+    </circle>
+    <rect x="70" y="480" width="820" height="2" rx="1" fill="#334155" opacity="0.75"/>
+  </g>
 </svg>
