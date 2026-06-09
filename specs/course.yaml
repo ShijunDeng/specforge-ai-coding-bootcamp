@@ -2,6 +2,10 @@ meta:
   id: ai-coding-bootcamp
   title: 企业级 AI 辅助编码实战营
   subtitle: 从零散提示词到可验收的工程化研发闭环
+  brand:
+    name: 神灯局
+    vision: 点亮你的研发愿望，让AI成为团队神灯。
+    logo: ./assets/brand/shendengju-logo.png
   version: v1.0.0
   updated: "2026-06-05"
   language: zh-CN

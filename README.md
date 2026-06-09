@@ -2,6 +2,8 @@
 
 这是一个 Spec Driven Development 风格的课件仓库。讲师维护 `specs/` 中的 Markdown 规格文件，需要授课、审阅或交付时再生成不同工具可消费的材料，例如 Slidev Markdown、NotebookLM 友好的知识包、AI PPT 产品可用的大纲、静态网页、PDF 或 PPTX。
 
+本培训课程品牌为 **神灯局**，愿景是“点亮你的研发愿望，让AI成为团队神灯。” 品牌 logo 存放在 `assets/brand/shendengju-logo.png`，生成课件时会用于封面和页面角标。
+
 本仓库不把 PPTX 当作源文件。课程目标、学习成果、教学路径、实操验收、讲师备注和生成规则都进入 Spec，生成物只用于预览、授课和临时交付。
 
 ## 快速开始
@@ -60,6 +62,8 @@ npm run export:pptx
 - `exercises/`：课堂练习与大作业说明，不存放外部项目完整源码。
 - `rubrics/`：作业评分 Rubric。
 - `scripts/`：校验、生成、公网预览和导出脚本。
+- `assets/brand/`：课程品牌资产，例如神灯局 logo。
+- `assets/demos/`：课程中的动态演示图、代码运行画面和看板式视觉资产。
 - `build/`、`dist/`：生成物目录，不作为课程源文件维护。
 
 `specs/modules/` 文件名中的 `00`、`10`、`20` 等数字前缀只用于人工阅读和目录排序，方便在两个模块之间插入新文件，例如 `25-new-topic.md`。课件生成顺序不由文件名前缀决定，而由 `specs/course.yaml` 中 `decks[].include_modules` 的顺序决定。

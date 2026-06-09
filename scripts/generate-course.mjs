@@ -87,6 +87,41 @@ function inlineMarkdown(value = "") {
     .replace(/`([^`]+)`/g, "<code>$1</code>");
 }
 
+function slideAssetPath(src = "") {
+  const value = String(src || "");
+  if (value.startsWith("../../assets/")) return `./assets/${value.slice("../../assets/".length)}`;
+  if (value.startsWith("assets/")) return `./${value}`;
+  return value;
+}
+
+function brandInfo(course) {
+  return course.meta?.brand ?? {};
+}
+
+function renderBrandMark(course) {
+  const brand = brandInfo(course);
+  if (!brand.name) return "";
+  const logo = brand.logo ? slideAssetPath(brand.logo) : "";
+  return `<div class="brand-mark">
+  ${logo ? `<img src="${escapeHtml(logo)}" alt="${escapeHtml(`${brand.name} logo`)}" />` : ""}
+  <span>${escapeHtml(brand.name)}</span>
+</div>`;
+}
+
+function renderCoverBrand(course) {
+  const brand = brandInfo(course);
+  if (!brand.name) return "";
+  const logo = brand.logo ? slideAssetPath(brand.logo) : "";
+  return `<div class="cover-brand">
+  ${logo ? `<img src="${escapeHtml(logo)}" alt="${escapeHtml(`${brand.name} logo`)}" />` : ""}
+  <div>
+    <p>培训品牌</p>
+    <strong>${escapeHtml(brand.name)}</strong>
+    ${brand.vision ? `<span>${escapeHtml(brand.vision)}</span>` : ""}
+  </div>
+</div>`;
+}
+
 function parseMarkdownTable(lines) {
   const rows = lines
     .map((line) =>
@@ -337,9 +372,7 @@ function renderMediaFrame(media = "") {
   const spec = parseMediaSpec(media);
   if (!spec?.src) return "";
   const originalSrc = String(spec.src);
-  const src = originalSrc.startsWith("../../assets/")
-    ? `./assets/${originalSrc.slice("../../assets/".length)}`
-    : originalSrc;
+  const src = slideAssetPath(originalSrc);
   const label = spec.type ?? "运行画面";
   const alt = spec.alt ?? spec.caption ?? label;
   const caption = spec.caption ?? "";
@@ -370,6 +403,7 @@ function renderContentSlide(slide, module, includeNotes = false) {
     class: ["content-slide", meta.mode, meta.visual].filter(Boolean).join(" ")
   })}
 # ${meta.title}
+${renderBrandMark(module.course ?? {})}
 
 ${chips([module.title, meta.mode, meta.duration_min ? `${meta.duration_min} 分钟` : "课前"])}
 
@@ -392,6 +426,7 @@ function renderModuleDivider(module, index) {
   const outcomes = module.spec.outcomes ?? [];
   return `${slideSeparator({ layout: "default", class: "module-divider" })}
 # ${String(index + 1).padStart(2, "0")} · ${module.title}
+${renderBrandMark(module.course ?? {})}
 
 <div class="module-grid">
 <div>
@@ -413,6 +448,7 @@ function renderAgenda(modules, deck) {
   const total = modules.reduce((sum, module) => sum + Number(module.duration_min || 0), 0);
   return `${slideSeparator({ layout: "default", class: "agenda-slide" })}
 # 课程地图：${deck.title}
+${renderBrandMark(deck.course ?? {})}
 
 ${parseMarkdownTable([
   "| 模块 | 时长 | 学员产出 |",
@@ -549,6 +585,8 @@ function renderPlainDeck(course, deck, modules, includeModules, includeNotes = f
   const chunks = [
     `# ${course.meta.title}`,
     course.meta.subtitle ? `> ${course.meta.subtitle}` : "",
+    course.meta.brand?.name ? `Brand: ${course.meta.brand.name}` : "",
+    course.meta.brand?.vision ? `Vision: ${course.meta.brand.vision}` : "",
     `Audience: ${course.meta.audience_label ?? course.audience?.primary ?? ""}`,
     `Version: ${course.meta.version ?? ""}`,
     "",
@@ -644,6 +682,9 @@ function renderPptAiDeck(course, deck, modules, includeModules, includeNotes = f
     `# ${course.meta.title}`,
     "",
     "## Deck Generation Brief",
+    course.meta.brand?.name ? `Brand: ${course.meta.brand.name}` : "",
+    course.meta.brand?.vision ? `Brand vision: ${course.meta.brand.vision}` : "",
+    course.meta.brand?.logo ? `Brand logo asset: ${course.meta.brand.logo}` : "",
     `Audience: ${course.meta.audience_label ?? course.audience?.primary ?? ""}`,
     `Deck: ${deck.title}`,
     `Duration: about ${total} minutes`,
@@ -683,6 +724,10 @@ function renderPptAiDeck(course, deck, modules, includeModules, includeNotes = f
 }
 
 function renderSlidevDeck(course, deck, modules, includeModules, generatedAt, exportFilename, includeNotes = false) {
+  deck.course = course;
+  modules.forEach((module) => {
+    module.course = course;
+  });
   const chunks = [
     `---
 theme: ${course.deck_defaults?.theme ?? "default"}
@@ -703,6 +748,8 @@ exportFilename: ${exportFilename}
 # ${course.meta.title}
 
 ## ${course.meta.subtitle}
+
+${renderCoverBrand(course)}
 
 <div class="cover-meta">
 <span>${escapeHtml(course.meta.version)}</span>

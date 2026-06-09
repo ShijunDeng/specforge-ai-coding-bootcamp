@@ -6,6 +6,8 @@
 :root {
   --brand: #103f3a;
   --accent: #f06b3f;
+  --brand-dark: #070b11;
+  --brand-gold: #f7c66a;
   --ink: #17201b;
   --muted: #5f6f68;
   --line: #d9e2dd;
@@ -61,6 +63,34 @@
 
 .slidev-layout.content-slide {
   padding: 24px 34px 22px;
+  position: relative;
+}
+
+.brand-mark {
+  position: absolute;
+  top: 16px;
+  right: 28px;
+  z-index: 8;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 28px;
+  padding: 3px 8px 3px 4px;
+  border: 1px solid rgba(16, 63, 58, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--brand);
+  font-size: 0.58rem;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(12, 32, 28, 0.08);
+  pointer-events: none;
+}
+
+.brand-mark img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .slidev-layout.content-slide h1 {
@@ -82,13 +112,63 @@
 }
 
 .cover h1 {
-  font-size: 3.05rem;
-  max-width: 860px;
+  font-size: 2.9rem;
+  max-width: 690px;
 }
 
 .cover h2 {
   color: var(--accent);
   font-weight: 650;
+  max-width: 690px;
+}
+
+.cover-brand {
+  position: absolute;
+  right: 46px;
+  top: 86px;
+  width: 250px;
+  min-height: 310px;
+  padding: 14px;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(7, 11, 17, 0.9), rgba(16, 27, 30, 0.82)),
+    radial-gradient(circle at 50% 28%, rgba(247, 198, 106, 0.28), transparent 46%);
+  border: 1px solid rgba(247, 198, 106, 0.42);
+  box-shadow: 0 22px 44px rgba(9, 18, 18, 0.22);
+  color: #fffaf0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cover-brand img {
+  width: 182px;
+  height: 182px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+}
+
+.cover-brand p {
+  margin: 12px 0 3px;
+  color: var(--brand-gold);
+  font-size: 0.62rem;
+  letter-spacing: 0;
+}
+
+.cover-brand strong {
+  display: block;
+  font-size: 1.62rem;
+  line-height: 1.1;
+}
+
+.cover-brand span {
+  display: block;
+  margin-top: 7px;
+  color: #f7ecd0;
+  font-size: 0.72rem;
+  line-height: 1.35;
 }
 
 .cover-meta {
@@ -592,6 +672,11 @@
 
 .module-divider .module-grid {
   margin-top: 44px;
+}
+
+.module-divider,
+.agenda-slide {
+  position: relative;
 }
 
 .module-divider h2 {
