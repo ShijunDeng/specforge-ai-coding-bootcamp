@@ -346,6 +346,26 @@ function chips(items = []) {
     .join("")}</div>`;
 }
 
+const modeLabels = {
+  assessment: "验收",
+  demo: "演示",
+  intro: "概览",
+  lab: "实操",
+  prep: "准备",
+  rollout: "推广",
+  summary: "复盘",
+  talk: "讲解"
+};
+
+function semanticClass(prefix, value = "") {
+  const token = String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return token ? `${prefix}-${token}` : "";
+}
+
 function renderSpeakerNotes(notes = "") {
   if (!notes.trim()) return "";
   return `\n<!--\n${notes.trim()}\n-->\n`;
@@ -399,12 +419,20 @@ function renderContentSlide(slide, module, includeNotes = false) {
 
   return `${slideSeparator({
     layout: meta.layout ?? "default",
-    class: ["content-slide", meta.mode, meta.visual].filter(Boolean).join(" ")
+    class: [
+      "content-slide",
+      semanticClass("mode", meta.mode),
+      semanticClass("visual", meta.visual)
+    ].filter(Boolean).join(" ")
   })}
 # ${meta.title}
 ${renderBrandMark(module.course ?? {})}
 
-${chips([module.title, meta.mode, meta.duration_min ? `${meta.duration_min} 分钟` : "课前"])}
+${chips([
+  module.title,
+  modeLabels[meta.mode] ?? meta.mode,
+  meta.duration_min ? `${meta.duration_min} 分钟` : "课前"
+])}
 
 <div class="slide-shell">
 <section class="primary-pane">
@@ -441,8 +469,7 @@ ${markdownLite(outcomes.map((outcome) => `- ${outcome}`).join("\n"))}
 function renderAgenda(modules, deck) {
   const rows = modules.map((module) => [
     module.title,
-    module.duration_min ? `${module.duration_min} 分钟` : "课前",
-    (module.spec.outcomes ?? []).join("；")
+    module.duration_min ? `${module.duration_min} 分钟` : "课前"
   ]);
   const total = modules.reduce((sum, module) => sum + Number(module.duration_min || 0), 0);
   return `${slideSeparator({ layout: "default", class: "agenda-slide" })}
@@ -450,8 +477,8 @@ function renderAgenda(modules, deck) {
 ${renderBrandMark(deck.course ?? {})}
 
 ${parseMarkdownTable([
-  "| 模块 | 时长 | 学员产出 |",
-  "| --- | --- | --- |",
+  "| 模块 | 时长 |",
+  "| --- | --- |",
   ...rows.map((row) => `| ${row.join(" | ")} |`)
 ])}
 
@@ -466,8 +493,9 @@ function renderLabs(course, includeModules) {
     lab.duration_min ? `${lab.duration_min} 分钟` : "课外",
     (lab.acceptance ?? []).join("；")
   ]);
-  return `${slideSeparator({ layout: "default", class: "content-slide lab-overview" })}
+  return `${slideSeparator({ layout: "default", class: "content-slide closing-slide lab-overview" })}
 # 实操与作业验收总览
+${renderBrandMark(course)}
 
 ${parseMarkdownTable([
   "| 任务 | 时长 | 验收标准 |",
@@ -487,8 +515,9 @@ function renderAssessment(course, includeModules) {
     item.evidence
   ]);
   if (!rows.length) return "";
-  return `${slideSeparator({ layout: "default", class: "content-slide assessment-slide" })}
+  return `${slideSeparator({ layout: "default", class: "content-slide closing-slide assessment-slide" })}
 # 大作业评分 Rubric
+${renderBrandMark(course)}
 
 ${parseMarkdownTable([
   "| 维度 | 权重 | 证据 |",

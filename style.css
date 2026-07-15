@@ -6,6 +6,7 @@
 :root {
   --brand: #103f3a;
   --accent: #f06b3f;
+  --accent-ink: #c44a25;
   --brand-dark: #070b11;
   --brand-gold: #f7c66a;
   --ink: #17201b;
@@ -107,7 +108,7 @@
 
 .slidev-layout.content-slide p,
 .slidev-layout.content-slide li {
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   line-height: 1.34;
 }
 
@@ -117,7 +118,7 @@
 }
 
 .cover h2 {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 650;
   max-width: 690px;
 }
@@ -190,9 +191,22 @@
 
 .chips {
   display: flex;
+  align-items: center;
+  align-self: start;
   gap: 8px;
   flex-wrap: wrap;
-  margin: -4px 0 10px;
+  margin: -2px 0 10px;
+}
+
+.chips span {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .slide-shell,
@@ -204,7 +218,34 @@
 }
 
 .content-slide .slide-shell {
-  height: 378px;
+  min-height: 378px;
+}
+
+.content-slide.visual-contrast .slide-shell {
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+}
+
+.content-slide.visual-matrix .slide-shell,
+.content-slide.visual-cards .slide-shell,
+.content-slide.mode-demo .slide-shell,
+.content-slide.mode-lab .slide-shell {
+  grid-template-columns: minmax(0, 0.94fr) minmax(320px, 1.06fr);
+}
+
+.content-slide.visual-timeline .primary-pane {
+  order: 2;
+}
+
+.content-slide.visual-timeline .visual-pane {
+  order: 1;
+}
+
+.content-slide.mode-lab .primary-pane {
+  border-top: 4px solid var(--accent);
+}
+
+.content-slide.mode-demo .media-frame {
+  border-color: rgba(32, 119, 184, 0.72);
 }
 
 .primary-pane,
@@ -250,13 +291,13 @@
 .example-box strong {
   display: inline-block;
   margin-right: 7px;
-  color: var(--accent);
-  font-size: 0.68rem;
+  color: var(--accent-ink);
+  font-size: 0.72rem;
 }
 
 .example-box p,
 .example-box li {
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   line-height: 1.28;
 }
 
@@ -296,6 +337,9 @@
   flex: 1;
   min-height: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 8px 8px;
   background: #101417;
   border: 1px solid #3f5560;
   border-radius: 8px;
@@ -314,26 +358,15 @@
   animation: media-scan 6s ease-in-out infinite;
 }
 
-.media-frame::after {
-  content: "";
-  position: absolute;
-  left: 14px;
-  top: 12px;
-  z-index: 2;
-  width: 42px;
-  height: 8px;
-  border-radius: 999px;
-  background: radial-gradient(circle, #ff6b5a 0 4px, transparent 4px 100%),
-    radial-gradient(circle at 18px 4px, #f2c94c 0 4px, transparent 4px 100%),
-    radial-gradient(circle at 36px 4px, #2ecc71 0 4px, transparent 4px 100%);
-}
-
 .media-frame img {
   display: block;
+  flex: 1;
+  min-height: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
   background: #101417;
+  border-radius: 6px;
 }
 
 .media-label {
@@ -345,21 +378,19 @@
   border-radius: 999px;
   background: rgba(16, 20, 23, 0.78);
   color: #fff;
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   font-weight: 700;
 }
 
 .media-frame figcaption {
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 8px;
-  z-index: 3;
+  position: static;
+  flex: 0 0 auto;
+  margin-top: 6px;
   padding: 7px 9px;
   border-radius: 7px;
   background: rgba(255, 255, 255, 0.9);
   color: var(--ink);
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   line-height: 1.25;
 }
 
@@ -598,7 +629,7 @@
 
 .eyebrow {
   margin: 0 0 8px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 700;
   font-size: 0.82rem;
   text-transform: uppercase;
@@ -612,6 +643,15 @@
   color: var(--brand);
   font-size: 0.78rem;
   line-height: 1.34;
+}
+
+.slidev-layout :not(pre) > code {
+  padding: 2px 6px;
+  border: 1px solid rgba(16, 63, 58, 0.18);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--brand);
+  font-weight: 600;
 }
 
 @keyframes media-scan {
@@ -693,28 +733,67 @@
 }
 
 .agenda-slide .spec-table {
-  font-size: 0.52rem;
+  font-size: 0.74rem;
 }
 
 .agenda-slide .spec-table th,
 .agenda-slide .spec-table td {
-  padding: 3px 5px;
-  line-height: 1.22;
+  padding: 8px 10px;
+  line-height: 1.28;
 }
 
 .agenda-slide .takeaway {
-  margin-top: 6px;
-  font-size: 0.64rem;
-  padding: 6px 8px;
+  margin-top: 10px;
+  font-size: 0.72rem;
+  padding: 8px 10px;
 }
 
 .lab-overview .spec-table,
 .assessment-slide .spec-table {
-  font-size: 0.68rem;
+  font-size: 0.76rem;
 }
 
-.content-slide.matrix .visual-card,
-.content-slide.rubric .visual-card {
+.slidev-layout.closing-slide {
+  position: relative;
+  padding: 34px 44px 30px;
+}
+
+.closing-slide h1 {
+  margin-bottom: 0.8rem;
+  font-size: 1.92rem;
+}
+
+.closing-slide .spec-table th,
+.closing-slide .spec-table td {
+  padding: 9px 11px;
+  line-height: 1.32;
+}
+
+.closing-slide .example-box {
+  margin-top: 14px;
+  padding: 11px 13px;
+}
+
+.closing-slide .takeaway {
+  margin-top: 12px;
+  padding: 11px 13px;
+  font-size: 0.8rem;
+}
+
+.lab-overview .spec-table th:nth-child(1),
+.lab-overview .spec-table td:nth-child(1) {
+  width: 24%;
+}
+
+.lab-overview .spec-table th:nth-child(2),
+.lab-overview .spec-table td:nth-child(2),
+.assessment-slide .spec-table th:nth-child(2),
+.assessment-slide .spec-table td:nth-child(2) {
+  width: 12%;
+}
+
+.content-slide.visual-matrix .visual-card,
+.content-slide.visual-rubric .visual-card {
   padding: 0;
   border: 0;
   background: transparent;
