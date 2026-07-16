@@ -25,8 +25,8 @@
   - `labs[]`：实操任务、限制、验收。
   - `assessment`：评分规则与安全红线。
 - `specs/modules/*.md`
-  - YAML frontmatter：模块 id、标题、时长、教学意图、学习产出。
-  - `:::slide` block：页面 id、标题、模式、时长、视觉类型。
+  - YAML frontmatter：模块 id、标题、时长、教学意图、学习产出，以及是否生成章节页的 `show_divider`。
+  - `:::slide` block：页面 id、标题、模式、时长、视觉类型；`mode: break` 用于全屏休息图。
   - 页面章节：Headline、Body、Example、Key Points、Visual、Media、Illustration Brief、Layout Contract、Activity、Takeaway、Speaker Notes。其中 Example 是学员可见实例；Media 是代码截图、终端输出、MR 截图或动态演示图；Activity 是教案动作，Slidev 目标中进入讲师备注，不作为主屏幕内容。
 - `configs/*.yaml`
   - 可选的自定义 deck 配置。
@@ -39,7 +39,7 @@
 
 输出规则：
 
-- 默认输出：`build/slides/ai-coding-bootcamp-7h.slidev.md`。
+- 默认输出：`build/slides/ai-assisted-development-3h30.slidev.md`。
 - 内置 deck 输出：由 `specs/course.yaml` 中对应 deck 的 `output` 指定。
 - `--modules` 临时组合输出：未指定 `--output` 时生成到 `build/slides/custom-<module-ids>.slidev.md`。
 - `--config` 自定义 deck 输出：由 `configs/*.yaml` 中 deck 的 `output` 指定。
@@ -60,7 +60,7 @@ LLM 目标输出工具无关的纯 Markdown，不包含 Slidev frontmatter、HTM
 
 输出规则：
 
-- 默认 deck：`build/llm/full-7h.md`。
+- 默认 deck：`build/llm/full-3h30.md`。
 - 指定 deck：`build/llm/<deck-id>.md`。
 - 临时模块组合：`build/llm/<module-ids>.md`。
 - 显式自定义输出：由 `--output` 覆盖上述规则。
@@ -83,7 +83,7 @@ PPT-AI 目标输出面向生成式演示工具的逐页大纲，重点不是保�
 
 输出规则：
 
-- 默认 deck：`build/ppt-ai/full-7h.md`。
+- 默认 deck：`build/ppt-ai/full-3h30.md`。
 - 指定 deck：`build/ppt-ai/<deck-id>.md`。
 - 临时模块组合：`build/ppt-ai/<module-ids>.md`。
 - 显式自定义输出：由 `--output` 覆盖上述规则。
@@ -120,7 +120,7 @@ npm run generate:all
 npm run generate -- --deck lesson1-lab
 npm run generate -- --target llm --deck lesson2-sdd
 npm run generate -- --target gamma --deck lesson2-sdd
-npm run generate -- --target powerpoint-copilot --deck full-7h
+npm run generate -- --target powerpoint-copilot --deck full-3h30
 ```
 
 临时模块组合：
@@ -134,13 +134,13 @@ npm run generate -- --target canva --modules orientation,smn-design-lab
 自定义输出：
 
 ```bash
-npm run generate -- --target llm --deck full-7h --output build/llm/course-for-review.md
+npm run generate -- --target llm --deck full-3h30 --output build/llm/course-for-review.md
 ```
 
 包含讲师备注：
 
 ```bash
-npm run generate -- --target llm --deck full-7h --include-notes
+npm run generate -- --target llm --deck full-3h30 --include-notes
 ```
 
 列出 deck：
@@ -153,8 +153,8 @@ npm run generate -- --list-decks
 
 - `npm run validate` 能发现缺失标题、重复 slide id、缺失讲师备注、模块时长不一致、模块 manifest 与 frontmatter 不一致、deck/config 引用错误和敏感凭证模式。
 - `npm run generate` 能稳定生成默认 Slidev deck。
-- `npm run generate:llm` 能稳定生成 `build/llm/full-7h.md`。
-- `npm run generate:ppt-ai` 能稳定生成 `build/ppt-ai/full-7h.md`。
+- `npm run generate:llm` 能稳定生成 `build/llm/full-3h30.md`。
+- `npm run generate:ppt-ai` 能稳定生成 `build/ppt-ai/full-3h30.md`。
 - `npm run build` 能通过 Slidev 构建静态站点。
 - `npm run slides:public` 必须输出可访问公网地址。
 - Slidev PDF/PPTX 导出必须先安装 `playwright-chromium`，生成文件不提交。

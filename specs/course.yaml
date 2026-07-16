@@ -1,247 +1,136 @@
 meta:
-  id: ai-coding-bootcamp
-  title: 神灯训练营
-  subtitle: 点亮你的研发愿望，让AI成为团队神灯。
+  id: ai-assisted-development-course
+  title: AI 辅助开发课程
+  subtitle: 从 CodeAgent 工具链到规格驱动研发
   brand:
     name: 神灯局
     vision: 点亮你的研发愿望，让AI成为团队神灯。
     logo: ./assets/brand/shendengju-logo.png
-  version: v1.0.1
-  updated: "2026-06-05"
+  version: v2.0.0
+  updated: "2026-07-17"
   language: zh-CN
-  audience_label: 首期核心项目 Committer
+  audience_label: 企业研发工程师
   summary: >-
-    面向企业内部核心项目 Committer 的 7 小时 AI 辅助编码实战课程。课程从 CodeAgent、
-    AgentCenter、MCP、Skill、CodeWiki 等工具入手，训练你把 AI 生成能力纳入需求拆解、
-    本地验证、MR、代码检视、自动修复和 SDD 文档驱动的工程闭环。
+    面向企业研发工程师的 3.5 小时 AI 辅助开发实战课程。课程从 AI Coding
+    工程范式、CodeAgent 使用、Skill、CLI、MCP 和 MR 反馈闭环出发，进一步进入
+    SDD、业界规格工具和 CodeSpec 实战。所有内部工具的命令、界面和产品细节均以
+    内部正式资料为准，未知内容保留“待内部补充”。
 
 audience:
-  primary: 核心项目 Committer、技术骨干、需要在团队内推广 AI 辅助研发方法的工程师。
+  primary: 需要把 AI Agent 纳入日常功能开发、代码检视和规格驱动研发流程的工程师。
   prerequisites:
-    - 熟悉 Git 分支、MR、单测、代码 Review 和本地调试流程。
-    - 能在本地运行 spring-petclinic，并提前准备 dolphin-scheduler 代码仓。
-    - 已完成内部 AI 工具、CodeAgent 客户端、MCP Token、PKIToken 或等价授权。
+    - 熟悉 Git 分支、MR、单元测试、代码 Review 和本地构建流程。
+    - 已准备 JDK、Maven、Git、样例项目及必要仓库权限。
+    - CodeAgent、CodeSpec、AgentCenter、CodeHub CLI 的版本、权限与凭据按内部通知准备。
   learning_outcomes:
-    - 能把需求拆成 AI 可执行的小任务，并用测试、日志、MR 或文档形成证据链。
-    - 能用上下文选择、提示契约和人工 Review 降低 AI 偏航概率。
-    - 能用 Skill 固化高频研发动作，减少模板化劳动。
-    - 能用 MCP 完成提单、检视、修复等外部系统动作，并理解权限边界。
-    - 能用 CodeWiki 探查存量项目约束，再用 SDD 生成 Proposal、Spec、Design、Tasks。
-    - 能在团队内复用本课程的 Spec、练习和 Rubric 做二次培训。
+    - 能用 Explore、Plan、Code、Verify 的节奏完成小范围功能开发。
+    - 能把测试、提交、MR、检视和修复串成可停止的反馈闭环。
+    - 能判断 Skill over CLI 与 MCP 的适用边界，并用 AGENTS.md 固化项目规则。
+    - 能解释 SDD 的 Spec、Design、Tasks、Implementation、Verification 阶段。
+    - 能在 Brownfield 项目中校准全量设计，并完成一次端到端 SDD 练习。
 
 learning_design:
-  duration_min: 420
-  promise: 跟着一名工程师把一个真实需求从“随口问 AI”推进到“可提交、可检视、可复讲”的交付闭环。
+  duration_min: 210
+  promise: 用半天时间跑通从 Agent 辅助编码、MR 反馈闭环到规格驱动研发的完整路径。
   principles:
-    - "Spec first: 先明确目标、边界、验收，再请求生成。"
-    - "Human in the loop: 人负责判断、审查、授权和取舍。"
-    - "Evidence over confidence: 不接受只会解释的答案，必须有测试、日志、MR 或设计文档证据。"
-    - "Small batch: 小步提交、小步验证，降低 AI 偏航后的返工成本。"
-    - "Security by default: Token、MCP 权限、AK/SK、日志输出都需要最小权限和脱敏边界。"
-  narrative_arc:
-    - "开场冲突：个人已经会问 AI，但团队仍然担心不可控、难复盘、难验收。"
-    - "低风险练习：先在 spring-petclinic 中完成 Owner 查询演示和 Pet 疫苗字段练习，把对话开发、单测、Review 和修复跑成肌肉记忆。"
-    - "质量升级：再把本地补丁推入 MCP、MR、机器检视和自动修复闭环，让 AI 进入企业研发流程。"
-    - "复杂项目转折：进入 dolphin-scheduler 后，明确 Vibe Coding 的边界，先用 CodeWiki 查事实，再用 SDD 四阶文档压住方向。"
-    - "真实落地：用 SMN 告警插件作为大作业，把课堂文档转成课后 MR、测试证据和团队复讲材料。"
-  case_design:
-    primary_thread: "同一个工程师从早上接到“Owner 查询”小需求开始，经历 AI 第一版跑偏、测试失败、MR 检视打回、复杂 SMN 插件拆解，最后把方法带回团队。"
-    warmup_case: "spring-petclinic Owner 按姓名片段模糊查询，用于讲师演示标准微闭环。"
-    learner_case: "spring-petclinic Pet 疫苗接种字段与查询接口，用于学员独立复制微闭环。"
-    quality_case: "在 Petclinic 变更中故意埋入 System.out、潜在 NPE 或敏感日志，触发机器检视和修复 Skill。"
-    brownfield_case: "dolphin-scheduler 新增 SMN 告警插件，用于训练 CodeWiki 探查、SDD 文档和安全设计。"
-    assessment_case: "课后按 SMN Tasks 分步实现并提交 MR，用 Rubric 验收文档、代码、测试和 AI 协作证据。"
+    - "Evidence first: 每次生成都必须落到 Diff、测试、MR 或文档证据。"
+    - "Explore before edit: 先理解现状和约束，再规划与编码。"
+    - "Human review: 人负责边界、审核、授权和停止条件。"
+    - "No invention: 内部工具未知细节统一标记为待内部补充。"
   visual_system:
-    style: "干净的工程技术白板风格，使用流程图、矩阵、任务卡、检查清单和时间线承载信息；不使用装饰性素材替代内容。"
-    palette: "深绿用于主线与人工责任，橙色用于风险与打回，蓝色用于工具动作，薄荷绿用于验证通过，紫色只作少量辅助强调。"
-    illustration_rules:
-      - "每页最多一个主图示，图示必须直接服务本页 Headline。"
-      - "演示页突出操作顺序和暂停 Review 点；练习页突出任务输入、红线、产出和验收证据。"
-      - "不得出现真实 Token、AK/SK、生产地址、内部敏感界面截图或不可脱敏日志。"
-      - "AI PPT 目标生成时优先使用图示说明，不让工具自由生成抽象装饰图。"
+    style: "专业、简洁的研发培训风，以流程、对比、任务卡、终端和文档流承载信息。"
+    palette: "深绿承担主线，蓝色表示工具动作，橙色表示风险与反馈，紫色表示规格与设计。"
   slide_contract:
-    - "默认 16:9 双栏：左侧学员可见结论、正文和要点；右侧结构化图示与 Takeaway。"
-    - "可见文字必须是课堂上能直接对学员说的话；讲师动作、追问、备选说法写入 Speaker Notes。"
-    - "每页必须有 Example，用具体需求、失败输出、Review 意见、测试结果或文档片段解释本页知识点。"
-    - "每页正文控制在 1-3 句，Key Points 控制在 3-6 条；超过时拆页而不是缩小字号。"
-    - "Demo/Lab/Assessment 页必须写 Activity，说明课堂动作、输入物、产出物和证据。"
-  classroom_pattern:
-    - "讲解 25%: 给心智模型、工程原则和质量边界。"
-    - "演示 25%: 展示真实输入、失败、修正和验收。"
-    - "练习 40%: 独立完成，现场支持只处理阻塞。"
-    - "复盘 10%: 抽样展示证据链，而不是展示最终代码截图。"
+    - "附件整体课程安排表中的每一行严格对应一张 authored slide，标题保持不变。"
+    - "讲解页只保留一个中心观点、3-5 个要点和一个服务于内容的视觉结构。"
+    - "实战页必须在可见区呈现任务目标、步骤与验收标准。"
+    - "内部工具命令、界面、版本差异、权限和加载规则未知时必须显示待内部补充。"
 
 deck_defaults:
   theme: default
   transition: slide-left
-  export_filename: ai-coding-bootcamp-7h
-  output: build/slides/ai-coding-bootcamp-7h.slidev.md
+  export_filename: ai-assisted-development-3h30
+  output: build/slides/ai-assisted-development-3h30.slidev.md
 
 decks:
-  - id: full-7h
-    title: 7 小时完整版
-    output: build/slides/ai-coding-bootcamp-7h.slidev.md
+  - id: full-3h30
+    title: 3.5 小时完整版
+    output: build/slides/ai-assisted-development-3h30.slidev.md
     include_modules:
       - orientation
-      - prework
       - foundations-tools
       - petclinic-micro-loop
       - mcp-review-repair
       - sdd-codewiki
       - smn-design-lab
-      - assessment-rollout
+      - course-wrap-up
 
   - id: lesson1-lab
-    title: 第一课：基础工具跑通与开发微闭环
-    output: build/slides/lesson1-lab.slidev.md
+    title: 上半场：AI Coding 工具链基础
+    output: build/slides/lesson1-ai-toolchain.slidev.md
     include_modules:
       - orientation
-      - prework
       - foundations-tools
       - petclinic-micro-loop
       - mcp-review-repair
 
   - id: lesson2-sdd
-    title: 第二课：复杂存量项目降维与 SDD 架构拆解
+    title: 下半场：规格驱动研发实战
     output: build/slides/lesson2-sdd.slidev.md
     include_modules:
       - sdd-codewiki
       - smn-design-lab
-      - assessment-rollout
-
-  - id: sdd-only
-    title: SDD 与 CodeWiki 专题
-    output: build/slides/sdd-only.slidev.md
-    include_modules:
-      - orientation
-      - sdd-codewiki
-      - smn-design-lab
+      - course-wrap-up
 
 modules:
   - id: orientation
     file: specs/modules/00-orientation.md
-    title: 全局概览
-    duration_min: 30
+    title: 课程引导
+    duration_min: 9
     tags: [intro, required]
-
-  - id: prework
-    file: specs/modules/01-prework.md
-    title: 课前准备
-    duration_min: 0
-    tags: [prework, optional]
 
   - id: foundations-tools
     file: specs/modules/10-foundations-tools.md
-    title: AI 工程方法与工具体系
-    duration_min: 60
+    title: 课程一：AI Coding 工具链基础
+    duration_min: 18
     tags: [lesson1, tools, method]
 
   - id: petclinic-micro-loop
     file: specs/modules/20-petclinic-micro-loop.md
-    title: Petclinic 功能开发与单测微闭环
-    duration_min: 95
+    title: CodeAgent 功能开发实战
+    duration_min: 23
     tags: [lesson1, lab]
 
   - id: mcp-review-repair
     file: specs/modules/30-mcp-review-repair.md
-    title: MCP 提单、代码检视与自动修复
-    duration_min: 65
-    tags: [lesson1, mcp, quality]
+    title: Agent 扩展与 MR 反馈闭环
+    duration_min: 55
+    tags: [lesson1, skill, mcp, review]
 
   - id: sdd-codewiki
     file: specs/modules/40-sdd-codewiki.md
-    title: 存量项目、CodeWiki 与 SDD 四阶文档
-    duration_min: 80
-    tags: [lesson2, sdd, codewiki]
+    title: 课程二：规格驱动研发实战
+    duration_min: 30
+    tags: [lesson2, sdd, ecosystem]
 
   - id: smn-design-lab
     file: specs/modules/50-smn-design-lab.md
-    title: SMN 告警插件 SDD 拆解实操
-    duration_min: 75
-    tags: [lesson2, lab, homework]
+    title: CodeSpec 与端到端 SDD
+    duration_min: 65
+    tags: [lesson2, codespec, lab]
 
-  - id: assessment-rollout
+  - id: course-wrap-up
     file: specs/modules/60-assessment-rollout.md
-    title: 大作业验收与团队复讲
-    duration_min: 15
-    tags: [assessment, rollout]
+    title: 课程总结与课后实践
+    duration_min: 10
+    tags: [summary, homework]
 
-labs:
-  - id: pet-vaccination
-    title: Pet 疫苗接种字段与查询接口
-    module: petclinic-micro-loop
-    duration_min: 30
-    objective: 用 CodeAgent 完成小范围功能开发，并调用 UT Skill 生成测试。
-    constraints:
-      - 禁止手敲业务代码。
-      - 先让 AI 输出修改计划，再采纳代码。
-      - 报错必须交给 AI 定位和修复。
-    acceptance:
-      - 相关接口可正常查询新增字段。
-      - 新增或更新单测本地运行通过。
-      - 能解释采纳前 Review 了哪些风险。
-
-  - id: mcp-review-repair-lab
-    title: MCP 建单、代码检视与自动修复
-    module: mcp-review-repair
-    duration_min: 35
-    objective: 通过 MCP 创建 MR，触发机器检视，并使用修复 Skill 完成闭环。
-    constraints:
-      - 禁止手敲 Git 命令替代 MCP。
-      - 禁止手动修复缺陷绕过修复 Skill。
-      - 不暴露真实 Token 和内部密钥。
-    acceptance:
-      - 有可访问 MR 链接。
-      - 有机器检视意见记录。
-      - 修复 diff 与测试结果可复核。
-
-  - id: smn-sdd-docs
-    title: SMN 告警四阶 SDD 文档
-    module: smn-design-lab
-    duration_min: 55
-    objective: 查询 CodeWiki 后生成 Proposal、Spec、Design、Tasks，并完成同伴 Review。
-    constraints:
-      - 禁止生成 Java 业务代码。
-      - Design 必须覆盖 AK/SK 安全设计。
-      - Tasks 必须细化到类、配置、测试和验收命令。
-    acceptance:
-      - 四份文档完整且互相一致。
-      - 至少引用两类现有项目事实或规范。
-      - Review 后有一次明确修订记录。
-
-  - id: smn-homework
-    title: SMN 告警真实落地大作业
-    module: assessment-rollout
-    duration_min: 0
-    objective: 课后按照过审 Tasks 分步实现业务代码并提交 MR。
-    constraints:
-      - MR 描述必须链接四阶文档。
-      - 每个任务完成后保留测试或检查证据。
-      - 不得提交真实凭证、生产配置或敏感日志。
-    acceptance:
-      - MR 能通过编译和关键测试。
-      - 代码符合现有插件架构和配置风格。
-      - 机器检视和人工 Review 的关键意见已处理。
+labs: []
 
 assessment:
-  pass_rule: 总分 80 分及以上为通过；安全红线问题未修复时，即使总分达标也需返工。
-  criteria:
-    - name: SDD 文档质量
-      weight: 30
-      evidence: Proposal、Spec、Design、Tasks 完整，AK/SK、错误处理、测试策略明确。
-    - name: 实现正确性
-      weight: 25
-      evidence: SMN 插件按现有架构接入，核心路径可运行。
-    - name: 测试与验证
-      weight: 20
-      evidence: 本地测试、配置校验、异常路径或桩测试结果可复核。
-    - name: AI 协作过程
-      weight: 15
-      evidence: 有提示词、打回修订、检视意见、修复记录等过程证据。
-    - name: 安全与合规
-      weight: 10
-      evidence: 无真实密钥、无敏感日志、权限边界和脱敏处理明确。
+  pass_rule: 以课堂演示、文档、Diff、测试和 MR 证据是否完整作为学习完成判断。
+  criteria: []
   red_lines:
-    - 真实 AK/SK、Token、生产地址或内部敏感数据进入 Prompt、日志、MR 或课件。
-    - 绕过 Review 直接合并 AI 生成代码。
-    - 关键测试失败但仍提交作业。
+    - 真实 Token、密钥、生产地址或内部敏感数据进入 Prompt、日志、MR 或课件。
+    - 未经人工 Review 直接合并 Agent 生成的代码或规格。
+    - 将公开产品能力未经确认写成内部工具的既有能力。

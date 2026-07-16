@@ -6,8 +6,8 @@
   "description": "Spec-driven Markdown course material pipeline for an enterprise AI-assisted coding bootcamp.",
   "scripts": {
     "validate": "node scripts/validate-spec.mjs",
-    "generate": "node scripts/generate-course.mjs",
-    "generate:slidev": "node scripts/generate-course.mjs --target slidev",
+    "generate": "node scripts/generate-course.mjs --include-notes",
+    "generate:slidev": "node scripts/generate-course.mjs --target slidev --include-notes",
     "generate:llm": "node scripts/generate-course.mjs --target llm",
     "generate:notebooklm": "node scripts/generate-course.mjs --target notebooklm",
     "generate:ppt-ai": "node scripts/generate-course.mjs --target ppt-ai",
@@ -18,11 +18,11 @@
     "generate:lesson1": "node scripts/generate-course.mjs --deck lesson1-lab",
     "generate:lesson2": "node scripts/generate-course.mjs --deck lesson2-sdd",
     "generate:custom": "node scripts/generate-course.mjs --config configs/custom-deck.example.yaml",
-    "slides": "npm run generate && slidev build/slides/ai-coding-bootcamp-7h.slidev.md --remote course-preview --bind 0.0.0.0 --port ${PORT:-3030}",
+    "slides": "npm run generate && slidev build/slides/ai-assisted-development-3h30.slidev.md --remote course-preview --bind 0.0.0.0 --port ${PORT:-3030}",
     "slides:public": "node scripts/serve-public.mjs",
-    "build": "npm run generate && rm -rf dist/slides && slidev build build/slides/ai-coding-bootcamp-7h.slidev.md --out $PWD/dist/slides --router-mode hash",
-    "export:pptx": "npm run generate && node scripts/ensure-export-deps.mjs && slidev export build/slides/ai-coding-bootcamp-7h.slidev.md --format pptx --output $PWD/dist/ai-coding-bootcamp-7h.pptx --timeout 120000",
-    "export:pdf": "npm run generate && node scripts/ensure-export-deps.mjs && slidev export build/slides/ai-coding-bootcamp-7h.slidev.md --format pdf --output $PWD/dist/ai-coding-bootcamp-7h.pdf --timeout 120000",
+    "build": "npm run generate && rm -rf dist/slides && slidev build build/slides/ai-assisted-development-3h30.slidev.md --out $PWD/dist/slides --router-mode hash",
+    "export:pptx": "npm run generate && node scripts/ensure-export-deps.mjs && slidev export build/slides/ai-assisted-development-3h30.slidev.md --format pptx --output $PWD/dist/ai-assisted-development-3h30.pptx --timeout 120000",
+    "export:pdf": "npm run generate && node scripts/ensure-export-deps.mjs && slidev export build/slides/ai-assisted-development-3h30.slidev.md --format pdf --output $PWD/dist/ai-assisted-development-3h30.pdf --timeout 120000",
     "check": "npm run validate && npm run generate && npm run build"
   },
   "keywords": [

@@ -1,483 +1,334 @@
 ---
 id: sdd-codewiki
-title: 存量项目、CodeWiki 与 SDD 四阶文档
-duration_min: 80
-intent: 理解复杂存量项目中的 AI 风险，并掌握用 CodeWiki 探查项目事实、用 SDD 文档约束实现路径的方法。
+title: 课程二：规格驱动研发实战
+duration_min: 30
+show_divider: true
+intent: 从快速探索过渡到可评审、可追踪的规格驱动研发。
 outcomes:
-  - 能解释 Greenfield 与 Brownfield 的差异。
-  - 能判断 Vibe Coding 在复杂项目中的边界。
-  - 能产出 Proposal、Spec、Design、Tasks 四类文档的最小合格版本。
-  - 能把 CodeWiki 查询结果回填到设计依据中。
+  - 能判断何时需要从 Vibe Coding 升级到 SDD。
+  - 能比较 Kiro、OpenSpec 与 Spec Kit 的公开流程。
+  - 能区分公开工具与内部 CodeSpec 的事实边界。
 ---
-
-# 存量项目、CodeWiki 与 SDD 四阶文档
 
 ## Module Brief
 
-本模块进入 dolphin-scheduler，围绕 SMN 告警插件讲解复杂存量项目痛点、Vibe Coding 局限、SDD 流程、CodeWiki 查询和飞书告警演示，是第二课的核心方法论。
-
-## Teaching Design
-
-- **课堂角色**：学员从小项目执行者转为复杂存量项目的设计负责人，需要先查事实、定边界，再让 AI 写。
-- **故事冲突**：Petclinic 里有效的快节奏，直接搬到 dolphin-scheduler 可能造成架构不兼容、安全缺口和不可 Review 的大 diff。
-- **核心案例**：以新增告警插件为切入口，先用飞书或 Webhook 作为既有样例，再引出 SMN 作为学员练习目标。
-- **课堂转折**：本模块的关键转折是“今天第二课第一条纪律：先不写业务代码”。这句话要反复回扣。
-- **插图节奏**：Brownfield 风险用检查清单，Vibe/SDD 边界用矩阵，四阶文档用流水线，CodeWiki 查询用任务卡。
-- **验收证据**：CodeWiki 查询结论、四阶文档初版、人工打回意见、修订后的设计依据。
+用公开工具建立 SDD 共同语言，再以占位方式介绍内部 CodeSpec。
 
 :::slide
-id: sdd-01
-title: 作业复盘与今日挑战
+id: course-24
+title: 从 Vibe Coding 到 SDD
 mode: talk
-duration_min: 8
+duration_min: 4
 visual: contrast
 :::
 ### Headline
-小项目会走路以后，别直接闭眼冲进几十万行老系统。
+需求越复杂，越需要在编码前把行为、约束和验收写下来。
 
 ### Body
-先复盘 Petclinic 作业里的红灯：测试没跑、Token 截图泄露、AI 改了无关文件。然后把同样问题放大到 dolphin-scheduler，你会发现“先写代码”反而是最慢的路。
-
-
-### Example
-例如：Petclinic 里 AI 多改一个 Controller 只是难 Review；在 dolphin-scheduler 里绕开现有 Alert SPI，可能就是一个能编译但永远接不进系统的插件。
-
-### Key Points
-- 红榜看证据链：功能、单测、MR、检视、修复是否完整。
-- 黑榜看问题类型：Token 配置、MCP 权限、测试缺口和人工 Review 缺失。
-- Petclinic 规模小、路径短、错误容易定位。
-- dolphin-scheduler 模块多、约束多、历史行为多。
-- 大项目里读懂现状往往比写第一版代码更重要。
-- 第二课第一条纪律：先不写业务代码。
-
-### Visual
-- 作业复盘：红榜实践、黑榜问题、共性卡点。
-- 今日挑战：几十万行存量项目、隐式约束、长反馈链。
-
-
-### Media
-src: ../../assets/demos/homework-evidence-review.svg
-type: 作业证据复盘看板
-alt: Petclinic 和 SMN 作业的提示词、diff、测试、文档、Review 结果在证据看板中被复核。
-caption: 从第一课进入第二课前，要先看证据链质量，再切换到复杂存量项目的事实探查。
-
-### Illustration Brief
-- 绘制左右对比图，对比项覆盖：作业复盘：红榜实践、黑榜问题、共性卡点、今日挑战：几十万行存量项目、隐式约束、长反馈链。
-- 左侧表达常见低质量状态，右侧表达目标状态，用颜色区分风险和目标。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
-
-### Layout Contract
-- 16:9 双栏页，采用 contrast 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Takeaway
-进入老项目前，先问路，再开车。
-
-### Speaker Notes
-- 让学员说出自己维护老项目时最怕 AI 改坏什么。
-- 红黑榜只展示脱敏案例和问题类型，不公开羞辱个人。
-- 如果有第一课作业共性问题，用 3 分钟复盘，不要拖长。
-
-:::slide
-id: sdd-02
-title: Brownfield 的真实风险
-mode: talk
-duration_min: 10
-visual: checklist
-:::
-### Headline
-Brownfield 像一座老城：最危险的不是不会修路，而是不知道哪条路不能挖。
-
-### Body
-接口、配置、SPI、依赖、异常处理、日志和测试桩都是这座老城里的地下管线。AI 如果只看到“新增 SMN 告警”，很容易造一条漂亮的新路，却没有接到任何入口。
-
+Vibe Coding 适合快速探索和范围明确的小改；多模块、复杂规则和多人协作会放大隐含假设。
 
 ### Example
-例如：AI 新建 `SmnAlertService` 并能编译，但没有在现有 Alert SPI 注册，也没有复用配置校验和测试夹具；这类代码最迷惑，因为它看起来“完成了”。
+局部文案调整可以快速试错；涉及数据变化、兼容性和多模块联动时，应先形成可评审规格。
 
 ### Key Points
-- 可能重复造轮子，绕开已有扩展点。
-- 可能破坏配置兼容性或默认行为。
-- 可能忽略权限、鉴权、日志脱敏。
-- 可能引入跨模块依赖或循环依赖。
-- 可能生成能编译但不符合项目风格的代码。
+- 快速探索：目标清楚、影响有限、可快速回滚。
+- 复杂变化：规则多、依赖多、兼容要求高。
+- 协作变化：多人参与，需要共享同一事实基线。
+- 升级信号：反复返工、边界争议、测试无法覆盖需求。
 
 ### Visual
-- 架构风险
-- 兼容风险
-- 安全风险
-- 测试风险
-- 运维风险
-
-
-### Media
-src: ../../assets/demos/brownfield-risk-map.svg
-type: Brownfield 风险地图
-alt: SMN 插件需求周围的 SPI、敏感日志、配置兼容和测试夹具风险。
-caption: Brownfield 需求不能只看新增功能，还要先定位存量扩展点、兼容边界和安全红线。
+- Vibe Coding：快速探索，小范围，反馈周期短
+- SDD：先对齐规格，控制复杂度和协作风险
 
 ### Illustration Brief
-- 绘制可勾选的检查清单，检查项覆盖：架构风险、兼容风险、安全风险、测试风险、运维风险。
-- 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+左侧 Vibe Coding、右侧 SDD，中间用复杂度上升箭头连接；不做绝对好坏判断。
 
 ### Layout Contract
-- 16:9 双栏页，采用 checklist 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
+左侧解释选择条件，右侧两栏对比；中间突出复杂度而不是工具名称。
 
 ### Takeaway
-老项目开发的第一步不是写代码，是画出地下管线。
+SDD 不是为了多写文档，而是为了更早发现分歧。
 
 ### Speaker Notes
-- 这页可以接 SMN 告警需求：不是“调个云接口”这么简单。
-- 避免使用贬低性的项目描述，聚焦工程约束。
+“小改用 Vibe、复杂需求用 SDD”是课程经验法则，不是硬性行业边界。
 
 :::slide
-id: sdd-03
-title: Vibe Coding 的边界
+id: course-25
+title: SDD 方法概览
 mode: talk
-duration_min: 8
-visual: matrix
-:::
-### Headline
-小步快跑适合反馈快的任务，不适合一开始就跨越未知架构。
-
-### Body
-Vibe Coding 的问题不是“快”，而是在未知太多时，快会放大错误路径。大型项目要先用文档压住方向。
-
-
-### Example
-例如：改一处文案可以小步试；新增 SMN 告警插件不能直接 Vibe，因为 AK/SK、区域、主题、失败重试和配置兼容都还没定义。
-
-### Key Points
-- 低风险短反馈任务可以直接小步尝试。
-- 跨模块任务要先让 AI 输出计划并人工 Review。
-- 安全敏感任务要先写清权限、凭证、日志和审计。
-- 无法解释现有架构时，不允许进入实现阶段。
-
-### Visual
-| 条件 | 可以 Vibe | 必须 SDD |
-| --- | --- | --- |
-| 上下文 | 单文件或少量文件 | 跨模块、跨配置 |
-| 反馈 | 单测快速跑 | 反馈链长 |
-| 风险 | 易回滚 | 影响安全、兼容、生产 |
-| 事实 | 已知 | 需要探查 |
-
-
-### Media
-src: ../../assets/demos/method-choice-switchboard.svg
-type: Vibe/SDD 选择看板
-alt: 低风险短反馈任务适合 Vibe Coding，跨模块和安全敏感任务必须进入 SDD。
-caption: Vibe Coding 和 SDD 的边界由不确定性、反馈链长度和错误成本共同决定。
-
-### Illustration Brief
-- 绘制二维矩阵或对照表，表格内容围绕：条件 / 可以 Vibe、上下文 / 单文件或少量文件、反馈 / 单测快速跑、风险 / 易回滚、事实 / 已知。
-- 重点列使用浅色底纹，表头清晰，单元格只保留关键词和短语。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
-
-### Layout Contract
-- 16:9 双栏页，采用 matrix 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Takeaway
-方法选择取决于不确定性和错误成本。
-
-### Speaker Notes
-- 强调第一课没有错，只是适用条件不同。
-- 可以让学员判断自己的日常需求属于哪一列。
-
-:::slide
-id: sdd-04
-title: SDD 四阶流水线
-mode: talk
-duration_min: 12
+duration_min: 4
 visual: flow
 :::
 ### Headline
-Proposal、Spec、Design、Tasks 是四道闸，不是四份装饰文档。
+SDD 把“要做什么、怎么做、按什么顺序做”放到编码前接受审核。
 
 ### Body
-每一道闸都拦一种错误：Proposal 拦范围膨胀，Spec 拦行为含糊，Design 拦架构错接，Tasks 拦“请实现一下”这种大颗粒任务。
-
+阶段产物持续修订，不是一次生成后沿着不可逆流水线向前推进。
 
 ### Example
-例如：Proposal 先声明“不改调度核心”；Spec 写“topic 为空保存失败”；Design 写“复用现有 Alert SPI”；Tasks 才写“新增配置校验测试和发送失败测试”。
+一个查询能力先澄清业务行为和验收，再设计数据与接口，拆成任务，实施后对照规格验证。
 
 ### Key Points
-- Proposal：为什么做，范围是什么，非范围是什么。
-- Spec：系统应满足哪些可验收行为。
-- Design：如何接入现有架构、依赖、配置和安全要求。
-- Tasks：按类、配置、测试拆成可执行步骤。
-- Implementation：过审后再让 Agent 按任务小步实现。
-- Validation：每步都有测试、检视或人工 Review 证据。
+- Clarify：澄清目标、范围、边界与未知项。
+- Spec：定义业务行为和验收条件。
+- Design：说明技术方案、兼容性和测试策略。
+- Tasks：拆成有顺序、可验收的执行单元。
+- Implementation / Verification：实现并用证据回查规格。
 
 ### Visual
-- Proposal
+- 需求澄清
 - Spec
 - Design
 - Tasks
 - Implementation
-- Validation
-
-
-### Media
-src: ../../assets/demos/sdd-pipeline-workspace.svg
-type: SDD 文档工作区
-alt: Proposal、Spec、Design 和 Tasks 四类文档在进入实现前分别承载范围、行为、设计和任务。
-caption: SDD 四阶流水线让 AI 在动代码前先对齐目标、边界、设计和任务颗粒度。
+- Verification
 
 ### Illustration Brief
-- 绘制从左上到右下的流程链路，节点依次覆盖：Proposal、Spec、Design、Tasks、Implementation、Validation。
-- 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+绘制六阶段流程，每阶段标一个输入/输出，使用返工虚线表示可修订。
 
 ### Layout Contract
-- 16:9 双栏页，采用 flow 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
+左侧解释为什么前置审核，右侧六步流程；不把流程画成不可逆状态机。
 
 ### Takeaway
-文档不是慢，是为了不让错误实现跑得太快。
+规格的价值，是让错误在代码出现前就能被打回。
 
 ### Speaker Notes
-- 对照本课件工程本身：Markdown modules 和 course.yaml 就是 PPT 的源规格。
-- 讲清楚四类文档各管一层，不要混成一篇万能说明。
+不同 SDD 工具的文件名与动作不同，本页只讲共同方法。
 
 :::slide
-id: sdd-05
-title: SDD 质量门禁
+id: course-26
+title: SDD 工具生态
 mode: talk
-duration_min: 10
-visual: checklist
+duration_min: 4
+visual: matrix
 :::
 ### Headline
-好的 SDD 文档必须能阻止错误代码进入实现阶段。
+代表性工具共享“先规格后实现”，但组织产物和使用入口不同。
 
 ### Body
-如果文档只是复述需求，无法指导实现和验收，它就没有完成 SDD 的职责。
-
+比较 Kiro、OpenSpec 与 GitHub Spec Kit 时，只使用各自官方公开流程。
 
 ### Example
-例如：如果 Design 没写 AK/SK 脱敏，Tasks 里就可能出现“打印完整异常上下文”的实现任务；好文档要在编码前挡住这种风险。
+Kiro 以 Requirements、Design、Tasks 组织 Feature Spec；OpenSpec 围绕 change 管理变更；Spec Kit 使用 Spec、Plan、Tasks、Implement。
 
 ### Key Points
-- 每条需求都有验收条件。
-- 每个设计决策都能追溯到项目现状或约束。
-- 每个任务都能定位到具体文件、类或配置。
-- 安全、权限、兼容性、测试策略显式写出。
-- 人工 Review 通过后才进入编码。
+- Kiro：结构化 Feature Specs，可从需求或设计起步。
+- OpenSpec：以 change 和 delta specs 管理既有行为变化。
+- Spec Kit：以 constitution 和 Spec → Plan → Tasks → Implement 组织流程。
+- 比较维度：产物、入口、变更模型和 Brownfield 支持。
 
 ### Visual
-- 可验收
-- 可追溯
-- 可执行
-- 可测试
-- 可审查
-
-
-### Media
-src: ../../assets/demos/sdd-quality-gate.svg
-type: SDD 门禁截图
-alt: SDD 文档在缺少安全、重试、兼容和测试依据时阻止进入实现阶段。
-caption: 好的 SDD 文档不是装饰，它应该能在编码前挡住错误实现路径。
+| 工具 | 核心产物 | 公开主线 |
+| --- | --- | --- |
+| Kiro | requirements / design / tasks | Feature Spec |
+| OpenSpec | proposal / specs / design / tasks | Change lifecycle |
+| Spec Kit | spec / plan / tasks | Specify to implement |
 
 ### Illustration Brief
-- 绘制可勾选的检查清单，检查项覆盖：可验收、可追溯、可执行、可测试、可审查。
-- 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+三列对比，只写官方术语；不把三个工具的文件名强行一一对应。
 
 ### Layout Contract
-- 16:9 双栏页，采用 checklist 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
+左侧说明比较边界，右侧三行表格；具体来源写入讲师备注。
 
 ### Takeaway
-SDD 的价值在于提前暴露歧义。
+先比较变更模型，再比较命令和界面。
 
 ### Speaker Notes
-- 缺少 AK/SK 设计的告警插件文档不能进入实现。
-- 只写“新增 SMN 插件”的任务粒度太粗。
+官方来源：https://kiro.dev/docs/specs/ ，https://github.com/Fission-AI/OpenSpec ，https://github.github.com/spec-kit/ 。
 
 :::slide
-id: sdd-06
-title: CodeWiki：先问现状，再问实现
+id: course-27
+title: Kiro 规格流程
 mode: talk
-duration_min: 10
+duration_min: 4
 visual: cards
 :::
 ### Headline
-CodeWiki 是问老员工的替身：先问项目事实，再谈实现方案。
+Kiro 用 Requirements、Design、Tasks 把高层想法转成可跟踪计划。
 
 ### Body
-不要一上来问“帮我写 SMN 插件”。先问邮件、Webhook、飞书插件如何注册、如何读取配置、失败怎么处理、测试夹具怎么写。
-
-
-### Example
-例如：CodeWiki 查到 Webhook 插件的失败日志会脱敏，你就把这条事实写进 SMN Design；后面 AI 如果生成完整 AK/SK 日志，就能被文档直接打回。
-
-### Key Points
-- 现状：现有告警插件有哪些，入口在哪里。
-- 约束：配置、SPI、依赖、异常处理有什么规范。
-- 样例：邮件、飞书、Webhook 插件如何组织代码。
-- 风险：鉴权、重试、日志脱敏和测试有什么注意事项。
-- 回填：把关键查询结论写进 Design 的依据部分。
-
-### Visual
-- 现状问题
-- 约束问题
-- 样例问题
-- 风险问题
-
-
-### Media
-src: ../../assets/demos/codewiki-query-session.svg
-type: CodeWiki 查询截图
-alt: 围绕告警插件现状、SPI 注册、配置默认值、失败处理和测试夹具的 CodeWiki 查询会话。
-caption: CodeWiki 的价值是把老项目事实转成 Design 依据，而不是直接跳到代码生成。
-
-### Illustration Brief
-- 绘制 3-6 张任务卡或概念卡，卡片内容覆盖：现状问题、约束问题、样例问题、风险问题。
-- 每张卡只保留一个关键词和一句解释，使用图标化符号辅助识别。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
-
-### Layout Contract
-- 16:9 双栏页，采用 cards 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Takeaway
-CodeWiki 给的是路标，不是方向盘。
-
-### Speaker Notes
-- 不要问“帮我写 SMN 插件”，先问“项目已有插件机制是什么”。
-- 演示时把查询结果复制到文档中，标明来源，训练可追溯习惯。
-
-:::slide
-id: sdd-07
-title: 查询问题设计：围绕四类事实
-mode: demo
-duration_min: 10
-visual: checklist
-:::
-### Headline
-问得越像项目研究员，得到的上下文越能约束后续实现。
-
-### Body
-CodeWiki 查询应该围绕现状、扩展点、配置和测试设计，而不是直接要求它生成最终业务代码。
-
+三个文件分别关注业务行为、技术方案和执行任务，并允许人在阶段间审阅与修改。
 
 ### Example
-例如：好问题是“现有告警插件测试如何模拟发送失败”；弱问题是“帮我实现 SMN 告警”，前者能产出设计依据，后者容易直接生成不可靠代码。
+需求页写用户故事和验收条件；设计页记录架构、数据流和测试策略；任务页拆分离散工作项。
 
 ### Key Points
-- 这个项目现有告警插件的入口类和注册机制是什么？
-- 飞书或 Webhook 告警插件如何读取配置、处理失败和写测试？
-- 新增一种告警通道需要修改哪些模块、配置文件和文档？
-- 凭证类配置在现有项目中如何脱敏和校验？
-- 哪些测试可以作为 SMN 插件的参考样例？
+- `requirements.md`：用户故事与验收条件。
+- `design.md`：架构、数据流、实现考虑和测试策略。
+- `tasks.md`：离散、可跟踪的实现任务。
+- Feature Spec 也支持 Design-First；并非所有场景唯一顺序。
 
 ### Visual
-- 查询一：插件入口和 SPI。
-- 查询二：配置模型和默认值。
-- 查询三：发送失败和重试。
-- 查询四：测试样例和桩。
-- 查询五：安全与脱敏。
-
-
-### Media
-src: ../../assets/demos/codewiki-question-builder.svg
-type: CodeWiki 提问模板
-alt: 围绕插件注册、配置默认值、失败重试、测试夹具和安全要求构造 CodeWiki 查询。
-caption: 好的 CodeWiki 问题要产出可写进 Design 的事实依据，而不是诱导它直接生成业务代码。
+- Requirements：What / Why / Acceptance
+- Design：Architecture / Data flow / Test strategy
+- Tasks：Executable / Trackable work
 
 ### Illustration Brief
-- 绘制可勾选的检查清单，检查项覆盖：查询一：插件入口和 SPI、查询二：配置模型和默认值、查询三：发送失败和重试、查询四：测试样例和桩、查询五：安全与脱敏。
-- 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+绘制三个文件卡片从业务到技术再到任务，添加可回退审核箭头。
 
 ### Layout Contract
-- 16:9 双栏页，采用 checklist 视觉结构；左侧固定为演示目标、关键暂停点和验收口径；右侧用步骤图展示现场操作顺序。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Activity
-- 讲师先问 CodeWiki 三类问题：现有插件入口、配置流转、测试样例；把查询结论整理成文档输入。
-- 调用 SDD Skill 时按 Proposal、Spec、Design、Tasks 顺序逐步生成，不跳过上一阶段 Review。
-- 刻意打回一次 Design，例如缺少 AK/SK 脱敏或错误处理，再展示修订后如何回填到 Tasks。
+左侧说明各文件职责，右侧三张堆叠文件卡；不展示 Kiro 内部按钮。
 
 ### Takeaway
-查询问题本身就是设计活动。
+任务可追踪的前提，是需求与设计先可评审。
 
 ### Speaker Notes
-- 可以现场让学员补充一个查询问题，再判断它是否能产生设计依据。
-- 如果 CodeWiki 不稳定，用准备好的查询结果样例继续讲“如何问”。
+官方来源：https://kiro.dev/docs/specs/ 。Bugfix Spec 等场景可能采用不同产物，不宣称所有 Spec 都固定三文件。
 
 :::slide
-id: sdd-08
-title: 课堂演示：Skill 串起四阶文档
-mode: demo
-duration_min: 12
+id: course-28
+title: OpenSpec 变更流程
+mode: talk
+duration_min: 4
 visual: flow
 :::
 ### Headline
-先用 CodeWiki 探路，再用 SDD Skill 连贯生成四阶文档。
+OpenSpec 围绕一次 change 保存意图、需求差异、设计与任务。
 
 ### Body
-你将看到如何以飞书告警或已有 Webhook 插件为样例，查询项目规范、整理约束，再调用 SDD Skill 按 Proposal、Spec、Design、Tasks 的顺序连续产出文档初版，并完成一次人工打回。
-
+Explore 可选，Propose 建立变更产物，Apply 执行任务，Archive 保存上下文并同步规格。
 
 ### Example
-例如：SDD Skill 生成 Design 后，你发现没有凭证脱敏策略，就打回“请基于现有插件配置规范补充 AK/SK 安全设计”，再让它更新 Tasks。
+修改既有查询行为时，用 delta specs 描述新增、修改或删除的行为，而不是重写整个系统规格。
 
 ### Key Points
-- 查现有插件入口、配置模型、发送逻辑和测试样例。
-- 整理可复用约束，不直接复制实现。
-- 调用 SDD Skill，把 CodeWiki 事实作为输入上下文。
-- 按 Proposal -> Spec -> Design -> Tasks 连贯生成，上一阶段结论进入下一阶段。
-- 检查四阶文档职责是否混淆。
-- 人工打回缺口，例如安全设计、任务粒度或测试策略不足。
-- 修订后把 Review 结论写回文档。
+- Explore：调查代码、权衡方案和澄清需求，可选。
+- Propose：形成 proposal、specs、design、tasks。
+- Apply：按已就绪产物实施并更新任务。
+- Archive：保留 change，并把差异同步进主规格。
+- 动作允许迭代，不是严格线性状态机。
 
 ### Visual
-- 查现有插件
-- 汇总 CodeWiki 事实
-- 调用 SDD Skill
-- Proposal
-- Spec
-- Design
-- Tasks
-- 打回修订
-
-
-
-### Media
-src: ../../assets/demos/codewiki-sdd-animated.svg
-type: 动态演示图
-alt: CodeWiki 查询结果进入 Proposal、Spec、Design、Tasks 的动态流转。
-caption: 事实不能停在查询窗口里，必须回填到 Design 依据和 Tasks 约束中。
+- Explore：调查与澄清
+- Propose：建立变更产物
+- Apply：实现与验证
+- Archive：保存上下文、同步规格
 
 ### Illustration Brief
-- 绘制从左上到右下的流程链路，节点依次覆盖：查现有插件、汇总 CodeWiki 事实、调用 SDD Skill、Proposal、Spec、Design、Tasks。
-- 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+绘制四段生命周期并增加迭代箭头；标注 Explore 可选，不展示内部 CodeSpec 命令。
 
 ### Layout Contract
-- 16:9 双栏页，采用 flow 视觉结构；左侧固定为演示目标、关键暂停点和验收口径；右侧用步骤图展示现场操作顺序。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Activity
-- 讲师先展示输入材料和上下文边界，再执行生成或工具调用。
-- 每到一个 Review 点暂停 20-40 秒，说出采纳、打回或缩小范围的理由。
-- 演示结束时保留一条可复核证据：测试结果、MR 链接、文档 diff 或检视意见。
+左侧解释 change 和 delta specs，右侧四步流程；每步不超过两行。
 
 ### Takeaway
-Skill 负责串联标准流程，人负责输入事实、审查缺口和打回修订。
+变更规格既记录要做什么，也保留为什么这样改。
 
 ### Speaker Notes
-- 演示中要让学员看见 Skill 入口和四阶段连续产出过程，不要只展示最终文档。
-- 不追求四份文档一次完美，要刻意展示打回。
-- 打回话术示例：Design 缺少 AK/SK 安全设计，请基于现有插件配置规范重写相关章节。
+官方来源：https://github.com/Fission-AI/OpenSpec/blob/main/docs/concepts.md ，https://github.com/Fission-AI/OpenSpec/blob/main/docs/opsx.md 。四步图是教学简化。
+
+:::slide
+id: course-29
+title: CodeSpec 产品定位
+mode: talk
+duration_min: 3
+visual: placeholder
+:::
+### Headline
+CodeSpec 的内部定位必须由正式产品资料定义。
+
+### Body
+当前课程只保留仓库初始化、项目规则、全量规格、全量设计和特性开发等待确认主题。
+
+### Example
+不能因为 OpenSpec 或 Spec Kit 有某个目录，就推断 CodeSpec 使用相同产物名称和状态流转。
+
+### Key Points
+- 仓库初始化与项目规则：待内部补充。
+- 全量规格与全量设计：产物定义待内部补充。
+- 特性规格、技术设计与任务拆分：待内部补充。
+- 能力边界、适用项目和版本差异：待内部补充。
+
+### Visual
+- CodeSpec 正式产品截图待补充
+- 产物名称与职责待补充
+- 能力边界与版本定位待补充
+
+### Illustration Brief
+使用内部工具占位图，不套用 Kiro、OpenSpec 或 Spec Kit 的界面。
+
+### Layout Contract
+左侧展示待确认主题，右侧“待内部补充”占位框。
+
+### Takeaway
+公开 SDD 方法可以参考，内部产品事实不能类推。
+
+### Speaker Notes
+现场替换前核对产品定位、版本和真实产物，不使用本页占位内容作为操作依据。
+
+:::slide
+id: course-30
+title: CodeSpec 典型流程
+mode: talk
+duration_min: 4
+visual: placeholder
+:::
+### Headline
+流程骨架可以先说明，命令、状态和审批节点必须等待内部确认。
+
+### Body
+课程按初始化、项目基线、需求、规格、设计、任务、实现和验证组织学习路径。
+
+### Example
+从 Brownfield 仓库开始，先生成并校准项目基线，再进入单特性规格；实际工具如何推进待联调。
+
+### Key Points
+- 初始化仓库：实际命令待内部补充。
+- 生成项目基线：产物与范围待内部补充。
+- 需求、规格、设计、任务：工作流待内部补充。
+- 实现与验证：状态和回写规则待内部补充。
+- 审批与返工节点：待内部流程确认。
+
+### Visual
+- 初始化与基线流程待内部补充
+- 特性规格与设计流程待内部补充
+- 审批、返工和验证节点待内部补充
+
+### Illustration Brief
+右侧使用流程占位框，不绘制带命令、状态或审批节点的伪流程。
+
+### Layout Contract
+左侧只给学习路径骨架，右侧使用“待内部补充”占位。
+
+### Takeaway
+方法路径可以先讲，产品工作流必须后补真资料。
+
+### Speaker Notes
+不得用 OpenSpec 的 Propose、Apply、Archive 作为 CodeSpec 的真实状态名称。
+
+:::slide
+id: course-31
+title: CodeSpec 安装使用
+mode: prep
+duration_min: 3
+visual: contrast
+:::
+### Headline
+公开流程可用于理解概念，内部安装与命令必须分开展示。
+
+### Body
+OpenSpec 的公开示例可讲 `init` 与变更动作；CodeSpec 安装包、版本、初始化命令和增强能力待内部手册补充。
+
+### Example
+左侧演示公开 OpenSpec 的概念流程，右侧 CodeSpec 只保留安装和命令占位，避免学员混用。
+
+### Key Points
+- 公开 OpenSpec：可展示 init 与 Explore / Propose / Apply / Archive 概念。
+- 内部 CodeSpec：安装包与版本待内部补充。
+- 初始化命令、配置和目录待内部补充。
+- 增强能力、权限和升级方式待内部补充。
+
+### Visual
+- OpenSpec 公开示例：用于说明 change-based SDD 概念
+- CodeSpec 内部操作：安装、命令、配置全部待内部补充
+
+### Illustration Brief
+严格左右分区，公开流程有来源标记，内部区域使用命令占位，不生成伪终端。
+
+### Layout Contract
+左侧公开工具，右侧内部工具占位；颜色和标签明确区分两类事实。
+
+### Takeaway
+相似的方法不代表相同的产品命令。
+
+### Speaker Notes
+OpenSpec 当前流程演进较快，演示时锁定版本和资料日期。CodeSpec 所有操作以内部手册为准。

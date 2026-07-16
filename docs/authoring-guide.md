@@ -71,6 +71,7 @@ outcomes:
 | `id` | 全局唯一，使用小写 kebab-case；必须与 `specs/course.yaml` 的 `modules[].id` 一致。 |
 | `title` | 章节展示标题，表达主题，不写文件名。 |
 | `duration_min` | 本模块课堂总时长；必须等于模块内所有 slide 的 `duration_min` 之和，并与 `specs/course.yaml` 一致。课前材料可为 `0`。 |
+| `show_divider` | 是否在 Slidev 中生成模块章节页；默认 `true`。只对需要独立章节过渡的模块开启。 |
 | `intent` | 一句话说明本节课解决什么教学问题；会出现在模块分隔页，因此必须面向学员。 |
 | `outcomes` | 2-5 条可观察学习产出，建议用“能……”表述，可通过练习、提问、文档或代码证据验证。 |
 
@@ -149,7 +150,7 @@ visual: flow
 | --- | --- |
 | `id` | 页面全局唯一，建议使用模块短名前缀加序号，例如 `micro-04`。 |
 | `title` | 屏幕可见标题，写本页主题；核心判断放在 `Headline`。 |
-| `mode` | 授课方式。常用值：`intro`、`talk`、`demo`、`lab`、`summary`、`assessment`、`rollout`、`prep`。 |
+| `mode` | 授课方式。常用值：`intro`、`talk`、`demo`、`lab`、`summary`、`assessment`、`rollout`、`prep`；`break` 生成全屏休息图。 |
 | `duration_min` | 本页预计时长；模块内所有页面时长之和必须等于模块总时长。 |
 | `visual` | 右侧视觉结构类型。常用值：`flow`、`checklist`、`matrix`、`cards`、`timeline`、`contrast`。 |
 
@@ -254,10 +255,9 @@ npm run generate
 
 内置 deck 定义在 `specs/course.yaml`：
 
-- `full-7h`：7 小时完整版。
-- `lesson1-lab`：第一课组合。
-- `lesson2-sdd`：第二课组合。
-- `sdd-only`：SDD 与 CodeWiki 专题。
+- `full-3h30`：3.5 小时完整版。
+- `lesson1-lab`：上半场 AI Coding 工具链组合。
+- `lesson2-sdd`：下半场规格驱动研发组合。
 
 常用生成命令：
 
@@ -291,7 +291,7 @@ npm run generate -- --modules orientation,smn-design-lab --output build/slides/m
 生成目标：
 
 ```bash
-npm run generate -- --target slidev --deck full-7h
+npm run generate -- --target slidev --deck full-3h30
 npm run generate -- --target llm --deck lesson2-sdd
 npm run generate -- --target notebooklm --modules orientation,smn-design-lab
 npm run generate -- --target gamma --deck lesson2-sdd

@@ -37,9 +37,9 @@ function run(command, commandArgs) {
 
 const port = readArg("port", process.env.PORT ?? "3030");
 const password = readArg("password", process.env.SLIDEV_REMOTE_PASSWORD ?? "course-preview");
-const entry = readArg("entry", "build/slides/ai-coding-bootcamp-7h.slidev.md");
+const entry = readArg("entry", "build/slides/ai-assisted-development-3h30.slidev.md");
 
-run("node", ["scripts/generate-course.mjs", "--target", "slidev"]);
+run("node", ["scripts/generate-course.mjs", "--target", "slidev", "--include-notes"]);
 
 const slidev = spawn("npx", [
   "--yes",

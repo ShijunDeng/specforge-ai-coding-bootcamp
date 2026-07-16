@@ -234,6 +234,15 @@ function renderVisualWidget(visual = "", type = "") {
     return `<div class="visual-widget matrix-widget">${markdownLite(visual)}</div>`;
   }
 
+  if (normalizedType === "placeholder") {
+    const items = visualItems(visual);
+    return `<div class="visual-widget placeholder-widget">
+  <span class="placeholder-status">内部资料</span>
+  <strong>待内部补充</strong>
+  ${items.length ? `<ul>${items.map((item) => `<li>${inlineMarkdown(item)}</li>`).join("")}</ul>` : ""}
+</div>`;
+  }
+
   const items = visualItems(visual);
   if (!items.length) {
     return `<div class="visual-widget cards-widget">${markdownLite(visual)}</div>`;
@@ -417,6 +426,19 @@ function renderContentSlide(slide, module, includeNotes = false) {
     ? [activity ? `Activity:\n${activity}` : "", notes].filter(Boolean).join("\n\n")
     : "";
 
+  if (meta.mode === "break") {
+    const mediaSpec = parseMediaSpec(media);
+    const src = mediaSpec?.src ? slideAssetPath(mediaSpec.src) : "";
+    return `${slideSeparator({ layout: "default", class: "break-slide" })}
+<div class="break-visual"${src ? ` style="background-image: url('${escapeHtml(src)}')"` : ""}>
+  <div class="break-overlay">
+    <span>PAUSE · RESET · CONTINUE</span>
+    <h1>${inlineMarkdown(meta.title)}</h1>
+  </div>
+</div>
+${renderSpeakerNotes(speakerNotes)}`;
+  }
+
   return `${slideSeparator({
     layout: meta.layout ?? "default",
     class: [
@@ -482,7 +504,7 @@ ${parseMarkdownTable([
   ...rows.map((row) => `| ${row.join(" | ")} |`)
 ])}
 
-<div class="takeaway">当前组合约 ${total} 分钟。可通过 <code>--deck</code>、<code>--modules</code> 或 <code>--config</code> 自定义章节组合。</div>`;
+<div class="takeaway">全程约 ${total} 分钟：讲解建立模型，演示暴露判断，练习留下可复核证据。</div>`;
 }
 
 function renderLabs(course, includeModules) {
@@ -503,7 +525,7 @@ ${parseMarkdownTable([
   ...rows.map((row) => `| ${row.join(" | ")} |`)
 ])}
 
-<div class="example-box"><strong>例子：</strong><p>例如：Pet 疫苗字段练习的证据是提示词、diff、测试结果；SMN 大作业的证据是四阶文档、MR、检视意见和修复记录。</p></div>
+<div class="example-box"><strong>例子：</strong><p>功能练习的证据可以是任务输入、计划、diff 和测试结果；SDD 作业还应包含规格、设计、任务、MR 与检视修复记录。</p></div>
 <div class="takeaway">实操成功标准是证据链完整，而不是口头确认已经完成。</div>`;
 }
 
@@ -792,8 +814,12 @@ ${(course.learning_design?.principles ?? []).map((item) => `- ${item}`).join("\n
     renderAgenda(modules, deck)
   ];
 
-  modules.forEach((module, moduleIndex) => {
-    chunks.push(renderModuleDivider(module, moduleIndex));
+  let dividerIndex = 0;
+  modules.forEach((module) => {
+    if (module.spec.show_divider !== false) {
+      chunks.push(renderModuleDivider(module, dividerIndex));
+      dividerIndex += 1;
+    }
     module.slides.forEach((slide) => chunks.push(renderContentSlide(slide, module, includeNotes)));
   });
 
@@ -804,7 +830,7 @@ ${(course.learning_design?.principles ?? []).map((item) => `- ${item}`).join("\n
 
 function resolveDeck(course, customConfig) {
   if (customConfig?.deck) return customConfig.deck;
-  const deckId = readArg("deck") ?? "full-7h";
+  const deckId = readArg("deck") ?? course.decks?.[0]?.id;
   const deck = (course.decks ?? []).find((item) => item.id === deckId);
   if (!deck) {
     throw new Error(`Unknown deck "${deckId}". Use --list-decks to inspect available decks.`);

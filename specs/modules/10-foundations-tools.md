@@ -1,410 +1,213 @@
 ---
 id: foundations-tools
-title: AI 工程方法与工具体系
-duration_min: 60
-intent: 理解 AI Coding 的能力演进、工具分层和上下文工程基本功，为后续实操建立统一操作语言。
+title: 课程一：AI Coding 工具链基础
+duration_min: 18
+show_divider: true
+intent: 从研发范式变化进入 CodeAgent 的课程定位。
 outcomes:
-  - 能解释补全、对话、Agent、企业级工具链之间的差异。
-  - 能选择 Vibe Coding 或 SDD 的适用场景。
-  - 能写出包含目标、上下文、边界、输出、验收的提示契约。
-  - 能说明 Skill 的适用条件和人工责任边界。
+  - 能区分补全、问答与 Agent 执行三种协作深度。
+  - 能说明本课程对 CodeAgent 能力边界的处理原则。
 ---
-
-# AI 工程方法与工具体系
 
 ## Module Brief
 
-本模块是第一课的理论与操作基础。重点不是讲工具菜单，而是训练上下文选择、任务契约和方法选择。
-
-## Teaching Design
-
-- **课堂角色**：学员是一名准备把 AI 纳入日常开发流的工程师，需要先学会给 Agent 定边界。
-- **故事冲突**：工具越来越会行动，但上下文不准、边界不清、验收缺失会把速度变成返工。
-- **案例承接**：本模块不写代码，只为后面的 Owner 查询、Pet 疫苗字段、MCP 建单和 SMN SDD 建立统一术语。
-- **插图节奏**：用时间线讲能力演进，用矩阵讲方法选择，用对比图讲上下文投喂，用代码块展示提示契约。
-- **课堂转折**：最后一页 Skill 把“个人提示词技巧”转为“团队流程资产”，自然接入 Petclinic 实操。
+先用公开实践建立共同语言，再进入内部工具；公开产品能力不得作为内部能力证明。
 
 :::slide
-id: tools-01
-title: 从代码补全到 Agent 协作
+id: course-04
+title: 工程范式演进
 mode: talk
-duration_min: 8
+duration_min: 4
 visual: timeline
 :::
 ### Headline
-AI Coding 的能力边界从“补全片段”扩展到“理解任务并调用工具”。
+开发者正在从“亲自完成每一步”转向“定义目标、约束和验收”。
 
 ### Body
-能力越强，越不能只靠相信模型。企业场景要把 Agent 纳入既有研发治理，让它在明确边界和证据链里行动。
-
-
-### Example
-例如：代码补全只能帮你补出一行 Repository 调用；Agent 可以读取 Controller、Service、测试文件并提出完整改动计划，因此必须先给它边界。
-
-### Key Points
-- Copilot 阶段：行级补全，提升输入速度。
-- Chat 阶段：对话解释、生成片段、修复报错。
-- Agent 阶段：读取代码、规划任务、编辑文件、调用工具。
-- Enterprise 阶段：接入组织规范、权限、审计和知识库。
-
-### Visual
-- 补全：更快输入。
-- 对话：更快理解。
-- Agent：更快执行。
-- 企业级：更可控协作。
-
-
-### Media
-src: ../../assets/demos/agent-evolution-screen.svg
-type: Agent 演进图
-alt: 从代码补全、对话编辑、Agent 循环到 MCP 外部系统动作的能力演进。
-caption: 能力越自动化，越需要更严格的边界、权限和证据要求。
-
-### Illustration Brief
-- 绘制时间线，阶段依次覆盖：补全：更快输入、对话：更快理解、Agent：更快执行、企业级：更可控协作。
-- 每个阶段只放一个动作词和一个证据点，突出课堂推进节奏。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
-
-### Layout Contract
-- 16:9 双栏页，采用 timeline 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Takeaway
-Agent 自动化的价值和风险都来自“它能行动”。
-
-### Speaker Notes
-- 这里不做模型横向评测，重点讲研发流程变化。
-- 强调越靠近自动执行，越需要 Git 状态、权限、测试和 Review。
-
-:::slide
-id: tools-02
-title: 方法选择：Vibe Coding 与 SDD
-mode: talk
-duration_min: 8
-visual: matrix
-:::
-### Headline
-方法没有高低，只有任务风险和反馈周期是否匹配。
-
-### Body
-Vibe Coding 适合低风险、小步快跑、高频验证的任务；SDD 适合边界复杂、跨模块、依赖存量约束和错误成本高的任务。
-
+Software Engineering 1.0～3.0 不是替代关系，而是工具逐步承担更多分析、执行和验证动作。
 
 ### Example
-例如：给 Pet 加一个字段可以 Vibe Coding 小步验证；给 dolphin-scheduler 新增 SMN 告警插件就必须先 SDD，因为它牵涉扩展点、配置、安全和测试。
+同一个 CRUD 需求，可以人工逐文件编码，也可以让模型辅助问答，或让 Agent 检索、修改并运行测试后交付 Diff。
 
 ### Key Points
-- 单文件小改：可用 Vibe Coding，但要保持短反馈。
-- 多文件功能：先让 AI 输出计划，再分步实现。
-- 大型存量插件：先 CodeWiki 探查，再 SDD 四阶文档。
-- 安全敏感改动：把权限、日志、凭证处理写进 Spec。
+- 1.0：人工编码，IDE、构建和测试工具辅助。
+- 2.0：模型参与补全、解释和问答。
+- 3.0：Agent 参与分析、执行、验证与修订。
+- 人仍负责业务目标、约束、授权和结果验收。
 
 ### Visual
-| 任务类型 | 推荐方式 | 主要风险 |
-| --- | --- | --- |
-| 单文件小改 | Vibe Coding | 边界遗漏 |
-| 多文件功能 | 计划后小步实现 | 顺序错、测试漏 |
-| 大型存量插件 | SDD 先行 | 架构不兼容 |
-| 安全敏感改动 | SDD 加强约束 | 凭证和权限泄露 |
-
-
-### Media
-src: ../../assets/demos/method-choice-switchboard.svg
-type: 方法选择看板
-alt: 根据上下文范围、反馈速度、错误成本和事实未知程度选择 Vibe Coding 或 SDD。
-caption: 方法没有绝对优劣，关键是判断任务的不确定性和错误成本。
+- 1.0：人工编码，工具执行
+- 2.0：模型补全与问答
+- 3.0：Agent 分析、执行、验证
 
 ### Illustration Brief
-- 绘制二维矩阵或对照表，表格内容围绕：任务类型 / 推荐方式、单文件小改 / Vibe Coding、多文件功能 / 计划后小步实现、大型存量插件 / SDD 先行、安全敏感改动 / SDD 加强约束。
-- 重点列使用浅色底纹，表头清晰，单元格只保留关键词和短语。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+绘制三阶段横向演进图，人的责任始终位于上方，不把 3.0 表现为无人研发。
 
 ### Layout Contract
-- 16:9 双栏页，采用 matrix 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
+左侧说明责任变化，右侧三阶段时间轴；不堆叠厂商产品名。
 
 ### Takeaway
-不确定性越高，越要先把规格写清楚。
+Agent 接手更多动作，人就必须给出更清楚的完成条件。
 
 ### Speaker Notes
-- 避免把 Vibe Coding 讲成反面教材，它是第一课微闭环的基础。
-- 第二课再把这个判断迁移到 dolphin-scheduler 的 SMN 需求。
+这是课程用于解释协作深度的分期，不是统一行业标准。
 
 :::slide
-id: tools-03
-title: 主战入口：插件、CLI 与 Relay
+id: course-05
+title: AI Coding 能力演进
 mode: talk
-duration_min: 8
-visual: matrix
-:::
-### Headline
-不同客户端适合不同工作深度，选型依据是上下文范围和自动化程度。
-
-### Body
-同一个需求可以从 IDE 插件、CLI 或 Relay 工具进入。入口不同，但安装、授权、上下文选择和验证四件事都要先跑通。
-
-
-### Example
-例如：在 IDE 插件里选中 `OwnerController` 适合小改；用 CLI 批量检查全仓测试更合适；需要远端建 MR 时再进入 MCP 能力。
-
-### Key Points
-- IDE 插件适合文件级开发、Review、单测生成。
-- CLI 适合多文件任务、批量检查、脚本化流程。
-- Relay 工具适合连接内部能力和统一入口。
-- 开始实操前要确认插件/CLI 已安装，授权登录已完成。
-- 能力越靠近外部系统，越要关注权限与日志。
-
-### Visual
-| 形态 | 适用场景 | 注意事项 |
-| --- | --- | --- |
-| IDE 插件 | 文件级开发、Review、单测生成 | 安装后验证登录和上下文选择 |
-| CLI | 多文件任务、批量检查、脚本化流程 | 先确认授权、Git 状态和工作目录 |
-| Relay 工具 | 连接内部能力和统一入口 | 关注权限、日志与审计 |
-
-
-### Media
-src: ../../assets/demos/tool-entry-runtime.svg
-type: 工具入口运行图
-alt: IDE 插件、CLI Agent 和 Relay/MCP 三类入口如何承接不同研发动作。
-caption: 不同入口不是工具名差异，而是上下文范围、自动化程度和外部权限的差异。
-
-### Illustration Brief
-- 绘制二维矩阵或对照表，表格内容围绕：形态 / 适用场景、IDE 插件 / 文件级开发、Review、单测生成、CLI / 多文件任务、批量检查、脚本化流程、Relay 工具 / 连接内部能力和统一入口。
-- 重点列使用浅色底纹，表头清晰，单元格只保留关键词和短语。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
-
-### Layout Contract
-- 16:9 双栏页，采用 matrix 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Takeaway
-工具入口不同，但先安装授权、再限定上下文、最后验证结果的纪律不能变。
-
-### Speaker Notes
-- 如果现场需要展示下载入口或授权登录，控制在 3 分钟内，不要把工具安装变成主线。
-- 对已有工具经验的学员，要求他们把注意力放在上下文和验收。
-
-:::slide
-id: tools-04
-title: 工具链流转：知识、执行、质量
-mode: talk
-duration_min: 8
+duration_min: 4
 visual: flow
 :::
 ### Headline
-先查知识，再生成计划，最后执行动作。
+任务质量取决于表达、上下文、运行支撑和反馈迭代共同作用。
 
 ### Body
-AgentCenter、CodeAgent、MCP、Skill、CodeWiki 不是五个孤立工具。它们共同构成一条从知识获取到任务执行，再到质量验证的流水线。
-
+能力关注点由 Prompt 扩展到 Context、Harness 和 Loop；这是时间轴式扩张，不是单一闭环框架。
 
 ### Example
-例如：先问 CodeWiki“已有告警插件如何注册”，再让 CodeAgent 生成 Design，最后用 Skill 检查 Tasks 是否细到类名和测试。
+一句“增加查询”只有 Prompt；补上现有结构是 Context；提供测试命令是 Harness；依据失败输出继续修复才形成 Loop。
 
 ### Key Points
-- CodeWiki 解决“项目事实是什么”。
-- CodeAgent 解决“如何在上下文中生成候选补丁”。
-- Skill 解决“高频流程如何标准化”。
-- MCP 解决“如何连接 MR、检视、平台动作”。
-- AgentCenter 解决“能力如何发现、授权和治理”。
+- Prompt Engineering：把目标、边界和验收说清楚。
+- Context Engineering：提供与任务有关的项目事实。
+- Harness Engineering：准备工具、环境和验证能力。
+- Loop Engineering：让真实反馈推动下一轮动作。
 
 ### Visual
-- CodeWiki 查现状
-- CodeAgent 拆计划
-- Skill 生成和检查
-- MCP 建单和触发检视
-- Review 和测试收口
-
-
-### Media
-src: ../../assets/demos/codewiki-sdd-animated.svg
-type: 动态工具链演示
-alt: CodeWiki、CodeAgent、Skill、MCP 和 Review 如何形成从事实到证据的流水线。
-caption: 先查事实、再生成计划、最后进入执行和质量闭环，工具之间要有明确交接物。
+- Prompt：任务表达
+- Context：项目事实
+- Harness：工具与验证环境
+- Loop：反馈驱动的持续推进
 
 ### Illustration Brief
-- 绘制从左上到右下的流程链路，节点依次覆盖：CodeWiki 查现状、CodeAgent 拆计划、Skill 生成和检查、MCP 建单和触发检视、Review 和测试收口。
-- 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+绘制从左到右不断扩大的能力带，不连接首尾，不包装成闭环架构。
 
 ### Layout Contract
-- 16:9 双栏页，采用 flow 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
+左侧用一个需求贯穿示例，右侧四阶段能力扩张图。
 
 ### Takeaway
-工具链的目标是缩短从事实到证据的距离。
+好 Prompt 很重要，但它替代不了真实上下文和可执行验证。
 
 ### Speaker Notes
-- 讲的时候要把每个工具落到后续练习：Petclinic 用 CodeAgent 和 UT Skill，建单用 MCP，SMN 用 CodeWiki 和 SDD。
-- 不要让学员停留在工具名记忆。
+“Prompt → Context → Harness → Loop”是课程归纳，不标注为厂商共同发布的成熟度模型。
 
 :::slide
-id: tools-05
-title: 防坑指南：精准投喂上下文
+id: course-06
+title: 头部厂商实践
 mode: talk
-duration_min: 10
-visual: contrast
+duration_min: 4
+visual: matrix
 :::
 ### Headline
-当 AI 改出 9 个文件的大 diff，先别怪模型，先检查你给了什么上下文。
+头部产品都在把 Agent 放进真实工程环境，并强调可验证结果。
 
 ### Body
-课堂会先故意给出一句“帮我加查询”，让大家看到 AI 如何全仓乱找；再补上文件、规则、禁止项和验收命令，让输出收敛成可 Review 的小补丁。
-
+这里只比较 OpenAI Codex 与 Anthropic Claude Code 的官方公开能力，不推断内部 CodeAgent。
 
 ### Example
-例如：坏输入让 AI 改了 Controller、Repository、前端页面和配置；好输入把范围限定为 `OwnerController`、`OwnerRepository` 和现有测试，并要求先给计划、不要碰 schema。
+两者都能在获准环境中读取代码、修改文件、运行命令；测试输出和 Diff 仍需人审查。
 
 ### Key Points
-- 使用文件引用或选区让模型看见正确代码。
-- 明确只能改哪些文件，以及先不要改哪些文件。
-- 复杂任务先要计划，简单任务再让它直接改。
-- 让模型复用项目现有测试风格和命名风格。
-- 把失败输出原样交给模型，而不是口头描述“报错了”。
+- Codex：覆盖 CLI、IDE、桌面与云端任务；云端任务可并行执行。
+- Claude Code：覆盖终端、IDE、桌面与 Web 等入口。
+- 共同实践：明确上下文、先探索规划、提供验证方式。
+- 共同边界：Agent 输出需要测试证据与人工 Review。
 
 ### Visual
-- 模糊输入：“帮我加个查询”。
-- 精准输入：指定 Controller、Service、Repository、测试文件、业务规则、验收命令。
-- 模糊输出：全仓乱找、改动难 Review。
-- 精准输出：小 diff、可测试、可回滚。
-
-
-### Media
-src: ../../assets/demos/context-packing-before-after.svg
-type: 上下文对比演示
-alt: 模糊提示和精准上下文投喂导致的 diff 大小、测试质量和 Review 成本差异。
-caption: 上下文投喂越精确，AI 输出越容易收敛成小 diff、可测试、可回滚的候选补丁。
+| 观察维度 | OpenAI Codex | Anthropic Claude Code |
+| --- | --- | --- |
+| 入口 | CLI / IDE / App / Cloud | Terminal / IDE / Desktop / Web |
+| 工程动作 | 文件、命令、测试、Diff | 代码库、编辑、命令、验证 |
+| 质量信号 | 日志、测试输出、PR | 测试、构建、lint、Diff |
 
 ### Illustration Brief
-- 绘制左右对比图，对比项覆盖：模糊输入：“帮我加个查询”、精准输入：指定 Controller、Service、Repository、测试文件、业务规则、验收命令、模糊输出：全仓乱找、改动难 Review、精准输出：小 diff、可测试、可回滚。
-- 左侧表达常见低质量状态，右侧表达目标状态，用颜色区分风险和目标。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+用左右对比表展示公开能力与共同质量信号；不画内部产品界面。
 
 ### Layout Contract
-- 16:9 双栏页，采用 contrast 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
+左侧给出比较边界，右侧三行表格；来源保留在讲师备注。
 
 ### Takeaway
-好上下文不是堆文件，而是让 AI 只看该看的现场。
+产品入口不同，工程原则相同：给事实、跑验证、审结果。
 
 ### Speaker Notes
-- 演示一个反例提示词，再立刻改成好提示词。
-- 提醒学员：上下文不是越多越好，错误上下文会把模型带偏。
+官方来源：https://openai.com/index/introducing-codex/ ，https://learn.chatgpt.com/guides/best-practices ，https://code.claude.com/docs/en/overview ，https://code.claude.com/docs/en/best-practices 。
 
 :::slide
-id: tools-06
-title: 提示契约：把需求变成可执行任务
+id: course-07
+title: CodeAgent 产品体系
 mode: talk
-duration_min: 10
-visual: checklist
+duration_min: 3
+visual: placeholder
 :::
 ### Headline
-提示词要像一张小任务单：目标、边界、验收都写到位。
+先识别产品入口，再确认各版本适合承担什么任务。
 
 ### Body
-你可以把提示契约想成给临时队友的施工单：它不需要长篇大论，但必须说清“这次只修哪里、不能碰哪里、怎么证明修好了”。
-
+当前已知入口包括 IDEA 插件、VS Code 插件、CLI 2.x 与 CLI 3.x；版本定位和差异必须以内部资料为准。
 
 ### Example
-例如：Pet 疫苗字段不是一句“加字段”就结束；任务单要写清字段名、接口行为、允许修改的实体和测试、验收命令，以及失败后先定位再最小修复。
+本课程选用 CLI 3.x，但不会把公开 Codex 或 Claude Code 的能力直接写成 CodeAgent 能力。
 
 ### Key Points
-- 目标：要完成的业务行为，不只说“改代码”。
-- 上下文：相关文件、接口、已有实现和测试。
-- 边界：允许修改和禁止修改的范围。
-- 输出：先计划还是直接补丁，是否需要测试和文档。
-- 验收：运行什么命令、检查什么接口、保留什么证据。
-- 失败处理：报错后先定位原因，再给最小修复。
+- IDEA 插件：定位待内部补充。
+- VS Code 插件：定位待内部补充。
+- CLI 2.x：基于 OpenCode，版本差异待内部补充。
+- CLI 3.x：新一代架构，课程定位待内部补充。
 
 ### Visual
-```text
-目标：为 Pet 增加疫苗接种记录字段和查询能力。
-上下文：Pet 实体、Owner/Pet Controller、Repository、现有测试。
-边界：不要修改数据库迁移以外的无关模块；先给修改计划。
-输出：生成代码和单测，保持项目现有风格。
-验收：指定测试命令跑绿，解释关键 diff。
-```
-
-
-
-### Media
-src: ../../assets/demos/pet-vaccination-test.svg
-type: 代码运行截图
-alt: Pet 疫苗字段的代码修改和测试运行结果。
-caption: 提示契约最终要落到代码 diff、测试命令和红变绿的运行证据。
+- 产品形态与入口图待内部补充
+- 版本定位与适用场景待内部补充
+- 内部正式截图待补充
 
 ### Illustration Brief
-- 绘制可勾选的检查清单，检查项覆盖：提示契约：把需求变成可执行任务。
-- 红线项使用警示色，普通项使用中性色；每项配一个简洁图标，避免密集小字。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+使用明确的内部资料占位框，不生成仿真插件、终端或平台界面。
 
 ### Layout Contract
-- 16:9 双栏页，采用 checklist 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
+左侧只展示已确认的产品形态，右侧固定使用“待内部补充”占位框。
 
 ### Takeaway
-提示契约写得清，后面的 Review 才有尺子。
+没有内部资料确认，就只保留问题，不补写答案。
 
 ### Speaker Notes
-- 这页可以让学员保存为个人模板。
-- 强调模板不是固定咒语，关键是字段齐全。
+现场用内部正式材料替换占位；替换前核对版本、产品形态和能力边界。
 
 :::slide
-id: tools-07
-title: Skill：把高频动作封装成流水线
+id: course-08
+title: CLI 3.x 核心能力
 mode: talk
-duration_min: 8
-visual: cards
+duration_min: 3
+visual: placeholder
 :::
 ### Headline
-Skill 不是魔法按钮，它只是把团队认可的动作录成自动化流水线。
+本课只使用已经确认的通用研发动作，产品特性留待内部说明。
 
 ### Body
-当你第三次要求 AI “按项目风格生成单测、运行、失败后修复、再检查断言语义”时，这套动作就不该继续靠手打提示词维护。
-
+课程将围绕代码理解、仓库检索、文件修改、计划与编码、命令执行和变更审查组织演示。
 
 ### Example
-例如：UT Skill 可以帮你生成 `shouldReturnPetVaccinationRecord()`，但如果断言只是 `assertNotNull(response)`，你要当场打回，要求它断言字段值、空列表和异常路径。
+演示会要求 Agent 先分析 Owners 的现有实现，再计划 Veterinarians 改造；具体模式名称和操作入口由内部资料补充。
 
 ### Key Points
-- 输入规范：需要哪些文件、需求和约束。
-- 执行步骤：生成、修改、检查、修复。
-- 质量门禁：单测、规范、覆盖率、风格。
-- 可复用经验：团队最佳实践沉淀为工具。
-- 人工责任：Skill 仍然需要人确认输入和输出。
+- 代码解释与仓库检索：具体范围待内部补充。
+- 文件修改与命令执行：权限模型待内部补充。
+- Plan / Code 模式：交互细节待内部补充。
+- 变更审查：展示方式待内部补充。
+- 模型、配置与命令：不得臆造。
 
 ### Visual
-- 输入：被测类、现有测试、业务规则。
-- 执行：生成候选测试、运行、修复。
-- 验收：断言覆盖语义，不只追求覆盖率。
-- 复用：把团队测试风格变成默认路径。
-
-
-### Media
-src: ../../assets/demos/skill-ut-pipeline-animated.svg
-type: 动态 Skill 演示
-alt: UT Skill 从输入被测行为到生成测试、运行命令和人工 Review 的动态流水线。
-caption: Skill 的价值是把团队认可的测试生成、运行和 Review 步骤固化成可复用流程。
+- CLI 3.x 终端截图待内部补充
+- 模式切换方式待内部补充
+- 权限与模型说明待内部补充
 
 ### Illustration Brief
-- 绘制 3-6 张任务卡或概念卡，卡片内容覆盖：输入：被测类、现有测试、业务规则、执行：生成候选测试、运行、修复、验收：断言覆盖语义，不只追求覆盖率、复用：把团队测试风格变成默认路径。
-- 每张卡只保留一个关键词和一句解释，使用图标化符号辅助识别。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+右侧只放终端截图占位与能力标签，不绘制伪造命令或真实 UI。
 
 ### Layout Contract
-- 16:9 双栏页，采用 cards 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
+左侧展示课程会观察的动作，右侧使用“待内部补充”占位框。
 
 ### Takeaway
-能被 Skill 化的不是一句提示词，而是一组稳定的质量动作。
+先确认工具事实，再设计演示脚本。
 
 ### Speaker Notes
-- 以 UT 生成 Skill 为例，说明它不是魔法，而是把模板流程标准化。
-- 提醒学员不要把 Skill 输出当成免 Review 的代码。
+补充内部操作前，逐项核对命令、权限、模型、模式名称和版本差异。

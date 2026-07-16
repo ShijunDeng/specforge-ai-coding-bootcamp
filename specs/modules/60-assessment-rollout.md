@@ -1,259 +1,146 @@
 ---
-id: assessment-rollout
-title: 大作业验收与团队复讲
-duration_min: 15
-intent: 明确课后 SMN 大作业的提交标准、评分 Rubric、团队复讲责任和课程 Spec 迭代机制。
+id: course-wrap-up
+title: 课程总结与课后实践
+duration_min: 10
+show_divider: false
+intent: 用一条研发主线回顾全课，并明确课后练习和成长路径。
 outcomes:
-  - 能说明大作业提交物和评分规则。
-  - 能识别必须返工的安全红线。
-  - 能把课程方法迁移到团队复讲和后续课程迭代。
+  - 能复述从小需求到复杂 SDD 的完整方法链。
+  - 能按要求提交课后 SDD 交付证据。
 ---
-
-# 大作业验收与团队复讲
 
 ## Module Brief
 
-本模块承接 SMN 大作业布置，把课后真实落地、MR 提交、统一验收、问卷反馈和团队复讲放在同一套闭环中。
-
-## Teaching Design
-
-- **课堂角色**：学员从课堂练习者变成团队方法传播者，需要用真实 MR 和复讲材料证明学习迁移。
-- **故事收束**：课程从“AI 写一段代码”开始，以“有文档、有 MR、有测试、有 Review、有团队复讲”结束。
-- **作业案例**：冻结后的 SMN Tasks 是课后实现入口，不允许重新让 AI 自由发挥。
-- **插图节奏**：作业流程用时间线，Rubric 用矩阵，团队复讲用保留/替换/沉淀三类卡片，反馈闭环用流程图。
-- **验收证据**：四阶文档链接、MR 链接、测试输出、机器检视与人工 Review 处理记录、复讲反馈。
+总结不引入新概念，只收束方法、下一步和作业提交物。
 
 :::slide
-id: assess-01
-title: 大作业：SMN 告警真实落地与提单
-mode: assessment
-duration_min: 5
-visual: timeline
-:::
-### Headline
-大作业不是“再问 AI 一遍”，而是拿着冻结工单逐项提交证据。
-
-### Body
-课后实现从课堂冻结的 SMN Tasks 开始。每完成一张任务票，就留下对应的代码 diff、测试输出、Review 处理记录和安全检查结果。
-
-
-### Example
-例如：MR 描述像证据台：链接四阶文档，列出“Task 1 配置模型完成，证据：配置校验测试通过；Task 2 发送失败处理完成，证据：本地桩返回 403 时日志脱敏”。
-
-### Key Points
-- MR 描述必须链接 Proposal、Spec、Design、Tasks。
-- 每个任务完成后都要有测试或检查证据。
-- 关键实现按 Tasks 顺序分步提交，避免大 diff。
-- 不得提交真实凭证、生产配置或敏感日志。
-- 机器检视和人工 Review 的关键意见必须处理。
-
-### Visual
-- 文档定版
-- 分步实现
-- 本地验证
-- 创建 MR
-- 代码检视
-- 统一验收
-
-
-### Media
-src: ../../assets/demos/homework-evidence-review.svg
-type: 大作业证据看板
-alt: SMN 大作业提交的四阶文档、MR、测试输出、AI 协作记录和安全扫描结果。
-caption: 大作业真实落地必须把四阶文档、分步实现、测试、MR 和检视意见串成可复核证据。
-
-### Illustration Brief
-- 绘制时间线，阶段依次覆盖：文档定版、分步实现、本地验证、创建 MR、代码检视、统一验收。
-- 每个阶段只放一个动作词和一个证据点，突出课堂推进节奏。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
-
-### Layout Contract
-- 16:9 双栏页，采用 timeline 视觉结构；左侧固定为提交规则和评分标准；右侧用矩阵或时间线展示验收流程。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Activity
-- 学员把课上冻结的 SMN Tasks 标记为课后实现清单，确认每一项都有对应文档依据。
-- 讲师说明 MR 描述模板：四阶文档链接、任务完成情况、测试命令、检视意见处理记录。
-- 现场强调安全红线：真实 AK/SK、Token、生产地址和敏感日志一旦进入提交物，直接返工。
-
-### Takeaway
-能通过验收的不是一段代码，而是一条从文档到 MR 的证据链。
-
-### Speaker Notes
-- 明确作业截止时间和提交渠道，如果暂未确定，课后群公告补充。
-- 强调安全红线一票返工。
-
-:::slide
-id: assess-02
-title: 大作业评分与自动化验收
-mode: assessment
-duration_min: 4
-visual: matrix
-:::
-### Headline
-评分表不是给人贴标签，而是帮你找到哪段证据断了。
-
-### Body
-自动化检查先看提交物是否齐、测试是否可复核、安全红线是否踩线；人工 Review 再看设计和实现是否真的对齐。优秀作业和典型返工都会沉淀成下一期案例。
-
-
-### Example
-例如：代码能跑但没有 Design、没有测试输出、没有 AI 打回记录，就像只交了成品没有施工记录，只能拿实现分，不能通过完整验收。
-
-### Key Points
-- SDD 文档质量：30 分。
-- 实现正确性：25 分。
-- 测试与验证：20 分。
-- AI 协作过程：15 分。
-- 安全与合规：10 分。
-- 自动化打分先检查提交物、测试证据和安全红线，再进入人工复核。
-- 安全红线未修复时，总分达标也需返工。
-
-### Visual
-| 维度 | 权重 | 证据 |
-| --- | --- | --- |
-| SDD 文档质量 | 30 | 四阶文档完整，安全和测试策略明确 |
-| 实现正确性 | 25 | 插件按现有架构接入，核心路径可运行 |
-| 测试与验证 | 20 | 本地测试和异常路径结果可复核 |
-| AI 协作过程 | 15 | 有提示词、打回、检视、修复记录 |
-| 安全与合规 | 10 | 无真实密钥和敏感日志 |
-
-
-### Media
-src: ../../assets/demos/assessment-autograder-dashboard.svg
-type: 自动验收看板截图
-alt: 大作业提交物、自动化检查和人工 Review 结果在统一看板中汇总。
-caption: 大作业评分要看可追溯证据，自动检查负责先过滤提交物、测试证据和安全红线。
-
-### Illustration Brief
-- 绘制二维矩阵或对照表，表格内容围绕：维度 / 权重、SDD 文档质量 / 30、实现正确性 / 25、测试与验证 / 20、AI 协作过程 / 15。
-- 重点列使用浅色底纹，表头清晰，单元格只保留关键词和短语。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
-
-### Layout Contract
-- 16:9 双栏页，采用 matrix 视觉结构；左侧固定为提交规则和评分标准；右侧用矩阵或时间线展示验收流程。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Activity
-- 讲师逐项解释 5 个评分维度对应的证据，不用抽象分数替代可检查材料。
-- 学员自查自己的提交物是否能覆盖 30/25/20/15/10 五类证据，缺口现场记录为课后待补。
-- 评分入口只接收可追溯链接、测试输出或文档文件；口头说明不能替代证据。
-
-### Takeaway
-分数背后要能看到证据，证据缺口就是下一轮要补的训练点。
-
-### Speaker Notes
-- 指向 `rubrics/homework-rubric.md`，讲师可按企业实际认证规则调整权重。
-- 不建议公开个人低分榜，红黑榜聚焦案例和问题类型。
-
-:::slide
-id: assess-03
-title: 团队复讲：替换案例，不替换方法
-mode: rollout
-duration_min: 3
-visual: cards
-:::
-### Headline
-复讲不是照读课件，而是把同一套方法换到你们自己的仓库里跑一遍。
-
-### Body
-回到团队后，保留 Spec first、Human in the loop、Evidence over confidence 三条主线，替换成团队自己的仓库、MR 流程、敏感边界和真实小需求。
-
-
-### Example
-例如：你可以把课堂里的 Pet 疫苗字段换成“订单备注查询”，把 SMN 换成团队常用通知插件；但提示契约、Review 停顿、测试命令和证据包标准不能丢。
-
-### Key Points
-- 用团队自己的小需求替换 Pet 练习。
-- 用团队自己的 MR 流程替换 MCP 演示细节。
-- 用团队真实存量模块替换 SMN 练习。
-- 把团队约束写进本课程 Spec 或派生 Spec。
-
-### Visual
-- 保留：方法论、证据标准、Review 边界。
-- 替换：仓库、工具入口、业务案例、验收命令。
-- 沉淀：团队 Prompt、Skill、Rubric、FAQ。
-
-
-### Media
-src: ../../assets/demos/rollout-team-fork.svg
-type: 团队复讲派生图
-alt: 团队从课程 Spec 派生自己的仓库案例、Review 规则和 Rubric，同时保留方法主线。
-caption: 团队复讲不是照读课件，而是 fork 方法、替换案例、沉淀团队约束。
-
-### Illustration Brief
-- 绘制 3-6 张任务卡或概念卡，卡片内容覆盖：保留：方法论、证据标准、Review 边界、替换：仓库、工具入口、业务案例、验收命令、沉淀：团队 Prompt、Skill、Rubric、FAQ。
-- 每张卡只保留一个关键词和一句解释，使用图标化符号辅助识别。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
-
-### Layout Contract
-- 16:9 双栏页，采用 cards 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
-
-### Takeaway
-方法可以复用，案例必须本地化，团队才会真的用起来。
-
-### Speaker Notes
-- 强调复讲不是照本宣科，真正价值在于让团队自己的流程变得可复制。
-- 可鼓励每个团队提交一份派生模块 Spec。
-
-:::slide
-id: assess-04
-title: 跑分红黑榜与问卷反馈
-mode: rollout
+id: course-39
+title: 课程回顾
+mode: summary
 duration_min: 3
 visual: flow
 :::
 ### Headline
-课程结束后，真正有价值的是把卡点变成下一版 Spec。
+从小需求到复杂项目，始终用事实、审核和验证控制 Agent。
 
 ### Body
-课程收尾要收集 MR、自动化打分、问卷、失败案例和复讲反馈。高频痛点不应该停在聊天记录里，而要进入 `specs/course-production/tasks.md`，变成下一版课件的可 Review 修改。
-
+工具入口不断变化，但探索现状、定义边界、检查计划、验证结果和保留证据的责任不变。
 
 ### Example
-例如：如果 60% 的反馈都卡在“AI 不懂老项目配置”，下一版课程就新增一页“配置从 YAML 到 UI 再到插件实例的流转演示”，配终端截图和失败修复案例。
+Veterinarians CRUD 使用 Explore、Plan、Code、Verify；复杂需求则把同样纪律扩展到 Spec、Design、Tasks 和多个 Review Gate。
 
 ### Key Points
-- T+1：完成自动化跑分，公布需补交或需返工名单。
-- T+3：完成人工复核，发布脱敏红黑榜和典型案例。
-- 本页必须在发布前替换为真实问卷二维码或短链。
-- 高频需求：哪些研发动作最适合做 Skill。
-- 卡点场景：哪些仓库、模块、流程最难让 AI 读懂。
-- 安全顾虑：Token、数据、权限、审计有哪些边界。
+- 小需求：CodeAgent 探索、计划、实现和验证。
+- 能力扩展：Skill、CLI、MCP 与 AgentCenter。
+- 工程交付：Commit、MR、检视、修复和回归。
+- 项目规则：AGENTS.md 固化稳定约定。
+- 复杂需求：CodeSpec、全量设计与端到端 SDD。
 
 ### Visual
-- T+1 自动跑分
-- T+3 红黑榜
-- 问卷二维码/短链
-- 痛点归类
-- 更新 Spec
-- 生成新版课件
-
-
-### Media
-src: ../../assets/demos/feedback-iteration-dashboard.svg
-type: 课程迭代看板
-alt: 问卷反馈、跑分结果和典型问题被归类为 Spec 任务，再生成新版课件。
-caption: 培训材料要像产品一样迭代，把真实卡点转成可 Review、可合并的 Spec 修改。
+- Explore / Plan / Code / Verify
+- Skill / CLI / MCP
+- Commit / MR / Review / Fix
+- AGENTS.md / Tests / CI
+- Spec / Design / Tasks / Verification
 
 ### Illustration Brief
-- 绘制从左上到右下的流程链路，节点依次覆盖：T+1 自动跑分、T+3 红黑榜、问卷二维码/短链、痛点归类、更新 Spec、生成新版课件。
-- 用箭头表现先后顺序，用橙色或高亮描边标出人工 Review、打回或验收节点。
-- 画面应像技术白板而不是装饰海报，保留充足留白；不得出现真实 Token、AK/SK、生产地址、内部敏感截图或未脱敏日志。
+绘制一条贯穿全课的研发流程，把小闭环逐步扩展为团队与 SDD 闭环。
 
 ### Layout Contract
-- 16:9 双栏页，采用 flow 视觉结构；左侧放核心判断、短正文和 3-6 个要点；右侧放结构化图示和 Takeaway。
-- 可见区只放学员直接需要看到的结论、步骤和验收标准；讲师提醒、追问和现场取舍放入 Speaker Notes。
-- 单页不超过一个主图示，不叠加装饰图；如果内容溢出，优先删减正文而不是缩小字号。
+左侧回顾五类能力，右侧总流程图；不增加新术语。
 
 ### Takeaway
-把真实卡点写回 Spec，下一期课程才会比这一期更好讲、更好学。
+Agent 能走多远，取决于你给了多少真实约束和验证能力。
 
 ### Speaker Notes
-- 问卷最好包含开放题和证据上传入口；发布前把占位二维码替换成真实入口。
-- 红黑榜只展示脱敏案例、优秀做法和典型问题，不公开羞辱个人。
-- 课程维护者把反馈转成 `specs/course-production/tasks.md` 中的待办。
+请学员用自己的话复述一条“输入—动作—证据—停止条件”链路。
+
+:::slide
+id: course-40
+title: Path forward
+mode: rollout
+duration_min: 3
+visual: timeline
+:::
+### Headline
+下一阶段从个人使用，走向团队可复用、可治理的研发能力。
+
+### Body
+选择一个真实项目和一条高频流程持续练习，不要一次引入所有工具和自动化。
+
+### Example
+先为团队固化一个测试 Skill 和 AGENTS.md，再扩展 CodeHub 检视流程，最后进入多人 SDD 协作。
+
+### Key Points
+- 复杂 Brownfield 项目的上下文发现。
+- 高质量任务设计与可执行验收。
+- 自定义 Skill 与 CLI 工具化。
+- MCP 接入与 Agent 自动检视。
+- 团队 AGENTS.md 与 CodeSpec 深入实践。
+- 多人 SDD 文档评审和协作治理。
+
+### Visual
+- Level 1：高质量个人任务
+- Level 2：Skill 与 CLI 复用
+- Level 3：MCP 与自动检视
+- Level 4：团队规则与 SDD 协作
+
+### Illustration Brief
+绘制四级成长阶梯，每级只标一组可观察能力，不画职位晋升。
+
+### Layout Contract
+左侧说明渐进原则，右侧四级阶梯；控制文字密度。
+
+### Takeaway
+先把一条流程做稳，再扩大 Agent 的权限和作用范围。
+
+### Speaker Notes
+让学员选择一个未来两周可落地的最小改进，并写出验收证据。
+
+:::slide
+id: course-41
+title: 课后作业
+mode: assessment
+duration_min: 4
+visual: checklist
+:::
+### Headline
+完成剩余 SDD 流程，并用 MR 提交完整工程证据。
+
+### Body
+作业以文档、实现、测试和检视修复记录为一个整体，内部提交位置与截止时间待通知。
+
+### Example
+MR 描述附上 Spec、Design、Tasks，列出完成任务、测试结果、检视意见和修复记录，并明确剩余风险。
+
+### Key Points
+- 完成剩余 Spec、Design、Tasks 修订。
+- 根据过审 Tasks 完成功能实现。
+- 运行项目要求的测试与构建。
+- 提交指定 MR 并填写变更与验证说明。
+- 附检视意见、修复记录和未完成风险。
+- 仓库、分支、截止时间和提交入口待内部补充。
+
+### Visual
+- Spec
+- Design
+- Tasks
+- 核心实现
+- 测试结果
+- MR 与检视修复记录
+
+### Illustration Brief
+绘制作业提交清单，六类产物使用统一卡片；内部提交信息使用占位标签。
+
+### Layout Contract
+左侧展示作业要求，右侧双列提交物清单；验收标准必须可见。
+
+### Activity
+- 学员在课后完成并提交指定 MR。
+- 讲师按文档一致性、实现、测试、检视修复和风险说明进行验收。
+
+### Takeaway
+作业完成的标准，是别人能沿着证据复核你的整个过程。
+
+### Speaker Notes
+内部仓库、命名规则、截止时间、评分方式和提交入口待内部补充。

@@ -2,6 +2,7 @@
 id: module-id
 title: 模块标题
 duration_min: 30
+show_divider: true
 intent: 说明本模块解决的教学问题。
 outcomes:
   - 学员完成本模块后能做到的可观察行为。
@@ -20,6 +21,7 @@ outcomes:
 | `id` | 是 | 模块全局唯一 id，使用小写 kebab-case，例如 `debugging-with-ai`。必须与 `specs/course.yaml` 中 `modules[].id` 完全一致。 |
 | `title` | 是 | 课件中展示的模块标题，建议 8-18 个汉字，表达主题而不是文件名。 |
 | `duration_min` | 是 | 本模块课堂总时长，单位分钟。必须等于本模块所有 `:::slide` 的 `duration_min` 之和，并与 `specs/course.yaml` 中同一模块一致。课前材料可填 `0`。 |
+| `show_divider` | 否 | 是否生成 Slidev 模块章节页，默认 `true`；连续内容模块可设为 `false`。 |
 | `intent` | 是 | 一句话说明本模块解决的教学问题，写“为什么要教这一节”，不要写成页面目录。 |
 | `outcomes` | 是 | 2-5 条可观察学习产出，用“能……”表述，必须能通过练习、提问、文档或代码证据验证。 |
 

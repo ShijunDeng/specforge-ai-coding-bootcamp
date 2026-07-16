@@ -183,9 +183,9 @@ function validateSlide(slide, file, index) {
     warnings.push(`${path} has no Example section`);
   }
 
-  if (!slide.sections.media) {
-    warnings.push(`${path} has no Media section`);
-  } else {
+  if (!slide.sections.media && !slide.sections.visual) {
+    warnings.push(`${path} has neither Media nor Visual content`);
+  } else if (slide.sections.media) {
     const src = slide.sections.media.match(/^src:\s*(.+)$/m)?.[1]?.trim();
     if (src && !/^https?:\/\//.test(src)) {
       mediaRefs.push({ src, file, path });
@@ -311,22 +311,21 @@ for (const lab of course.labs ?? []) {
   }
 }
 
-if (Number(course.learning_design?.duration_min || 0) !== 420) {
-  warnings.push("learning_design.duration_min is not 420 minutes");
-}
-
-const fullDeck = (course.decks ?? []).find((deck) => deck.id === "full-7h");
+const expectedDuration = Number(course.learning_design?.duration_min || 0);
+const fullDeck = (course.decks ?? [])[0];
 if (fullDeck) {
   const durationById = new Map(modules.map((module) => [module.id, Number(module.duration_min || 0)]));
   const fullDuration = fullDeck.include_modules.reduce((sum, id) => sum + (durationById.get(id) ?? 0), 0);
-  if (fullDuration !== 420) warnings.push(`full-7h deck duration is ${fullDuration} minutes, expected 420`);
+  if (expectedDuration && fullDuration !== expectedDuration) {
+    warnings.push(`${fullDeck.id} deck duration is ${fullDuration} minutes, expected ${expectedDuration}`);
+  }
 }
 
 for (const file of requiredFiles) {
   await validateRequiredFile(file);
 }
 
-if (slideCount < 36) warnings.push(`course has ${slideCount} authored slides; expected at least 36 for a 7-hour course`);
+if (slideCount < 24) warnings.push(`course has only ${slideCount} authored slides; confirm the planned teaching density`);
 
 if (warnings.length) {
   console.warn("Warnings:");

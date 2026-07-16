@@ -1,6 +1,6 @@
 # 神灯训练营课件工程
 
-这是一个 Spec Driven Development 风格的课件仓库。讲师维护 `specs/` 中的 Markdown 规格文件，需要授课、审阅或交付时再生成不同工具可消费的材料，例如 Slidev Markdown、NotebookLM 友好的知识包、AI PPT 产品可用的大纲、静态网页、PDF 或 PPTX。
+这是一个 Spec Driven Development 风格的课件仓库。当前课程是一套 3.5 小时 AI 辅助开发培训，讲师维护 `specs/` 中的 Markdown 规格文件，需要授课、审阅或交付时再生成 Slidev、知识包、AI PPT 大纲、静态网页、PDF 或 PPTX。
 
 本培训课程品牌为 **神灯局**，愿景是“点亮你的研发愿望，让AI成为团队神灯。” 品牌 logo 存放在 `assets/brand/shendengju-logo.png`，生成课件时会用于封面和页面角标。
 
@@ -17,7 +17,7 @@ npm run generate
 常用命令：
 
 ```bash
-npm run generate                    # 默认生成 Slidev 版 7 小时完整版
+npm run generate                    # 默认生成 Slidev 版 3.5 小时完整版
 npm run generate:llm                # 生成 LLM/NotebookLM 友好的纯 Markdown
 npm run generate:ppt-ai             # 生成 AI PPT 产品可用的大纲 Markdown
 npm run generate:gamma              # 生成适合粘贴到 Gamma 的大纲
@@ -90,9 +90,9 @@ npm run export:pptx
 
 ## 课程内容主线
 
-当前版本保留两条教学主线：
+当前版本包含两条教学主线：
 
-- 第一课：CodeAgent、Skill、MCP、单测、MR、代码检视与自动修复。
-- 第二课：DolphinScheduler 存量项目、CodeWiki、SDD 四阶文档、SMN 告警大作业。
+- 第一课：AI Coding 演进、CodeAgent、Skill、CLI、MCP、MR 检视与修复闭环。
+- 第二课：SDD 方法、Kiro/OpenSpec/Spec Kit、CodeSpec、全量设计与综合实战。
 
-课程被设计为约 420 分钟的完整版，并支持通过 deck 配置裁剪为半天课、第一课、第二课或自定义章节组合。后续课程演进以 `specs/course.yaml` 和 `specs/modules/*.md` 为准，不依赖初始导入材料。
+课程被设计为约 210 分钟的完整版，并支持通过 deck 配置裁剪为上半场、下半场或自定义章节组合。内部 CodeAgent、CodeSpec、AgentCenter、CodeHub CLI 的未知命令、界面和产品细节统一保留“待内部补充”，不得从公开工具类推。
