@@ -34,9 +34,9 @@
   ],
   "devDependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",
-    "@slidev/cli": "^52.16.0",
+    "@slidev/cli": "^52.18.0",
     "@slidev/theme-default": "^0.25.0",
-    "playwright-chromium": "^1.60.0",
+    "playwright-chromium": "^1.61.1",
     "yaml": "^2.9.0"
   }
 }
