@@ -11,10 +11,8 @@ meta:
   language: zh-CN
   audience_label: 企业研发工程师
   summary: >-
-    面向企业研发工程师的 3.5 小时 AI 辅助开发实战课程。课程从 AI Coding
-    工程范式、CodeAgent 使用、Skill、CLI、MCP 和 MR 反馈闭环出发，进一步进入
-    SDD、业界规格工具和 CodeSpec 实战。所有内部工具的命令、界面和产品细节均以
-    内部正式资料为准，未知内容保留“待内部补充”。
+    AI 辅助开发培训的五页精简版本，仅保留封面、课程地图、培训目标、
+    课程组织和环境准备。
 
 audience:
   primary: 需要把 AI Agent 纳入日常功能开发、代码检视和规格驱动研发流程的工程师。
@@ -23,15 +21,12 @@ audience:
     - 已准备 JDK、Maven、Git、样例项目及必要仓库权限。
     - CodeAgent、CodeSpec、AgentCenter、CodeHub CLI 的版本、权限与凭据按内部通知准备。
   learning_outcomes:
-    - 能用 Explore、Plan、Code、Verify 的节奏完成小范围功能开发。
-    - 能把测试、提交、MR、检视和修复串成可停止的反馈闭环。
-    - 能判断 Skill over CLI 与 MCP 的适用边界，并用 AGENTS.md 固化项目规则。
-    - 能解释 SDD 的 Spec、Design、Tasks、Implementation、Verification 阶段。
-    - 能在 Brownfield 项目中校准全量设计，并完成一次端到端 SDD 练习。
+    - 能说明课程原有两条主线和最终产出。
+    - 能确认本地环境与内部权限是否就绪。
 
 learning_design:
-  duration_min: 210
-  promise: 用半天时间跑通从 Agent 辅助编码、MR 反馈闭环到规格驱动研发的完整路径。
+  duration_min: 9
+  promise: 用五页完成课程目标、课堂组织和环境准备对齐。
   principles:
     - "Evidence first: 每次生成都必须落到 Diff、测试、MR 或文档证据。"
     - "Explore before edit: 先理解现状和约束，再规划与编码。"
@@ -53,34 +48,11 @@ deck_defaults:
   output: build/slides/ai-assisted-development-3h30.slidev.md
 
 decks:
-  - id: full-3h30
-    title: 3.5 小时完整版
+  - id: first-5-pages
+    title: 五页精简版
     output: build/slides/ai-assisted-development-3h30.slidev.md
     include_modules:
       - orientation
-      - foundations-tools
-      - petclinic-micro-loop
-      - mcp-review-repair
-      - sdd-codewiki
-      - smn-design-lab
-      - course-wrap-up
-
-  - id: lesson1-lab
-    title: 上半场：AI Coding 工具链基础
-    output: build/slides/lesson1-ai-toolchain.slidev.md
-    include_modules:
-      - orientation
-      - foundations-tools
-      - petclinic-micro-loop
-      - mcp-review-repair
-
-  - id: lesson2-sdd
-    title: 下半场：规格驱动研发实战
-    output: build/slides/lesson2-sdd.slidev.md
-    include_modules:
-      - sdd-codewiki
-      - smn-design-lab
-      - course-wrap-up
 
 modules:
   - id: orientation
@@ -88,42 +60,6 @@ modules:
     title: 课程引导
     duration_min: 9
     tags: [intro, required]
-
-  - id: foundations-tools
-    file: specs/modules/10-foundations-tools.md
-    title: 课程一：AI Coding 工具链基础
-    duration_min: 18
-    tags: [lesson1, tools, method]
-
-  - id: petclinic-micro-loop
-    file: specs/modules/20-petclinic-micro-loop.md
-    title: CodeAgent 功能开发实战
-    duration_min: 23
-    tags: [lesson1, lab]
-
-  - id: mcp-review-repair
-    file: specs/modules/30-mcp-review-repair.md
-    title: Agent 扩展与 MR 反馈闭环
-    duration_min: 55
-    tags: [lesson1, skill, mcp, review]
-
-  - id: sdd-codewiki
-    file: specs/modules/40-sdd-codewiki.md
-    title: 课程二：规格驱动研发实战
-    duration_min: 30
-    tags: [lesson2, sdd, ecosystem]
-
-  - id: smn-design-lab
-    file: specs/modules/50-smn-design-lab.md
-    title: CodeSpec 与端到端 SDD
-    duration_min: 65
-    tags: [lesson2, codespec, lab]
-
-  - id: course-wrap-up
-    file: specs/modules/60-assessment-rollout.md
-    title: 课程总结与课后实践
-    duration_min: 10
-    tags: [summary, homework]
 
 labs: []
 

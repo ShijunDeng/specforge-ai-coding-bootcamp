@@ -1,8 +1,6 @@
 deck:
-  id: custom-sdd-lab
-  title: 自定义：SDD 设计实操工作坊
-  output: build/slides/custom-sdd-lab.slidev.md
+  id: custom-first-5-pages
+  title: 自定义：五页精简版
+  output: build/slides/custom-first-5-pages.slidev.md
   include_modules:
     - orientation
-    - sdd-codewiki
-    - smn-design-lab
