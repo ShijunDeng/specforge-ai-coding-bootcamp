@@ -1,6 +1,0 @@
-deck:
-  id: custom-first-5-pages
-  title: 自定义：五页精简版
-  output: build/slides/custom-first-5-pages.slidev.md
-  include_modules:
-    - orientation
