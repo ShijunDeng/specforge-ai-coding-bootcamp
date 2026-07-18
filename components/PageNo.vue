@@ -3,7 +3,7 @@ withDefaults(defineProps<{
   current: string
   total?: string
 }>(), {
-  total: '41',
+  total: '42',
 })
 </script>
 

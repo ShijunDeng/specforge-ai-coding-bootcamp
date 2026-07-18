@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="352" viewBox="0 0 1180 352" role="img" aria-labelledby="title desc">
+  <title id="title">AgentCenter 产品截图占位图</title>
+  <desc id="desc">用于后续替换为内部 AgentCenter 能力中心真实界面的中性线框占位图</desc>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfdfc"/>
+      <stop offset="1" stop-color="#eef6f2"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#164f47"/>
+      <stop offset="1" stop-color="#103f3a"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#103f3a" flood-opacity=".10"/>
+    </filter>
+  </defs>
+
+  <rect width="1180" height="352" rx="12" fill="url(#canvas)"/>
+  <rect x="0" y="0" width="1180" height="34" rx="12" fill="#f6f8f7"/>
+  <rect x="0" y="22" width="1180" height="12" fill="#f6f8f7"/>
+  <circle cx="18" cy="17" r="4" fill="#f06b3f"/>
+  <circle cx="32" cy="17" r="4" fill="#f4b54c"/>
+  <circle cx="46" cy="17" r="4" fill="#8ab8aa"/>
+  <rect x="82" y="9" width="310" height="16" rx="8" fill="#e5ece8"/>
+
+  <rect x="0" y="34" width="192" height="318" fill="#103f3a"/>
+  <text x="24" y="76" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="700">AgentCenter</text>
+  <text x="24" y="98" fill="#a9d5ca" font-family="Arial, sans-serif" font-size="10">INTERNAL CAPABILITY HUB</text>
+  <rect x="18" y="124" width="156" height="34" rx="9" fill="#ffffff" fill-opacity=".12"/>
+  <rect x="31" y="136" width="62" height="10" rx="5" fill="#d7eee8"/>
+  <rect x="31" y="181" width="88" height="9" rx="4.5" fill="#93c4b8" fill-opacity=".78"/>
+  <rect x="31" y="216" width="72" height="9" rx="4.5" fill="#93c4b8" fill-opacity=".65"/>
+  <rect x="31" y="251" width="96" height="9" rx="4.5" fill="#93c4b8" fill-opacity=".52"/>
+  <rect x="31" y="286" width="64" height="9" rx="4.5" fill="#93c4b8" fill-opacity=".42"/>
+
+  <rect x="216" y="54" width="930" height="68" rx="14" fill="url(#hero)" filter="url(#shadow)"/>
+  <text x="240" y="82" fill="#ffffff" font-family="Arial, sans-serif" font-size="17" font-weight="700">团队能力，集中发现</text>
+  <text x="240" y="102" fill="#bfdfd7" font-family="Arial, sans-serif" font-size="10">搜索并查看可复用的 Agent、Skill 与 MCP 能力</text>
+  <rect x="805" y="70" width="313" height="34" rx="17" fill="#ffffff"/>
+  <circle cx="828" cy="87" r="7" fill="none" stroke="#9aaba4" stroke-width="2"/>
+  <line x1="833" y1="92" x2="839" y2="98" stroke="#9aaba4" stroke-width="2"/>
+  <rect x="850" y="82" width="108" height="9" rx="4.5" fill="#dfe7e3"/>
+
+  <text x="216" y="153" fill="#103f3a" font-family="Arial, sans-serif" font-size="13" font-weight="700">能力分类</text>
+  <g font-family="Arial, sans-serif" font-size="10" font-weight="700">
+    <rect x="296" y="137" width="72" height="26" rx="13" fill="#f06b3f"/><text x="319" y="154" fill="#fff">Agent</text>
+    <rect x="376" y="137" width="72" height="26" rx="13" fill="#e8f3ee"/><text x="400" y="154" fill="#245d53">Skill</text>
+    <rect x="456" y="137" width="72" height="26" rx="13" fill="#e8f3ee"/><text x="481" y="154" fill="#245d53">MCP</text>
+    <rect x="536" y="137" width="72" height="26" rx="13" fill="#e8f3ee"/><text x="562" y="154" fill="#245d53">CLI</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="216" y="181" width="286" height="137" rx="14" fill="#ffffff" stroke="#d4e1db"/>
+    <rect x="520" y="181" width="286" height="137" rx="14" fill="#ffffff" stroke="#d4e1db"/>
+    <rect x="824" y="181" width="322" height="137" rx="14" fill="#ffffff" stroke="#d4e1db"/>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="236" y="201" width="40" height="40" rx="12" fill="#fff0e8"/>
+    <text x="248" y="226" fill="#f06b3f" font-size="13" font-weight="700">A</text>
+    <rect x="290" y="204" width="128" height="12" rx="6" fill="#174b44"/>
+    <rect x="290" y="225" width="174" height="8" rx="4" fill="#d9e5df"/>
+    <rect x="236" y="259" width="226" height="8" rx="4" fill="#e5ece8"/>
+    <rect x="236" y="277" width="176" height="8" rx="4" fill="#e5ece8"/>
+    <rect x="236" y="297" width="58" height="11" rx="5.5" fill="#e8f3ee"/>
+
+    <rect x="540" y="201" width="40" height="40" rx="12" fill="#e7f3ef"/>
+    <text x="553" y="226" fill="#1e6a5d" font-size="13" font-weight="700">S</text>
+    <rect x="594" y="204" width="112" height="12" rx="6" fill="#174b44"/>
+    <rect x="594" y="225" width="170" height="8" rx="4" fill="#d9e5df"/>
+    <rect x="540" y="259" width="226" height="8" rx="4" fill="#e5ece8"/>
+    <rect x="540" y="277" width="188" height="8" rx="4" fill="#e5ece8"/>
+    <rect x="540" y="297" width="58" height="11" rx="5.5" fill="#e8f3ee"/>
+
+    <rect x="844" y="201" width="40" height="40" rx="12" fill="#eaf4fb"/>
+    <text x="856" y="226" fill="#277bb4" font-size="13" font-weight="700">M</text>
+    <rect x="898" y="204" width="126" height="12" rx="6" fill="#174b44"/>
+    <rect x="898" y="225" width="204" height="8" rx="4" fill="#d9e5df"/>
+    <rect x="844" y="259" width="252" height="8" rx="4" fill="#e5ece8"/>
+    <rect x="844" y="277" width="210" height="8" rx="4" fill="#e5ece8"/>
+    <rect x="844" y="297" width="58" height="11" rx="5.5" fill="#e8f3ee"/>
+  </g>
+
+  <g opacity=".92">
+    <path d="M1000 326h118" stroke="#c5d6cf" stroke-width="1.5" stroke-dasharray="5 5"/>
+    <text x="900" y="331" fill="#6d8279" font-family="Arial, sans-serif" font-size="10">AgentCenter 产品截图占位</text>
+  </g>
+</svg>

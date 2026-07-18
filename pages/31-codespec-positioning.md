@@ -4,14 +4,16 @@ class: lesson-slide
 ---
 
 <div class="section-tag">10 · CodeSpec</div>
-# CodeSpec 产品定位
+# CodeSpec：SDD 一站式工具
 <BrandMark />
 <PageNo current="29" />
 
-<div class="codespec-map">
-  <div class="repo-base"><b>代码仓库</b><span>现有实现 · 测试 · 历史约束</span></div>
-  <div class="codespec-core"><strong>CodeSpec</strong><span>内部规格驱动工具</span></div>
-  <div class="artifact a1"><b>项目规则</b><span>研发约束</span></div><div class="artifact a2"><b>全量规格</b><span>业务能力</span></div><div class="artifact a3"><b>全量设计</b><span>架构与模型</span></div><div class="artifact a4"><b>特性规格</b><span>行为增量</span></div><div class="artifact a5"><b>技术设计</b><span>实现方案</span></div><div class="artifact a6"><b>任务拆分</b><span>执行顺序</span></div>
+<div class="codespec-hero">
+  <img src="/placeholders/codespec-product-shot.png" alt="CodeSpec 产品界面截图占位图" />
 </div>
 
-<div class="unknown-bar"><strong>待内部资料确认</strong><span>真实产物名称</span><span>状态机</span><span>命令边界</span><span>审批节点</span><span>与 OpenSpec 的关系</span></div>
+<!--
+讲师提示：本页只做 CodeSpec 的产品亮相。授课前将占位图替换为真实产品截图，结合截图介绍内部 CodeSpec 如何承载 SDD 流程。
+
+替换方式：保持页面代码不变，用真实截图覆盖 public/placeholders/codespec-product-shot.png。建议使用 16:9 图片，并裁切到能够识别核心工作区。
+-->

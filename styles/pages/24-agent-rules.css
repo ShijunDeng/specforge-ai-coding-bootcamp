@@ -1,13 +1,291 @@
-/* rules */
-.rules-transform { display: grid; margin-top: 25px; grid-template-columns: 1fr 120px 1fr; gap: 22px; align-items: center; }
-.scattered { position: relative; min-height: 270px; border: 2px dashed #d5c4ba; border-radius: 18px; background: rgba(255,255,255,.75); }
-.scattered span { position: absolute; padding: 8px 11px; border-radius: 8px; color: #7a5143; background: #fff1e8; font-size: 10px; transform: rotate(-5deg); }
-.scattered span:nth-child(1) { top: 35px; left: 38px; }.scattered span:nth-child(2) { top: 38px; right: 50px; transform: rotate(6deg); }.scattered span:nth-child(3) { top: 112px; left: 145px; }.scattered span:nth-child(4) { bottom: 38px; left: 50px; transform: rotate(4deg); }.scattered span:nth-child(5) { bottom: 42px; right: 42px; }
-.scattered strong { position: absolute; bottom: 105px; left: 122px; color: var(--red); font-size: 18px; }
-.transform-arrow { color: var(--accent); text-align: center; font-size: 42px; }
-.transform-arrow small { display: block; color: var(--muted); font-size: 9px; }
-.agents-file { min-height: 270px; padding: 28px; border-radius: 16px; color: #cbe8df; background: #0c1d1b; box-shadow: var(--shadow); }
-.agents-file code { color: #ffb176; font-size: 25px; }
-.agents-file p { color: #cbe8df; line-height: 2; }
-.rule-quality { margin-top: 20px; }
-.scope-line b { margin-left: auto; color: #ffd18d; }
+/* Page 24: repeated commit instructions become repository rules */
+.agents-rule-lead {
+  margin: 7px 0 14px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.agents-rule-story {
+  display: grid;
+  grid-template-columns: 0.86fr 82px 1.14fr;
+  gap: 18px;
+  align-items: stretch;
+  min-height: 292px;
+}
+
+.agents-rule-repeat {
+  position: relative;
+  overflow: hidden;
+  padding: 17px 20px;
+  border: 1px dashed #d9bdb0;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, .72);
+}
+
+.agents-rule-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.agents-rule-caption span {
+  color: var(--brand);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.agents-rule-caption b {
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #9d4634;
+  background: #fff0e7;
+  font-size: 9px;
+  letter-spacing: .06em;
+}
+
+.agents-rule-prompt {
+  position: absolute;
+  left: 50%;
+  width: 82%;
+  min-height: 105px;
+  padding: 15px 17px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 12px 25px rgba(16, 63, 58, .09);
+  transform: translateX(-50%);
+}
+
+.agents-rule-prompt small {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--brand);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.agents-rule-prompt code {
+  display: block;
+  overflow: hidden;
+  color: #84675c;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.agents-rule-prompt--back {
+  top: 67px;
+  opacity: .48;
+  transform: translateX(-50%) rotate(-3deg) scale(.94);
+}
+
+.agents-rule-prompt--middle {
+  top: 108px;
+  opacity: .72;
+  transform: translateX(-50%) rotate(2deg) scale(.97);
+}
+
+.agents-rule-prompt--front {
+  top: 151px;
+  border-color: #efb49f;
+}
+
+.agents-rule-prompt--front strong {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 5px 9px;
+  border-radius: 7px;
+  color: #fff;
+  background: var(--accent);
+  font-size: 9px;
+}
+
+.agents-rule-transfer {
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.agents-rule-transfer span {
+  color: var(--accent);
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.agents-rule-transfer small {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.agents-rule-file {
+  overflow: hidden;
+  border: 1px solid #183d37;
+  border-radius: 17px;
+  color: #d8ece6;
+  background: #0c211e;
+  box-shadow: 0 18px 38px rgba(11, 43, 39, .16);
+}
+
+.agents-rule-filebar {
+  display: flex;
+  height: 45px;
+  padding: 0 18px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  background: #102a26;
+}
+
+.agents-rule-filebar i {
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #e06d4f;
+}
+
+.agents-rule-filebar i:nth-child(2) { background: #f0b35c; }
+.agents-rule-filebar i:nth-child(3) { margin-right: 13px; background: #6fbd9c; }
+
+.agents-rule-filebar code {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.agents-rule-filebar em {
+  margin-left: auto;
+  color: #78a69b;
+  font-size: 8px;
+  font-style: normal;
+  letter-spacing: .12em;
+}
+
+.agents-rule-code {
+  padding: 19px 25px 13px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.agents-rule-code .agents-rule-comment {
+  display: block;
+  margin-bottom: 13px;
+  color: #ffb47c;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.agents-rule-code p {
+  margin: 7px 0;
+  color: #d8ece6;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.agents-rule-code b {
+  margin-right: 8px;
+  color: #6fbd9c;
+}
+
+.agents-rule-code mark {
+  padding: 1px 4px;
+  border-radius: 4px;
+  color: #ffe1a5;
+  background: rgba(255, 198, 106, .1);
+}
+
+.agents-rule-filefoot {
+  display: flex;
+  margin: 0 18px;
+  padding: 10px 7px 12px;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  color: #87aea5;
+  font-size: 9px;
+}
+
+.agents-rule-practices {
+  display: grid;
+  grid-template-columns: 1fr 1.12fr 1.12fr;
+  gap: 13px;
+  margin-top: 14px;
+}
+
+.agents-rule-practices article {
+  display: grid;
+  min-height: 105px;
+  padding: 15px 17px;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .9);
+}
+
+.agents-rule-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 10px;
+  color: #fff;
+  background: var(--brand);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+
+.agents-rule-practices article:nth-child(2) .agents-rule-icon { background: var(--accent); }
+.agents-rule-practices article:nth-child(3) .agents-rule-icon { color: var(--brand); background: #dcece5; }
+
+.agents-rule-practices h3 {
+  margin: 0 0 6px;
+  color: var(--brand);
+  font-size: 15px;
+}
+
+.agents-rule-practices p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10.5px;
+  line-height: 1.55;
+}
+
+.agents-rule-practices code {
+  color: #9d4634;
+  background: #fff0e7;
+  font-size: 9px;
+}
+
+.agents-rule-guardrail {
+  display: flex;
+  min-height: 45px;
+  margin-top: 12px;
+  padding: 0 17px;
+  align-items: center;
+  gap: 13px;
+  border-radius: 11px;
+  color: #d9eee8;
+  background: var(--brand);
+  font-size: 10.5px;
+}
+
+.agents-rule-guardrail b {
+  margin-right: 4px;
+  color: #ffd08c;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.agents-rule-guardrail i {
+  color: #77ac9e;
+  font-size: 15px;
+  font-style: normal;
+}
+
+.agents-rule-guardrail strong {
+  margin-left: auto;
+  color: #fff;
+  font-size: 11px;
+}

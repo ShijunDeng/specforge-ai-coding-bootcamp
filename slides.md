@@ -2,7 +2,7 @@
 theme: default
 title: AI 辅助开发课程
 info: |
-  从 CodeAgent 工具链到规格驱动研发：43 页企业研发实战课件。
+  从 CodeAgent 工具链到规格驱动研发：44 页企业研发实战课件。
 transition: slide-left
 drawings:
   persist: false
@@ -177,4 +177,8 @@ src: ./pages/42-path-forward.md
 
 ---
 src: ./pages/43-homework.md
+---
+
+---
+src: ./pages/44-ending.md
 ---

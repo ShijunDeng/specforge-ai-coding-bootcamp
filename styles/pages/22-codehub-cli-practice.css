@@ -1,5 +1,85 @@
-/* loop */
-.loop-hex > div { min-height: 150px; }
-.lab-columns { margin-top: 24px; }
-.lab-columns > div { min-height: 190px; }
-.lab-columns li { margin: 5px 0; font-size: 11px; }
+/* CodeHub MR practice */
+.codehub-practice-lead {
+  margin: 5px 0 28px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.codehub-practice-steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none !important;
+}
+
+.codehub-practice-steps > li::marker {
+  content: '';
+}
+
+.codehub-practice-steps > li {
+  position: relative;
+  min-height: 390px;
+  padding: 25px 21px 23px;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--brand);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: var(--shadow);
+}
+
+.codehub-practice-steps > li:nth-child(even) {
+  border-top-color: var(--accent);
+}
+
+.codehub-practice-steps > li:not(:last-child)::after {
+  position: absolute;
+  z-index: 2;
+  top: 60px;
+  right: -13px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 1px solid #f1c7b9;
+  border-radius: 50%;
+  color: var(--accent);
+  background: var(--paper);
+  content: '\2192';
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.codehub-practice-index {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--brand);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+.codehub-practice-steps > li:nth-child(even) .codehub-practice-index {
+  background: var(--accent);
+}
+
+.codehub-practice-steps h2 {
+  min-height: 58px;
+  margin: 30px 0 18px;
+  color: var(--brand);
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -.02em;
+}
+
+.codehub-practice-steps p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}

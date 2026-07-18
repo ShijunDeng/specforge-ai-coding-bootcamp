@@ -1,15 +1,133 @@
-/* portal */
-.portal-mock { display: grid; margin-top: 18px; overflow: hidden; min-height: 410px; grid-template-columns: 230px 1fr; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: var(--shadow); }
-.portal-side { display: flex; padding: 24px; flex-direction: column; gap: 18px; color: #d8eee8; background: var(--brand); }
-.portal-side b { margin-bottom: 16px; color: #fff; font-size: 21px; }
-.portal-side span { padding: 10px; border-radius: 8px; font-size: 11px; }
-.portal-side span:first-of-type { background: rgba(255,255,255,.12); }
-.portal-main { padding: 24px; background: #f5f8f6; }
-.portal-search { padding: 12px 16px; border: 1px solid var(--line); border-radius: 999px; color: #9aa6a1; background: #fff; font-size: 10px; }
-.portal-cards { display: grid; margin-top: 22px; grid-template-columns: repeat(3,1fr); gap: 13px; }
-.portal-cards > div { min-height: 170px; padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: #fff; }
-.portal-cards b { display: inline-block; padding: 4px 7px; border-radius: 999px; color: #fff; background: var(--accent); font-size: 8px; }
-.portal-cards strong { display: block; margin: 22px 0 14px; color: var(--brand); font-size: 16px; }
-.portal-cards span { color: var(--muted); font-size: 9px; }
-.placeholder { margin-top: 22px; padding: 14px; border: 2px dashed #c8d4cf; border-radius: 10px; color: #88968f; text-align: center; font-size: 10px; }
-.journey-row span { padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,.12); }
+/* Page 20 · AgentCenter screenshot-first overview */
+.agentcenter-slide .lesson-heading {
+  margin-bottom: 0;
+}
+
+.agentcenter-lead {
+  margin: 9px 0 14px;
+  color: #40534b;
+  font-size: 15.5px !important;
+  line-height: 1.45 !important;
+}
+
+.agentcenter-showcase {
+  position: relative;
+  overflow: hidden;
+  height: 496px;
+  margin: 0;
+  border: 1px solid rgba(16, 63, 58, .16);
+  border-radius: 19px;
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 16px 38px rgba(16, 63, 58, .1);
+}
+
+.agentcenter-shot-head {
+  display: flex;
+  height: 38px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dbe5e0;
+  background: linear-gradient(90deg, #f6faf7, #fffaf3);
+}
+
+.agentcenter-shot-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--brand);
+  font-size: 10px;
+}
+
+.agentcenter-shot-label span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(240, 107, 63, .12);
+}
+
+.agentcenter-shot-label b {
+  font-size: 11px;
+}
+
+.agentcenter-shot-head small {
+  color: #788a82;
+  font-size: 10px;
+}
+
+.agentcenter-shot-frame {
+  height: 376px;
+  padding: 12px 14px;
+  background:
+    linear-gradient(135deg, rgba(16, 63, 58, .035), rgba(240, 107, 63, .025)),
+    #eef4f1;
+}
+
+.agentcenter-shot-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(16, 63, 58, .15);
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: top center;
+  background: #f9fbfa;
+  box-shadow: 0 10px 24px rgba(16, 63, 58, .09);
+}
+
+.agentcenter-capabilities {
+  display: grid;
+  height: 82px;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #dbe5e0;
+  background: #fff;
+}
+
+.agentcenter-capabilities > div {
+  position: relative;
+  display: grid;
+  padding: 13px 16px 12px 53px;
+  grid-template-columns: auto 1fr;
+  align-content: center;
+  column-gap: 8px;
+  border-right: 1px solid #e1e9e5;
+}
+
+.agentcenter-capabilities > div:last-child {
+  border-right: 0;
+}
+
+.agentcenter-capabilities span {
+  position: absolute;
+  top: 17px;
+  left: 14px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--brand);
+  font-size: 8.5px;
+  font-weight: 900;
+}
+
+.agentcenter-capabilities > div:first-child span {
+  background: var(--accent);
+}
+
+.agentcenter-capabilities b {
+  align-self: end;
+  color: var(--brand);
+  font-size: 14px;
+}
+
+.agentcenter-capabilities small {
+  grid-column: 1 / -1;
+  align-self: start;
+  margin-top: 3px;
+  color: #6d7d76;
+  font-size: 10.4px;
+  line-height: 1.25;
+}

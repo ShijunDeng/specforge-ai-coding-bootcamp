@@ -1,16 +1,452 @@
-/* skill */
-.skill-layout { display: grid; margin-top: 32px; grid-template-columns: .72fr 1.28fr; gap: 24px; }
-.file-tree { min-height: 360px; padding: 28px; border: 1px solid var(--line); border-radius: 16px; color: var(--brand); background: rgba(255,255,255,.93); box-shadow: var(--shadow); font-family: monospace; font-size: 15px; line-height: 2.4; }
-.file-tree .indent { padding-left: 24px; border-left: 1px solid var(--line); }
-.file-tree .indent2 { padding-left: 48px; border-left: 1px solid var(--line); }
-.file-tree span { float: right; color: var(--muted); font-family: sans-serif; font-size: 9px; }
-.progressive-flow { display: grid; grid-template-columns: 1fr 28px 1fr 28px 1fr; align-items: center; }
-.progressive-flow > div { min-height: 260px; padding: 18px; border-radius: 15px; background: var(--brand); color: #fff; }
-.progressive-flow > div:nth-of-type(2) { background: var(--blue); }
-.progressive-flow > div:nth-of-type(3) { background: var(--accent); }
-.progressive-flow b { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; color: var(--brand); background: #fff; }
-.progressive-flow h3 { margin-top: 16px; color: #fff; font-size: 18px; }
-.progressive-flow p { color: rgba(255,255,255,.83); }
-.progressive-flow i { color: var(--accent); text-align: center; font-style: normal; font-size: 22px; }
-.principle-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-top: 18px; }
-.principle-grid span { padding: 10px; border-radius: 999px; color: var(--brand); text-align: center; background: var(--soft); font-size: 11px; font-weight: 800; }
+/* slide 17 · skill anatomy and runtime */
+.skill-lead {
+  margin: 0 0 16px;
+  color: #455b52;
+  font-size: 16px !important;
+  line-height: 1.45 !important;
+}
+
+.skill-lead code {
+  padding: 2px 6px;
+  border: 1px solid rgba(16, 63, 58, .12);
+  border-radius: 6px;
+  color: var(--brand);
+  background: rgba(255, 255, 255, .82);
+  font-size: .86em;
+  font-weight: 800;
+}
+
+.skill-anatomy {
+  display: grid;
+  grid-template-columns: .92fr 1.38fr;
+  gap: 18px;
+  height: 366px;
+}
+
+.skill-package,
+.skill-runtime {
+  position: relative;
+  min-width: 0;
+  border: 1px solid rgba(16, 63, 58, .15);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .91);
+  box-shadow: 0 14px 34px rgba(16, 63, 58, .08);
+}
+
+.skill-package {
+  display: grid;
+  padding: 50px 16px 14px;
+  gap: 7px;
+  align-content: start;
+  border-top-left-radius: 7px;
+}
+
+.skill-folder-tab {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  display: flex;
+  width: 66%;
+  height: 40px;
+  padding: 0 14px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(16, 63, 58, .16);
+  border-bottom-color: rgba(16, 63, 58, .08);
+  border-radius: 7px 16px 0 0;
+  color: var(--brand);
+  background: #eaf5ee;
+}
+
+.skill-folder-tab::after {
+  content: "";
+  position: absolute;
+  right: -24px;
+  bottom: -1px;
+  width: 26px;
+  height: 16px;
+  border-bottom: 1px solid rgba(16, 63, 58, .08);
+  background: #eaf5ee;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.folder-glyph {
+  position: relative;
+  width: 17px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--accent-2);
+}
+
+.folder-glyph::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 1px;
+  width: 8px;
+  height: 5px;
+  border-radius: 2px 2px 0 0;
+  background: var(--accent-2);
+}
+
+.skill-folder-tab b {
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 14px;
+}
+
+.skill-folder-tab small {
+  margin-left: auto;
+  color: #708078;
+  font-size: 9px;
+}
+
+.skill-file {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  min-height: 55px;
+  padding: 9px 10px;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #dde7e2;
+  border-radius: 11px;
+  background: #fff;
+}
+
+.skill-file-main {
+  min-height: 76px;
+  border-color: rgba(240, 107, 63, .28);
+  background: linear-gradient(135deg, #fff9f3, #fff);
+}
+
+.file-glyph {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 9px;
+  color: #fff;
+  background: var(--brand);
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+
+.file-glyph.md { background: var(--accent); }
+.file-glyph.code { background: var(--brand); font-size: 10px; }
+.file-glyph.ref { color: #205477; background: var(--blue-soft); }
+.file-glyph.asset { color: #6b4b10; background: #fff1ce; }
+
+.skill-file h3 {
+  margin: 0 0 2px;
+  color: var(--brand);
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+}
+
+.skill-file h3 em {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 2px 5px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--accent);
+  font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-size: 7px;
+  font-style: normal;
+  vertical-align: 2px;
+}
+
+.skill-file p {
+  margin: 0;
+  color: #66766f;
+  font-size: 10.6px !important;
+  line-height: 1.35 !important;
+}
+
+.skill-file p code {
+  color: #354e44;
+  font-size: .9em;
+  font-weight: 700;
+}
+
+.skill-file > strong {
+  padding: 4px 7px;
+  border-radius: 999px;
+  color: var(--brand);
+  background: var(--soft);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.skill-file-main > strong {
+  color: #a33d1e;
+  background: #fff0e8;
+}
+
+.skill-runtime {
+  padding: 16px 16px 14px;
+  overflow: hidden;
+  background:
+    linear-gradient(140deg, rgba(16, 63, 58, .035), transparent 48%),
+    rgba(255, 255, 255, .93);
+}
+
+.skill-runtime::after {
+  content: "";
+  position: absolute;
+  right: -45px;
+  bottom: -65px;
+  width: 185px;
+  height: 185px;
+  border: 26px solid rgba(16, 63, 58, .025);
+  border-radius: 50%;
+}
+
+.runtime-heading {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dfe8e4;
+}
+
+.runtime-heading > div {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.runtime-heading small {
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.runtime-heading b {
+  color: var(--brand);
+  font-size: 18px;
+}
+
+.runtime-heading > span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #587068;
+  background: #eef6f2;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.runtime-flow {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  margin-top: 12px;
+  grid-template-rows: 70px 23px 78px 23px 86px;
+}
+
+.runtime-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  padding: 10px 12px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+}
+
+.runtime-step.discovery {
+  width: 78%;
+  color: var(--brand);
+  border: 1px solid #cfe0d8;
+  background: #f4faf6;
+}
+
+.runtime-step.activation {
+  width: 89%;
+  color: #fff;
+  background: var(--brand-2);
+  box-shadow: 0 10px 24px rgba(30, 106, 93, .16);
+}
+
+.runtime-step.execution {
+  width: 100%;
+  color: #fff;
+  background: var(--brand);
+  box-shadow: 0 12px 28px rgba(16, 63, 58, .18);
+}
+
+.step-index {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.runtime-step.discovery .step-index {
+  color: var(--brand);
+  background: #dceee5;
+}
+
+.runtime-step small {
+  display: block;
+  margin-bottom: 1px;
+  color: inherit;
+  opacity: .62;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.runtime-step h3 {
+  display: inline-block;
+  margin: 0 8px 0 0;
+  color: inherit;
+  font-size: 14px;
+}
+
+.runtime-step p {
+  display: inline;
+  margin: 0;
+  color: inherit;
+  opacity: .86;
+  font-size: 10.6px !important;
+  line-height: 1.35 !important;
+}
+
+.runtime-step code {
+  padding: 1px 4px;
+  border-radius: 4px;
+  color: #fff;
+  background: rgba(0, 0, 0, .18);
+  font-size: .92em;
+  font-weight: 800;
+}
+
+.runtime-step.discovery code {
+  color: var(--brand);
+  background: rgba(16, 63, 58, .06);
+}
+
+.load-chip {
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: inherit;
+  background: rgba(255, 255, 255, .14);
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.runtime-step.discovery .load-chip {
+  background: #e3f1ea;
+}
+
+.runtime-connector {
+  display: flex;
+  padding-left: 21px;
+  align-items: center;
+  gap: 8px;
+  color: #7b8c84;
+  font-size: 8.5px;
+  font-weight: 700;
+}
+
+.runtime-connector i {
+  position: relative;
+  display: block;
+  width: 2px;
+  height: 19px;
+  background: #bfcfc8;
+}
+
+.runtime-connector i::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid #bfcfc8;
+  border-bottom: 2px solid #bfcfc8;
+  transform: rotate(45deg);
+}
+
+.skill-value-strip {
+  display: grid;
+  margin-top: 14px;
+  grid-template-columns: 1.24fr repeat(4, 1fr);
+  min-height: 86px;
+  border: 1px solid rgba(16, 63, 58, .13);
+  border-radius: 15px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .9);
+  box-shadow: 0 10px 24px rgba(16, 63, 58, .06);
+}
+
+.value-intro {
+  display: flex;
+  padding: 14px 16px;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  background: var(--accent);
+}
+
+.value-intro small {
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, .72);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.value-intro b {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.value-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  padding: 11px 10px;
+  align-content: center;
+  gap: 7px;
+  border-right: 1px solid #e2e9e5;
+}
+
+.value-item:last-child { border-right: 0; }
+
+.value-item > span {
+  color: #9aaba3;
+  font-size: 9px;
+  font-weight: 900;
+}
+
+.value-item b {
+  display: block;
+  color: var(--brand);
+  font-size: 12px;
+}
+
+.value-item p {
+  margin: 1px 0 0;
+  color: #6a7872;
+  font-size: 9.5px !important;
+  line-height: 1.25 !important;
+}
+
+.value-item > strong {
+  grid-column: 2;
+  color: var(--accent);
+  font-size: 9.5px;
+}

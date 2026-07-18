@@ -1,10 +1,237 @@
-/* install tracks */
-.dual-track { display: grid; margin-top: 25px; grid-template-columns: 1fr 1fr; gap: 18px; }
-.public-track, .internal-track { min-height: 440px; padding: 24px; border-radius: 18px; box-shadow: var(--shadow); }
-.public-track { color: #d8eee7; background: #0c1d1b; }.internal-track { border: 2px dashed #d6c2b7; background: rgba(255,255,255,.83); }
-.public-track small, .internal-track small { color: var(--accent); font-size: 10px; font-weight: 900; letter-spacing: .1em; }
-.public-track h2 { margin-top: 14px; color: #fff; }.internal-track h2 { margin-top: 14px; }
-.command-list, .slot-list { display: grid; gap: 10px; margin-top: 22px; }
-.command-list code { padding: 10px 13px; border-radius: 8px; color: #9de0bf; background: rgba(255,255,255,.07); font-size: 11px; }.slot-list span { padding: 10px 13px; border: 1px dashed #c8b2a5; border-radius: 8px; color: #886454; background: #fff8f3; font-size: 11px; }
-.public-track p, .internal-track p { margin-top: 22px; font-size: 10px; }.public-track p { color: #b9d3cc; }.internal-track p { color: var(--muted); }
-.do-not-confuse { background: #7a4a33; }
+/* Page 33 · CodeSpec two-step installation */
+.codespec-install-slide .codespec-install-lead {
+  margin: 8px 0 14px;
+  color: var(--muted);
+  font-size: 15.5px !important;
+}
+
+.codespec-install-flow {
+  display: grid;
+  grid-template-columns: 1fr 54px 1fr;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.codespec-install-step {
+  min-height: 420px;
+  padding: 21px 22px 18px;
+  border: 1px solid #dbe6e1;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 16px 34px rgba(16, 63, 58, .09);
+}
+
+.codespec-install-step--init {
+  border-color: rgba(242, 101, 52, .42);
+  background: linear-gradient(155deg, rgba(255, 255, 255, .96), rgba(255, 246, 239, .9));
+}
+
+.codespec-install-step > header {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 11px;
+}
+
+.codespec-install-step > header > span {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background: var(--brand);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.codespec-install-step--init > header > span { background: var(--accent); }
+.codespec-install-step > header small {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--accent);
+  font-size: 8.5px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+.codespec-install-step > header h2 { margin: 0; font-size: 18px; }
+.codespec-install-step > header em {
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--brand);
+  background: var(--soft);
+  font-size: 8.5px;
+  font-style: normal;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.codespec-install-step--init > header em { color: #9b4629; background: #ffeadf; }
+
+.codespec-terminal {
+  overflow: hidden;
+  margin-top: 21px;
+  border: 1px solid rgba(4, 25, 22, .55);
+  border-radius: 13px;
+  color: #d9eee7;
+  background: linear-gradient(150deg, #091c19, #103f3a);
+  box-shadow: 0 13px 26px rgba(8, 41, 36, .17);
+}
+.codespec-terminal-bar {
+  display: flex;
+  height: 34px;
+  padding: 0 12px;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  background: rgba(0, 0, 0, .18);
+}
+.codespec-terminal-bar i { width: 7px; height: 7px; border-radius: 50%; background: #ef775e; }
+.codespec-terminal-bar i:nth-child(2) { background: #efbb55; }
+.codespec-terminal-bar i:nth-child(3) { background: #5cbd83; }
+.codespec-terminal-bar span {
+  margin-left: 5px;
+  color: #9cc8bc;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.codespec-command {
+  display: grid;
+  min-height: 58px;
+  padding: 0 15px;
+  grid-template-columns: 14px 1fr;
+  align-items: center;
+  gap: 7px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+.codespec-command:last-child { border-bottom: 0; }
+.codespec-command b { color: var(--accent); font-size: 13px; }
+.codespec-command code {
+  color: #b8f0d7;
+  background: transparent;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.codespec-terminal--focus .codespec-command {
+  min-height: 96px;
+}
+.codespec-terminal--focus .codespec-command code {
+  color: #fff0c4;
+  font-size: 18px;
+}
+
+.codespec-step-notes {
+  display: grid;
+  margin-top: 18px;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+.codespec-step-notes span {
+  padding: 12px 10px;
+  border-radius: 10px;
+  color: var(--brand);
+  background: #eef6f2;
+  font-size: 10.5px;
+  font-weight: 800;
+  text-align: center;
+}
+.codespec-step-notes code { color: var(--brand); font-size: 10px; font-weight: 900; }
+
+.codespec-install-check {
+  display: flex;
+  min-height: 64px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px dashed #bcd3c9;
+  border-radius: 10px;
+  background: rgba(248, 252, 250, .9);
+}
+.codespec-install-check > div { display: grid; gap: 4px; }
+.codespec-install-check small {
+  color: var(--muted);
+  font-size: 8.5px;
+  font-weight: 800;
+}
+.codespec-install-check code {
+  color: var(--brand);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 900;
+}
+.codespec-install-check > span {
+  color: var(--brand);
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.codespec-install-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: var(--accent);
+}
+.codespec-install-arrow span { font-size: 8.5px; font-weight: 900; letter-spacing: .08em; }
+.codespec-install-arrow b { font-size: 30px; line-height: 1; }
+
+.codespec-init-result { margin-top: 17px; }
+.codespec-init-result > small {
+  display: block;
+  color: var(--muted);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+.codespec-init-result > div {
+  display: grid;
+  margin-top: 9px;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.codespec-init-result span {
+  display: flex;
+  min-height: 39px;
+  padding: 0 10px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #efd8cb;
+  border-radius: 9px;
+  color: #734a39;
+  background: rgba(255, 255, 255, .86);
+  font-size: 10.5px;
+  font-weight: 800;
+}
+.codespec-init-result span b {
+  display: grid;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 4px;
+  place-items: center;
+  border-radius: 6px;
+  color: #fff;
+  background: var(--accent);
+  font-size: 8px;
+}
+
+.codespec-install-takeaway {
+  display: flex;
+  min-height: 42px;
+  margin-top: 14px;
+  padding: 0 16px;
+  align-items: center;
+  gap: 12px;
+  border-left: 4px solid var(--accent);
+  border-radius: 9px;
+  color: var(--brand);
+  background: linear-gradient(90deg, #fff1e8, #f2f8f4);
+  font-size: 11px;
+  font-weight: 800;
+}
+.codespec-install-takeaway b { color: var(--accent); }
+.codespec-install-takeaway i { color: var(--accent); font-style: normal; }
+.codespec-install-takeaway code { color: var(--brand); font-size: 10.5px; font-weight: 900; }

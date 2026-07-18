@@ -1,2 +1,53 @@
-/* demo */
-.demo-storyboard { display: grid; margin-top: 26px; grid-template-columns: repeat(3,1fr); gap: 14px; }.demo-storyboard > div { min-height: 160px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: #fff; box-shadow: var(--shadow); }.demo-storyboard b { color: var(--accent); font-size: 10px; }.demo-storyboard h3 { margin-top: 8px; font-size: 17px; }.demo-storyboard p { color: var(--muted); font-size: 10px; }.scorecard { display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; margin-top: 18px; }.scorecard span { padding: 10px; border-radius: 10px; color: #fff; text-align: center; background: var(--brand); font-size: 9px; }.scorecard b { display: block; color: #ffd18d; font-size: 14px; }
+/* outcomes demo */
+.outcomes-demo-slide .outcomes-lead {
+  margin: 2px 0 28px;
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.outcomes-demo-slide .outcomes-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.outcomes-demo-slide .outcome-card {
+  min-height: 390px;
+  padding: 34px 30px;
+  border: 1px solid var(--line);
+  border-top: 8px solid var(--brand-2);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow);
+}
+
+.outcomes-demo-slide .outcome-card--product {
+  border-top-color: var(--accent);
+  background: linear-gradient(145deg, #fff8f1 0%, #ffffff 70%);
+}
+
+.outcomes-demo-slide .outcome-card b {
+  display: block;
+  margin-bottom: 74px;
+  color: var(--accent);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+}
+
+.outcomes-demo-slide .outcome-card:not(.outcome-card--product) b {
+  color: var(--brand-2);
+}
+
+.outcomes-demo-slide .outcome-card h2 {
+  margin-bottom: 18px;
+  font-size: 30px;
+}
+
+.outcomes-demo-slide .outcome-card p {
+  max-width: 280px;
+  margin: 0;
+  color: #52655d;
+  font-size: 17px;
+  line-height: 1.7;
+}

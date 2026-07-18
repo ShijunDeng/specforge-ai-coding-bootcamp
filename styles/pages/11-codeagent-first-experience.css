@@ -6,16 +6,56 @@
 .task-card h3 { margin-top: 17px; }
 .task-card li { margin: 6px 0; }
 .task-card.compact { padding: 22px; }
-.browser-mock { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 20px 44px rgba(20,45,38,.16); }
-.browser-top { display: flex; height: 42px; padding: 0 14px; align-items: center; gap: 7px; background: #e8eeeb; }
-.browser-top i { width: 9px; height: 9px; border-radius: 50%; background: #dc6b5b; }
-.browser-top i:nth-child(2) { background: #efb84f; }
-.browser-top i:nth-child(3) { background: #4caf78; }
-.browser-top span { width: 65%; margin-left: 16px; padding: 5px 12px; border-radius: 999px; color: #718079; background: #fff; font-size: 9px; }
-.ui-list { padding: 26px 34px; }
-.ui-list > strong { color: var(--brand); font-size: 24px; }
-.ui-list button { float: right; padding: 8px 12px; border: 0; border-radius: 7px; color: #fff; background: var(--brand); font-size: 10px; }
-.ui-list > div { display: grid; margin-top: 16px; padding: 14px; grid-template-columns: 1fr 1fr 20px; align-items: center; border: 1px solid var(--line); border-radius: 10px; }
-.ui-list b { color: var(--brand); font-size: 13px; }
-.ui-list span { color: var(--muted); font-size: 11px; }
-.ui-list em { color: var(--accent); font-style: normal; font-size: 22px; }
+
+.veterinarian-task-lede { margin: 6px 0 18px; font-size: 16px; }
+.veterinarian-task-layout { display: grid; grid-template-columns: .88fr 1.12fr; gap: 22px; }
+
+.veterinarian-brief { min-height: 390px; padding: 25px 26px; border: 1px solid rgba(238, 109, 56, .35); border-radius: 18px; background: linear-gradient(145deg, #fff8f1 0%, #fff 76%); box-shadow: var(--shadow); }
+.veterinarian-brief-label { display: flex; align-items: center; justify-content: space-between; }
+.veterinarian-brief-label small { color: var(--accent); font-size: 10px; font-weight: 900; letter-spacing: .14em; }
+.veterinarian-brief-label span { padding: 5px 10px; border-radius: 999px; color: var(--brand); background: #e6f0ec; font-size: 10px; font-weight: 800; }
+.veterinarian-brief h2 { max-width: 420px; margin: 20px 0 10px; color: var(--brand); font-size: 27px; line-height: 1.22; }
+.veterinarian-brief > p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.75; }
+.veterinarian-scope { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.veterinarian-scope article { display: flex; min-height: 72px; padding: 12px; align-items: center; gap: 11px; border: 1px solid #e1eae6; border-radius: 12px; background: rgba(255, 255, 255, .86); }
+.veterinarian-scope article > b { display: grid; width: 34px; height: 34px; flex: 0 0 34px; place-items: center; border-radius: 10px; color: #fff; background: var(--brand); font-size: 10px; }
+.veterinarian-scope article:nth-child(2) > b, .veterinarian-scope article:nth-child(4) > b { background: var(--accent); }
+.veterinarian-scope strong, .veterinarian-scope span { display: block; }
+.veterinarian-scope strong { color: var(--brand); font-size: 13px; }
+.veterinarian-scope span { margin-top: 2px; color: var(--muted); font-size: 10px; }
+
+.veterinarian-preview { min-height: 390px; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 20px 44px rgba(20, 45, 38, .16); }
+.veterinarian-browser-bar { display: flex; height: 40px; padding: 0 14px; align-items: center; gap: 7px; background: #e8eeeb; }
+.veterinarian-browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: #dc6b5b; }
+.veterinarian-browser-bar i:nth-child(2) { background: #efb84f; }
+.veterinarian-browser-bar i:nth-child(3) { background: #4caf78; }
+.veterinarian-browser-bar span { width: 66%; margin-left: 14px; padding: 5px 12px; border-radius: 999px; color: #718079; background: #fff; font-size: 9px; }
+.veterinarian-ui { padding: 22px 24px 24px; }
+.veterinarian-ui > header { display: flex; align-items: flex-end; justify-content: space-between; }
+.veterinarian-ui header small { color: var(--accent); font-size: 8px; font-weight: 900; letter-spacing: .12em; }
+.veterinarian-ui h3 { margin: 2px 0 0; color: var(--brand); font-size: 22px; }
+.veterinarian-ui header button { padding: 8px 13px; border: 0; border-radius: 8px; color: #fff; background: var(--brand); font-size: 10px; font-weight: 800; }
+.veterinarian-ui-body { display: grid; grid-template-columns: .9fr 1.1fr; gap: 13px; margin-top: 18px; }
+.veterinarian-list { display: grid; gap: 8px; }
+.veterinarian-list > div { display: grid; min-height: 58px; padding: 10px 11px; grid-template-columns: 1fr 18px; align-content: center; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.veterinarian-list > div.is-active { border-color: rgba(238, 109, 56, .5); background: #fff7f0; }
+.veterinarian-list b, .veterinarian-list span { display: block; }
+.veterinarian-list b { color: var(--brand); font-size: 11px; }
+.veterinarian-list span { margin-top: 2px; color: var(--muted); font-size: 8.5px; }
+.veterinarian-list em { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: var(--accent); font-style: normal; font-size: 18px; }
+.veterinarian-detail { min-height: 190px; padding: 16px; border-radius: 12px; color: #dbece6; background: linear-gradient(145deg, #102e29, var(--brand)); }
+.veterinarian-detail > small { color: #ffc28e; font-size: 8px; font-weight: 900; letter-spacing: .12em; }
+.veterinarian-detail h4 { margin: 5px 0 14px; color: #fff; font-size: 18px; }
+.veterinarian-detail dl { margin: 0; }
+.veterinarian-detail dl > div { display: flex; padding: 8px 0; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, .13); }
+.veterinarian-detail dt, .veterinarian-detail dd { margin: 0; font-size: 9px; }
+.veterinarian-detail dt { color: #9fc1b6; }
+.veterinarian-detail dd span { padding: 3px 7px; border-radius: 999px; color: #bff2d8; background: rgba(72, 185, 128, .18); }
+.veterinarian-actions { display: flex; gap: 7px; margin-top: 16px; }
+.veterinarian-actions button { flex: 1; padding: 7px; border: 1px solid rgba(255, 255, 255, .24); border-radius: 7px; color: #fff; background: rgba(255, 255, 255, .08); font-size: 9px; }
+.veterinarian-actions button:last-child { color: #ffd9c8; border-color: rgba(255, 164, 124, .35); }
+
+.veterinarian-deliverable { display: flex; height: 48px; margin-top: 16px; padding: 0 18px; align-items: center; gap: 10px; border-radius: 13px; color: #d8eee7; background: var(--brand); }
+.veterinarian-deliverable strong { margin-right: auto; color: #ffd18d; font-size: 12px; }
+.veterinarian-deliverable span { padding: 5px 10px; border-radius: 999px; background: rgba(255, 255, 255, .12); font-size: 10px; font-weight: 700; }
+.veterinarian-deliverable i { color: #f4a879; font-style: normal; }
