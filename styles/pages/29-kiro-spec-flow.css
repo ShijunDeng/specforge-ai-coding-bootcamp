@@ -1,0 +1,11 @@
+/* Kiro files */
+.file-stack { display: grid; margin-top: 34px; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.file-card { min-height: 350px; padding: 24px; border-radius: 18px; color: #fff; box-shadow: var(--shadow); }
+.file-card.req { background: linear-gradient(145deg, #3b54a0, #5275c7); }
+.file-card.design { background: linear-gradient(145deg, #155b55, #248679); }
+.file-card.tasks { background: linear-gradient(145deg, #b04a2f, #e2764a); }
+.file-card small { color: rgba(255,255,255,.65); letter-spacing: .12em; }
+.file-card code { display: block; margin-top: 34px; color: #fff; font-size: 21px; font-weight: 800; }
+.file-card p { min-height: 100px; margin-top: 22px; color: rgba(255,255,255,.85); }
+.file-card span { display: block; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.25); font-size: 10px; }
+.kiro-execution strong { color: #ffd18d; }

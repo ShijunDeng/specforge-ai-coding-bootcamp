@@ -1,0 +1,10 @@
+/* loop feedback */
+.feedback-loop { position: relative; height: 390px; margin-top: 5px; }
+.feedback-loop::before { content: ""; position: absolute; top: 38px; left: 300px; width: 580px; height: 310px; border: 3px dashed rgba(16,63,58,.18); border-radius: 50%; }
+.loop-center { position: absolute; z-index: 2; top: 135px; left: 490px; display: grid; width: 200px; height: 120px; place-items: center; align-content: center; border-radius: 50%; color: #fff; background: var(--accent); box-shadow: var(--shadow); }
+.loop-center strong { font-size: 20px; }
+.loop-center span { font-size: 9px; }
+.node { position: absolute; width: 140px; height: 70px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; color: var(--brand); text-align: center; background: #fff; box-shadow: var(--shadow); font-weight: 800; }
+.node small { display: block; margin-top: 5px; color: var(--muted); font-weight: 500; }
+.node.n1 { top: 16px; left: 520px; }.node.n2 { top: 72px; right: 190px; }.node.n3 { top: 185px; right: 85px; }.node.n4 { bottom: 16px; right: 250px; }.node.n5 { bottom: 16px; left: 250px; }.node.n6 { top: 185px; left: 85px; }.node.n7 { top: 72px; left: 190px; }
+.stop-grid > div { min-height: 100px; }

@@ -1,0 +1,5 @@
+/* reusable layout */
+.split-58, .split-48 { display: grid; align-items: stretch; gap: 24px; }
+.split-58 { grid-template-columns: 1.25fr .75fr; }
+.split-48 { grid-template-columns: .9fr 1.1fr; }
+.goal-grid, .class-contract, .value-triad, .lab-columns, .stop-grid, .rule-quality, .baseline-uses { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }

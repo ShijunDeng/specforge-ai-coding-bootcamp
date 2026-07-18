@@ -1,0 +1,12 @@
+/* wings */
+.wing-map { position: relative; height: 410px; margin-top: 4px; }
+.agent-core { position: absolute; z-index: 2; top: 128px; left: 480px; display: flex; width: 220px; height: 150px; flex-direction: column; align-items: center; justify-content: center; border-radius: 50%; color: #fff; background: radial-gradient(circle at 35% 30%, #2c8d78, var(--brand)); box-shadow: 0 25px 55px rgba(16,63,58,.25); font-size: 26px; font-weight: 900; }
+.agent-core span { margin-top: 5px; color: #bfe6db; font-size: 10px; font-weight: 500; }
+.wing { position: absolute; width: 270px; min-height: 130px; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.93); box-shadow: var(--shadow); }
+.wing b { display: block; color: var(--brand); font-size: 20px; }
+.wing span { display: block; margin: 8px 0; color: var(--muted); font-size: 11px; }
+.wing small { color: var(--accent); font-weight: 800; }
+.wing.skill { top: 12px; left: 70px; }
+.wing.cli { top: 12px; right: 70px; }
+.wing.mcp { bottom: 12px; left: 70px; }
+.wing.center { bottom: 12px; right: 70px; }

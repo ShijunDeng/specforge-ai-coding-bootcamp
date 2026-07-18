@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "slidev slides.md --bind 0.0.0.0",
     "build": "slidev build slides.md",
-    "export": "slidev export slides.md"
+    "export": "slidev export slides.md",
+    "mcp": "slidev mcp slides.md"
   },
   "dependencies": {
     "@slidev/cli": "^52.18.0",

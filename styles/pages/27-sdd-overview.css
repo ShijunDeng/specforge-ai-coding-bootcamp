@@ -1,0 +1,4 @@
+/* SDD pipeline */
+.sdd-pipeline > div { min-height: 148px; }
+.value-triad { margin-top: 25px; }
+.value-triad > div { min-height: 125px; }

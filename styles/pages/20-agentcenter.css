@@ -1,0 +1,15 @@
+/* portal */
+.portal-mock { display: grid; margin-top: 18px; overflow: hidden; min-height: 410px; grid-template-columns: 230px 1fr; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: var(--shadow); }
+.portal-side { display: flex; padding: 24px; flex-direction: column; gap: 18px; color: #d8eee8; background: var(--brand); }
+.portal-side b { margin-bottom: 16px; color: #fff; font-size: 21px; }
+.portal-side span { padding: 10px; border-radius: 8px; font-size: 11px; }
+.portal-side span:first-of-type { background: rgba(255,255,255,.12); }
+.portal-main { padding: 24px; background: #f5f8f6; }
+.portal-search { padding: 12px 16px; border: 1px solid var(--line); border-radius: 999px; color: #9aa6a1; background: #fff; font-size: 10px; }
+.portal-cards { display: grid; margin-top: 22px; grid-template-columns: repeat(3,1fr); gap: 13px; }
+.portal-cards > div { min-height: 170px; padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: #fff; }
+.portal-cards b { display: inline-block; padding: 4px 7px; border-radius: 999px; color: #fff; background: var(--accent); font-size: 8px; }
+.portal-cards strong { display: block; margin: 22px 0 14px; color: var(--brand); font-size: 16px; }
+.portal-cards span { color: var(--muted); font-size: 9px; }
+.placeholder { margin-top: 22px; padding: 14px; border: 2px dashed #c8d4cf; border-radius: 10px; color: #88968f; text-align: center; font-size: 10px; }
+.journey-row span { padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,.12); }

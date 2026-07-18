@@ -1,0 +1,4 @@
+interface:
+  display_name: "课件文案去 AI 味"
+  short_description: "删除模型口吻、套话与空洞夸张，让课件语言具体自然可信"
+  default_prompt: "Use $humanize-slide-copy to rewrite this slide copy into concise, human, evidence-led Chinese."

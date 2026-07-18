@@ -1,0 +1,19 @@
+/* agenda */
+.course-map { display: grid; margin-top: 34px; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.map-act {
+  position: relative;
+  min-height: 160px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,.9);
+  box-shadow: var(--shadow);
+}
+.map-act::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; border-radius: 18px 18px 0 0; background: var(--brand); }
+.map-act:nth-child(2)::before { background: var(--blue); }
+.map-act:nth-child(3)::before { background: var(--accent); }
+.map-act b { color: var(--accent); font-size: 12px; }
+.map-act strong { display: block; margin: 10px 0 8px; color: var(--brand); font-size: 22px; }
+.map-act span { color: var(--muted); font-size: 13px; line-height: 1.7; }
+.agenda-modules { display: flex; margin-top: 24px; flex-wrap: wrap; gap: 8px; }
+.agenda-modules span { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.88); color: var(--brand); font-size: 11px; font-weight: 700; }

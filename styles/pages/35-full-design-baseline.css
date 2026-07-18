@@ -1,0 +1,4 @@
+/* context baseline */
+.context-pyramid { display: grid; width: 900px; margin: 24px auto 0; gap: 8px; }
+.layer { margin: auto; padding: 13px 20px; border-radius: 9px; color: #fff; text-align: center; box-shadow: var(--shadow); }.layer b { display: block; font-size: 15px; }.layer span { font-size: 9px; }.layer.l1 { width: 45%; background: var(--accent); }.layer.l2 { width: 62%; background: var(--blue); }.layer.l3 { width: 80%; background: var(--brand-2); }.layer.l4 { width: 100%; background: #172a28; }
+.baseline-uses { grid-template-columns: repeat(4,1fr); margin-top: 22px; }.baseline-uses > div { min-height: 110px; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }.baseline-uses b { color: var(--brand); font-size: 12px; }.baseline-uses p { color: var(--muted); font-size: 9px; }

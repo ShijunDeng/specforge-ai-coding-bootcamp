@@ -1,0 +1,26 @@
+/* CodeAgent entry points */
+.codeagent-entry-slide .codeagent-entry-lede { max-width: none; margin: 8px 0 12px; font-size: 15.5px !important; }
+.codeagent-entry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.codeagent-entry-card { --entry-color: var(--brand); overflow: hidden; min-width: 0; border: 1px solid #cddbd5; border-radius: 15px; background: rgba(255,255,255,.96); box-shadow: 0 13px 28px rgba(16,63,58,.1); }
+.codeagent-entry-card header { display: flex; min-height: 55px; padding: 10px 13px 9px; align-items: center; justify-content: space-between; gap: 8px; border-bottom: 1px solid rgba(16,63,58,.09); }
+.codeagent-entry-card header small { display: block; margin-bottom: 2px; color: var(--entry-color); font-size: 8px; font-weight: 900; letter-spacing: .08em; }
+.codeagent-entry-card header h3 { margin: 0; color: var(--ink); font-size: 17px; }
+.codeagent-entry-card header > span { flex: 0 0 auto; padding: 4px 7px; border: 1px solid color-mix(in srgb, var(--entry-color) 28%, transparent); border-radius: 999px; color: var(--entry-color); background: color-mix(in srgb, var(--entry-color) 7%, white); font-size: 8.5px; font-weight: 900; }
+.codeagent-entry-card figure { position: relative; height: 276px; margin: 0; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,.09); background: #0d1110; }
+.codeagent-entry-card figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ide-entry-card figure img { object-position: center; }
+.ide-entry-card figure .ide-agent-pane { position: absolute; top: 0; right: 0; width: 43%; height: 100%; border-left: 1px solid rgba(255,255,255,.18); object-position: 22% top; box-shadow: -12px 0 24px rgba(0,0,0,.28); }
+.cli2-entry-card { --entry-color: var(--blue); border-color: #bfd9e8; }
+.cli2-entry-card figure img { object-position: center 47%; }
+.cli3-entry-card { --entry-color: var(--accent); border-color: #efb69e; }
+.cli3-entry-card figure img { object-position: 89% center; }
+.codeagent-entry-copy { padding: 11px 13px 12px; }
+.codeagent-entry-copy p { min-height: 57px; margin: 0; color: #52665e; font-size: 11.5px; line-height: 1.48; }
+.codeagent-entry-copy > div { display: flex; margin-top: 9px; flex-wrap: wrap; gap: 5px; }
+.codeagent-entry-copy span { padding: 4px 7px; border: 1px solid #d4e0db; border-radius: 999px; color: var(--entry-color); background: #f7faf8; font-size: 9.2px; font-weight: 800; line-height: 1; }
+.codeagent-entry-band { display: flex; min-height: 45px; margin-top: 10px; padding: 9px 14px; align-items: center; gap: 12px; border-radius: 11px; color: #d9ede7; background: linear-gradient(104deg, #0f3e39, #17685d 68%, #cf603d); font-size: 10.5px; }
+.codeagent-entry-band strong { flex: 0 0 auto; color: #ffd18d; font-size: 11px; }
+.codeagent-entry-band span { white-space: nowrap; }
+.codeagent-entry-band i { height: 1px; flex: 1; background: rgba(255,255,255,.38); }
+.why-banner strong, .observe-row strong, .decision-line strong { margin-right: auto; color: #ffd18d; }
+.why-banner span, .observe-row span, .decision-line span { padding: 4px 8px; border-radius: 999px; background: rgba(255,255,255,.12); }

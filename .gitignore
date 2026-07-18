@@ -8,3 +8,5 @@ dist
 .vite-inspect
 .remote-assets
 components.d.ts
+.tmp/
+.omx/

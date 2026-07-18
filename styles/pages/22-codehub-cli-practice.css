@@ -1,0 +1,5 @@
+/* loop */
+.loop-hex > div { min-height: 150px; }
+.lab-columns { margin-top: 24px; }
+.lab-columns > div { min-height: 190px; }
+.lab-columns li { margin: 5px 0; font-size: 11px; }

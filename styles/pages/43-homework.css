@@ -1,0 +1,6 @@
+/* homework */
+.homework-layout { margin-top: 20px; }.homework-card { min-height: 465px; padding: 26px; border-radius: 18px; color: #d8eee7; background: linear-gradient(145deg, #0b201d, var(--brand)); box-shadow: var(--shadow); }.homework-card h2 { margin-top: 16px; color: #fff; font-size: 26px; }.deliverables { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 32px; }.deliverables span { padding: 10px; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; color: #fff0d7; font-size: 10px; }.acceptance-sheet { min-height: 465px; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: var(--shadow); }.acceptance-sheet h3 { font-size: 20px; }.acceptance-sheet > div { display: grid; margin-top: 15px; padding: 13px; grid-template-columns: 52px 1fr; gap: 10px; border-left: 4px solid var(--accent); border-radius: 8px; background: #fff7f0; }.acceptance-sheet b { color: var(--accent); }.acceptance-sheet p { margin: 0; color: var(--muted); font-size: 10px; }.final-call { margin-top: 16px; color: #ffd18d; font-size: 14px; font-weight: 900; }
+
+@media print {
+  .slidev-layout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

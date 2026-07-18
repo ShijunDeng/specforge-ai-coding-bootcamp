@@ -1,0 +1,13 @@
+/* EPCV */
+.epcv-flow { display: grid; margin-top: 40px; grid-template-columns: 1fr 34px 1fr 34px 1fr 34px 1fr; align-items: center; }
+.epcv-flow > div { min-height: 260px; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.92); box-shadow: var(--shadow); }
+.epcv-flow b { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 50%; color: white; background: var(--brand); font-size: 22px; }
+.epcv-flow > div:nth-of-type(2) b { background: var(--blue); }
+.epcv-flow > div:nth-of-type(3) b { background: var(--accent); }
+.epcv-flow > div:nth-of-type(4) b { background: var(--violet); }
+.epcv-flow h3 { margin-top: 18px; font-size: 19px; }
+.epcv-flow p { min-height: 70px; color: var(--muted); }
+.epcv-flow small { color: var(--brand); font-weight: 800; }
+.prompt-anatomy { background: linear-gradient(110deg, #172b2a, var(--brand)); }
+.prompt-anatomy span { padding: 5px 9px; border-radius: 999px; color: var(--brand); background: #fff; }
+.prompt-anatomy b { color: #ffc37e; }

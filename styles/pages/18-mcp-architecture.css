@@ -1,0 +1,20 @@
+/* MCP */
+.mcp-architecture { display: grid; margin-top: 32px; grid-template-columns: 1.05fr .5fr 1.1fr; gap: 20px; align-items: center; }
+.mcp-host { min-height: 340px; padding: 24px; border-radius: 20px; color: #fff; background: var(--brand); box-shadow: var(--shadow); }
+.mcp-host small, .servers small { color: #9fd3c6; font-size: 9px; letter-spacing: .12em; }
+.mcp-host > strong { display: block; margin: 15px 0 6px; font-size: 26px; }
+.mcp-host > span { color: #c8e9e0; font-size: 11px; }
+.clients { display: grid; margin-top: 35px; gap: 10px; }
+.clients b { padding: 13px; border: 1px solid rgba(255,255,255,.18); border-radius: 10px; background: rgba(255,255,255,.08); font-size: 11px; }
+.mcp-link { display: flex; padding: 18px 8px; flex-direction: column; gap: 18px; text-align: center; }
+.mcp-link::before, .mcp-link::after { content: "⇄"; color: var(--accent); font-size: 30px; }
+.mcp-link b { color: var(--brand); font-size: 12px; }
+.mcp-link span { color: var(--muted); font-size: 9px; }
+.servers { display: grid; gap: 12px; }
+.servers > div { padding: 18px; border: 1px solid var(--line); border-left: 6px solid var(--accent); border-radius: 12px; background: rgba(255,255,255,.93); }
+.servers b { display: block; margin: 5px 0; color: var(--brand); font-size: 16px; }
+.servers span { float: right; margin-top: -24px; padding: 4px 8px; border-radius: 999px; color: #fff; background: var(--blue); font-size: 9px; }
+.primitive-row { display: grid; margin-top: 20px; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.primitive-row > div { padding: 12px; border-radius: 9px; background: #fff; box-shadow: 0 8px 20px rgba(16,63,58,.06); }
+.primitive-row b { display: block; color: var(--brand); font-size: 12px; }
+.primitive-row span { color: var(--muted); font-size: 9px; }

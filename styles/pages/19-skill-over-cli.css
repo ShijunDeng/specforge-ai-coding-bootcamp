@@ -1,0 +1,11 @@
+/* table */
+.compare-table { display: grid; margin-top: 22px; overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.92); box-shadow: var(--shadow); }
+.compare-table > div { display: grid; grid-template-columns: .55fr 1fr 1fr; border-bottom: 1px solid var(--line); }
+.compare-table > div:last-child { border-bottom: 0; }
+.compare-table span, .compare-table p, .compare-table b { margin: 0; padding: 13px 16px; border-right: 1px solid var(--line); font-size: 11px; }
+.compare-table span { color: var(--brand); font-weight: 800; }
+.compare-table p { color: var(--muted); }
+.compare-table .table-head { color: #fff; background: var(--brand); }
+.compare-table .table-head span, .compare-table .table-head b { color: #fff; font-size: 12px; }
+.decision-banner { margin-top: 16px; padding: 12px 15px; border-left: 5px solid var(--accent); border-radius: 10px; color: var(--muted); background: #fff; font-size: 11px; }
+.decision-banner b, .decision-banner strong { color: var(--brand); }

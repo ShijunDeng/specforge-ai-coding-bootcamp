@@ -1,0 +1,15 @@
+/* Vibe to SDD */
+.continuum { display: grid; margin-top: 38px; grid-template-columns: 1fr 1.2fr 1fr; align-items: center; }
+.vibe-zone, .sdd-zone { min-height: 280px; padding: 25px; border-radius: 18px; color: #fff; box-shadow: var(--shadow); }
+.vibe-zone { background: linear-gradient(145deg, var(--blue), #5fa2cf); }
+.sdd-zone { background: linear-gradient(145deg, var(--brand), #277564); }
+.vibe-zone b, .sdd-zone b { color: rgba(255,255,255,.65); font-size: 11px; letter-spacing: .12em; }
+.vibe-zone h2, .sdd-zone h2 { margin-top: 26px; color: #fff; font-size: 27px; }
+.vibe-zone p, .sdd-zone p { color: rgba(255,255,255,.83); }
+.vibe-zone span, .sdd-zone span { display: block; margin-top: 46px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.25); font-size: 12px; }
+.complexity-ramp { display: flex; height: 220px; padding: 0 24px; align-items: end; justify-content: center; gap: 8px; }
+.complexity-ramp i { width: 38px; border-radius: 8px 8px 0 0; background: #f2ad73; }
+.complexity-ramp i:nth-child(1) { height: 45px; }.complexity-ramp i:nth-child(2) { height: 85px; }.complexity-ramp i:nth-child(3) { height: 130px; }.complexity-ramp i:nth-child(4) { height: 185px; }
+.complexity-ramp strong { position: absolute; color: var(--muted); font-size: 9px; transform: translateY(30px); }
+.trigger-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; margin-top: 22px; }
+.trigger-grid div { padding: 12px 8px; border: 1px solid #e8b598; border-radius: 10px; color: #80513b; text-align: center; background: #fff5ed; font-size: 10px; font-weight: 700; }

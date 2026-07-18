@@ -1,0 +1,16 @@
+/* plan/code */
+.plan-code-grid { display: grid; margin-top: 22px; grid-template-columns: 1fr 1fr; gap: 18px; }
+.plan-panel, .diff-panel { min-height: 438px; padding: 24px; border-radius: 18px; box-shadow: var(--shadow); }
+.plan-panel { border: 1px solid #b8d5e7; background: linear-gradient(145deg, #eef7fc, #fff); }
+.diff-panel { color: #cfebe2; background: #0d1e1c; }
+.plan-panel small, .diff-panel small { color: var(--blue); font-weight: 900; letter-spacing: .12em; }
+.diff-panel small { color: #79d9ad; }
+.plan-panel h2, .diff-panel h2 { margin-top: 12px; font-size: 21px; }
+.diff-panel h2 { color: #fff; }
+.plan-panel li { margin: 10px 0; }
+.human-edit { margin-top: 18px; padding: 12px; border-left: 4px solid var(--accent); border-radius: 8px; color: #7b452f; background: #fff1e8; font-size: 11px; }
+.diff-lines { display: grid; gap: 11px; margin-top: 18px; }
+.diff-lines span { padding: 10px; border-radius: 7px; color: #9be5bd; background: rgba(72,170,120,.1); font-family: monospace; font-size: 11px; }
+.diff-summary { margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: 11px; }
+.diff-summary b { color: #7bd6a8; }
+.diff-summary em { color: #f08b76; font-style: normal; }

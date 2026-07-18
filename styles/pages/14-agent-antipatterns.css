@@ -1,0 +1,8 @@
+/* anti patterns */
+.anti-grid, .gate-grid { display: grid; margin-top: 28px; grid-template-columns: 1fr 1fr; gap: 16px; }
+.anti-grid > div { min-height: 190px; padding: 20px; border: 1px solid #efc7c1; border-radius: 15px; background: linear-gradient(145deg, #fff6f4, #fff); }
+.anti-grid b { color: var(--red); font-size: 12px; }
+.anti-grid h3 { margin-top: 7px; font-size: 18px; }
+.anti-grid p { margin: 8px 0; color: #7d5b56; }
+.anti-grid span { display: block; padding-top: 8px; border-top: 1px solid #eed8d4; color: var(--brand); font-size: 11px; font-weight: 700; }
+.warning-band, .security-note, .do-not-confuse { margin-top: 16px; padding: 11px 15px; border-radius: 10px; color: #fff; background: var(--red); font-size: 11px; font-weight: 700; }

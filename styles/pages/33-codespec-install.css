@@ -1,0 +1,10 @@
+/* install tracks */
+.dual-track { display: grid; margin-top: 25px; grid-template-columns: 1fr 1fr; gap: 18px; }
+.public-track, .internal-track { min-height: 440px; padding: 24px; border-radius: 18px; box-shadow: var(--shadow); }
+.public-track { color: #d8eee7; background: #0c1d1b; }.internal-track { border: 2px dashed #d6c2b7; background: rgba(255,255,255,.83); }
+.public-track small, .internal-track small { color: var(--accent); font-size: 10px; font-weight: 900; letter-spacing: .1em; }
+.public-track h2 { margin-top: 14px; color: #fff; }.internal-track h2 { margin-top: 14px; }
+.command-list, .slot-list { display: grid; gap: 10px; margin-top: 22px; }
+.command-list code { padding: 10px 13px; border-radius: 8px; color: #9de0bf; background: rgba(255,255,255,.07); font-size: 11px; }.slot-list span { padding: 10px 13px; border: 1px dashed #c8b2a5; border-radius: 8px; color: #886454; background: #fff8f3; font-size: 11px; }
+.public-track p, .internal-track p { margin-top: 22px; font-size: 10px; }.public-track p { color: #b9d3cc; }.internal-track p { color: var(--muted); }
+.do-not-confuse { background: #7a4a33; }

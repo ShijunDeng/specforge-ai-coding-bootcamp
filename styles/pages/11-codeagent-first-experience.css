@@ -1,0 +1,21 @@
+/* task + browser */
+.task-layout, .init-lab, .homework-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 24px; }
+.task-card { padding: 24px; border: 1px solid #efb69e; border-radius: 18px; background: linear-gradient(145deg, #fff8f2, #fff); box-shadow: var(--shadow); }
+.task-card small, .homework-card small, .brief-main small { color: var(--accent); font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+.task-card h2 { margin-top: 12px; font-size: 25px; }
+.task-card h3 { margin-top: 17px; }
+.task-card li { margin: 6px 0; }
+.task-card.compact { padding: 22px; }
+.browser-mock { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 20px 44px rgba(20,45,38,.16); }
+.browser-top { display: flex; height: 42px; padding: 0 14px; align-items: center; gap: 7px; background: #e8eeeb; }
+.browser-top i { width: 9px; height: 9px; border-radius: 50%; background: #dc6b5b; }
+.browser-top i:nth-child(2) { background: #efb84f; }
+.browser-top i:nth-child(3) { background: #4caf78; }
+.browser-top span { width: 65%; margin-left: 16px; padding: 5px 12px; border-radius: 999px; color: #718079; background: #fff; font-size: 9px; }
+.ui-list { padding: 26px 34px; }
+.ui-list > strong { color: var(--brand); font-size: 24px; }
+.ui-list button { float: right; padding: 8px 12px; border: 0; border-radius: 7px; color: #fff; background: var(--brand); font-size: 10px; }
+.ui-list > div { display: grid; margin-top: 16px; padding: 14px; grid-template-columns: 1fr 1fr 20px; align-items: center; border: 1px solid var(--line); border-radius: 10px; }
+.ui-list b { color: var(--brand); font-size: 13px; }
+.ui-list span { color: var(--muted); font-size: 11px; }
+.ui-list em { color: var(--accent); font-style: normal; font-size: 22px; }
