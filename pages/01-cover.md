@@ -1,15 +1,10 @@
 
 <div class="cover-copy">
 
-# AI 辅助开发课程
+<h1>AI 辅助研发训战</h1>
+<h2>从 CodeAgent 工具链到规格驱动开发</h2>
 
-## 从 CodeAgent 工具链到规格驱动研发
-
-<div class="cover-meta">
-  <span>v2.0.0</span>
-  <span>企业研发工程师</span>
-  <span>完整实战版</span>
-</div>
+<div class="cover-meta"></div>
 
 </div>
 

@@ -15,7 +15,7 @@
 }
 .brand-card {
   position: absolute;
-  top: 86px;
+  top: 50%;
   right: 56px;
   display: flex;
   width: 260px;
@@ -31,6 +31,7 @@
   text-align: center;
   background: linear-gradient(180deg, #070b11, #102f2d);
   box-shadow: 0 22px 44px rgba(9, 18, 18, 0.22);
+  transform: translateY(-50%);
 }
 .brand-card img { width: 180px; height: 180px; border-radius: 17px; }
 .brand-card strong { font-size: 23px; }

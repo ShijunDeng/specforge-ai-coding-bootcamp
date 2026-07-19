@@ -1,0 +1,315 @@
+/* Page 23 · AGENTS.md as the repository instruction entrypoint */
+.agents-md-lead {
+  margin: 6px 0 14px;
+  color: var(--muted);
+  font-size: 16px !important;
+  line-height: 1.45 !important;
+}
+
+.agents-md-layout {
+  display: grid;
+  height: 458px;
+  grid-template-columns: 1.34fr .66fr;
+  gap: 16px;
+}
+
+.agents-md-file,
+.agents-md-behavior,
+.agents-md-example {
+  overflow: hidden;
+  border: 1px solid rgba(16, 63, 58, .15);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, .93);
+  box-shadow: 0 14px 32px rgba(16, 63, 58, .08);
+}
+
+.agents-md-file {
+  color: #d9ece7;
+  background: #0d2e2a;
+  box-shadow: 0 18px 38px rgba(11, 43, 39, .15);
+}
+
+.agents-md-filebar {
+  display: flex;
+  height: 44px;
+  padding: 0 16px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  background: #103f3a;
+}
+
+.agents-md-filebar > span {
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #f06b3f;
+}
+
+.agents-md-filebar > span:nth-child(2) { background: #f4b54c; }
+.agents-md-filebar > span:nth-child(3) { margin-right: 13px; background: #77b7a6; }
+
+.agents-md-filebar code {
+  color: #fff;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.agents-md-filebar small {
+  margin-left: auto;
+  color: #8fc2b6;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.agents-md-intro {
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.agents-md-intro small {
+  color: #ffac7d;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.agents-md-intro h2 {
+  margin: 7px 0 6px;
+  color: #fff;
+  font-size: 23px;
+}
+
+.agents-md-intro p {
+  margin: 0;
+  color: #a9cec5;
+  font-size: 11px;
+}
+
+.agents-md-content-grid {
+  display: grid;
+  padding: 17px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.agents-md-content-grid article {
+  display: grid;
+  min-height: 112px;
+  padding: 13px;
+  grid-template-columns: 32px 1fr;
+  align-items: start;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .055);
+}
+
+.agents-md-content-grid article > span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--accent);
+  font-size: 9px;
+  font-weight: 900;
+}
+
+.agents-md-content-grid article:nth-child(even) > span {
+  color: var(--brand);
+  background: #b9ded3;
+}
+
+.agents-md-content-grid h3 {
+  margin: 1px 0 7px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.agents-md-content-grid p {
+  margin: 0;
+  color: #accdc5;
+  font-size: 10.5px;
+  line-height: 1.5;
+}
+
+.agents-md-side {
+  display: grid;
+  grid-template-rows: 202px 244px;
+  gap: 12px;
+}
+
+.agents-md-behavior {
+  padding: 14px 17px;
+}
+
+.agents-md-behavior > h2 {
+  margin: 0 0 8px;
+  color: var(--brand);
+  font-size: 18px;
+}
+
+.agents-md-behavior article {
+  display: grid;
+  padding: 7px 0;
+  grid-template-columns: 31px 1fr;
+  gap: 9px;
+  border-top: 1px solid #e1e9e5;
+}
+
+.agents-md-behavior article > span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--brand);
+  background: #e5f1ec;
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.agents-md-behavior h3 {
+  margin: 0 0 3px;
+  color: var(--brand);
+  font-size: 13px;
+}
+
+.agents-md-behavior p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 9.5px;
+  line-height: 1.4;
+}
+
+.agents-md-example {
+  padding: 13px 16px;
+  border-color: rgba(240, 107, 63, .25);
+  background: linear-gradient(145deg, #fff8f2, #fff);
+}
+
+.agents-md-example small {
+  color: var(--accent);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.agents-md-example h2 {
+  margin: 2px 0 7px;
+  color: var(--brand);
+  font-size: 15px;
+}
+
+.agents-md-syntax {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.agents-md-syntax > span {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.slidev-layout .agents-md-syntax code {
+  display: block;
+  width: fit-content;
+  padding: 4px 7px;
+  border-radius: 7px;
+  color: #fff;
+  background: var(--brand);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.agents-md-commit-cases {
+  display: grid;
+  margin-top: 8px;
+  grid-template-columns: 1fr .72fr;
+  gap: 7px;
+}
+
+.agents-md-commit-cases > div {
+  min-width: 0;
+  padding: 7px 8px;
+  border-radius: 8px;
+}
+
+.agents-md-commit-cases .is-valid {
+  background: #e7f2ed;
+}
+
+.agents-md-commit-cases .is-invalid {
+  background: #fff0e9;
+}
+
+.agents-md-commit-cases b {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 8px;
+}
+
+.agents-md-commit-cases .is-valid b { color: #28705e; }
+.agents-md-commit-cases .is-invalid b { color: #c34d32; }
+
+.slidev-layout .agents-md-commit-cases code {
+  display: block;
+  overflow: hidden;
+  color: #624b42;
+  background: transparent;
+  font-size: 9px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.agents-md-commit-cases em {
+  display: block;
+  margin-top: 3px;
+  color: #a56b5d;
+  font-size: 8px;
+  font-style: normal;
+}
+
+.agents-md-example ul {
+  margin: 8px 0 0;
+  padding-left: 15px;
+  color: #775448;
+  font-size: 9.5px;
+  line-height: 1.45;
+}
+
+.agents-md-example li + li {
+  margin-top: 2px;
+}
+
+.agents-md-boundary {
+  display: flex;
+  height: 45px;
+  margin-top: 12px;
+  padding: 0 18px;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border-radius: 11px;
+  color: #d9eee8;
+  background: var(--brand);
+  font-size: 11px;
+}
+
+.agents-md-boundary b {
+  color: #ffd08c;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.agents-md-boundary i {
+  color: #7eb4a7;
+  font-size: 18px;
+  font-style: normal;
+}

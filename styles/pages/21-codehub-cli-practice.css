@@ -1,0 +1,10 @@
+/* Page 21 keeps the shared practice pattern, scaled for its longer task. */
+.codehub-practice-slide .practice-task {
+  height: 530px;
+  margin-top: 20px;
+}
+
+.codehub-practice-slide .practice-task p {
+  font-size: 34px;
+  line-height: 1.55;
+}

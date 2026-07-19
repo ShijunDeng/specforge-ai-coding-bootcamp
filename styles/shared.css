@@ -3,3 +3,75 @@
 .split-58 { grid-template-columns: 1.25fr .75fr; }
 .split-48 { grid-template-columns: .9fr 1.1fr; }
 .goal-grid, .class-contract, .value-triad, .lab-columns, .stop-grid, .rule-quality, .baseline-uses { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
+
+/* Shared exercise-slide pattern, based on page 33's task release card. */
+.practice-slide .lesson-heading {
+  padding-right: 150px;
+}
+
+.practice-task {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  height: 480px;
+  margin-top: 30px;
+  padding: 76px 78px 64px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(13, 74, 66, .18);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fff 0%, #fbf8f1 100%);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.practice-task::after {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  right: -112px;
+  bottom: -150px;
+  border: 1px solid rgba(13, 74, 66, .07);
+  border-radius: 50%;
+  content: "";
+}
+
+.practice-task > span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 9px 24px;
+  border-radius: 0 0 14px 14px;
+  color: #fff;
+  background: var(--brand);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  transform: translateX(-50%);
+}
+
+.practice-task p {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0;
+  color: var(--brand);
+  font-size: 31px;
+  font-weight: 650;
+  line-height: 1.62;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+
+.slidev-layout.practice-slide .practice-task code {
+  display: inline-block;
+  margin: 0 3px;
+  padding: 4px 12px 6px;
+  border-radius: 10px;
+  color: #fff;
+  background-color: var(--accent);
+  box-shadow: 0 6px 16px rgba(240, 107, 63, .22);
+  font-size: .9em;
+  font-weight: 800;
+}

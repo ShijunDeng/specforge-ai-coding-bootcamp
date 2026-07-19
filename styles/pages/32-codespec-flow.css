@@ -1,7 +1,0 @@
-/* CodeSpec flow */
-.codespec-flow { margin-top: 26px; gap: 5px; }
-.codespec-flow > div { min-height: 135px; padding: 10px 5px; }
-.review-gates { display: grid; margin-top: 22px; grid-template-columns: repeat(4,1fr); gap: 12px; }
-.review-gates > div { min-height: 155px; padding: 16px; border: 1px solid var(--line); border-top: 5px solid var(--accent); border-radius: 12px; background: #fff; }
-.review-gates b { color: var(--accent); font-size: 10px; }.review-gates span { display: block; margin: 8px 0; color: var(--brand); font-weight: 800; }.review-gates p { color: var(--muted); font-size: 10px; }
-.placeholder-note { margin-top: 14px; padding: 10px; border: 2px dashed #d4c0b2; border-radius: 8px; color: #8b6b5a; text-align: center; background: #fff8f3; font-size: 10px; }

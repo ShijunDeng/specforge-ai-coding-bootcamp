@@ -1,0 +1,64 @@
+/* outcomes demo */
+.outcomes-demo-slide .outcomes-lead {
+  margin: 2px 0 28px;
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.outcomes-demo-slide .outcomes-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.outcomes-demo-slide .outcome-card {
+  display: flex;
+  min-height: 500px;
+  position: relative;
+  padding: 42px 40px;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-top: 8px solid var(--brand-2);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow);
+}
+
+.outcomes-demo-slide .outcome-card--product {
+  border-top-color: var(--accent);
+  background: linear-gradient(145deg, #fff8f1 0%, #ffffff 70%);
+}
+
+.outcomes-demo-slide .outcome-card--assets {
+  border-top-color: var(--brand-2);
+  background: linear-gradient(145deg, #f1f8f5 0%, #ffffff 70%);
+}
+
+.outcomes-demo-slide .outcome-card b {
+  position: absolute;
+  top: 34px;
+  left: 40px;
+  color: var(--accent);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+}
+
+.outcomes-demo-slide .outcome-card--assets b {
+  color: var(--brand-2);
+}
+
+.outcomes-demo-slide .outcome-card h2 {
+  margin: 0 0 20px;
+  font-size: 42px;
+}
+
+.outcomes-demo-slide .outcome-card p {
+  max-width: 440px;
+  margin: 0;
+  color: #52655d;
+  font-size: 21px;
+  font-weight: 650;
+  line-height: 1.6;
+}

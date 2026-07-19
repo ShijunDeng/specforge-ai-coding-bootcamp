@@ -1,6 +1,6 @@
 # 神灯局 AI 辅助开发课件
 
-一套直接使用 Slidev 维护的 44 页 AI 辅助开发培训课件。仓库不使用课程 Spec、生成器或多目标编译机制；`slides.md` 负责全局配置与页面顺序，每页内容独立保存在 `pages/` 中。
+一套直接使用 Slidev 维护的 40 页 AI 辅助开发培训课件。仓库不使用课程 Spec、生成器或多目标编译机制；`slides.md` 负责全局配置与页面顺序，每页内容独立保存在 `pages/` 中。
 
 ## 本地使用
 
@@ -11,7 +11,7 @@ npm run build
 npm run mcp
 ```
 
-- `slides.md`：全局 headmatter 与 44 页导入顺序。
+- `slides.md`：全局 headmatter 与 40 页导入顺序。
 - `pages/`：一页一个 Markdown，保存页面内容、frontmatter 和讲师备注。
 - `components/`：跨页复用的品牌标识与课程页码组件。
 - `styles/`：公共品牌样式、共享模式和与页面编号对应的专属样式。

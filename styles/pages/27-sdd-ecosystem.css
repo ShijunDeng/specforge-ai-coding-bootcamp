@@ -1,0 +1,253 @@
+/* Page 27 · SDD ecosystem */
+.sdd-ecosystem-lead {
+  margin: -5px 0 13px;
+  color: #42554d;
+  font-size: 15px !important;
+  line-height: 1.42 !important;
+}
+
+.sdd-ecosystem-lead b { color: var(--brand); }
+
+.sdd-ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.sdd-tool-card {
+  display: grid;
+  min-width: 0;
+  height: 443px;
+  grid-template-rows: 92px 1fr 43px;
+  overflow: hidden;
+  border: 1px solid rgba(16, 63, 58, .17);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 13px 28px rgba(16, 63, 58, .09);
+}
+
+.sdd-tool-visual {
+  position: relative;
+  overflow: hidden;
+  background: #11171d;
+}
+
+.sdd-tool-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(7, 18, 17, .82));
+}
+
+.sdd-tool-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sdd-kiro-card .sdd-tool-visual img { object-position: 67% 62%; }
+.sdd-openspec-card .sdd-tool-visual img { object-position: 50% 15%; }
+
+.sdd-speckit-card .sdd-tool-visual {
+  background: linear-gradient(135deg, #fff1fb, #e8efff 58%, #eefbf4);
+}
+
+.sdd-speckit-card .sdd-tool-visual::after {
+  background: linear-gradient(180deg, transparent 38%, rgba(14, 25, 39, .78));
+}
+
+.sdd-speckit-card .sdd-tool-visual img {
+  width: 82px;
+  height: 82px;
+  margin: 5px auto 0;
+  object-fit: contain;
+}
+
+.sdd-tool-visual > span {
+  position: absolute;
+  z-index: 1;
+  left: 14px;
+  bottom: 8px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .025em;
+}
+
+.sdd-tool-body { padding: 13px 14px 9px; }
+
+.sdd-tool-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.sdd-tool-heading h3 {
+  margin: 0;
+  color: var(--brand);
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.sdd-tool-heading em {
+  flex: 0 0 auto;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #6a4e12;
+  background: #fff1cc;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.sdd-kiro-card .sdd-tool-heading em { color: #5c42a1; background: #f0ebff; }
+.sdd-openspec-card .sdd-tool-heading em { color: #0f5f55; background: #e7f5ef; }
+
+.sdd-tool-position {
+  min-height: 39px;
+  margin: 6px 0 9px;
+  color: #4f625a;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+.sdd-mini-flow {
+  display: grid;
+  min-height: 42px;
+  margin: 0 0 9px;
+  align-items: center;
+  grid-template-columns: minmax(0, 1.2fr) 12px minmax(0, .92fr) 12px minmax(0, .84fr) 12px minmax(0, .95fr);
+  gap: 2px;
+}
+
+.sdd-mini-flow span {
+  display: grid;
+  min-width: 0;
+  min-height: 38px;
+  padding: 4px;
+  place-items: center;
+  border: 1px solid #d8e3de;
+  border-radius: 8px;
+  color: var(--brand);
+  background: #f5faf7;
+  font-size: 9.2px;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.sdd-mini-flow i {
+  color: var(--accent);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 900;
+  text-align: center;
+}
+
+.sdd-kiro-card .sdd-mini-flow span { border-color: #ded7f4; background: #f7f4ff; }
+.sdd-openspec-card .sdd-mini-flow span { border-color: #cfe0da; background: #f1f8f5; }
+.sdd-speckit-card .sdd-mini-flow span { border-color: #d8dff0; background: #f3f6fd; }
+
+.sdd-artifacts {
+  display: grid;
+  min-height: 40px;
+  margin: 0 0 9px;
+  padding: 5px 8px;
+  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  border-radius: 8px;
+  color: #4a6057;
+  background: #f7f7f2;
+}
+
+.sdd-artifacts b {
+  color: var(--brand);
+  font-size: 9px;
+}
+
+.sdd-artifacts code {
+  color: #46625a;
+  font-size: 9.1px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+.sdd-tool-body ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sdd-tool-body li {
+  position: relative;
+  margin: 0;
+  padding-left: 11px;
+  color: #53655e;
+  font-size: 11.1px;
+  line-height: 1.42;
+}
+
+.sdd-tool-body li::before {
+  content: "";
+  position: absolute;
+  top: .55em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.sdd-tool-body li b { color: #233d34; }
+.slidev-layout .sdd-tool-body code { color: #124f46; background: #e8f2ee; font-size: 11px; font-weight: 800; }
+
+.sdd-tool-fit {
+  display: flex;
+  padding: 0 14px;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #e0e8e4;
+  color: #51665e;
+  background: #fbfcfa;
+  font-size: 10px;
+}
+
+.sdd-tool-fit b {
+  flex: 0 0 auto;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--brand);
+  font-size: 9px;
+}
+
+.sdd-tool-fit span { font-weight: 700; }
+
+.sdd-ecosystem-takeaway {
+  display: flex;
+  min-height: 41px;
+  margin-top: 10px;
+  padding: 8px 13px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(16, 63, 58, .13);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  color: #36534a;
+  background: linear-gradient(90deg, #edf7f1, #fff7e9);
+  font-size: 11.5px;
+}
+
+.sdd-ecosystem-takeaway b {
+  flex: 0 0 auto;
+  color: var(--brand);
+  font-size: 11px;
+}
+
+.sdd-ecosystem-takeaway span { font-weight: 700; }

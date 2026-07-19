@@ -1,0 +1,24 @@
+/* terminal and environment */
+.environment-slide .split-58 { margin-top: 6px; }
+.check-list { display: grid; gap: 8px; margin-top: 12px; }
+.check-list > div { display: flex; min-height: 68px; padding: 10px 16px; align-items: flex-start; gap: 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.9); }
+.check-list b { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; color: #fff; background: var(--brand-2); }
+.check-list span { display: grid; gap: 5px; font-size: 13px; line-height: 1.35; }
+.check-list small { color: var(--muted); font-size: 12px; line-height: 1.45; }
+.terminal-card { overflow: hidden; border-radius: 16px; color: #d7f5e8; background: #0a1716; box-shadow: 0 22px 44px rgba(6,18,17,.23); }
+.environment-slide .terminal-card { min-height: 460px; }
+.terminal-card.large { min-height: 365px; }
+.terminal-head { display: flex; height: 38px; padding: 0 14px; align-items: center; gap: 7px; border-bottom: 1px solid rgba(255,255,255,.08); background: #102523; }
+.terminal-head i { width: 9px; height: 9px; border-radius: 50%; background: #ef6c57; }
+.terminal-head i:nth-child(2) { background: #f4b84f; }
+.terminal-head i:nth-child(3) { background: #4aae78; }
+.terminal-head span { margin-left: auto; color: #86a79f; font-size: 10px; }
+.terminal-card pre { margin: 0; padding: 22px; color: #bfe6d8; background: transparent; font-size: 13px; line-height: 1.75; white-space: pre-wrap; }
+.terminal-card code { color: inherit; }
+.terminal-body { display: grid; padding: 20px 22px 16px; gap: 7px; color: #bfe6d8; font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace; font-size: 13px; line-height: 1.4; }
+.terminal-body span, .terminal-body b { color: inherit; font-family: inherit; font-size: inherit; font-weight: 500; }
+.terminal-body b { color: #79d9ad; }
+.terminal-body > i { height: 4px; }
+.gate-pass { margin: 0 20px 20px; padding: 14px; border: 1px solid rgba(96,214,161,.28); border-radius: 8px; color: #79d9ad; background: rgba(24,97,75,.2); font-size: 12px; letter-spacing: .08em; }
+.gate-pass b { float: right; }
+.environment-slide .split-58 + .takeaway { margin-top: 16px; padding-block: 12px; font-size: 14px; }
