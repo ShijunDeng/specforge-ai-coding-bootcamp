@@ -4,6 +4,7 @@ title: AI 辅助开发课程
 info: |
   从 CodeAgent 工具链到规格驱动开发：40 页企业研发实战课件。
 transition: slide-left
+routerMode: hash
 drawings:
   persist: false
 canvasWidth: 1280
