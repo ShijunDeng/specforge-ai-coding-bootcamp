@@ -1,0 +1,40 @@
+/* Page 10: requirement-only exercise. */
+.veterinarian-requirement {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  max-width: 1010px;
+  min-height: 170px;
+  padding: 28px 34px;
+  grid-template-columns: 86px minmax(0, 1fr);
+  align-items: center;
+  gap: 26px;
+  border: 1px solid rgba(16, 63, 58, .15);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 10px 26px rgba(16, 63, 58, .06);
+}
+
+.veterinarian-requirement > b {
+  display: grid;
+  width: 76px;
+  height: 48px;
+  place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background: var(--brand);
+  font-size: 18px;
+}
+
+.veterinarian-requirement-slide .practice-task .veterinarian-requirement p {
+  max-width: none;
+  margin: 0;
+  color: var(--brand);
+  font-size: 23px;
+  font-weight: 650;
+  line-height: 1.5;
+  letter-spacing: -.01em;
+  text-align: left;
+  text-wrap: pretty;
+}

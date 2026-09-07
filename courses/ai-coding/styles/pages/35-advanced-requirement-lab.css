@@ -1,0 +1,58 @@
+/* Page 35 keeps the shared practice pattern, scaled for its longer task. */
+.visit-assignment-practice-slide .practice-task {
+  height: 540px;
+  margin-top: 20px;
+}
+
+.visit-task-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  max-width: 1040px;
+  gap: 30px;
+}
+
+.visit-assignment-practice-slide .practice-task .visit-requirement {
+  max-width: none;
+  color: var(--brand);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  text-wrap: nowrap;
+}
+
+.visit-constraints {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.visit-assignment-practice-slide .practice-task .visit-constraint {
+  display: grid;
+  max-width: none;
+  margin: 0;
+  padding: 17px 20px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(13, 74, 66, .16);
+  border-radius: 14px;
+  color: #40544c;
+  background: rgba(255, 255, 255, .78);
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.visit-constraint b {
+  padding: 4px 8px;
+  border-radius: 7px;
+  color: #fff;
+  background: var(--accent);
+  font-size: 11px;
+  letter-spacing: .06em;
+  white-space: nowrap;
+}

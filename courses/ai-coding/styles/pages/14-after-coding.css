@@ -1,0 +1,92 @@
+/* Page 14: live MR demo introduction */
+.mr-demo-lead {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.mr-demo-flow {
+  display: grid;
+  margin-top: 48px;
+  grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1fr);
+  align-items: center;
+}
+
+.mr-demo-step {
+  position: relative;
+  display: flex;
+  min-height: 430px;
+  padding: 34px 22px 28px;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 16px 38px rgba(16, 63, 58, 0.08);
+}
+
+.mr-demo-index {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  color: rgba(16, 63, 58, 0.28);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.mr-demo-command {
+  display: inline-flex;
+  align-self: flex-start;
+  min-height: 38px;
+  padding: 0 14px;
+  align-items: center;
+  border-radius: 9px;
+  color: var(--brand);
+  background: #e8f3ee;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.mr-demo-step h3 {
+  margin: 24px 0 10px;
+  color: var(--brand);
+  font-size: 22px;
+}
+
+.mr-demo-step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.mr-demo-step--final {
+  border-color: var(--brand);
+  background: var(--brand);
+}
+
+.mr-demo-step--final .mr-demo-index {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.mr-demo-step--final .mr-demo-command {
+  color: #fff3df;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.mr-demo-step--final h3 {
+  color: #fff;
+}
+
+.mr-demo-step--final p {
+  color: #c6ddd6;
+}
+
+.mr-demo-arrow {
+  color: var(--accent);
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+}

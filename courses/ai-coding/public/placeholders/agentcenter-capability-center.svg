@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1000" viewBox="0 0 2400 1000" role="img" aria-labelledby="title desc">
+  <title id="title">AgentCenter 产品截图占位图</title>
+  <desc id="desc">显示目标图片路径和建议替换规格</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfdfc" />
+      <stop offset="1" stop-color="#eef6f2" />
+    </linearGradient>
+  </defs>
+  <rect width="2400" height="1000" fill="url(#background)" />
+  <rect x="42" y="42" width="2316" height="916" rx="34" fill="none" stroke="#83a99f" stroke-width="4" stroke-dasharray="18 16" />
+  <g transform="translate(1200 500)" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif">
+    <rect x="-86" y="-260" width="172" height="132" rx="22" fill="#164f47" />
+    <path d="M-42-205h84M-42-172h58" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" />
+    <text y="-54" fill="#103f3a" font-size="34" font-weight="700">目标图片路径</text>
+    <text y="28" fill="#103f3a" font-family="JetBrains Mono, Consolas, monospace" font-size="42" font-weight="700">public/placeholders/agentcenter-capability-center.png</text>
+    <line x1="-760" y1="92" x2="760" y2="92" stroke="#cadbd5" stroke-width="3" />
+    <text y="172" fill="#5d746b" font-size="32" font-weight="700">建议规格</text>
+    <text y="244" fill="#f06b3f" font-family="JetBrains Mono, Consolas, monospace" font-size="40" font-weight="700">2400 × 1000 px · PNG · 12:5 · ≤ 2 MB</text>
+  </g>
+</svg>

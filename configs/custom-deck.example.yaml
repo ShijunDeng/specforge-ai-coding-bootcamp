@@ -1,8 +1,0 @@
-deck:
-  id: custom-sdd-lab
-  title: 自定义：SDD 设计实操工作坊
-  output: build/slides/custom-sdd-lab.slidev.md
-  include_modules:
-    - orientation
-    - sdd-codewiki
-    - smn-design-lab

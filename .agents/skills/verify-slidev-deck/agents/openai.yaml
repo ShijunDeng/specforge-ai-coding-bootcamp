@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slidev 课件验收"
+  short_description: "强制课件经过 Slidev 构建、逐页渲染截图与视觉质量验收"
+  default_prompt: "Use $verify-slidev-deck to build, render, and visually verify the affected slides."

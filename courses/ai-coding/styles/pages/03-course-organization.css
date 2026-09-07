@@ -1,0 +1,191 @@
+.slidev-layout .petclinic-repo-link {
+  display: inline-flex;
+  margin-left: auto;
+  padding: 7px 12px;
+  align-items: center;
+  border: 1px solid #efbda8;
+  border-radius: 999px;
+  color: #a94729;
+  background: #fff2ea;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.slidev-layout .petclinic-repo-link:hover {
+  color: #87371f;
+  background: #ffe8dc;
+}
+
+.petclinic-case-intro {
+  display: grid;
+  min-height: 178px;
+  margin-top: 24px;
+  padding: 24px 28px;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.3fr);
+  align-items: center;
+  gap: 32px;
+  border: 1px solid rgba(16, 63, 58, .16);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 94% 18%, rgba(239, 105, 57, .12), transparent 24%),
+    linear-gradient(135deg, #103f3a 0%, #18574f 100%);
+  box-shadow: 0 16px 34px rgba(16, 63, 58, .12);
+}
+
+.petclinic-case-copy {
+  color: #fff;
+}
+
+.petclinic-case-copy span {
+  display: inline-flex;
+  margin-bottom: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .13);
+  color: #ffd2bf;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.petclinic-case-copy h2 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 29px;
+  line-height: 1.05;
+}
+
+.petclinic-case-copy p {
+  max-width: 455px;
+  margin: 0;
+  color: rgba(255, 255, 255, .82);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.65;
+}
+
+.petclinic-domain-panel > p {
+  margin: 0 0 9px;
+  color: rgba(255, 255, 255, .62);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.petclinic-domain-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 10px;
+}
+
+.petclinic-domain-flow div {
+  display: flex;
+  min-width: 0;
+  min-height: 82px;
+  padding: 14px 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .09);
+  text-align: center;
+}
+
+.petclinic-domain-flow b {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.petclinic-domain-flow small {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, .65);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.course-format-grid {
+  display: grid;
+  margin-top: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.format-block {
+  position: relative;
+  display: flex;
+  min-height: 242px;
+  padding: 22px 20px 24px;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid rgba(16, 63, 58, .16);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(238,245,240,.96));
+  box-shadow: 0 16px 36px rgba(16, 63, 58, .09);
+}
+
+.format-block::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 8px;
+  background: var(--brand);
+}
+
+.format-block::after {
+  content: "";
+  position: absolute;
+  top: 46px;
+  right: -54px;
+  width: 158px;
+  height: 158px;
+  border: 34px solid rgba(16, 63, 58, .055);
+  border-radius: 50%;
+}
+
+.format-block.drill::before { background: var(--blue); }
+.format-block.practice::before { background: var(--accent); }
+.format-block.showcase::before { background: #d2a539; }
+.format-block.drill::after { border-color: rgba(42, 112, 139, .06); }
+.format-block.practice::after { border-color: rgba(235, 96, 48, .065); }
+.format-block.showcase::after { border-color: rgba(210, 165, 57, .08); }
+
+.format-block b {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  color: rgba(16, 63, 58, .22);
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.format-block.drill b { color: rgba(42, 112, 139, .2); }
+.format-block.practice b { color: rgba(235, 96, 48, .2); }
+.format-block.showcase b { color: rgba(181, 135, 26, .22); }
+
+.format-block h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  color: var(--brand);
+  font-size: 27px;
+  line-height: 1;
+}
+
+.format-block p {
+  position: relative;
+  z-index: 1;
+  min-height: 46px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 650;
+  line-height: 1.65;
+}

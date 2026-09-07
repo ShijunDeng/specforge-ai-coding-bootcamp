@@ -1,0 +1,9 @@
+/* Page 32 keeps the shared practice pattern, scaled for a short prompt. */
+.repo-init-practice-slide .practice-task {
+  height: 540px;
+  margin-top: 20px;
+}
+
+.repo-init-practice-slide .practice-task p {
+  font-size: 34px;
+}

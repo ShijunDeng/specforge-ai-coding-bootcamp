@@ -1,42 +1,27 @@
 {
-  "name": "specforge-ai-coding-bootcamp",
-  "version": "1.0.0",
-  "private": true,
+  "name": "shendeng-ai-training-slides",
   "type": "module",
-  "description": "Spec-driven Markdown course material pipeline for an enterprise AI-assisted coding bootcamp.",
+  "private": true,
   "scripts": {
-    "validate": "node scripts/validate-spec.mjs",
-    "generate": "node scripts/generate-course.mjs",
-    "generate:slidev": "node scripts/generate-course.mjs --target slidev",
-    "generate:llm": "node scripts/generate-course.mjs --target llm",
-    "generate:notebooklm": "node scripts/generate-course.mjs --target notebooklm",
-    "generate:ppt-ai": "node scripts/generate-course.mjs --target ppt-ai",
-    "generate:gamma": "node scripts/generate-course.mjs --target gamma",
-    "generate:tome": "node scripts/generate-course.mjs --target tome",
-    "generate:canva": "node scripts/generate-course.mjs --target canva",
-    "generate:all": "npm run generate:slidev && npm run generate:llm && npm run generate:ppt-ai",
-    "generate:lesson1": "node scripts/generate-course.mjs --deck lesson1-lab",
-    "generate:lesson2": "node scripts/generate-course.mjs --deck lesson2-sdd",
-    "generate:custom": "node scripts/generate-course.mjs --config configs/custom-deck.example.yaml",
-    "slides": "npm run generate && slidev build/slides/ai-coding-bootcamp-7h.slidev.md --remote course-preview --bind 0.0.0.0 --port ${PORT:-3030}",
-    "slides:public": "node scripts/serve-public.mjs",
-    "build": "npm run generate && rm -rf dist/slides && slidev build build/slides/ai-coding-bootcamp-7h.slidev.md --out $PWD/dist/slides --router-mode hash",
-    "export:pptx": "npm run generate && node scripts/ensure-export-deps.mjs && slidev export build/slides/ai-coding-bootcamp-7h.slidev.md --format pptx --output $PWD/dist/ai-coding-bootcamp-7h.pptx --timeout 120000",
-    "export:pdf": "npm run generate && node scripts/ensure-export-deps.mjs && slidev export build/slides/ai-coding-bootcamp-7h.slidev.md --format pdf --output $PWD/dist/ai-coding-bootcamp-7h.pdf --timeout 120000",
-    "check": "npm run validate && npm run generate && npm run build"
+    "dev": "concurrently --kill-others --success first --names portal,ai-coding \"npm:dev:portal\" \"npm:dev:ai-coding\"",
+    "dev:portal": "vite --config vite.portal.config.ts --host 0.0.0.0 --port 3030",
+    "dev:ai-coding": "slidev courses/ai-coding/slides.md --port 3031 --base /ai-coding/",
+    "build": "npm run build:portal && npm run build:ai-coding",
+    "build:portal": "vite build --config vite.portal.config.ts",
+    "build:ai-coding": "slidev build courses/ai-coding/slides.md --base /ai-coding/ --out ../../dist/ai-coding",
+    "preview": "vite preview --config vite.portal.config.ts --host 0.0.0.0 --port 3030",
+    "export": "npm run export:ai-coding",
+    "export:ai-coding": "slidev export courses/ai-coding/slides.md",
+    "mcp": "npm run mcp:ai-coding",
+    "mcp:ai-coding": "slidev mcp courses/ai-coding/slides.md"
   },
-  "keywords": [
-    "ai-coding",
-    "slidev",
-    "markdown-spec",
-    "spec-driven-development",
-    "training"
-  ],
+  "dependencies": {
+    "@slidev/cli": "^52.18.0",
+    "@slidev/theme-default": "^0.25.0"
+  },
   "devDependencies": {
-    "@fontsource/noto-sans-sc": "^5.2.9",
-    "@slidev/cli": "^52.16.0",
-    "@slidev/theme-default": "^0.25.0",
-    "playwright-chromium": "^1.60.0",
-    "yaml": "^2.9.0"
+    "concurrently": "^9.2.1",
+    "playwright-chromium": "^1.63.0",
+    "vite": "^8.1.5"
   }
 }

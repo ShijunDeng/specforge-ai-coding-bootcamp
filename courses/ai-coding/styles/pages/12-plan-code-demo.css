@@ -1,0 +1,49 @@
+/* Concise Plan-mode requirement and task brief */
+.plan-task-brief {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  max-width: 1010px;
+  gap: 12px;
+  text-align: left;
+}
+
+.plan-task-brief article {
+  display: grid;
+  min-height: 102px;
+  padding: 16px 28px;
+  grid-template-columns: 86px minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  border: 1px solid rgba(16, 63, 58, .15);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 10px 26px rgba(16, 63, 58, .06);
+}
+
+.plan-task-brief article > b {
+  display: grid;
+  width: 76px;
+  height: 48px;
+  place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background: var(--brand);
+  font-size: 18px;
+}
+
+.plan-task-brief article:not(:first-child) > b {
+  background: var(--accent);
+}
+
+.plan-practice-slide .practice-task .plan-task-brief p {
+  max-width: none;
+  margin: 0;
+  color: var(--brand);
+  font-size: 23px;
+  font-weight: 650;
+  line-height: 1.5;
+  letter-spacing: -.01em;
+  text-wrap: pretty;
+}

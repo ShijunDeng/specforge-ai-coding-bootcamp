@@ -1,0 +1,32 @@
+/* Codex and Claude Code capability landscape */
+.agent-landscape-lede { display: flex; margin-top: 8px; align-items: center; justify-content: space-between; gap: 20px; }
+.agent-landscape-lede p { margin: 0; color: #3e5149; font-size: 16px; line-height: 1.45; }
+.agent-landscape-lede > span { flex: 0 0 auto; padding: 4px 9px; border: 1px solid rgba(16,63,58,.14); border-radius: 999px; color: #567068; background: rgba(255,255,255,.72); font-size: 8.5px; font-weight: 800; letter-spacing: .08em; }
+.agent-duo-grid { display: grid; height: 444px; margin-top: 12px; grid-template-columns: 1fr 1fr; gap: 15px; }
+.agent-duo-card { --agent-color: #425bd1; display: grid; overflow: hidden; min-width: 0; grid-template-rows: 58px 164px 42px 1fr; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.96); box-shadow: 0 11px 27px rgba(16,63,58,.09); }
+.agent-duo-card > header { display: grid; padding: 10px 14px; grid-template-columns: 180px 1fr; align-items: center; gap: 12px; border-bottom: 1px solid #e7eeea; }
+.agent-duo-card > header > div { display: flex; align-items: baseline; gap: 8px; }
+.agent-duo-card > header small { color: var(--agent-color); font-size: 8px; font-weight: 900; letter-spacing: .12em; }
+.agent-duo-card > header h3 { margin: 0; color: var(--ink); font-size: 19px; line-height: 1.1; white-space: nowrap; }
+.agent-duo-card > header p { margin: 0; color: var(--muted); font-size: 10.5px; line-height: 1.38; }
+.agent-duo-card figure { position: relative; height: 164px; margin: 0; overflow: hidden; background: #17211f; }
+.agent-duo-card figure::after { content: ""; position: absolute; inset: 58% 0 0; background: linear-gradient(180deg, transparent, rgba(5,17,15,.82)); pointer-events: none; }
+.agent-duo-card figure img { width: 100%; height: 100%; object-fit: cover; }
+.codex-duo-card figure img { object-position: center 40%; }
+.claude-duo-card { --agent-color: #d2633e; }
+.claude-duo-card figure img { object-position: center 28%; }
+.agent-duo-card figcaption { position: absolute; z-index: 2; right: 13px; bottom: 9px; left: 13px; color: #fff; font-size: 8.5px; font-weight: 800; letter-spacing: .02em; text-shadow: 0 1px 4px rgba(0,0,0,.4); }
+.agent-model-row { display: flex; padding: 7px 13px; align-items: center; gap: 6px; border-bottom: 1px solid #e8eeeb; background: #f8faf8; }
+.agent-model-row b { margin-right: 2px; color: var(--agent-color); font-size: 9.5px; white-space: nowrap; }
+.agent-model-row span { padding: 4px 8px; border: 1px solid rgba(16,63,58,.1); border-radius: 999px; color: #344b44; background: #fff; font-size: 9.2px; font-weight: 800; white-space: nowrap; }
+.agent-capability-grid { display: grid; padding: 10px 12px 11px; grid-template-columns: 1fr 1fr; gap: 8px; }
+.agent-capability-grid > div { min-width: 0; padding: 9px 10px; border: 1px solid #e2eae6; border-radius: 9px; background: linear-gradient(145deg, #fff, #f8fbf9); }
+.agent-capability-grid b { display: block; margin-bottom: 4px; color: var(--agent-color); font-size: 10.8px; line-height: 1.2; }
+.agent-capability-grid span { display: block; color: #596d65; font-size: 9.8px; line-height: 1.38; }
+.agent-trend-band { display: grid; min-height: 75px; margin-top: 11px; padding: 11px 14px; grid-template-columns: 205px 1fr; align-items: center; gap: 14px; border-radius: 13px; color: #fff; background: linear-gradient(104deg, #0f3e39, #17685d 63%, #cf603d); box-shadow: 0 9px 23px rgba(16,63,58,.13); }
+.agent-trend-title { display: flex; padding-right: 14px; flex-direction: column; border-right: 1px solid rgba(255,255,255,.18); }
+.agent-trend-title small { color: #ffc891; font-size: 8px; font-weight: 900; letter-spacing: .1em; }
+.agent-trend-title strong { margin-top: 3px; color: #fff; font-size: 14px; line-height: 1.25; }
+.agent-trend-shifts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.agent-trend-shifts span { display: flex; min-height: 40px; padding: 7px 8px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; color: #d9ede7; background: rgba(255,255,255,.08); font-size: 9.1px; text-align: center; white-space: nowrap; }
+.agent-trend-shifts b { margin-right: 3px; color: #fff; font-size: 9.3px; }
