@@ -3,7 +3,7 @@ layout: default
 class: lesson-slide codespec-positioning-slide
 ---
 
-<div class="lesson-heading"><div class="section-tag">规格驱动开发</div><h1>CodeSpec：内部 SDD 一站式工具</h1><a class="codespec-guide-link" href="http://ai.cloudbu.huawei.com/sdd/guide" target="_blank" rel="noreferrer">ai.cloudbu.huawei.com/sdd/guide ↗</a></div>
+<div class="lesson-heading"><div class="section-tag">规格驱动开发</div><h1>CodeSpec：内部 SDD 一站式工具</h1><a class="codespec-guide-link" href="http://specx.ai.huawei.com/service/sdd" target="_blank" rel="noreferrer">ai.cloudbu.huawei.com/sdd/guide ↗</a></div>
 <BrandMark />
 <PageNo current="26" />
 
